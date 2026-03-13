@@ -1,0 +1,42 @@
+# Quant Trading System - Python 3.14 compatible requirements (Windows)
+# Optional/excluded on this platform:
+# - tensorflow (no Python 3.14 wheel)
+# - uvloop (not supported on Windows)
+# - hmmlearn (requires MSVC build tools)
+
+numpy>=2.4.0
+pandas>=2.3.0
+scipy>=1.17.0
+python-dotenv>=1.2.0
+ccxt>=4.5.0
+aiohttp>=3.13.0
+requests>=2.32.0
+ta-lib>=0.6.8
+scikit-learn>=1.8.0
+statsmodels>=0.14.6
+torch>=2.10.0
+optuna>=4.7.0
+fastapi>=0.135.0
+uvicorn[standard]>=0.41.0
+pydantic>=2.12.0
+python-multipart>=0.0.22
+dash>=4.0.0
+dash-bootstrap-components>=2.0.4
+plotly>=6.6.0
+kaleido>=1.2.0
+sqlalchemy>=2.0.48
+psycopg2-binary>=2.9.11
+alembic>=1.18.0
+redis>=7.0.0
+hiredis>=3.3.0
+aiofiles>=25.1.0
+asyncio-contextmanager>=1.0.1
+prometheus-client>=0.23.1
+psutil>=7.1.3
+python-json-logger>=3.3.0
+loguru>=0.7.3
+cryptography>=46.0.0
+pyjwt>=2.10.1
+pytest>=9.0.0
+pytest-asyncio>=1.3.0
+pytest-cov>=7.0.0

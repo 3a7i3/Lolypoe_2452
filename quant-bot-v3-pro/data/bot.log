@@ -1,0 +1,100 @@
+2026-03-08 21:48:40,799 - utils.logger - INFO - ==================================================
+2026-03-08 21:48:40,800 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 21:48:40,800 - utils.logger - INFO - ==================================================
+2026-03-08 21:48:40,800 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 21:48:40,800 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 21:48:42,645 - utils.logger - ERROR - Erreur fetching BTC-USD: 'BTC-USD'
+2026-03-08 21:48:42,645 - utils.logger - WARNING - Pas de donnees pour BTC-USD
+2026-03-08 21:48:42,646 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 21:48:43,351 - utils.logger - ERROR - Erreur fetching ETH-USD: 'ETH-USD'
+2026-03-08 21:48:43,352 - utils.logger - WARNING - Pas de donnees pour ETH-USD
+2026-03-08 21:48:43,352 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 21:48:44,316 - utils.logger - ERROR - Erreur fetching SOL-USD: 'SOL-USD'
+2026-03-08 21:48:44,316 - utils.logger - WARNING - Pas de donnees pour SOL-USD
+2026-03-08 21:48:44,317 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 21:48:44,860 - utils.logger - ERROR - Erreur fetching BNB-USD: 'BNB-USD'
+2026-03-08 21:48:44,860 - utils.logger - WARNING - Pas de donnees pour BNB-USD
+2026-03-08 21:48:44,860 - utils.logger - WARNING - Aucune donnee de marche
+2026-03-08 21:48:44,860 - utils.logger - INFO - QUANT BOT v3 PRO Arret
+2026-03-08 21:50:58,745 - utils.logger - INFO - ==================================================
+2026-03-08 21:50:58,746 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 21:50:58,746 - utils.logger - INFO - ==================================================
+2026-03-08 21:50:58,746 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 21:50:58,747 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 21:51:03,384 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 21:51:07,314 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 21:51:08,303 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 21:51:09,413 - utils.logger - ERROR - Erreur calcul indicateurs: Can only use .str accessor with Index, not MultiIndex
+2026-03-08 21:51:09,413 - utils.logger - ERROR - Erreur generation signal: 'RSI'
+2026-03-08 21:51:09,414 - utils.logger - ERROR - Erreur calcul indicateurs: Can only use .str accessor with Index, not MultiIndex
+2026-03-08 21:51:09,415 - utils.logger - ERROR - Erreur generation signal: 'RSI'
+2026-03-08 21:51:09,415 - utils.logger - ERROR - Erreur calcul indicateurs: Can only use .str accessor with Index, not MultiIndex
+2026-03-08 21:51:09,416 - utils.logger - ERROR - Erreur generation signal: 'RSI'
+2026-03-08 21:51:09,416 - utils.logger - ERROR - Erreur calcul indicateurs: Can only use .str accessor with Index, not MultiIndex
+2026-03-08 21:51:09,416 - utils.logger - ERROR - Erreur generation signal: 'RSI'
+2026-03-08 21:51:09,417 - utils.logger - INFO - [END] Cycle de trading termine
+2026-03-08 21:51:09,417 - utils.logger - INFO - QUANT BOT v3 PRO Arret
+2026-03-08 21:52:32,158 - utils.logger - INFO - ==================================================
+2026-03-08 21:52:32,159 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 21:52:32,159 - utils.logger - INFO - ==================================================
+2026-03-08 21:52:32,160 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 21:52:32,160 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 21:52:33,917 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 21:52:34,484 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 21:52:35,031 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 21:52:35,610 - utils.logger - INFO - Trade execute: BTC-USD BUY @ $67931.14
+2026-03-08 21:52:35,614 - utils.logger - INFO - Trade notification: [BTC-USD] Signal: BUY @ $67931.14
+2026-03-08 21:52:35,632 - utils.logger - INFO - Trade execute: ETH-USD BUY @ $1972.34
+2026-03-08 21:52:35,634 - utils.logger - INFO - Trade notification: [ETH-USD] Signal: BUY @ $1972.34
+2026-03-08 21:52:35,649 - utils.logger - INFO - [END] Cycle de trading termine
+2026-03-08 21:52:35,650 - utils.logger - INFO - QUANT BOT v3 PRO Arret
+2026-03-08 22:03:42,847 - utils.logger - INFO - ==================================================
+2026-03-08 22:03:42,848 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 22:03:42,848 - utils.logger - INFO - ==================================================
+2026-03-08 22:03:42,848 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 22:03:42,848 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 22:03:44,829 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 22:03:45,356 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 22:03:46,366 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 22:03:46,918 - utils.logger - INFO - [END] Cycle de trading termine
+2026-03-08 22:03:46,919 - utils.logger - INFO - QUANT BOT v3 PRO Arret
+2026-03-08 22:15:21,028 - utils.logger - INFO - ==================================================
+2026-03-08 22:15:21,028 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 22:15:21,029 - utils.logger - INFO - ==================================================
+2026-03-08 22:15:21,029 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 22:15:21,029 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 22:15:22,327 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 22:15:22,987 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 22:15:23,552 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 22:15:24,124 - utils.logger - ERROR - Erreur prediction: 'Close'
+2026-03-08 22:15:24,125 - utils.logger - ERROR - Erreur detection tendance: 'Close'
+2026-03-08 22:15:24,125 - utils.logger - ERROR - Erreur calcul volatilite: 'High'
+2026-03-08 22:15:24,130 - utils.logger - ERROR - Erreur prediction: 'Close'
+2026-03-08 22:15:24,130 - utils.logger - ERROR - Erreur detection tendance: 'Close'
+2026-03-08 22:15:24,130 - utils.logger - ERROR - Erreur calcul volatilite: 'High'
+2026-03-08 22:15:24,134 - utils.logger - ERROR - Erreur prediction: 'Close'
+2026-03-08 22:15:24,135 - utils.logger - ERROR - Erreur detection tendance: 'Close'
+2026-03-08 22:15:24,136 - utils.logger - ERROR - Erreur calcul volatilite: 'High'
+2026-03-08 22:15:24,140 - utils.logger - ERROR - Erreur prediction: 'Close'
+2026-03-08 22:15:24,141 - utils.logger - ERROR - Erreur detection tendance: 'Close'
+2026-03-08 22:15:24,142 - utils.logger - ERROR - Erreur calcul volatilite: 'High'
+2026-03-08 22:15:24,147 - utils.logger - INFO - [END] Cycle de trading termine
+2026-03-08 22:15:24,147 - utils.logger - INFO - QUANT BOT v3 PRO Arret
+2026-03-08 22:16:43,823 - utils.logger - INFO - ==================================================
+2026-03-08 22:16:43,823 - utils.logger - INFO - QUANT BOT v3 PRO Demarrage
+2026-03-08 22:16:43,824 - utils.logger - INFO - ==================================================
+2026-03-08 22:16:43,824 - utils.logger - INFO - [START] Cycle de trading
+2026-03-08 22:16:43,824 - utils.logger - INFO - Scan: BTC-USD
+2026-03-08 22:16:45,349 - utils.logger - INFO - Scan: ETH-USD
+2026-03-08 22:16:45,980 - utils.logger - INFO - Scan: SOL-USD
+2026-03-08 22:16:46,487 - utils.logger - INFO - Scan: BNB-USD
+2026-03-08 22:16:47,118 - utils.logger - INFO - Predictions generees: [67567.799609375, 67567.799609375, 67567.799609375]
+2026-03-08 22:16:47,123 - utils.logger - INFO - BTC-USD - Tendance: SIDEWAYS | Vol: LOW | Pred: $67567.80
+2026-03-08 22:16:47,259 - utils.logger - INFO - Predictions generees: [1956.6066767578125, 1956.6066767578125, 1956.6066767578125]
+2026-03-08 22:16:47,265 - utils.logger - INFO - ETH-USD - Tendance: SIDEWAYS | Vol: LOW | Pred: $1956.61
+2026-03-08 22:16:47,409 - utils.logger - INFO - Predictions generees: [83.00310863705573, 83.00310863705573, 83.00310863705573]
+2026-03-08 22:16:47,415 - utils.logger - INFO - SOL-USD - Tendance: SIDEWAYS | Vol: LOW | Pred: $83.00
+2026-03-08 22:16:47,567 - utils.logger - INFO - Predictions generees: [620.2302917480469, 620.2302917480469, 620.2302917480469]
+2026-03-08 22:16:47,573 - utils.logger - INFO - BNB-USD - Tendance: SIDEWAYS | Vol: LOW | Pred: $620.23
+2026-03-08 22:16:47,577 - utils.logger - INFO - [END] Cycle de trading termine
+2026-03-08 22:16:47,577 - utils.logger - INFO - QUANT BOT v3 PRO Arret

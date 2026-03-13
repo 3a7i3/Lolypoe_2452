@@ -1,0 +1,133 @@
+2026-03-08 21:24:22,936 - core.logger - ERROR - Erreur dashboard: 'DataFrame' object has no attribute 'hvplot'
+2026-03-08 21:36:20,943 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 21:36:20,946 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 21:36:23,566 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:23,567 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 21:36:24,309 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:24,322 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 21:36:26,152 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:26,153 - core.logger - INFO - [*] Bot arret
+2026-03-08 21:36:47,617 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 21:36:47,622 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 21:36:49,079 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:49,084 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 21:36:49,679 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:49,683 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 21:36:50,245 - core.logger - ERROR - Erreur generation signal: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:36:50,257 - core.logger - INFO - [*] Bot arret
+2026-03-08 21:37:12,330 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 21:37:12,331 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 21:37:13,910 - core.logger - ERROR - Erreur enregistrement trade: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:37:13,911 - core.logger - ERROR - Erreur pour BTC-USD: unsupported format string passed to Series.__format__
+2026-03-08 21:37:13,911 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 21:37:14,827 - core.logger - ERROR - Erreur enregistrement trade: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:37:14,828 - core.logger - ERROR - Erreur pour ETH-USD: unsupported format string passed to Series.__format__
+2026-03-08 21:37:14,828 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 21:37:15,603 - core.logger - ERROR - Erreur enregistrement trade: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-08 21:37:15,604 - core.logger - ERROR - Erreur pour BNB-USD: unsupported format string passed to Series.__format__
+2026-03-08 21:37:15,604 - core.logger - INFO - [*] Bot arret
+2026-03-08 21:37:34,586 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 21:37:34,587 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 21:37:35,859 - core.logger - INFO - Trade enregistre: BUY @ 68054.4375
+2026-03-08 21:37:35,861 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 21:37:36,353 - core.logger - INFO - Trade enregistre: BUY @ 1976.648681640625
+2026-03-08 21:37:36,354 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 21:37:36,850 - core.logger - INFO - Trade enregistre: BUY @ 623.2805786132812
+2026-03-08 21:37:36,851 - core.logger - INFO - [*] Bot arret
+2026-03-08 22:03:32,545 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 22:03:32,546 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 22:03:34,110 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 22:03:34,731 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 22:03:35,282 - core.logger - INFO - [*] Bot arret
+2026-03-08 22:10:03,723 - core.logger - INFO - ============================================================
+2026-03-08 22:10:03,724 - core.logger - INFO - TEST DES 5 FONCTIONNALITES AVANCEES
+2026-03-08 22:10:03,724 - core.logger - INFO - ============================================================
+2026-03-08 22:10:03,724 - core.logger - INFO - 
+[1] Recuperation des donnees...
+2026-03-08 22:10:07,108 - core.logger - ERROR - Impossible de recuperer les donnees
+2026-03-08 22:10:23,759 - core.logger - INFO - ============================================================
+2026-03-08 22:10:23,759 - core.logger - INFO - TEST DES 5 FONCTIONNALITES AVANCEES
+2026-03-08 22:10:23,759 - core.logger - INFO - ============================================================
+2026-03-08 22:10:23,759 - core.logger - INFO - 
+[1] Recuperation des donnees...
+2026-03-08 22:10:25,443 - core.logger - ERROR - Impossible de recuperer les donnees
+2026-03-08 22:11:28,845 - core.logger - INFO - ============================================================
+2026-03-08 22:11:28,846 - core.logger - INFO - TEST DES 5 FONCTIONNALITES AVANCEES
+2026-03-08 22:11:28,846 - core.logger - INFO - ============================================================
+2026-03-08 22:11:28,846 - core.logger - INFO - 
+[1] Recuperation des donnees...
+2026-03-08 22:11:31,683 - core.logger - INFO - Donnees chargees: 182 periodes
+2026-03-08 22:11:31,684 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:31,691 - core.logger - INFO - ============================================================
+2026-03-08 22:11:31,864 - core.logger - INFO - Predictions generees: [67615.44076822916, 67615.44076822916, 67615.44076822916, 67615.44076822916, 67615.44076822916]
+2026-03-08 22:11:31,864 - core.logger - INFO - Predictions (5 prochaines periodes):
+2026-03-08 22:11:31,865 - core.logger - INFO -    1. $67615.44
+2026-03-08 22:11:31,865 - core.logger - INFO -    2. $67615.44
+2026-03-08 22:11:31,865 - core.logger - INFO -    3. $67615.44
+2026-03-08 22:11:31,866 - core.logger - INFO -    4. $67615.44
+2026-03-08 22:11:31,866 - core.logger - INFO -    5. $67615.44
+2026-03-08 22:11:31,866 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:31,881 - core.logger - INFO - ============================================================
+2026-03-08 22:11:31,887 - core.logger - INFO - Tendance: SIDEWAYS
+2026-03-08 22:11:31,888 - core.logger - INFO - Force: 100.00%
+2026-03-08 22:11:31,888 - core.logger - INFO - Details:
+2026-03-08 22:11:31,889 - core.logger - INFO -    current_price: 67585.00
+2026-03-08 22:11:31,889 - core.logger - INFO -    sma20: 67544.37
+2026-03-08 22:11:31,890 - core.logger - INFO -    sma50: 74175.68
+2026-03-08 22:11:31,890 - core.logger - INFO -    sma200: 74175.68
+2026-03-08 22:11:31,890 - core.logger - INFO -    atr: 3528.87
+2026-03-08 22:11:31,890 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:31,895 - core.logger - INFO - ============================================================
+2026-03-08 22:11:31,903 - core.logger - INFO - ATR: $3010.49
+2026-03-08 22:11:31,905 - core.logger - INFO - Std Dev: 0.0296
+2026-03-08 22:11:31,906 - core.logger - INFO - ATR %: 4.45%
+2026-03-08 22:11:31,906 - core.logger - INFO - Niveau de volatilite: HIGH
+2026-03-08 22:11:31,907 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:31,923 - core.logger - INFO - ============================================================
+2026-03-08 22:11:32,000 - core.logger - INFO - Backtest: ROI=-13.55%, Trades=1, Win Rate=0.0%
+2026-03-08 22:11:32,001 - core.logger - INFO - Capital initial: $10000.00
+2026-03-08 22:11:32,003 - core.logger - INFO - Capital final: $8644.54
+2026-03-08 22:11:32,004 - core.logger - INFO - ROI: -13.55%
+2026-03-08 22:11:32,009 - core.logger - INFO - Max Drawdown: 13.55%
+2026-03-08 22:11:32,012 - core.logger - INFO - Nombre de trades: 1
+2026-03-08 22:11:32,017 - core.logger - INFO - Trades gagnants: 0
+2026-03-08 22:11:32,018 - core.logger - INFO - Win Rate: 0.0%
+2026-03-08 22:11:32,020 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:32,040 - core.logger - INFO - ============================================================
+2026-03-08 22:11:32,041 - core.logger - INFO - Optimisation en cours (peut prendre 30-60 secondes)...
+2026-03-08 22:11:32,043 - core.logger - INFO - Optimisation en cours...
+2026-03-08 22:11:33,357 - core.logger - INFO - Optimisation completee. Meilleurs params: {'sma_short': 10, 'sma_long': 40, 'rsi_lower': 25, 'rsi_upper': 65}, ROI=0.00%
+2026-03-08 22:11:33,357 - core.logger - INFO - 
+Meilleurs parametres trouves:
+2026-03-08 22:11:33,357 - core.logger - INFO -    sma_short: 10
+2026-03-08 22:11:33,358 - core.logger - INFO -    sma_long: 40
+2026-03-08 22:11:33,358 - core.logger - INFO -    rsi_lower: 25
+2026-03-08 22:11:33,358 - core.logger - INFO -    rsi_upper: 65
+2026-03-08 22:11:33,358 - core.logger - INFO - ROI avec ces parametres: 0.00%
+2026-03-08 22:11:33,358 - core.logger - INFO - 
+Top 5 configurations:
+2026-03-08 22:11:33,359 - core.logger - INFO -    1. SMA(10/40) RSI(25/65) -> ROI=0.00%
+2026-03-08 22:11:33,359 - core.logger - INFO -    2. SMA(10/40) RSI(25/70) -> ROI=0.00%
+2026-03-08 22:11:33,359 - core.logger - INFO -    3. SMA(10/40) RSI(25/75) -> ROI=0.00%
+2026-03-08 22:11:33,359 - core.logger - INFO -    4. SMA(10/40) RSI(30/65) -> ROI=0.00%
+2026-03-08 22:11:33,359 - core.logger - INFO -    5. SMA(10/40) RSI(30/70) -> ROI=0.00%
+2026-03-08 22:11:33,359 - core.logger - INFO - 
+============================================================
+2026-03-08 22:11:33,359 - core.logger - INFO - TEST TERMINE
+2026-03-08 22:11:33,360 - core.logger - INFO - ============================================================
+2026-03-08 22:15:01,124 - core.logger - INFO - [*] Bot demarrage
+2026-03-08 22:15:01,125 - core.logger - INFO - Recuperation donnees BTC-USD...
+2026-03-08 22:15:04,546 - core.logger - INFO - Predictions generees: [67565.910625, 67565.910625, 67565.910625]
+2026-03-08 22:15:04,551 - core.logger - INFO - BTC-USD - Tendance: SIDEWAYS (Force: 100.0%), Vol: LOW
+2026-03-08 22:15:04,552 - core.logger - INFO - Recuperation donnees ETH-USD...
+2026-03-08 22:15:05,951 - core.logger - INFO - Predictions generees: [1956.201627077045, 1956.201627077045, 1956.201627077045]
+2026-03-08 22:15:05,957 - core.logger - INFO - ETH-USD - Tendance: SIDEWAYS (Force: 100.0%), Vol: LOW
+2026-03-08 22:15:05,958 - core.logger - INFO - Recuperation donnees BNB-USD...
+2026-03-08 22:15:06,572 - core.logger - INFO - Predictions generees: [620.1854633178712, 620.1854633178712, 620.1854633178712]
+2026-03-08 22:15:06,577 - core.logger - INFO - BNB-USD - Tendance: UPTREND (Force: 30.2%), Vol: LOW
+2026-03-08 22:15:06,578 - core.logger - INFO - [*] Bot arret

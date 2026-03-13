@@ -1,0 +1,268 @@
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 6 opportunities | risk=high | whale_flow=neutral | social=0.01 | top: AIBOT_RAYD(50), WOJAK_JUPI(48), WOJAK_DEXS(48)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=142 approved=142 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 1 @ 2026-03-13T09:28:13.423946+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.145762
+  Volatility: 0.892545
+  Anomalies: extreme_momentum_-0.1458, spike_volatility
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 16428.9M USD
+    WHALE_BUY: 755.2M USD
+    WHALE_BUY: 5004.2M USD
+    WHALE_BUY: 161.6M USD
+    OUTFLOW_FROM_EXCHANGE: 2.4M USD
+    WHALE_TRANSFER: 4.4M USD on BNBUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: BOLLINGER ΓåÆ ATR
+  Period: 9, Threshold: 1.599
+  Sharpe: 14.9262, Drawdown: 0.0141
+  Win Rate: 0.8, PnL: 55.3074
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 340
+  Avg Sharpe: 11.5711
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.3497
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 16.78%
+    strat_1: 15.92%
+    strat_2: 10.40%
+    strat_3: 9.24%
+    strat_4: 8.42%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.8925
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0224
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 442
+  Model Version: 1
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.6929, 'p05_terminal': 0.1506, 'p95_terminal': 2.6991}
+≡ƒÆ░ Paper Trading State: {'balance': 100000.0, 'positions': {}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 5 opportunities | risk=elevated | whale_flow=bearish | social=-0.06 | top: SOLCAT_GECK(55), WOJAK_DEXS(54), DOGE10_GECK(53)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=142 approved=142 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 2 @ 2026-03-13T09:28:15.723854+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: 0.051591
+  Volatility: 0.482002
+  Anomalies: extreme_momentum_0.0516, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 1015.7M USD
+    WHALE_BUY: 8364.7M USD
+    WHALE_BUY: 7297.7M USD
+    WHALE_BUY: 15280.4M USD
+    INFLOW_TO_EXCHANGE: 1.3M USD
+    WHALE_SELL: 3.1M USD on ETHUSDT
+    SMART_MONEY_OUTFLOW: distribution detected
+
+≡ƒÄ» BEST STRATEGY
+  Type: BOLLINGER ΓåÆ ATR
+  Period: 9, Threshold: 1.599
+  Sharpe: 14.9262, Drawdown: 0.0141
+  Win Rate: 0.8, PnL: 55.3074
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 350
+  Avg Sharpe: 11.6004
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.3633
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_1: 14.48%
+    strat_0: 14.24%
+    strat_2: 13.54%
+    strat_3: 10.10%
+    strat_4: 8.90%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.4820
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0415
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 442
+  Model Version: 2
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.8094, 'p05_terminal': 0.1835, 'p95_terminal': 2.5507}
+≡ƒÆ░ Paper Trading State: {'balance': 62132.71, 'positions': {'ETHUSDT': 0.9647}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 5 opportunities | risk=elevated | whale_flow=neutral | social=-0.24 | top: BONK2_RAYD(51), AIBOT_GECK(47), BONK2_RAYD(46)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=142 approved=142 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 3 @ 2026-03-13T09:28:18.059938+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.074170
+  Volatility: 0.643375
+  Anomalies: extreme_momentum_-0.0742, spike_volatility
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 16459.7M USD
+    INFLOW_TO_EXCHANGE: 0.6M USD
+    WHALE_BUY: 11453.5M USD
+    WHALE_BUY: 4043.5M USD
+    WHALE_BUY: 20683.8M USD
+
+≡ƒÄ» BEST STRATEGY
+  Type: BOLLINGER ΓåÆ ATR
+  Period: 9, Threshold: 1.599
+  Sharpe: 14.9262, Drawdown: 0.0141
+  Win Rate: 0.8, PnL: 55.3074
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 360
+  Avg Sharpe: 11.6302
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.3758
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_2: 13.85%
+    strat_0: 13.63%
+    strat_1: 13.41%
+    strat_3: 12.93%
+    strat_4: 9.66%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.6434
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0311
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 442
+  Model Version: 3
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7197, 'p05_terminal': 0.1751, 'p95_terminal': 3.3187}
+≡ƒÆ░ Paper Trading State: {'balance': 62132.71, 'positions': {'ETHUSDT': 0.9647}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 9 opportunities | risk=elevated | whale_flow=neutral | social=0.09 | top: DOGE10_BIRD(58), MEMEAI_PUMP(51), WOJAK_GECK(51)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=136 approved=136 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 4 @ 2026-03-13T09:28:20.524713+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.002947
+  Volatility: 1.565071
+  Anomalies: spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 19683.9M USD
+    OUTFLOW_FROM_EXCHANGE: 0.6M USD
+    WHALE_BUY: 3451.1M USD
+    OUTFLOW_FROM_EXCHANGE: 0.7M USD
+    WHALE_BUY: 7442.1M USD
+    WHALE_BUY: 1739.7M USD
+
+≡ƒÄ» BEST STRATEGY
+  Type: RSI ΓåÆ BOLLINGER
+  Period: 64, Threshold: 0.57
+  Sharpe: 16.5728, Drawdown: 0.0244
+  Win Rate: 0.775, PnL: 71.6166
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 370
+  Avg Sharpe: 11.6821
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.4316
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_1: 12.87%
+    strat_0: 12.67%
+    strat_2: 12.00%
+    strat_4: 9.90%
+    strat_3: 9.46%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 1.5651
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0128
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 436
+  Model Version: 4
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7218, 'p05_terminal': 0.1863, 'p95_terminal': 2.9335}
+≡ƒÆ░ Paper Trading State: {'balance': 62132.71, 'positions': {'ETHUSDT': 0.9647}}

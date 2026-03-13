@@ -1,0 +1,12 @@
+{
+  "ALTCOIN": "ALTCOINS",
+  "DEFI": "DEFI",
+  "MEME": "MEMECOINS",
+  "NFT": "NFTS",
+  "AI": "AI_TOKENS",
+  "L1": "ALT_L1",
+  "ETH": "ETH_L1",
+  "SOL": "SOL_L1",
+  "BTC": "BTC",
+  "EXCHANGE": "STABLECOINS"
+}

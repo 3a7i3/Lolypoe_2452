@@ -1,0 +1,4 @@
+timestamp,health_score,findings_count,errors_count,warnings_count,infos_count
+2026-03-12 11:49:30.826357,88.0,1,0,0,1
+2026-03-12 11:49:30.826448,61.0,1,0,1,0
+2026-03-12 11:49:30.826459,44.0,1,1,0,0

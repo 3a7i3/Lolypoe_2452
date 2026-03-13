@@ -1,0 +1,35 @@
+# Quant AI System - Production requirements for Python 3.14 (Windows)
+# Replaces old strict pins that fail on Python 3.14.
+
+ccxt>=4.5.0
+numpy>=2.4.0
+pandas>=2.3.0
+websockets>=16.0
+aiohttp>=3.13.0
+asyncio-contextmanager>=1.0.1
+psycopg>=3.3.0
+psycopg-binary>=3.3.0
+redis>=7.0.0
+sqlalchemy>=2.0.48
+prometheus-client>=0.23.1
+python-json-logger>=3.3.0
+fastapi>=0.135.0
+uvicorn>=0.41.0
+pydantic>=2.12.0
+streamlit>=1.55.0
+plotly>=6.6.0
+matplotlib>=3.10.0
+pytest>=9.0.0
+pytest-asyncio>=1.3.0
+pytest-cov>=7.0.0
+python-dotenv>=1.2.0
+requests>=2.32.0
+click>=8.3.0
+dacite>=1.9.2
+orjson>=3.11.0
+msgpack>=1.1.2
+cryptography>=46.0.0
+python-jose>=3.5.0
+black>=25.11.0
+flake8>=7.3.0
+mypy>=1.18.0

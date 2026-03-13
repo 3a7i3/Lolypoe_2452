@@ -1,0 +1,17 @@
+# Quant Hedge Bot - Python 3.14 compatible requirements (Windows)
+# tensorflow is excluded because no wheel is available for Python 3.14.
+
+pandas>=2.3.0
+numpy>=2.4.0
+yfinance>=1.2.0
+scikit-learn>=1.8.0
+ta>=0.11.0
+streamlit>=1.55.0
+plotly>=6.6.0
+python-binance>=1.0.35
+ccxt>=4.5.0
+requests>=2.32.0
+python-telegram-bot>=22.6
+schedule>=1.2.2
+psutil>=7.1.3
+python-dotenv>=1.2.0

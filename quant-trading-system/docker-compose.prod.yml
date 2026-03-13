@@ -1,0 +1,338 @@
+version: '3.9'
+
+# Production Docker Compose - Optimized for scalability and performance
+# Usage: docker-compose -f docker-compose.prod.yml up -d
+
+services:
+  # PostgreSQL Database with replication-ready setup
+  postgres:
+    image: postgres:15-alpine
+    container_name: crypto-ai-postgres-prod
+    environment:
+      POSTGRES_USER: ${DB_USER:-crypto_trader}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-change_me}
+      POSTGRES_DB: ${DB_NAME:-crypto_trading}
+      POSTGRES_INITDB_ARGS: >-
+        -c max_connections=500
+        -c shared_buffers=256MB
+        -c effective_cache_size=1GB
+        -c work_mem=16MB
+        -c checkpoint_completion_target=0.9
+        -c wal_buffers=16MB
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/backup:/backup
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-crypto_trader}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  # Redis with high availability setup
+  redis:
+    image: redis:7-alpine
+    container_name: crypto-ai-redis-prod
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --maxmemory 1gb
+      --maxmemory-policy allkeys-lru
+      --databases 16
+      --loglevel notice
+      --timeout 300
+      --tcp-keepalive 60
+    volumes:
+      - redis_data_prod:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1.5G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Primary API Server
+  api-primary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-ai-api-primary
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://crypto_trader:change_me@postgres:5432/crypto_trading}
+      DB_HOST: postgres
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_WORKERS: 8
+      API_RELOAD: "false"
+      CRYPTO_ENV: production
+      LOG_LEVEL: info
+      UVICORN_LOOP: uvloop
+      UVICORN_HTTP: httptools
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+      - api_logs_prod:/app/logs
+      - api_cache_prod:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  # Secondary API Server for High Availability
+  api-secondary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-ai-api-secondary
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://crypto_trader:change_me@postgres:5432/crypto_trading}
+      DB_HOST: postgres
+      API_HOST: 0.0.0.0
+      API_PORT: 8001
+      API_WORKERS: 4
+      API_RELOAD: "false"
+      CRYPTO_ENV: production
+      LOG_LEVEL: info
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./:/app
+      - api_logs_prod:/app/logs
+      - api_cache_prod:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1.5G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Dashboard Server
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-ai-dashboard-prod
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://crypto_trader:change_me@postgres:5432/crypto_trading}
+      DB_HOST: postgres
+      DASH_HOST: 0.0.0.0
+      DASH_PORT: 8050
+      DASH_DEBUG: "false"
+      API_URL: http://nginx:80/api
+      WS_URL: ws://nginx:80/api
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./:/app
+      - dashboard_logs_prod:/app/logs
+    depends_on:
+      - api-primary
+      - postgres
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8050/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Nginx Load Balancer with SSL Support
+  nginx:
+    image: nginx:alpine
+    container_name: crypto-ai-nginx-prod
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - nginx_logs_prod:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api-primary
+      - api-secondary
+      - dashboard
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  # PgAdmin for Database Administration
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: crypto-ai-pgadmin-prod
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-change_me}
+      PGADMIN_CONFIG_PROXY_X_FOR_COUNT: 1
+      PGADMIN_CONFIG_PROXY_X_PROTO_COUNT: 1
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  # Prometheus Metrics Collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: crypto-ai-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data_prod:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-admin-api'
+    ports:
+      - "9090:9090"
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Grafana Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: crypto-ai-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+    volumes:
+      - grafana_data_prod:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - crypto-network-prod
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+networks:
+  crypto-network-prod:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  postgres_data_prod:
+    driver: local
+  redis_data_prod:
+    driver: local
+  api_logs_prod:
+    driver: local
+  api_cache_prod:
+    driver: local
+  dashboard_logs_prod:
+    driver: local
+  nginx_logs_prod:
+    driver: local
+  prometheus_data_prod:
+    driver: local
+  grafana_data_prod:
+    driver: local

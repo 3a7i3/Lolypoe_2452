@@ -1,0 +1,59 @@
+﻿**********************
+Début de la transcription Windows PowerShell
+Heure de début : 20260312231722
+Nom d'utilisateur : DESKTOP-SQTFC2Q\WINDOWS
+Utilisateur runAs :  DESKTOP-SQTFC2Q\WINDOWS
+Nom de la configuration : 
+Ordinateur : DESKTOP-SQTFC2Q (Microsoft Windows NT 10.0.26200.0)
+Application hôte : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File C:\Users\WINDOWS\crypto_ai_terminal\scripts\setup_and_verify_all.ps1
+ID de processus : 11124
+PSVersion: 5.1.26100.7920
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7920
+BuildVersion: 10.0.26100.7920
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[LOG] Transcript: C:\Users\WINDOWS\crypto_ai_terminal\logs\setup\setup_and_verify_20260312_231722.log
+[STEP] Install workspace root requirements
+terminal\.venv\lib\site-packages (from requests->-r C:\Users\WINDOWS\crypto_ai_t
+erminal\requirements.txt (line 4)) (2026.2.25)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\windows\crypto_ai_ter
+minal\.venv\lib\site-packages (from Jinja2>=2.9->bokeh<3.9.0,>=3.7.0->panel->-r
+C:\Users\WINDOWS\crypto_ai_terminal\requirements.txt (line 1)) (3.0.3)
+Requirement already satisfied: six>=1.5 in c:\users\windows\crypto_ai_terminal\.
+venv\lib\site-packages (from python-dateutil>=2.8.2->pandas->-r C:\Users\WINDOWS
+\crypto_ai_terminal\requirements.txt (line 2)) (1.17.0)
+Requirement already satisfied: webencodings in c:\users\windows\crypto_ai_termin
+al\.venv\lib\site-packages (from bleach->panel->-r C:\Users\WINDOWS\crypto_ai_te
+rminal\requirements.txt (line 1)) (0.5.1)
+Requirement already satisfied: uc-micro-py in c:\users\windows\crypto_ai_termina
+l\.venv\lib\site-packages (from linkify-it-py->panel->-r C:\Users\WINDOWS\crypto
+_ai_terminal\requirements.txt (line 1)) (2.0.0)
+Requirement already satisfied: mdurl~=0.1 in c:\users\windows\crypto_ai_terminal
+\.venv\lib\site-packages (from markdown-it-py->panel->-r C:\Users\WINDOWS\crypto
+_ai_terminal\requirements.txt (line 1)) (0.1.2)
+Requirement already satisfied: colorama in c:\users\windows\crypto_ai_terminal\.
+venv\lib\site-packages (from tqdm->panel->-r C:\Users\WINDOWS\crypto_ai_terminal
+\requirements.txt (line 1)) (0.4.6)
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: C:\Users\WINDOWS\crypto_ai_terminal\.venv\Scripts\pytho
+n.exe -m pip install --upgrade pip
+[OK] Install workspace root requirements
+[STEP] Install crypto_quant_v16 requirements
+
+[OK] Install crypto_quant_v16 requirements
+[STEP] Install legacy Python 3.14 compatibility requirements
+
+[OK] Install legacy Python 3.14 compatibility requirements
+[STEP] Run full system verification
+
+[OK] Run full system verification
+Setup + verification completed successfully.
+**********************
+Fin de la transcription Windows PowerShell
+Heure de fin : 20260312231844
+**********************

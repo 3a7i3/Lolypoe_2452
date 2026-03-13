@@ -1,0 +1,3 @@
+# Legacy pins are preserved in requirements-legacy.txt.
+# Default install now targets the Python 3.14-compatible dependency set.
+-r requirements-py314.txt

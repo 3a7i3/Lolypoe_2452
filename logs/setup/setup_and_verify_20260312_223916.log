@@ -1,0 +1,36 @@
+﻿**********************
+Début de la transcription Windows PowerShell
+Heure de début : 20260312223916
+Nom d'utilisateur : DESKTOP-SQTFC2Q\WINDOWS
+Utilisateur runAs :  DESKTOP-SQTFC2Q\WINDOWS
+Nom de la configuration : 
+Ordinateur : DESKTOP-SQTFC2Q (Microsoft Windows NT 10.0.26200.0)
+Application hôte : C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File C:\Users\WINDOWS\crypto_ai_terminal\scripts\setup_and_verify_all.ps1 -KeepLatestLogs 3
+ID de processus : 26220
+PSVersion: 5.1.26100.7920
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7920
+BuildVersion: 10.0.26100.7920
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[LOG] Transcript: C:\Users\WINDOWS\crypto_ai_terminal\logs\setup\setup_and_verify_20260312_223916.log
+[STEP] Install workspace root requirements
+
+[OK] Install workspace root requirements
+[STEP] Install crypto_quant_v16 requirements
+
+[OK] Install crypto_quant_v16 requirements
+[STEP] Install legacy Python 3.14 compatibility requirements
+
+[OK] Install legacy Python 3.14 compatibility requirements
+[STEP] Run full system verification
+
+[OK] Run full system verification
+Setup + verification completed successfully.
+**********************
+Fin de la transcription Windows PowerShell
+Heure de fin : 20260312224112
+**********************

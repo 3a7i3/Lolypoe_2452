@@ -1,0 +1,223 @@
+version: '3.9'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: crypto-ai-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-crypto_trader}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secure_password_change_me}
+      POSTGRES_DB: ${DB_NAME:-crypto_trading}
+      POSTGRES_INITDB_ARGS: "-c max_connections=200"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-crypto_trader}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crypto-network
+    restart: unless-stopped
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: crypto-ai-redis
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crypto-network
+    restart: unless-stopped
+
+  # FastAPI REST API Server
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-ai-api
+    environment:
+      # Database
+      DATABASE_URL: ${DATABASE_URL:-postgresql://crypto_trader:secure_password_change_me@postgres:5432/crypto_trading}
+      DB_USER: ${DB_USER:-crypto_trader}
+      DB_PASSWORD: ${DB_PASSWORD:-secure_password_change_me}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-crypto_trading}
+      
+      # Redis
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      
+      # API Configuration
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_WORKERS: 4
+      API_RELOAD: "false"
+      
+      # Trading Configuration
+      CRYPTO_ENV: production
+      LOG_LEVEL: INFO
+      
+      # Market Data
+      CCXT_RATE_LIMIT: 1000
+      MARKET_SCAN_INTERVAL: 30
+      NUM_SYMBOLS: 500
+      
+      # Strategy
+      STRATEGY_MODE: institutional
+      AUTO_TRADING: "false"
+      
+      # Services
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    
+    ports:
+      - "8000:8000"
+    
+    volumes:
+      - ./:/app
+      - api_logs:/app/logs
+      - api_cache:/app/data
+    
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    networks:
+      - crypto-network
+    
+    restart: unless-stopped
+    
+    command: >
+      sh -c "
+      python -c 'from database.models import DatabaseManager; DatabaseManager().create_tables()' &&
+      python -u -c 'from api.rest_api import run_api; run_api(host=\"0.0.0.0\", port=8000, workers=4)'
+      "
+
+  # Dash Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crypto-ai-dashboard
+    environment:
+      # Database
+      DATABASE_URL: ${DATABASE_URL:-postgresql://crypto_trader:secure_password_change_me@postgres:5432/crypto_trading}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      
+      # Redis
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      
+      # Dashboard
+      DASH_HOST: 0.0.0.0
+      DASH_PORT: 8050
+      DASH_DEBUG: "false"
+      
+      # API Endpoint
+      API_URL: http://api:8000
+      WS_URL: ws://api:8000
+      
+      # Services
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    
+    ports:
+      - "8050:8050"
+    
+    volumes:
+      - ./:/app
+      - dashboard_logs:/app/logs
+    
+    depends_on:
+      - api
+      - postgres
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8050/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    networks:
+      - crypto-network
+    
+    restart: unless-stopped
+    
+    command: >
+      python -u -c "
+      from dashboard.dash_app import run_dashboard;
+      run_dashboard(port=8050, debug=False)
+      "
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: crypto-ai-proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - nginx_logs:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+      - dashboard
+    networks:
+      - crypto-network
+    restart: unless-stopped
+
+  # PgAdmin for Database Management (optional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: crypto-ai-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - crypto-network
+    restart: unless-stopped
+
+networks:
+  crypto-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  api_logs:
+    driver: local
+  api_cache:
+    driver: local
+  dashboard_logs:
+    driver: local
+  nginx_logs:
+    driver: local

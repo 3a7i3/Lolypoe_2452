@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "exported_at_utc": "2026-03-11T23:12:15Z",
+  "symbol": "BTC/USDT",
+  "timeframe": "1h",
+  "exchange": "binance",
+  "snapshot_tag": "",
+  "snapshot_notes": "",
+  "selected_profile": "custom",
+  "runtime_profile_preview": {
+    "sl_pct": 0.02,
+    "tp_pct": 0.04,
+    "alert_min_conf": 0.7,
+    "alert_min_imbalance": 0.25,
+    "ticket_min_rr": 1.5,
+    "ticket_max_stop_pct": 3.0,
+    "poll_seconds": 45,
+    "min_regime_conf": 0.65,
+    "name": "custom"
+  },
+  "custom_profile_values": {
+    "sl_pct": 0.02,
+    "tp_pct": 0.04,
+    "alert_min_conf": 0.7,
+    "alert_min_imbalance": 0.25,
+    "ticket_min_rr": 1.5,
+    "ticket_max_stop_pct": 3.0,
+    "poll_seconds": 45,
+    "min_regime_conf": 0.65,
+    "name": "custom"
+  },
+  "custom_validation": {
+    "is_valid": true,
+    "errors": []
+  },
+  "custom_save_state": {
+    "is_dirty": true,
+    "last_saved_utc": null,
+    "last_saved_local": "n/a"
+  }
+}

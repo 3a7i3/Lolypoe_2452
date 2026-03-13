@@ -1,0 +1,638 @@
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 6 opportunities | risk=high | whale_flow=neutral | social=0.01 | top: AIBOT_RAYD(50), WOJAK_JUPI(48), WOJAK_DEXS(48)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=143 approved=143 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 1 @ 2026-03-13T09:29:11.782620+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.145762
+  Volatility: 0.892545
+  Anomalies: extreme_momentum_-0.1458, spike_volatility
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 16428.9M USD
+    WHALE_BUY: 755.2M USD
+    WHALE_BUY: 5004.2M USD
+    WHALE_BUY: 161.6M USD
+    OUTFLOW_FROM_EXCHANGE: 2.4M USD
+    WHALE_TRANSFER: 4.4M USD on BNBUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: VWAP ΓåÆ VWAP
+  Period: 7, Threshold: 1.653
+  Sharpe: 16.6333, Drawdown: 0.0192
+  Win Rate: 0.85, PnL: 65.9753
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 380
+  Avg Sharpe: 11.6975
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.4439
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 13.97%
+    strat_1: 12.75%
+    strat_2: 12.05%
+    strat_4: 9.85%
+    strat_6: 9.21%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.8925
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0224
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 443
+  Model Version: 1
+
+====================================================================================================
+
+
+================================================================================
+≡ƒÄ»  DIRECTOR SUPER DASHBOARD ΓÇö CYCLE 1
+================================================================================
+
+≡ƒôí MARKET RADAR
+   Regime   : HIGH_VOLATILITY_REGIME  Strategy Type : volatility_harvesting
+   Whale Flow: medium                Risk Level    : high
+   Opportunities: 6  |  Social Sentiment: +0.01  |  Tokens Scanned: 16
+   Top Signals : AIBOT_RAYD(50)  WOJAK_JUPI(48)  WOJAK_DEXS(48)
+
+≡ƒÅ¡ STRATEGY FACTORY
+   Regime   : high_volatility_regime
+   Generated: 150  |  Backtested: 150  |  Filtered: 143
+   Approved : 143  |  Blocked   : 0
+   Memory   : loaded=30  saved=30
+
+≡ƒôè STRATEGY PERFORMANCE
+   Best: VWAP ΓåÆ VWAP  period=7
+   Sharpe: 16.6333  |  Drawdown: 1.92%  |  Win Rate: 85.0%  |  PnL: 65.9753
+
+--------------------------------------------------------------------------------
+≡ƒñû AI AGENTS MONITOR
+   Active: 29/29  |  Total Errors: 0  |  Cycle: 1
+   [DECISION]
+      Γ£à DecisionEngine               cycles=0
+      Γ£à StrategyRanker               cycles=0
+   [EXECUTION]
+      Γ£à ArbitrageAgent               cycles=0
+      Γ£à ExecutionEngine              cycles=0
+      Γ£à LiquidityAnalyzer            cycles=0
+      Γ£à PaperTradingEngine           cycles=0
+   [INTELLIGENCE]
+      Γ£à AdvancedRegimeDetector       cycles=0
+      Γ£à FeatureEngineer              cycles=0
+   [MARKET]
+      Γ£à MarketScanner                cycles=0
+      Γ£à OrderFlowAnalyzer            cycles=0
+      Γ£à VolatilityDetector           cycles=0
+   [MONITORING]
+      Γ£à CreatePromptAgent            cycles=0
+      Γ£à PerformanceMonitor           cycles=0
+      Γ£à SystemMonitor                cycles=0
+   [PORTFOLIO]
+      Γ£à PortfolioBrain               cycles=0
+   [QUANT]
+      Γ£à BacktestLab                  cycles=0
+      Γ£à MonteCarloSimulator          cycles=0
+      Γ£à PortfolioOptimizer           cycles=0
+   [RADAR]
+      Γ£à AnomalyDetector              cycles=0
+      Γ£à SocialScanner                cycles=0
+      Γ£à TokenScanner                 cycles=0
+      Γ£à WhaleTracker                 cycles=0
+   [RISK]
+      Γ£à DrawdownGuard                cycles=0
+      Γ£à ExposureManager              cycles=0
+      Γ£à RiskMonitor                  cycles=0
+   [STRATEGY]
+      Γ£à GeneticOptimizer             cycles=0
+      Γ£à RLTrader                     cycles=0
+      Γ£à StrategyGenerator            cycles=0
+   [WHALES]
+      Γ£à WhaleRadar                   cycles=0
+--------------------------------------------------------------------------------
+≡ƒ⌐║ BOT DOCTOR DIAGNOSTICS
+   Γ£à Health Score : 100/100  (avg-10: 100)  |  Status: HEALTHY
+   Recommendation     : None
+   Corrections Applied: 0 this cycle  |  0 total
+   Trades Blocked     : 1 total
+--------------------------------------------------------------------------------
+≡ƒÆ░ TRADE MONITOR
+   Balance : $57,556.83  |  P&L: -42,443.17
+   Win Rate: 0.0%  (W:0 L:0 Blocked:0)
+   Active Positions:
+      BTCUSDT           qty=0.9520
+   Recent Trades (last 5 cycles):
+      [BUY ] BTCUSDT          size=0.9520 @ 44583.1573
+--------------------------------------------------------------------------------
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+   ΓÜá∩╕Å  Overall: 73/100  |  Status: DEGRADED  |  Uptime: 0.0min  |  Telegram: 0 sent
+   Γ£à CycleSpeed         100/100  0.0s/cycle avg
+   Γ£à Agents             100/100  0 error(s)
+   Γ£à BotDoctor          100/100  score=100
+   ΓÜá∩╕Å  MarketRisk          50/100  level=high
+   Γ¥î PaperBalance        15/100  pnl=-42.4%
+--------------------------------------------------------------------------------
+≡ƒôí TELEGRAM ALERTS
+   No recent alerts
+================================================================================
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7238, 'p05_terminal': 0.1745, 'p95_terminal': 3.5533}
+≡ƒÆ░ Paper Trading State: {'balance': 57556.83, 'positions': {'BTCUSDT': 0.952}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 7 opportunities | risk=high | whale_flow=neutral | social=-0.02 | top: SOLCAT_DEXS(50), SOLCAT_DEXS(50), MOONX_RAYD(48)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=141 approved=141 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 2 @ 2026-03-13T09:29:14.079567+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.668240
+  Volatility: 0.370735
+  Anomalies: extreme_momentum_-0.6682, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 418.7M USD
+    WHALE_BUY: 6949.7M USD
+    WHALE_BUY: 2079.2M USD
+    WHALE_BUY: 6827.1M USD
+    OUTFLOW_FROM_EXCHANGE: 1.4M USD
+
+≡ƒÄ» BEST STRATEGY
+  Type: ATR ΓåÆ ATR
+  Period: 30, Threshold: 0.94
+  Sharpe: 14.0522, Drawdown: 0.0151
+  Win Rate: 0.875, PnL: 52.2545
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 390
+  Avg Sharpe: 11.6997
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.4439
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 14.44%
+    strat_3: 11.28%
+    strat_1: 10.82%
+    strat_2: 10.64%
+    strat_6: 9.94%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.3707
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0539
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 441
+  Model Version: 2
+
+====================================================================================================
+
+
+================================================================================
+≡ƒÄ»  DIRECTOR SUPER DASHBOARD ΓÇö CYCLE 2
+================================================================================
+
+≡ƒôí MARKET RADAR
+   Regime   : HIGH_VOLATILITY_REGIME  Strategy Type : volatility_harvesting
+   Whale Flow: medium                Risk Level    : high
+   Opportunities: 7  |  Social Sentiment: -0.02  |  Tokens Scanned: 20
+   Top Signals : SOLCAT_DEXS(50)  SOLCAT_DEXS(50)  MOONX_RAYD(48)
+
+≡ƒÅ¡ STRATEGY FACTORY
+   Regime   : high_volatility_regime
+   Generated: 150  |  Backtested: 150  |  Filtered: 141
+   Approved : 141  |  Blocked   : 0
+   Memory   : loaded=30  saved=30
+
+≡ƒôè STRATEGY PERFORMANCE
+   Best: ATR ΓåÆ ATR  period=30
+   Sharpe: 14.0522  |  Drawdown: 1.51%  |  Win Rate: 87.5%  |  PnL: 52.2545
+
+--------------------------------------------------------------------------------
+≡ƒñû AI AGENTS MONITOR
+   Active: 29/29  |  Total Errors: 0  |  Cycle: 2
+   [DECISION]
+      Γ£à DecisionEngine               cycles=0
+      Γ£à StrategyRanker               cycles=0
+   [EXECUTION]
+      Γ£à ArbitrageAgent               cycles=0
+      Γ£à ExecutionEngine              cycles=0
+      Γ£à LiquidityAnalyzer            cycles=0
+      Γ£à PaperTradingEngine           cycles=0
+   [INTELLIGENCE]
+      Γ£à AdvancedRegimeDetector       cycles=0
+      Γ£à FeatureEngineer              cycles=0
+   [MARKET]
+      Γ£à MarketScanner                cycles=0
+      Γ£à OrderFlowAnalyzer            cycles=0
+      Γ£à VolatilityDetector           cycles=0
+   [MONITORING]
+      Γ£à CreatePromptAgent            cycles=0
+      Γ£à PerformanceMonitor           cycles=0
+      Γ£à SystemMonitor                cycles=0
+   [PORTFOLIO]
+      Γ£à PortfolioBrain               cycles=0
+   [QUANT]
+      Γ£à BacktestLab                  cycles=0
+      Γ£à MonteCarloSimulator          cycles=0
+      Γ£à PortfolioOptimizer           cycles=0
+   [RADAR]
+      Γ£à AnomalyDetector              cycles=0
+      Γ£à SocialScanner                cycles=0
+      Γ£à TokenScanner                 cycles=0
+      Γ£à WhaleTracker                 cycles=0
+   [RISK]
+      Γ£à DrawdownGuard                cycles=0
+      Γ£à ExposureManager              cycles=0
+      Γ£à RiskMonitor                  cycles=0
+   [STRATEGY]
+      Γ£à GeneticOptimizer             cycles=0
+      Γ£à RLTrader                     cycles=0
+      Γ£à StrategyGenerator            cycles=0
+   [WHALES]
+      Γ£à WhaleRadar                   cycles=0
+--------------------------------------------------------------------------------
+≡ƒ⌐║ BOT DOCTOR DIAGNOSTICS
+   Γ£à Health Score : 100/100  (avg-10: 100)  |  Status: HEALTHY
+   Recommendation     : None
+   Corrections Applied: 0 this cycle  |  0 total
+   Trades Blocked     : 2 total
+--------------------------------------------------------------------------------
+≡ƒÆ░ TRADE MONITOR
+   Balance : $39,001.85  |  P&L: -60,998.15
+   Win Rate: 0.0%  (W:0 L:0 Blocked:0)
+   Active Positions:
+      BTCUSDT           qty=0.9520
+      ETHUSDT           qty=0.9623
+   Recent Trades (last 5 cycles):
+      [BUY ] BTCUSDT          size=0.9520 @ 44583.1573
+      [BUY ] ETHUSDT          size=0.9623 @ 19281.9135
+--------------------------------------------------------------------------------
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+   ΓÜá∩╕Å  Overall: 70/100  |  Status: DEGRADED  |  Uptime: 0.0min  |  Telegram: 0 sent
+   Γ£à CycleSpeed         100/100  0.0s/cycle avg
+   Γ£à Agents             100/100  0 error(s)
+   Γ£à BotDoctor          100/100  score=100
+   ΓÜá∩╕Å  MarketRisk          50/100  level=high
+   Γ¥î PaperBalance         0/100  pnl=-61.0%
+--------------------------------------------------------------------------------
+≡ƒôí TELEGRAM ALERTS
+   No recent alerts
+================================================================================
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7157, 'p05_terminal': 0.1692, 'p95_terminal': 3.0384}
+≡ƒÆ░ Paper Trading State: {'balance': 39001.85, 'positions': {'BTCUSDT': 0.952, 'ETHUSDT': 0.9623}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 5 opportunities | risk=high | whale_flow=neutral | social=-0.04 | top: BONK2_PUMP(52), MEMEAI_DEXS(50), SOLCAT_PUMP(45)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=144 approved=144 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 3 @ 2026-03-13T09:29:16.691316+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.873392
+  Volatility: 0.294579
+  Anomalies: extreme_momentum_-0.8734, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 8225.4M USD
+    INFLOW_TO_EXCHANGE: 0.8M USD
+    WHALE_BUY: 9108.8M USD
+    WHALE_BUY: 10047.5M USD
+    WHALE_BUY: 355.5M USD
+    WHALE_BUY: 2.2M USD on BTCUSDT
+    WHALE_SELL: 1.2M USD on BNBUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: RSI ΓåÆ EMA
+  Period: 25, Threshold: 0.208
+  Sharpe: 13.9599, Drawdown: 0.0184
+  Win Rate: 0.725, PnL: 58.6572
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 400
+  Avg Sharpe: 11.6906
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.4316
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 15.26%
+    strat_1: 12.28%
+    strat_2: 10.40%
+    strat_5: 9.54%
+    strat_4: 9.14%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.2946
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0679
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 444
+  Model Version: 3
+
+====================================================================================================
+
+
+================================================================================
+≡ƒÄ»  DIRECTOR SUPER DASHBOARD ΓÇö CYCLE 3
+================================================================================
+
+≡ƒôí MARKET RADAR
+   Regime   : HIGH_VOLATILITY_REGIME  Strategy Type : volatility_harvesting
+   Whale Flow: medium                Risk Level    : high
+   Opportunities: 5  |  Social Sentiment: -0.04  |  Tokens Scanned: 26
+   Top Signals : BONK2_PUMP(52)  MEMEAI_DEXS(50)  SOLCAT_PUMP(45)
+
+≡ƒÅ¡ STRATEGY FACTORY
+   Regime   : high_volatility_regime
+   Generated: 150  |  Backtested: 150  |  Filtered: 144
+   Approved : 144  |  Blocked   : 0
+   Memory   : loaded=30  saved=30
+
+≡ƒôè STRATEGY PERFORMANCE
+   Best: RSI ΓåÆ EMA  period=25
+   Sharpe: 13.9599  |  Drawdown: 1.84%  |  Win Rate: 72.5%  |  PnL: 58.6572
+
+--------------------------------------------------------------------------------
+≡ƒñû AI AGENTS MONITOR
+   Active: 29/29  |  Total Errors: 0  |  Cycle: 3
+   [DECISION]
+      Γ£à DecisionEngine               cycles=0
+      Γ£à StrategyRanker               cycles=0
+   [EXECUTION]
+      Γ£à ArbitrageAgent               cycles=0
+      Γ£à ExecutionEngine              cycles=0
+      Γ£à LiquidityAnalyzer            cycles=0
+      Γ£à PaperTradingEngine           cycles=0
+   [INTELLIGENCE]
+      Γ£à AdvancedRegimeDetector       cycles=0
+      Γ£à FeatureEngineer              cycles=0
+   [MARKET]
+      Γ£à MarketScanner                cycles=0
+      Γ£à OrderFlowAnalyzer            cycles=0
+      Γ£à VolatilityDetector           cycles=0
+   [MONITORING]
+      Γ£à CreatePromptAgent            cycles=0
+      Γ£à PerformanceMonitor           cycles=0
+      Γ£à SystemMonitor                cycles=0
+   [PORTFOLIO]
+      Γ£à PortfolioBrain               cycles=0
+   [QUANT]
+      Γ£à BacktestLab                  cycles=0
+      Γ£à MonteCarloSimulator          cycles=0
+      Γ£à PortfolioOptimizer           cycles=0
+   [RADAR]
+      Γ£à AnomalyDetector              cycles=0
+      Γ£à SocialScanner                cycles=0
+      Γ£à TokenScanner                 cycles=0
+      Γ£à WhaleTracker                 cycles=0
+   [RISK]
+      Γ£à DrawdownGuard                cycles=0
+      Γ£à ExposureManager              cycles=0
+      Γ£à RiskMonitor                  cycles=0
+   [STRATEGY]
+      Γ£à GeneticOptimizer             cycles=0
+      Γ£à RLTrader                     cycles=0
+      Γ£à StrategyGenerator            cycles=0
+   [WHALES]
+      Γ£à WhaleRadar                   cycles=0
+--------------------------------------------------------------------------------
+≡ƒ⌐║ BOT DOCTOR DIAGNOSTICS
+   Γ£à Health Score : 100/100  (avg-10: 100)  |  Status: HEALTHY
+   Recommendation     : None
+   Corrections Applied: 0 this cycle  |  0 total
+   Trades Blocked     : 3 total
+--------------------------------------------------------------------------------
+≡ƒÆ░ TRADE MONITOR
+   Balance : $39,001.85  |  P&L: -60,998.15
+   Win Rate: 0.0%  (W:0 L:0 Blocked:0)
+   Active Positions:
+      BTCUSDT           qty=1.9060
+      ETHUSDT           qty=0.9623
+   Recent Trades (last 5 cycles):
+      [BUY ] BTCUSDT          size=0.9520 @ 44583.1573
+      [BUY ] ETHUSDT          size=0.9623 @ 19281.9135
+      [BUY ] BTCUSDT          size=0.9540 @ 48009.7616
+--------------------------------------------------------------------------------
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+   ΓÜá∩╕Å  Overall: 70/100  |  Status: DEGRADED  |  Uptime: 0.1min  |  Telegram: 0 sent
+   Γ£à CycleSpeed         100/100  0.0s/cycle avg
+   Γ£à Agents             100/100  0 error(s)
+   Γ£à BotDoctor          100/100  score=100
+   ΓÜá∩╕Å  MarketRisk          50/100  level=high
+   Γ¥î PaperBalance         0/100  pnl=-61.0%
+--------------------------------------------------------------------------------
+≡ƒôí TELEGRAM ALERTS
+   No recent alerts
+================================================================================
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7157, 'p05_terminal': 0.1692, 'p95_terminal': 3.0384}
+≡ƒÆ░ Paper Trading State: {'balance': 39001.85, 'positions': {'BTCUSDT': 0.952, 'ETHUSDT': 0.9623}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 5 opportunities | risk=high | whale_flow=neutral | social=-0.04 | top: BONK2_PUMP(52), MEMEAI_DEXS(50), SOLCAT_PUMP(45)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=144 approved=144 blocked=0 mem_load=30 mem_save=30
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 4 @ 2026-03-13T09:29:18.992107+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.873392
+  Volatility: 0.294579
+  Anomalies: extreme_momentum_-0.8734, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 8225.4M USD
+    INFLOW_TO_EXCHANGE: 0.8M USD
+    WHALE_BUY: 9108.8M USD
+    WHALE_BUY: 10047.5M USD
+    WHALE_BUY: 355.5M USD
+    WHALE_BUY: 2.2M USD on BTCUSDT
+    WHALE_SELL: 1.2M USD on BNBUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: RSI ΓåÆ EMA
+  Period: 25, Threshold: 0.208
+  Sharpe: 13.9599, Drawdown: 0.0184
+  Win Rate: 0.725, PnL: 58.6572
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 410
+  Avg Sharpe: 11.6818
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.4044
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 15.26%
+    strat_1: 12.28%
+    strat_2: 10.40%
+    strat_5: 9.54%
+    strat_4: 9.14%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.2946
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0679
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 444
+  Model Version: 4
+
+====================================================================================================
+
+
+================================================================================
+≡ƒÄ»  DIRECTOR SUPER DASHBOARD ΓÇö CYCLE 4
+================================================================================
+
+≡ƒôí MARKET RADAR
+   Regime   : HIGH_VOLATILITY_REGIME  Strategy Type : volatility_harvesting
+   Whale Flow: medium                Risk Level    : high
+   Opportunities: 5  |  Social Sentiment: -0.04  |  Tokens Scanned: 26
+   Top Signals : BONK2_PUMP(52)  MEMEAI_DEXS(50)  SOLCAT_PUMP(45)
+
+≡ƒÅ¡ STRATEGY FACTORY
+   Regime   : high_volatility_regime
+   Generated: 150  |  Backtested: 150  |  Filtered: 144
+   Approved : 144  |  Blocked   : 0
+   Memory   : loaded=30  saved=30
+
+≡ƒôè STRATEGY PERFORMANCE
+   Best: RSI ΓåÆ EMA  period=25
+   Sharpe: 13.9599  |  Drawdown: 1.84%  |  Win Rate: 72.5%  |  PnL: 58.6572
+
+--------------------------------------------------------------------------------
+≡ƒñû AI AGENTS MONITOR
+   Active: 29/29  |  Total Errors: 0  |  Cycle: 4
+   [DECISION]
+      Γ£à DecisionEngine               cycles=0
+      Γ£à StrategyRanker               cycles=0
+   [EXECUTION]
+      Γ£à ArbitrageAgent               cycles=0
+      Γ£à ExecutionEngine              cycles=0
+      Γ£à LiquidityAnalyzer            cycles=0
+      Γ£à PaperTradingEngine           cycles=0
+   [INTELLIGENCE]
+      Γ£à AdvancedRegimeDetector       cycles=0
+      Γ£à FeatureEngineer              cycles=0
+   [MARKET]
+      Γ£à MarketScanner                cycles=0
+      Γ£à OrderFlowAnalyzer            cycles=0
+      Γ£à VolatilityDetector           cycles=0
+   [MONITORING]
+      Γ£à CreatePromptAgent            cycles=0
+      Γ£à PerformanceMonitor           cycles=0
+      Γ£à SystemMonitor                cycles=0
+   [PORTFOLIO]
+      Γ£à PortfolioBrain               cycles=0
+   [QUANT]
+      Γ£à BacktestLab                  cycles=0
+      Γ£à MonteCarloSimulator          cycles=0
+      Γ£à PortfolioOptimizer           cycles=0
+   [RADAR]
+      Γ£à AnomalyDetector              cycles=0
+      Γ£à SocialScanner                cycles=0
+      Γ£à TokenScanner                 cycles=0
+      Γ£à WhaleTracker                 cycles=0
+   [RISK]
+      Γ£à DrawdownGuard                cycles=0
+      Γ£à ExposureManager              cycles=0
+      Γ£à RiskMonitor                  cycles=0
+   [STRATEGY]
+      Γ£à GeneticOptimizer             cycles=0
+      Γ£à RLTrader                     cycles=0
+      Γ£à StrategyGenerator            cycles=0
+   [WHALES]
+      Γ£à WhaleRadar                   cycles=0
+--------------------------------------------------------------------------------
+≡ƒ⌐║ BOT DOCTOR DIAGNOSTICS
+   Γ£à Health Score : 100/100  (avg-10: 100)  |  Status: HEALTHY
+   Recommendation     : None
+   Corrections Applied: 0 this cycle  |  0 total
+   Trades Blocked     : 4 total
+--------------------------------------------------------------------------------
+≡ƒÆ░ TRADE MONITOR
+   Balance : $84,707.14  |  P&L: -15,292.86
+   Win Rate: 0.0%  (W:0 L:0 Blocked:0)
+   Active Positions:
+      BTCUSDT           qty=0.9520
+      ETHUSDT           qty=0.9623
+   Recent Trades (last 5 cycles):
+      [BUY ] BTCUSDT          size=0.9520 @ 44583.1573
+      [BUY ] ETHUSDT          size=0.9623 @ 19281.9135
+      [BUY ] BTCUSDT          size=0.9540 @ 48009.7616
+      [SELL] BTCUSDT          size=0.9540 @ 48009.7616
+--------------------------------------------------------------------------------
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+   Γ£à Overall: 84/100  |  Status: HEALTHY  |  Uptime: 0.1min  |  Telegram: 0 sent
+   Γ£à CycleSpeed         100/100  0.0s/cycle avg
+   Γ£à Agents             100/100  0 error(s)
+   Γ£à BotDoctor          100/100  score=100
+   ΓÜá∩╕Å  MarketRisk          50/100  level=high
+   Γ¥î PaperBalance        69/100  pnl=-15.3%
+--------------------------------------------------------------------------------
+≡ƒôí TELEGRAM ALERTS
+   No recent alerts
+================================================================================
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7349, 'p05_terminal': 0.1652, 'p95_terminal': 3.5507}
+≡ƒÆ░ Paper Trading State: {'balance': 84707.14, 'positions': {'ETHUSDT': 0.9623}}

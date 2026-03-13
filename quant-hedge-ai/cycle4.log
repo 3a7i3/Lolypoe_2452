@@ -1,0 +1,343 @@
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 6 opportunities | risk=high | whale_flow=neutral | social=0.01 | top: AIBOT_RAYD(50), WOJAK_JUPI(48), WOJAK_DEXS(48)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=138 approved=138 blocked=0 stability=1.00 mem_load=30 mem_age=7.6 mem_save=30
+≡ƒº¼ AI EVOLUTION LAB
+   Generation    : 1  |  Regime: high_volatility_regime
+   Created       : 93  |  Backtested: 93  |  Filtered: 88
+   Approved      : 88  |  Blocked: 0  |  Mutations: 0
+   Memory Inject : 13 strategies from past runs
+   Best Sharpe   : 19.8755  |  Deployed: 10
+   Best Strategy : EMA ΓåÆ BOLLINGER period=71
+   Lifetime      : 1 gens, 88 approved, best-ever=19.8755
+≡ƒÆº LIQUIDITY FLOW MAP
+   Dominant Sector : Other  |  Rotation: none  |  Whale Volume: $11,178,350,000
+
+   Γû▓ Other           net=$22,352,300,000  whale_txs=5  vol_chg=+0.0%  opp=100
+   Γû▓ SOL             net=$   4,400,000  whale_txs=1  vol_chg=+0.0%  opp=54
+   ΓöÇ BTC             net=$           0  whale_txs=0  vol_chg=+0.0%  opp=0
+   ΓöÇ ETH             net=$           0  whale_txs=0  vol_chg=+0.0%  opp=0
+   ΓöÇ Stablecoins     net=$           0  whale_txs=0  vol_chg=+0.0%  opp=0
+
+   Top Flows: Other(100,inflow)  SOL(54,inflow)  BTC(0,neutral)
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 1 @ 2026-03-12T14:52:02.385136+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.145762
+  Volatility: 0.892545
+  Anomalies: extreme_momentum_-0.1458, spike_volatility
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 16428.9M USD
+    WHALE_BUY: 755.2M USD
+    WHALE_BUY: 5004.2M USD
+    WHALE_BUY: 161.6M USD
+    OUTFLOW_FROM_EXCHANGE: 2.4M USD
+    WHALE_TRANSFER: 4.4M USD on SOLUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: EMA ΓåÆ BOLLINGER
+  Period: 71, Threshold: 1.6
+  Sharpe: 19.8755, Drawdown: 0.0117
+  Win Rate: 0.875, PnL: 61.7656
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 300
+  Avg Sharpe: 11.2394
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.2095
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 20.94%
+    strat_1: 13.72%
+    strat_2: 9.82%
+    strat_3: 8.98%
+    strat_4: 8.18%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.8925
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0224
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 448
+  Model Version: 1
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.6931, 'p05_terminal': 0.1662, 'p95_terminal': 2.8843}
+≡ƒÆ░ Paper Trading State: {'balance': 100000.0, 'positions': {}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 4 opportunities | risk=high | whale_flow=bearish | social=0.06 | top: MEMEAI_BIRD(49), MEMEAI_RAYD(46), SOLCAT_PUMP(42)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=144 approved=144 blocked=0 stability=1.00 mem_load=30 mem_age=8.3 mem_save=30
+≡ƒº¼ AI EVOLUTION LAB
+   Generation    : 2  |  Regime: high_volatility_regime
+   Created       : 93  |  Backtested: 93  |  Filtered: 89
+   Approved      : 89  |  Blocked: 0  |  Mutations: 0
+   Memory Inject : 13 strategies from past runs
+   Best Sharpe   : 19.8755  |  Deployed: 10
+   Best Strategy : EMA ΓåÆ BOLLINGER period=71
+   Lifetime      : 2 gens, 177 approved, best-ever=19.8755
+≡ƒÆº LIQUIDITY FLOW MAP
+   Dominant Sector : Other  |  Rotation: strong_rotation  |  Whale Volume: $12,634,750,000
+
+   Γû▓ Other           net=$25,255,900,000  whale_txs=6  vol_chg=+0.0%  opp=100
+   Γû▓ Stablecoins     net=$9,539,125,033  whale_txs=1  vol_chg=+5806.9%  opp=90
+   Γû▓ SOL             net=$7,035,847,292  whale_txs=1  vol_chg=+40.5%  opp=90
+   Γû▓ ETH             net=$4,692,051,659  whale_txs=1  vol_chg=+522.0%  opp=90
+   Γû╝ BTC             net=$-3,978,985,749  whale_txs=0  vol_chg=-75.8%  opp=0
+
+   Top Flows: Other(100,inflow)  ETH(90,inflow)  SOL(90,inflow)
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 2 @ 2026-03-12T14:52:05.133149+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: 5.957623
+  Volatility: 1.704929
+  Anomalies: extreme_momentum_5.9576, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 3979.0M USD
+    WHALE_BUY: 4697.3M USD
+    WHALE_BUY: 7033.2M USD
+    INFLOW_TO_EXCHANGE: 1.5M USD
+    WHALE_BUY: 9544.9M USD
+    WHALE_SELL: 2.9M USD on BNBUSDT
+    WHALE_SELL: 2.6M USD on ETHUSDT
+    WHALE_TRANSFER: 2.6M USD on SOLUSDT
+    SMART_MONEY_OUTFLOW: distribution detected
+
+≡ƒÄ» BEST STRATEGY
+  Type: EMA ΓåÆ BOLLINGER
+  Period: 71, Threshold: 1.6
+  Sharpe: 19.8755, Drawdown: 0.0117
+  Win Rate: 0.875, PnL: 61.7656
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 310
+  Avg Sharpe: 11.3422
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.2365
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 18.67%
+    strat_1: 18.67%
+    strat_2: 9.08%
+    strat_3: 8.74%
+    strat_4: 8.74%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 1.7049
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0117
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 454
+  Model Version: 2
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7567, 'p05_terminal': 0.1794, 'p95_terminal': 3.4225}
+≡ƒÆ░ Paper Trading State: {'balance': 91378.19, 'positions': {'BTCUSDT': 0.9708}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 3 opportunities | risk=high | whale_flow=bearish | social=0.24 | top: WOJAK_BIRD(46), AIBOT_GECK(45), MOONX_DEXS(41)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=147 approved=147 blocked=0 stability=1.00 mem_load=30 mem_age=10.1 mem_save=30
+≡ƒº¼ AI EVOLUTION LAB
+   Generation    : 3  |  Regime: high_volatility_regime
+   Created       : 93  |  Backtested: 93  |  Filtered: 84
+   Approved      : 84  |  Blocked: 0  |  Mutations: 0
+   Memory Inject : 13 strategies from past runs
+   Best Sharpe   : 19.8755  |  Deployed: 10
+   Best Strategy : EMA ΓåÆ BOLLINGER period=71
+   Lifetime      : 3 gens, 261 approved, best-ever=19.8755
+≡ƒÆº LIQUIDITY FLOW MAP
+   Dominant Sector : Other  |  Rotation: strong_rotation  |  Whale Volume: $27,003,900,000
+
+   Γû▓ Other           net=$53,998,000,000  whale_txs=6  vol_chg=+0.0%  opp=100
+   Γû▓ Stablecoins     net=$25,848,770,002  whale_txs=0  vol_chg=+170.8%  opp=80
+   Γû▓ ETH             net=$20,633,289,042  whale_txs=1  vol_chg=+339.5%  opp=90
+   Γû╝ BTC             net=$-1,781,023,498  whale_txs=0  vol_chg=-55.2%  opp=0
+   Γû╝ SOL             net=$-5,723,347,745  whale_txs=0  vol_chg=-18.6%  opp=0
+
+   Top Flows: Other(100,inflow)  ETH(90,inflow)  Stablecoins(80,inflow)
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 3 @ 2026-03-12T14:52:07.813981+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: 3.052693
+  Volatility: 1.119517
+  Anomalies: extreme_momentum_3.0527, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 1781.0M USD
+    WHALE_BUY: 20643.1M USD
+    WHALE_BUY: 5723.3M USD
+    INFLOW_TO_EXCHANGE: 1.8M USD
+    WHALE_BUY: 25848.8M USD
+    WHALE_SELL: 4.9M USD on ETHUSDT
+    SMART_MONEY_OUTFLOW: distribution detected
+
+≡ƒÄ» BEST STRATEGY
+  Type: EMA ΓåÆ BOLLINGER
+  Period: 71, Threshold: 1.6
+  Sharpe: 19.8755, Drawdown: 0.0117
+  Win Rate: 0.875, PnL: 61.7656
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 320
+  Avg Sharpe: 11.4493
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.2789
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 18.59%
+    strat_1: 18.59%
+    strat_2: 11.12%
+    strat_3: 8.72%
+    strat_4: 8.72%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 1.1195
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0179
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 457
+  Model Version: 3
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7079, 'p05_terminal': 0.1947, 'p95_terminal': 2.8726}
+≡ƒÆ░ Paper Trading State: {'balance': 107219.96, 'positions': {}}
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 6 opportunities | risk=high | whale_flow=neutral | social=-0.11 | top: MEMEAI_RAYD(54), BONK2_BIRD(51), MEMEAI_BIRD(45)
+≡ƒÅ¡ Strategy Factory: gen=150 bt=150 filt=147 approved=147 blocked=0 stability=1.00 mem_load=30 mem_age=11.1 mem_save=30
+≡ƒº¼ AI EVOLUTION LAB
+   Generation    : 4  |  Regime: high_volatility_regime
+   Created       : 93  |  Backtested: 93  |  Filtered: 88
+   Approved      : 88  |  Blocked: 0  |  Mutations: 0
+   Memory Inject : 13 strategies from past runs
+   Best Sharpe   : 19.8755  |  Deployed: 10
+   Best Strategy : EMA ΓåÆ BOLLINGER period=71
+   Lifetime      : 4 gens, 349 approved, best-ever=19.8755
+≡ƒÆº LIQUIDITY FLOW MAP
+   Dominant Sector : Other  |  Rotation: strong_rotation  |  Whale Volume: $19,378,150,000
+
+   Γû▓ Other           net=$38,756,300,000  whale_txs=5  vol_chg=+0.0%  opp=100
+   Γû▓ BTC             net=$3,018,670,328  whale_txs=0  vol_chg=+69.5%  opp=80
+   Γû╝ SOL             net=$-5,421,142,840  whale_txs=0  vol_chg=-5.3%  opp=0
+   Γû╝ ETH             net=$-10,389,877,241  whale_txs=0  vol_chg=-49.7%  opp=0
+   Γû╝ Stablecoins     net=$-19,924,628,160  whale_txs=0  vol_chg=-22.9%  opp=0
+
+   Top Flows: Other(100,inflow)  BTC(80,inflow)  ETH(0,outflow)
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 4 @ 2026-03-12T14:52:10.506111+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: 0.590751
+  Volatility: 0.435241
+  Anomalies: extreme_momentum_0.5908, spike_volatility, extreme_trend
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 3018.7M USD
+    OUTFLOW_FROM_EXCHANGE: 2.0M USD
+    WHALE_BUY: 10389.9M USD
+    WHALE_BUY: 5421.1M USD
+    WHALE_BUY: 19924.6M USD
+
+≡ƒÄ» BEST STRATEGY
+  Type: EMA ΓåÆ BOLLINGER
+  Period: 71, Threshold: 1.6
+  Sharpe: 19.8755, Drawdown: 0.0117
+  Win Rate: 0.875, PnL: 61.7656
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 330
+  Avg Sharpe: 11.5666
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.3318
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 17.19%
+    strat_1: 17.19%
+    strat_2: 10.27%
+    strat_3: 10.27%
+    strat_4: 8.06%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.4352
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0460
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 457
+  Model Version: 4
+
+====================================================================================================
+
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.6964, 'p05_terminal': 0.1359, 'p95_terminal': 2.676}
+≡ƒÆ░ Paper Trading State: {'balance': 74718.06, 'positions': {'BTCUSDT': 0.9708}}

@@ -1,0 +1,187 @@
+
+≡ƒÜÇ Starting V9.1 Cycle...
+≡ƒôí Market Radar: 6 opportunities | risk=high | whale_flow=neutral | social=0.01 | top: AIBOT_RAYD(50), WOJAK_JUPI(48), WOJAK_DEXS(48)
+≡ƒÅ¡ Strategy Factory: gen=143 bt=143 filt=129 approved=129 blocked=0 mem_load=23 mem_save=30
+≡ƒº¼ AI EVOLUTION LAB
+   Generation  : 1  |  Regime: high_volatility_regime
+   Candidates  : 60 (18 from memory + 42 fresh)
+   Evolved     : 60  |  Backtests: 60
+   Best Sharpe : 13.7931  |  Avg Sharpe: 5.2192
+   Best Strategy: MACD ΓåÆ VWAP p=63
+   Saved to Memory: 30  |  Doctor Blocked: 5
+
+≡ƒÆº LIQUIDITY FLOW MAP
+   Regime: high_volatility_regime  |  Concentration: 59.2%
+   Total Volume: $22,349,768,883  |  Whale Flow: $4,400,000
+   Sectors Active: 4  |  Opportunities: 0
+
+   = ETH_L1        vol=$ 755,152,233  whale=$ 4,400,000  score= 10.6  tokens=1
+   = SOL_L1        vol=$5,004,173,087  whale=$         0  score=  5.0  tokens=1
+   = BTC           vol=$16,428,854,957  whale=$         0  score=  5.0  tokens=1
+   = BNB_L1        vol=$ 161,588,606  whale=$         0  score=  5.0  tokens=1
+
+
+====================================================================================================
+≡ƒñû AI CONTROL CENTER - CYCLE 1 @ 2026-03-13T09:46:35.342086+00:00
+====================================================================================================
+≡ƒôè MARKET REGIME
+  Current: high_volatility_regime
+  Suggested Strategy: volatility_harvesting
+  Momentum: -0.145762
+  Volatility: 0.892545
+  Anomalies: extreme_momentum_-0.1458, spike_volatility
+
+≡ƒÉï WHALE RADAR
+  Threat Level: MEDIUM
+  Detected Alerts:
+    WHALE_BUY: 16428.9M USD
+    WHALE_BUY: 755.2M USD
+    WHALE_BUY: 5004.2M USD
+    WHALE_BUY: 161.6M USD
+    OUTFLOW_FROM_EXCHANGE: 2.4M USD
+    WHALE_TRANSFER: 4.4M USD on ETHUSDT
+
+≡ƒÄ» BEST STRATEGY
+  Type: VWAP ΓåÆ MACD
+  Period: 59, Threshold: 2.144
+  Sharpe: 13.6352, Drawdown: 0.0179
+  Win Rate: 0.75, PnL: 59.2053
+
+≡ƒôê SCOREBOARD STATS
+  Total Strategies Tested: 460
+  Avg Sharpe: 11.6724
+  Best Sharpe: 19.8755
+  Median Sharpe: 11.3891
+
+≡ƒÆ╝ PORTFOLIO ALLOCATION (Top 5)
+    strat_0: 11.88%
+    strat_1: 11.70%
+    strat_2: 11.52%
+    strat_3: 10.12%
+    strat_5: 10.04%
+
+  Kelly Fraction: 0.2500
+  Vol Target: 0.8925
+  Max Position: 30.00%
+
+ΓÜí EXECUTION DECISION
+  Should Trade: NO
+  Reason: Market conditions unfavorable
+  Risk Limits:
+    Max Position: 0.0224
+    Stop Loss: 0.0400
+    Take Profit: 0.0800
+
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+  Status: running
+  Agents Active: 20
+  Strategies Generated: 300
+  Backtests Completed: 429
+  Model Version: 1
+
+====================================================================================================
+
+
+================================================================================
+≡ƒÄ»  DIRECTOR SUPER DASHBOARD ΓÇö CYCLE 1
+================================================================================
+
+≡ƒôí MARKET RADAR
+   Regime   : HIGH_VOLATILITY_REGIME  Strategy Type : volatility_harvesting
+   Whale Flow: medium                Risk Level    : high
+   Opportunities: 6  |  Social Sentiment: +0.01  |  Tokens Scanned: 16
+   Top Signals : AIBOT_RAYD(50)  WOJAK_JUPI(48)  WOJAK_DEXS(48)
+
+≡ƒÅ¡ STRATEGY FACTORY
+   Regime   : high_volatility_regime
+   Generated: 143  |  Backtested: 143  |  Filtered: 129
+   Approved : 129  |  Blocked   : 0
+   Memory   : loaded=23  saved=30
+
+≡ƒôè STRATEGY PERFORMANCE
+   Best: VWAP ΓåÆ MACD  period=59
+   Sharpe: 13.6352  |  Drawdown: 1.79%  |  Win Rate: 75.0%  |  PnL: 59.2053
+
+--------------------------------------------------------------------------------
+≡ƒº¼ AI EVOLUTION LAB
+   Generation  : 1  |  Regime: high_volatility_regime
+   Candidates  : 60 (18 memory + 42 fresh)
+   Best Sharpe : 13.7931  |  Avg Sharpe: 5.2192
+   Best Strat  : MACD -> VWAP
+   Saved       : 30  |  Doctor Blocked: 5
+--------------------------------------------------------------------------------
+≡ƒÆº LIQUIDITY FLOW MAP
+   Top Sector  : ETH_L1 (score=10.6)
+   Total Volume: $22,349,768,883  |  Whale Flow: $4,400,000
+   Concentration: 59.2%  |  Sectors: 4  |  Opportunities: 0
+--------------------------------------------------------------------------------
+≡ƒñû AI AGENTS MONITOR
+   Active: 29/29  |  Total Errors: 0  |  Cycle: 1
+   [DECISION]
+      Γ£à DecisionEngine               cycles=0
+      Γ£à StrategyRanker               cycles=0
+   [EXECUTION]
+      Γ£à ArbitrageAgent               cycles=0
+      Γ£à ExecutionEngine              cycles=0
+      Γ£à LiquidityAnalyzer            cycles=0
+      Γ£à PaperTradingEngine           cycles=0
+   [INTELLIGENCE]
+      Γ£à AdvancedRegimeDetector       cycles=0
+      Γ£à FeatureEngineer              cycles=0
+   [MARKET]
+      Γ£à MarketScanner                cycles=0
+      Γ£à OrderFlowAnalyzer            cycles=0
+      Γ£à VolatilityDetector           cycles=0
+   [MONITORING]
+      Γ£à CreatePromptAgent            cycles=0
+      Γ£à PerformanceMonitor           cycles=0
+      Γ£à SystemMonitor                cycles=0
+   [PORTFOLIO]
+      Γ£à PortfolioBrain               cycles=0
+   [QUANT]
+      Γ£à BacktestLab                  cycles=0
+      Γ£à MonteCarloSimulator          cycles=0
+      Γ£à PortfolioOptimizer           cycles=0
+   [RADAR]
+      Γ£à AnomalyDetector              cycles=0
+      Γ£à SocialScanner                cycles=0
+      Γ£à TokenScanner                 cycles=0
+      Γ£à WhaleTracker                 cycles=0
+   [RISK]
+      Γ£à DrawdownGuard                cycles=0
+      Γ£à ExposureManager              cycles=0
+      Γ£à RiskMonitor                  cycles=0
+   [STRATEGY]
+      Γ£à GeneticOptimizer             cycles=0
+      Γ£à RLTrader                     cycles=0
+      Γ£à StrategyGenerator            cycles=0
+   [WHALES]
+      Γ£à WhaleRadar                   cycles=0
+--------------------------------------------------------------------------------
+≡ƒ⌐║ BOT DOCTOR DIAGNOSTICS
+   Γ£à Health Score : 100/100  (avg-10: 100)  |  Status: HEALTHY
+   Recommendation     : None
+   Corrections Applied: 0 this cycle  |  0 total
+   Trades Blocked     : 1 total
+--------------------------------------------------------------------------------
+≡ƒÆ░ TRADE MONITOR
+   Balance : $100,000.00  |  P&L: +0.00
+   Win Rate: 0.0%  (W:0 L:0 Blocked:0)
+   Active Positions:
+      BTCUSDT           qty=-0.9553
+   Recent Trades (last 5 cycles):
+      [SELL] BTCUSDT          size=0.9553 @ 44583.1573
+--------------------------------------------------------------------------------
+Γ¥ñ∩╕Å  SYSTEM HEALTH
+   Γ£à Overall: 90/100  |  Status: HEALTHY  |  Uptime: 0.0min  |  Telegram: 0 sent
+   Γ£à CycleSpeed         100/100  0.0s/cycle avg
+   Γ£à Agents             100/100  0 error(s)
+   Γ£à BotDoctor          100/100  score=100
+   ΓÜá∩╕Å  MarketRisk          50/100  level=high
+   Γ£à PaperBalance       100/100  pnl=+0.0%
+--------------------------------------------------------------------------------
+≡ƒôí TELEGRAM ALERTS
+   No recent alerts
+================================================================================
+≡ƒôè MonteCarlo Results: {'median_terminal': 0.7152, 'p05_terminal': 0.1418, 'p95_terminal': 2.8433}
+≡ƒÆ░ Paper Trading State: {'balance': 100000.0, 'positions': {}}
