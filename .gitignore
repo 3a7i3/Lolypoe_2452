@@ -1,0 +1,25 @@
+# Ignore log files and large data
+logs/
+*.log
+quant-ai-system/logs/
+quant-ai-system/logs/trading_system.log
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment and setup files
+.env
+.venv/
+setup/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore data files
+data/
+*.csv
