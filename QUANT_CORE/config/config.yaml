@@ -1,0 +1,11 @@
+api_keys:
+  binance:
+    api_key: "YOUR_API_KEY"
+    api_secret: "YOUR_API_SECRET"
+parameters:
+  backtest:
+    start_date: "2023-01-01"
+    end_date: "2023-12-31"
+  risk:
+    max_drawdown: 0.2
+    max_position: 0.1

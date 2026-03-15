@@ -1,3 +1,10 @@
+class RiskManager:
+    def __init__(self, max_drawdown=0.2):
+        self.max_drawdown = max_drawdown
+
+    def check_risk(self, position):
+        print(f"[RiskManager] Checking position {position}")
+        return True
 """
 RiskManager stub for QUANT_CORE
 """

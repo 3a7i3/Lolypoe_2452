@@ -1,47 +1,93 @@
-"""
-FeatureEngineer stub for QUANT_CORE
-"""
-class FeatureEngineer:
-    def __init__(self):
-        pass
+import pandas as pd
+import numpy as np
+import logging
+from ..data.storage import Storage
 
-    def create_features(self, data):
-        """Crée l'ensemble complet de features techniques et statistiques."""
-        data = data.copy()
-        self.add_price_features(data)
-        self.add_momentum_features(data)
-        self.add_volatility_features(data)
-        self.add_volume_features(data)
-        self.add_trend_features(data)
-        return data.dropna()
+logging.basicConfig(level=logging.INFO, format='[FeatureEngine] %(message)s')
 
-    def add_price_features(self, data):
-        data['Daily_Return'] = data['Close'].pct_change()
-        data['Log_Return'] = np.log(data['Close'] / data['Close'].shift(1))
-        data['High_Low_Range'] = (data['High'] - data['Low']) / data['Close']
-        data['Close_Open_Range'] = (data['Close'] - data['Open']) / data['Close']
+class FeatureEngineerPro:
+    def __init__(self, storage=None, window=14):
+        self.storage = storage or Storage(base_dir="features_storage")
+        self.window = window
 
-    def add_momentum_features(self, data):
-        data['ROC_5'] = data['Close'].pct_change(5)
-        data['ROC_10'] = data['Close'].pct_change(10)
-        data['ROC_20'] = data['Close'].pct_change(20)
-        data['Momentum_10'] = data['Close'] - data['Close'].shift(10)
-        data['Momentum_20'] = data['Close'] - data['Close'].shift(20)
+    # -------------------
+    # Feature de base
+    # -------------------
+    def compute_momentum(self, df, window=None):
+        window = window or self.window
+        df[f'momentum_{window}'] = df['close'].pct_change(periods=window)
+        return df
 
-    def add_volatility_features(self, data):
-        data['Volatility_5'] = data['Close'].pct_change().rolling(5).std()
-        data['Volatility_20'] = data['Close'].pct_change().rolling(20).std()
-        data['Volatility_Ratio'] = data['Volatility_5'] / data['Volatility_20']
+    def compute_volatility(self, df, window=None):
+        window = window or self.window
+        df['returns'] = df['close'].pct_change()
+        df[f'volatility_{window}'] = df['returns'].rolling(window=window).std()
+        return df
 
-    def add_volume_features(self, data):
-        data['Volume_Change'] = data['Volume'].pct_change()
-        data['Volume_MA_5'] = data['Volume'].rolling(5).mean()
-        data['Volume_MA_20'] = data['Volume'].rolling(20).mean()
-        data['Volume_Ratio'] = data['Volume'] / data['Volume_MA_20']
+    def compute_volume_spike(self, df, window=None):
+        window = window or self.window
+        df[f'volume_spike_{window}'] = df['volume'] / df['volume'].rolling(window=window).mean()
+        return df
 
-    def add_trend_features(self, data):
-        data['SMA_5'] = data['Close'].rolling(5).mean()
-        data['SMA_10'] = data['Close'].rolling(10).mean()
-        data['SMA_20'] = data['Close'].rolling(20).mean()
-        data['EMA_12'] = data['Close'].ewm(span=12).mean()
-        data['Price_Above_SMA20'] = (data['Close'] > data['SMA_20']).astype(int)
+    # -------------------
+    # Orderbook Imbalance (CEX uniquement)
+    # -------------------
+    def compute_orderbook_imbalance(self, df_orderbook):
+        if df_orderbook is None or df_orderbook.empty:
+            return pd.Series()
+        imbalance = (df_orderbook['bids'].sum(axis=1) - df_orderbook['asks'].sum(axis=1)) / \
+                    (df_orderbook['bids'].sum(axis=1) + df_orderbook['asks'].sum(axis=1))
+        return imbalance
+
+    # -------------------
+    # Whale activity
+    # -------------------
+    def compute_whale_activity(self, df, multiplier=3):
+        df['whale_activity'] = (df['volume'] > multiplier * df['volume'].rolling(self.window).mean()).astype(int)
+        return df
+
+    # -------------------
+    # Normalisation
+    # -------------------
+    def normalize_features(self, df, feature_cols):
+        for col in feature_cols:
+            df[f'{col}_norm'] = (df[col] - df[col].min()) / (df[col].max() - df[col].min() + 1e-9)
+        return df
+
+    # -------------------
+    # Target / future return
+    # -------------------
+    def add_target(self, df, horizon=1):
+        df[f'target_{horizon}'] = df['close'].shift(-horizon) / df['close'] - 1
+        return df
+
+    # -------------------
+    # Multi-symbol features (corrélation)
+    # -------------------
+    def compute_cross_symbol_correlation(self, df1, df2, feature='returns'):
+        corr = df1[feature].rolling(self.window).corr(df2[feature])
+        return corr
+
+    # -------------------
+    # Pipeline complet
+    # -------------------
+    def compute_all_features(self, df, df_orderbook=None, add_target=True, horizon=1):
+        df = self.compute_momentum(df)
+        df = self.compute_volatility(df)
+        df = self.compute_volume_spike(df)
+        if df_orderbook is not None:
+            df['orderbook_imbalance'] = self.compute_orderbook_imbalance(df_orderbook)
+        df = self.compute_whale_activity(df)
+        feature_cols = [c for c in df.columns if c not in ['timestamp', 'returns']]
+        df = self.normalize_features(df, feature_cols)
+        if add_target:
+            df = self.add_target(df, horizon=horizon)
+        df = df.drop(columns=['returns'], errors='ignore')
+        return df
+
+    # -------------------
+    # Save features CSV versionné
+    # -------------------
+    def save_features(self, df, symbol, timeframe, source, version=1):
+        filename = f"{symbol}_{source}_{timeframe}_features_v{version}.csv"
+        self.storage.save_csv(df, filename)

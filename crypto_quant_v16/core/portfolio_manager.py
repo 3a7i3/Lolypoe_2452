@@ -20,6 +20,29 @@ class PortfolioManager:
         self.max_exposure = max_exposure
         self.positions = {}
         self.allocation = {}
+        self.healthy = True
+        self._logs = []
+    def is_healthy(self):
+        return self.healthy
+
+    def get_logs(self):
+        return self._logs
+
+    def stop(self):
+        self.healthy = False
+        self._logs.append("stopped by BotDoctor")
+
+    def restart(self):
+        self.healthy = True
+        self._logs.append("restarted by BotDoctor")
+
+    def run_step(self):
+        try:
+            # Place ici la logique d’une étape (ex: rebalance, update, etc.)
+            print("PortfolioManager: running step...")
+        except Exception as e:
+            self.healthy = False
+            self._logs.append(str(e))
 
     def kelly_allocation(self, win_rate: float, profit_factor: float, 
                         max_allocation: float = 0.25) -> float:

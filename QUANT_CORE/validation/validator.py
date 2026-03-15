@@ -1,3 +1,11 @@
+class Validator:
+    def __init__(self):
+        pass
+
+    def validate_strategy(self, strategy):
+        print("[Validator] Validating strategy")
+        return True
+
 """
 StrategyValidator stub for QUANT_CORE
 Integrates Bot Doctor

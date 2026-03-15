@@ -1,61 +1,79 @@
-"""
-DataCollector stub for QUANT_CORE
-"""
+
+import pandas as pd
+from .cex import CEXCollector
+from .dex import DEXCollector
+from .storage import Storage
+from .utils import normalize_symbol
+import logging
+import time
+import os
+
+logger = logging.getLogger("DataEngine")
+logger.setLevel(logging.DEBUG)
+
 class DataCollector:
     def __init__(self):
-        pass
+        self.cex = CEXCollector()
+        self.storage = Storage()
+        self.max_retries = 3
 
-    def scan_market(self, symbols, interval="1h", period="6mo", min_volume=10000):
-        """Scanne le marché pour tous les symboles."""
-        import yfinance as yf
-        import pandas as pd
-        market_data = {}
-        for symbol in symbols:
+    def fetch_with_retry(self, func, *args, **kwargs):
+        for attempt in range(1, self.max_retries + 1):
             try:
-                data = self.fetch_market_data(symbol, interval=interval, period=period)
-                if data is not None and not data.empty and len(data) > 0:
-                    recent_volume = data['Volume'].iloc[-1]
-                    if recent_volume >= min_volume:
-                        market_data[symbol] = data
-                else:
-                    pass  # log warning
-            except Exception:
-                pass  # log error
-        return market_data
+                return func(*args, **kwargs)
+            except Exception as e:
+                logger.error(f"Attempt {attempt} failed: {e}")
+                time.sleep(1)
+        logger.error("All retries failed")
+        return None
 
-    def fetch_market_data(self, symbol, interval="1h", period="6mo"):
-        """Récupère les données de marché avec yfinance."""
-        import yfinance as yf
-        import pandas as pd
-        try:
-            data = yf.download(
-                tickers=symbol,
-                interval=interval,
-                period=period,
-                progress=False
-            )
-            if data is None or data.empty:
-                return None
-            if isinstance(data.columns, pd.MultiIndex):
-                data.columns = data.columns.get_level_values(0)
-            data.columns = data.columns.str.upper()
-            required_cols = ['CLOSE', 'HIGH', 'LOW', 'VOLUME']
-            if not all(col in data.columns for col in required_cols):
-                return None
-            data = data.rename(columns={
-                'CLOSE': 'Close',
-                'HIGH': 'High',
-                'LOW': 'Low',
-                'OPEN': 'Open',
-                'VOLUME': 'Volume'
-            })
-            return data
-        except Exception:
-            return None
+    def fetch_ohlcv(self, symbol, source="cex", timeframe="1h", save=True, dex_name="uniswap"):
+        symbol_norm = normalize_symbol(symbol)
+        logger.info(f"Fetching OHLCV {symbol_norm} from {source} tf={timeframe} dex={dex_name}")
 
-    def fetch_ohlcv(self, symbol="BTC/USDT", timeframe="1h", limit=220, exchange_name="binance", data_mode="auto"):
-        """Fetch OHLCV candles (ccxt, mock, DEX, REST, WebSocket)."""
-        import pandas as pd
+        filename = f"{symbol_norm}_{source}_{timeframe}.csv"
+        # Cache locale : si fichier existe et <24h, skip fetch
+        if os.path.exists(os.path.join("data_storage", filename)):
+            mtime = os.path.getmtime(os.path.join("data_storage", filename))
+            if time.time() - mtime < 86400:
+                logger.info(f"Cache hit: {filename}")
+                return self.storage.load_csv(filename)
+
+        if source == "cex":
+            func = self.cex.fetch_ohlcv
+            df = self.fetch_with_retry(func, symbol_norm, timeframe=timeframe)
+        elif source == "dex":
+            dex = DEXCollector(dex=dex_name)
+            df = self.fetch_with_retry(dex.fetch_ohlcv, symbol_norm, timeframe=timeframe)
+        else:
+            logger.error(f"Unknown source: {source}")
+            return pd.DataFrame()
+
+        if df is not None and save:
+            self.storage.save_csv(df, filename)
+        return df
+
+    def fetch_orderbook(self, symbol, source="cex"):
+        symbol_norm = normalize_symbol(symbol)
+        logging.info(f"Fetching orderbook for {symbol_norm} from {source}")
+        func = self.cex.fetch_orderbook if source == "cex" else self.dex.fetch_orderbook
+        return self.fetch_with_retry(func, symbol_norm) or {}
+
+    def fetch_funding(self, symbol, source="cex"):
+        symbol_norm = normalize_symbol(symbol)
+        logging.info(f"Fetching funding rates for {symbol_norm} from {source}")
+        if source == "cex":
+            return self.fetch_with_retry(self.cex.fetch_funding_rates, symbol_norm) or {}
+        logging.warning("Funding rates not available for DEX")
+        return {}
+
+    def fetch_liquidations(self, symbol, source="cex"):
+        symbol_norm = normalize_symbol(symbol)
+        logging.info(f"Fetching liquidations for {symbol_norm} from {source}")
+        if source == "cex":
+            return self.fetch_with_retry(self.cex.fetch_liquidations, symbol_norm) or pd.DataFrame()
+        logging.warning("Liquidations not available for DEX")
+        return pd.DataFrame()
         try:
             import ccxt
             ex = getattr(ccxt, exchange_name.lower(), ccxt.binance)()
@@ -65,3 +83,13 @@ class DataCollector:
             return df
         except Exception:
             return pd.DataFrame()
+
+import pandas as pd
+
+class DataCollector:
+    def __init__(self):
+        self.data = pd.DataFrame()
+
+    def fetch_price(self, symbol: str):
+        print(f"[DataCollector] Fetching price for {symbol}")
+        return pd.DataFrame()  # Placeholder pour API exchange

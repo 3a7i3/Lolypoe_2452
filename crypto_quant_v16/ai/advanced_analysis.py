@@ -24,25 +24,106 @@ class AdvancedAnalysis:
                     'strength': 'CRITICAL',
                     'price_change_pct': price_change,
                     'volume': volumes[-1],
+
                 })
-        # Anomalie de volume isolée
-        if len(volumes) > 20:
-            mean_vol = np.mean(volumes[:-5])
-            if mean_vol > 0 and volumes[-1] > 2.5 * mean_vol:
-                signals.append({
-                    'signal': 'VOLUME_ANOMALY',
-                    'strength': 'HIGH',
-                    'volume': volumes[-1],
-                })
-        # Pattern custom : chute brutale
-        if len(prices) > 5:
-            drop = (prices[-2] - prices[-1]) / max(prices[-2], 1e-8) * 100
-            if drop > 7:
-                signals.append({
-                    'signal': 'SUDDEN_DROP',
-                    'strength': 'WARNING',
-                    'drop_pct': drop,
-                })
-        # Placeholder pour d'autres patterns (ex : analyse tx_df)
-        # ...
         return signals
+
+class AdvancedMarketAnalysis:
+    """
+    AI Research Agent: Analyse avancée du marché pour le pipeline quant.
+    Produit un rapport structuré pour strategy_farm, risk_engine, portfolio_engine, execution_engine.
+    """
+    def __init__(self, df):
+        self.df = df
+
+    # --------------------------------
+    # Volatility analysis
+    # --------------------------------
+    def volatility_analysis(self):
+        returns = self.df["close"].pct_change()
+        vol = returns.rolling(30).std().iloc[-1]
+        if vol > 0.04:
+            regime = "high_volatility"
+        else:
+            regime = "normal"
+        return {
+            "volatility_value": float(vol),
+            "volatility_regime": regime
+        }
+
+    # --------------------------------
+    # Trend strength
+    # --------------------------------
+    def trend_analysis(self):
+        ma50 = self.df["close"].rolling(50).mean().iloc[-1]
+        ma200 = self.df["close"].rolling(200).mean().iloc[-1]
+        if ma50 > ma200:
+            trend = "bull"
+        else:
+            trend = "bear"
+        strength = abs(ma50 - ma200) / ma200
+        return {
+            "trend": trend,
+            "trend_strength": float(strength)
+        }
+
+    # --------------------------------
+    # Liquidity analysis
+    # --------------------------------
+    def liquidity_analysis(self):
+        volume = self.df["volume"].rolling(30).mean().iloc[-1]
+        if volume < self.df["volume"].quantile(0.25):
+            liquidity = "low"
+        else:
+            liquidity = "normal"
+        return {
+            "liquidity": liquidity,
+            "avg_volume": float(volume)
+        }
+
+    # --------------------------------
+    # Crash probability
+    # --------------------------------
+    def crash_risk_estimator(self):
+        returns = self.df["close"].pct_change()
+        volatility = returns.std()
+        downside = returns[returns < 0].std()
+        crash_risk = downside / volatility if volatility > 0 else 0
+        return {
+            "crash_probability": float(crash_risk)
+        }
+
+    # --------------------------------
+    # Market regime
+    # --------------------------------
+    def market_regime_detection(self):
+        vol = self.volatility_analysis()["volatility_regime"]
+        trend = self.trend_analysis()["trend"]
+        if trend == "bull" and vol == "normal":
+            regime = "bull_trend"
+        elif trend == "bear" and vol == "high_volatility":
+            regime = "panic_bear"
+        else:
+            regime = "sideways"
+        return regime
+
+    # --------------------------------
+    # Whale activity detection (placeholder)
+    # --------------------------------
+    def whale_activity_detection(self):
+        # À implémenter : détection de gros ordres, wallet tracking, etc.
+        # Retourne un statut fictif pour l'instant
+        return {"whale_activity": "accumulation"}
+
+    # --------------------------------
+    # Final report
+    # --------------------------------
+    def generate_market_report(self):
+        report = {}
+        report.update(self.volatility_analysis())
+        report.update(self.trend_analysis())
+        report.update(self.liquidity_analysis())
+        report.update(self.crash_risk_estimator())
+        report["market_regime"] = self.market_regime_detection()
+        report.update(self.whale_activity_detection())
+        return report

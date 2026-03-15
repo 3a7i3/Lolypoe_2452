@@ -1,3 +1,14 @@
+class CoreInterface:
+    def __init__(self, data_collector, feature_engineer, strategy_generator):
+        self.data_collector = data_collector
+        self.feature_engineer = feature_engineer
+        self.strategy_generator = strategy_generator
+
+    def run_pipeline(self, symbol):
+        df = self.data_collector.fetch_price(symbol)
+        df = self.feature_engineer.add_momentum(df)
+        df = self.strategy_generator.generate_rsi_strategy(df)
+        return df
 """
 CoreInterface stub for QUANT_CORE
 """

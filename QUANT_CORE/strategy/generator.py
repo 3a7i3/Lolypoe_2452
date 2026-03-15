@@ -26,3 +26,6 @@ class StrategyGenerator:
             "params": params,
             "exposure": self._rng.uniform(1000, 100000),
         }
+    def generate_rsi_strategy(self, df):
+        print("[StrategyGenerator] Generating RSI strategy")
+        return df

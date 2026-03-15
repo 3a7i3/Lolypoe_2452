@@ -142,6 +142,7 @@ class TestFlowReport:
             "total_whale_flow_usd", "parsed_whale_alerts_usd", "whale_unmapped_usd",
             "whale_mapping_coverage", "whale_consistency_gap_usd", "capital_concentration",
             "sectors_active", "opportunities", "regime", "sector_details",
+            "multi_sector_opportunities",
         }
         assert set(d.keys()) == expected_keys
 

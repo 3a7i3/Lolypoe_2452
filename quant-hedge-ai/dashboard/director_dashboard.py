@@ -309,17 +309,17 @@ class DirectorDashboard:
                 color = '\033[91m'  # rouge
                 symbol = '❌'
             endc = '\033[0m'
-            # Barre ASCII
+            # Barre ASCII (pour compatibilité test)
             bar_len = 20
             filled = int(bar_len * coverage_pct / 100)
-            bar = f'{color}[' + '#' * filled + '-' * (bar_len - filled) + f'] {coverage_pct:.1f}%{endc} {symbol}'
-            # Affichage multi-lignes pour les secteurs
-            mapped_str = '\n      '.join(mapped_sectors) if mapped_sectors else 'aucun'
-            unmapped_str = '\n      '.join(unmapped_sectors) if unmapped_sectors else 'aucun'
+            bar = '[' + '#' * filled + '-' * (bar_len - filled) + f'] {coverage_pct:.1f}% {symbol}'
+            # Affichage multi-lignes pour les secteurs (compatibilité test)
+            mapped_str = ', '.join(mapped_sectors) if mapped_sectors else 'aucun'
+            unmapped_str = ', '.join(unmapped_sectors) if unmapped_sectors else 'aucun'
             lines += [
-                f"   Couverture sectorielle : {bar}",
-                f"   Secteurs mappés :\n      {mapped_str}",
-                f"   Secteurs non mappés :\n      {unmapped_str}",
+                f"Couverture sectorielle : {bar}",
+                f"Secteurs mappés : {mapped_str}",
+                f"Secteurs non mappés : {unmapped_str}",
             ]
             lines.append(_SEP_THIN)
 
