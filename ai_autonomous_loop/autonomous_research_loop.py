@@ -1,4 +1,24 @@
 class AutonomousResearchLoop:
+            # Alerte Telegram si feedback critique
+            try:
+                import requests
+                TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+                TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+                alert_needed = False
+                alert_msg = None
+                if feedback_report.get("max_drawdown", 0) > 0.2:
+                    alert_needed = True
+                    alert_msg = f"[ALERTE R&D] Drawdown élevé détecté : {feedback_report.get('max_drawdown', 0):.2%}"
+                if "stagnation" in " ".join(feedback_report.get("insights", [])):
+                    alert_needed = True
+                    alert_msg = "[ALERTE R&D] Stagnation détectée dans la recherche de stratégies."
+                if alert_needed and TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
+                    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+                    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": alert_msg}
+                    requests.post(url, data=payload, timeout=5)
+                    print("[ALERTE] Notification Telegram envoyée.")
+            except Exception as e:
+                print(f"[ALERTE] Erreur envoi Telegram : {e}")
     def __init__(self, research_agent, strategy_farm, backtest_engine, bot_doctor, portfolio_engine):
         self.research_agent = research_agent
         self.strategy_farm = strategy_farm
@@ -24,19 +44,18 @@ class AutonomousResearchLoop:
         feedback_report = feedback_agent.analyze(approved)
         print("[Feedback R&D]", feedback_report)
 
-        # 7. Export feedback en JSON
+        # Export feedback en JSON à chaque cycle
         import json
-        import datetime
-        feedback_dir = "feedback_logs"
-        import os
-        os.makedirs(feedback_dir, exist_ok=True)
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        feedback_path = os.path.join(feedback_dir, f"feedback_{timestamp}.json")
-        with open(feedback_path, "w", encoding="utf-8") as f:
+        from pathlib import Path
+        from datetime import datetime
+        output_dir = "feedback_logs"
+        Path(output_dir).mkdir(exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"feedback_{timestamp}.json"
+        with open(Path(output_dir) / filename, "w", encoding="utf-8") as f:
             json.dump(feedback_report, f, indent=2, ensure_ascii=False)
-        print(f"[Export] Feedback sauvegardé dans {feedback_path}")
 
-        # 8. Prise de décision automatique selon le feedback
+        # 7. Prise de décision automatique selon le feedback
         action_taken = None
         if "diversité" in " ".join(feedback_report.get("insights", [])):
             print("[AUTO] Relance génération avec plus de diversité.")

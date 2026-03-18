@@ -182,12 +182,13 @@ def clamp_gene(key, value):
 
 class Genome:
     def __init__(self, genes=None):
-        self.id = str(uuid.uuid4())
+        self.id = str(uuid.uuid4())[:8]  # ID unique court
         self.genes = genes if genes else self.random_genome()
         self.fitness: float = 0.0
         self.fitness_trend: float = 0.0
         self.fitness_range: float = 0.0
         self.fitness_crash: float = 0.0
+        self.parent_ids = []  # Tracking lignée
 
     def random_genome(self):
         genome = {}
@@ -228,7 +229,9 @@ def crossover(parent1, parent2):
         else:
             child_genes[key] = parent2.genes[key]
         child_genes[key] = clamp_gene(key, child_genes[key])
-    return Genome(child_genes)
+    child = Genome(child_genes)
+    child.parent_ids = [parent1.id, parent2.id]
+    return child
 
 # 5. Population initiale
 def create_population(size=50):
@@ -370,11 +373,13 @@ def evolve(population):
 if __name__ == "__main__":
     import pandas as pd
     history = []
+    # --- GOD MODE ---
+    TRACKED_ID = None  # Renseignez un ID pour suivre une stratégie
     # --- MONDES PARALLÈLES ---
     N_WORLDS = 4
     WORLD_NAMES = ["trend", "range", "crash", "chaos"]
     POP_SIZE = 100
-    N_GEN = 30
+    N_GEN = 100  # Accélération temporelle (ex: 100 générations)
     MIGRATION_FREQ = 5
     MIGRATION_RATE = 0.1
 
@@ -444,7 +449,7 @@ if __name__ == "__main__":
             pop = populations[w]
             pop_data = []
             for g in pop:
-                row = {**g.genes, "fitness": g.fitness, "id": g.id, "environment": envs[w], "species": g.genes["entry.type"], "world": w}
+                row = {**g.genes, "fitness": g.fitness, "id": g.id, "environment": envs[w], "species": g.genes["entry.type"], "world": w, "parent_ids": ",".join(g.parent_ids) if hasattr(g, "parent_ids") else ""}
                 pop_data.append(row)
             df = pd.DataFrame(pop_data)
             histories[w].append(df)
@@ -456,7 +461,11 @@ if __name__ == "__main__":
             🧬 Best fitness: {best.fitness:.4f}
             🧠 Species: {best.genes['entry.type']}
             🦠 Species counts: {dict(species_counts)}
+            🔗 Best ID: {best.id}
+            🧬 Parents: {getattr(best, 'parent_ids', [])}
             """)
+            if TRACKED_ID and best.id == TRACKED_ID:
+                print("🔥 TRACKED STRATEGY SURVIVED")
             # Export CSV de la population
             df.to_csv(f"results/{w}_pop_gen_{generation}.csv", index=False)
             print(f"  CSV exporté : results/{w}_pop_gen_{generation}.csv")
@@ -497,34 +506,36 @@ if __name__ == "__main__":
             history.append(df)
     # 2. Dataset global
     full_df = pd.concat(history, ignore_index=True)
-    # 3. Visualisation animée 3D
-    def plot_evolution(full_df):
+    # 3. Visualisation GOD MODE
+    def plot_god_mode(full_df, tracked_id=None):
+        df = full_df.copy()
+        if tracked_id:
+            df["highlight"] = df["id"].apply(lambda x: "TRACKED" if x == tracked_id else "normal")
+        else:
+            df["highlight"] = "normal"
         fig = px.scatter_3d(
-            full_df,
+            df,
             x="exit.tp",
             y="exit.sl",
             z="fitness",
             color="species",
-            symbol="world",
+            symbol="highlight",
             animation_frame="generation",
-            hover_data=[
-                "environment",
-                "fitness",
-                "species",
-                "world"
-            ],
-            title="🌍 Strategy Planet Evolution"
+            size="fitness",
+            hover_data=["id", "environment", "parent_ids"],
+            title="👁️ GOD MODE - Strategy Evolution"
         )
-        fig.update_traces(marker=dict(size=4))
         fig.show()
-    plot_evolution(full_df)
-    # 4. Suivi des populations d'espèces
-    species_counts = full_df.groupby(["generation", "species"]).size().reset_index(name="count")
-    fig2 = px.line(
-        species_counts,
-        x="generation",
-        y="count",
-        color="species",
-        title="🧬 Species Population Over Time"
-    )
-    fig2.show()
+    plot_god_mode(full_df, tracked_id=TRACKED_ID)
+    # 4. Visualisation domination par espèce
+    def plot_dominance(full_df):
+        df = full_df.groupby(["generation", "species"]).size().reset_index(name="count")
+        fig = px.area(
+            df,
+            x="generation",
+            y="count",
+            color="species",
+            title="🌍 Species Domination Over Time"
+        )
+        fig.show()
+    plot_dominance(full_df)

@@ -1,0 +1,12 @@
+{
+  "avg_sharpe": 1.2,
+  "avg_return": 0.15,
+  "max_drawdown": 0,
+  "suggestion": "Continuer l'exploration actuelle, affiner les paramètres.",
+  "exploration": [
+    "Optimiser les hyperparamètres sur les top stratégies."
+  ],
+  "insights": [
+    "Peu de stratégies validées : relancer la génération avec plus de diversité."
+  ]
+}
