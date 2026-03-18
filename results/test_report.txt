@@ -1,0 +1,261 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\WINDOWS\crypto_ai_terminal
+collected 120 items / 21 errors
+
+=================================== ERRORS ====================================
+_ ERROR collecting AI_HEDGE_FUND_SYSTEM/autonomous_system/test_autonomous_supervision.py _
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\AI_HEDGE_FUND_SYSTEM\autonomous_system\test_autonomous_supervision.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AI_HEDGE_FUND_SYSTEM\autonomous_system\test_autonomous_supervision.py:3: in <module>
+    from notifications.telegram_notifier import TelegramNotifier
+E   ModuleNotFoundError: No module named 'notifications'
+___________ ERROR collecting QUANT_CORE/data/test_data_collector.py ___________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\data\test_data_collector.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\__init__.py:11: in <module>
+    from .quant_core import QuantCore
+QUANT_CORE\quant_core.py:8: in <module>
+    from QUANT_CORE.data import DataCollector
+E   ModuleNotFoundError: import of QUANT_CORE.data halted; None in sys.modules
+____________ ERROR collecting QUANT_CORE/data/test_walkforward.py _____________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\data\test_walkforward.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\__init__.py:11: in <module>
+    from .quant_core import QuantCore
+QUANT_CORE\quant_core.py:8: in <module>
+    from QUANT_CORE.data import DataCollector
+E   ModuleNotFoundError: import of QUANT_CORE.data halted; None in sys.modules
+_____ ERROR collecting QUANT_CORE/massive_backtest_engine/test_engine.py ______
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\massive_backtest_engine\test_engine.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\massive_backtest_engine\test_engine.py:2: in <module>
+    from .engine import MassiveBacktestEngine
+E   ImportError: attempted relative import with no known parent package
+_____________ ERROR collecting QUANT_CORE/test_core_interface.py ______________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\test_core_interface.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\__init__.py:11: in <module>
+    from .quant_core import QuantCore
+QUANT_CORE\quant_core.py:8: in <module>
+    from QUANT_CORE.data import DataCollector
+E   ModuleNotFoundError: import of QUANT_CORE.data halted; None in sys.modules
+_______________ ERROR collecting QUANT_CORE/test_quant_core.py ________________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\test_quant_core.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\__init__.py:11: in <module>
+    from .quant_core import QuantCore
+QUANT_CORE\quant_core.py:8: in <module>
+    from QUANT_CORE.data import DataCollector
+E   ModuleNotFoundError: import of QUANT_CORE.data halted; None in sys.modules
+_________ ERROR collecting QUANT_CORE/test_quant_core_integration.py __________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\QUANT_CORE\test_quant_core_integration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+QUANT_CORE\__init__.py:11: in <module>
+    from .quant_core import QuantCore
+QUANT_CORE\quant_core.py:8: in <module>
+    from QUANT_CORE.data import DataCollector
+E   ModuleNotFoundError: import of QUANT_CORE.data halted; None in sys.modules
+__________ ERROR collecting crypto_quant_v16/test_v30_smart_chart.py __________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\crypto_quant_v16\test_v30_smart_chart.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crypto_quant_v16\test_v30_smart_chart.py:5: in <module>
+    from v26.smart_chart import detect_structure, enrich_indicators, orderbook_depth
+crypto_quant_v16\v26\smart_chart.py:6: in <module>
+    from ta.momentum import rsi
+E   ModuleNotFoundError: No module named 'ta'
+______ ERROR collecting crypto_quant_v16/tests/test_execution_engine.py _______
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\crypto_quant_v16\tests\test_execution_engine.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crypto_quant_v16\tests\test_execution_engine.py:3: in <module>
+    from core.execution_engine import ExecutionEngine
+E   ModuleNotFoundError: No module named 'core.execution_engine'
+_________ ERROR collecting crypto_quant_v16/tests/test_sniper_bot.py __________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\crypto_quant_v16\tests\test_sniper_bot.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crypto_quant_v16\tests\test_sniper_bot.py:3: in <module>
+    from memecoin_alpha.sniper_bot import SniperBot
+crypto_quant_v16\memecoin_alpha\sniper_bot.py:7: in <module>
+    from dotenv import load_dotenv
+E   ModuleNotFoundError: No module named 'dotenv'
+______________ ERROR collecting data_engine/test_plot_regimes.py ______________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\data_engine\test_plot_regimes.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+data_engine\test_plot_regimes.py:3: in <module>
+    from data_engine.market_regime import MarketRegimeDetector
+E   ModuleNotFoundError: No module named 'data_engine.market_regime'
+________ ERROR collecting quant-ai-system/tests/test_infrastructure.py ________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\quant-ai-system\tests\test_infrastructure.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'tests.test_infrastructure'
+_________ ERROR collecting quant-hedge-ai/test_decision_engine_v91.py _________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\quant-hedge-ai\test_decision_engine_v91.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+quant-hedge-ai\test_decision_engine_v91.py:3: in <module>
+    from engine.decision_engine import DecisionEngine
+QUANT_CORE\massive_backtest_engine\engine.py:1: in <module>
+    from .batch_manager import BatchManager
+E   ImportError: attempted relative import with no known parent package
+___________ ERROR collecting quant-hedge-ai/test_env_parsing_v91.py ___________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\quant-hedge-ai\test_env_parsing_v91.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+quant-hedge-ai\test_env_parsing_v91.py:5: in <module>
+    from main_v91 import _get_env_int
+quant-hedge-ai\main_v91.py:45: in <module>
+    from engine.decision_engine import DecisionEngine, StrategyRanker
+QUANT_CORE\massive_backtest_engine\engine.py:1: in <module>
+    from .batch_manager import BatchManager
+E   ImportError: attempted relative import with no known parent package
+___________________ ERROR collecting scripts/test_panel.py ____________________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\scripts\test_panel.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\test_panel.py:2: in <module>
+    import panel as pn
+E   ModuleNotFoundError: No module named 'panel'
+___________________ ERROR collecting scripts/test_python.py ___________________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\scripts\test_python.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\test_python.py:2: in <module>
+    import panel as pn
+E   ModuleNotFoundError: No module named 'panel'
+________ ERROR collecting strategy_factory/test_advanced_backtester.py ________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\strategy_factory\test_advanced_backtester.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+strategy_factory\test_advanced_backtester.py:3: in <module>
+    from strategy_factory.advanced_backtester import AdvancedBacktester
+E   ModuleNotFoundError: No module named 'strategy_factory.advanced_backtester'
+____________ ERROR collecting strategy_factory/test_backtester.py _____________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\strategy_factory\test_backtester.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+strategy_factory\test_backtester.py:2: in <module>
+    from strategy_factory.backtester import Backtester
+E   ImportError: cannot import name 'Backtester' from 'strategy_factory.backtester' (C:\Users\WINDOWS\crypto_ai_terminal\quant-hedge-ai\strategy_factory\backtester.py). Did you mean: 'backtester'?
+_________ ERROR collecting strategy_factory/test_genetic_evolution.py _________
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\strategy_factory\test_genetic_evolution.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+strategy_factory\test_genetic_evolution.py:1: in <module>
+    from strategy_factory.genome import StrategyGenome
+E   ModuleNotFoundError: No module named 'strategy_factory.genome'
+______ ERROR collecting strategy_factory/test_parallel_strategy_farm.py _______
+ImportError while importing test module 'C:\Users\WINDOWS\crypto_ai_terminal\strategy_factory\test_parallel_strategy_farm.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\AppData\Local\Python\pythoncore-3.14-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+strategy_factory\test_parallel_strategy_farm.py:3: in <module>
+    from strategy_factory.parallel_farm import ParallelStrategyFarm
+E   ModuleNotFoundError: No module named 'strategy_factory.parallel_farm'
+_________ ERROR collecting strategy_factory/test_strategy_factory.py __________
+import file mismatch:
+imported module 'test_strategy_factory' has this __file__ attribute:
+  C:\Users\WINDOWS\crypto_ai_terminal\quant-hedge-ai\test_strategy_factory.py
+which is not the same as the test file we want to collect:
+  C:\Users\WINDOWS\crypto_ai_terminal\strategy_factory\test_strategy_factory.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+============================== warnings summary ===============================
+ai_research_agent\report_generator.py:10
+  C:\Users\WINDOWS\crypto_ai_terminal\ai_research_agent\report_generator.py:10: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    self.timestamp = datetime.datetime.utcnow().isoformat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR AI_HEDGE_FUND_SYSTEM/autonomous_system/test_autonomous_supervision.py
+ERROR QUANT_CORE/data/test_data_collector.py
+ERROR QUANT_CORE/data/test_walkforward.py
+ERROR QUANT_CORE/massive_backtest_engine/test_engine.py
+ERROR QUANT_CORE/test_core_interface.py
+ERROR QUANT_CORE/test_quant_core.py
+ERROR QUANT_CORE/test_quant_core_integration.py
+ERROR crypto_quant_v16/test_v30_smart_chart.py
+ERROR crypto_quant_v16/tests/test_execution_engine.py
+ERROR crypto_quant_v16/tests/test_sniper_bot.py
+ERROR data_engine/test_plot_regimes.py
+ERROR quant-ai-system/tests/test_infrastructure.py
+ERROR quant-hedge-ai/test_decision_engine_v91.py
+ERROR quant-hedge-ai/test_env_parsing_v91.py
+ERROR scripts/test_panel.py
+ERROR scripts/test_python.py
+ERROR strategy_factory/test_advanced_backtester.py
+ERROR strategy_factory/test_backtester.py
+ERROR strategy_factory/test_genetic_evolution.py
+ERROR strategy_factory/test_parallel_strategy_farm.py
+ERROR strategy_factory/test_strategy_factory.py
+!!!!!!!!!!!!!!!!!! Interrupted: 21 errors during collection !!!!!!!!!!!!!!!!!!!
+======================= 1 warning, 21 errors in 44.39s ========================

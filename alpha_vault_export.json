@@ -1,0 +1,3002 @@
+[
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volatility_breakout",
+      "lookback": 13,
+      "threshold": 0.13935018899460605,
+      "stop_loss": 0.021169418496141297,
+      "take_profit": 0.03460329561221693
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 19,
+      "threshold": 0.26055484081875846,
+      "stop_loss": 0.04867889531847917,
+      "take_profit": 0.09846800455107096
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 44,
+      "threshold": 0.23744965668882972,
+      "stop_loss": 0.015091359053267531,
+      "take_profit": 0.05074288405986192
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 74,
+      "threshold": 0.26980427388971195,
+      "stop_loss": 0.01531584076153373,
+      "take_profit": 0.05401000868148076
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "mean_reversion",
+      "lookback": 73,
+      "threshold": 0.16471467833188225,
+      "stop_loss": 0.020236158783350135,
+      "take_profit": 0.034680473100475034
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 43,
+      "threshold": 0.19331206118820735,
+      "stop_loss": 0.028508900011174912,
+      "take_profit": 0.036514441629296915
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "momentum",
+      "lookback": 82,
+      "threshold": 0.13650875897354384,
+      "stop_loss": 0.035427009750219486,
+      "take_profit": 0.09429321252193258
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 40,
+      "threshold": 0.2239928056058641,
+      "stop_loss": 0.022683808120458893,
+      "take_profit": 0.03804646581067865
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 94,
+      "threshold": 0.12997257634730147,
+      "stop_loss": 0.02520517927546993,
+      "take_profit": 0.027379234679224044
+    },
+    "score": 95.0
+  },
+  {
+    "strategy": {
+      "indicator": "volume_spike",
+      "lookback": 64,
+      "threshold": 0.21492097873031,
+      "stop_loss": 0.037144318968578775,
+      "take_profit": 0.07044070480790192
+    },
+    "score": 95.0
+  }
+]

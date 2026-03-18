@@ -5,9 +5,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from strategy_factory import StrategyFactory
-from strategy_factory.bot_doctor_validator import BotDoctorValidator
-from ai_evolution import StrategyMemoryStore
+from quant_hedge_ai.strategy_factory import StrategyFactory
+from quant_hedge_ai.strategy_factory.bot_doctor_validator import BotDoctorValidator
+from quant_hedge_ai.ai_evolution import StrategyMemoryStore
 
 
 def _sample_candles() -> list[dict]:

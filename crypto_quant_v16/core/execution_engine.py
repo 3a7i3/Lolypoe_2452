@@ -11,13 +11,28 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 
-class ExecutionEngine:
-    """Handle order execution and position management"""
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-    def __init__(self, exchange_manager, mode: str = 'paper'):
-        """Initialize execution engine"""
+class ExecutionEngine:
+    """
+    Handle order execution and position management.
+    Supports paper/live mode, slippage, and fees configuration.
+    """
+
+    def __init__(self, exchange_manager, mode: str = None, slippage_pct: float = None, fees_pct: float = None):
+        """
+        Initialize execution engine.
+        :param exchange_manager: Exchange manager instance
+        :param mode: 'paper' or 'live' (default from .env EXEC_MODE)
+        :param slippage_pct: slippage percent (default from .env EXEC_SLIPPAGE_PCT)
+        :param fees_pct: trading fees percent (default from .env EXEC_FEES_PCT)
+        """
         self.em = exchange_manager
-        self.mode = mode  # 'paper' or 'live'
+        self.mode = mode or os.environ.get("EXEC_MODE", "paper")
+        self.slippage_pct = float(slippage_pct if slippage_pct is not None else os.environ.get("EXEC_SLIPPAGE_PCT", 0.002))
+        self.fees_pct = float(fees_pct if fees_pct is not None else os.environ.get("EXEC_FEES_PCT", 0.001))
         self.orders = {}
         self.trades = []
 
@@ -75,11 +90,18 @@ class ExecutionEngine:
             if order['status'] == 'pending':
                 if self.mode == 'paper':
                     order['status'] = 'cancelled'
+                    logger.info(f"❌ Order cancelled: {order_id}")
+                    return True
                 else:
                     await self.em.cancel_order(order_id, symbol)
-                logger.info(f"❌ Order cancelled: {order_id}")
-                return True
-        return False
+                    logger.info(f"❌ Order cancelled: {order_id}")
+                    return True
+            else:
+                logger.warning(f"Order {order_id} not pending, cannot cancel.")
+                return False
+        else:
+            logger.warning(f"Order {order_id} not found.")
+            return None
 
     def get_order_history(self) -> List[Dict]:
         """Get all orders"""

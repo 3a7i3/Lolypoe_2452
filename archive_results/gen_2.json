@@ -1,0 +1,162 @@
+[
+  {
+    "indicator": "mean_reversion",
+    "lookback": 19,
+    "threshold": 0.4889343614477729,
+    "stop_loss": 0.025046634999189625,
+    "take_profit": 0.0818703481341984,
+    "score": 12.97035827035196
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 60,
+    "threshold": 1.094805657110008,
+    "stop_loss": 0.01618639614683781,
+    "take_profit": 0.06138858648569935,
+    "score": 11.74784653505123
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 24,
+    "threshold": 0.8456005814257902,
+    "stop_loss": 0.025368783527334262,
+    "take_profit": 0.06803335144526133,
+    "score": 9.685852246826524
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 21,
+    "threshold": 0.11652028864367259,
+    "stop_loss": 0.029971005593922132,
+    "take_profit": 0.07040100598057672,
+    "score": 7.804576159821697
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 87,
+    "threshold": 0.2890660274405308,
+    "stop_loss": 0.023980452629005482,
+    "take_profit": 0.07517263159942107,
+    "score": 7.060214457839717
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 29,
+    "threshold": 0.17593741610434158,
+    "stop_loss": 0.029933743993928785,
+    "take_profit": 0.04386185625333051,
+    "score": 6.608361062401661
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 7,
+    "threshold": 0.8596470012926383,
+    "stop_loss": 0.03882188328639239,
+    "take_profit": 0.08899654785399054,
+    "score": 5.67638624793928
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 25,
+    "threshold": 0.7105893112082293,
+    "stop_loss": 0.034198530599805425,
+    "take_profit": 0.09688682782068406,
+    "score": 5.355476901719842
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 30,
+    "threshold": 0.10371764796236504,
+    "stop_loss": 0.04208785875822839,
+    "take_profit": 0.0739481435134407,
+    "score": 5.270411003594019
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 27,
+    "threshold": 0.7989070177517454,
+    "stop_loss": 0.03996345005976098,
+    "take_profit": 0.06983226406395227,
+    "score": 4.889687193676538
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 45,
+    "threshold": 0.33801481442396936,
+    "stop_loss": 0.03407745922564409,
+    "take_profit": 0.056830269462843336,
+    "score": 4.528229637096691
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 45,
+    "threshold": 0.1538303787919239,
+    "stop_loss": 0.042535171257844076,
+    "take_profit": 0.07761588393556942,
+    "score": 4.521331253208329
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 10,
+    "threshold": 1.0098273396271482,
+    "stop_loss": 0.03223448532034866,
+    "take_profit": 0.08335296784319934,
+    "score": 3.8810770537585455
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 92,
+    "threshold": 1.3707592168996732,
+    "stop_loss": 0.024139922573360267,
+    "take_profit": 0.06502537692186663,
+    "score": 3.5931649448785317
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 21,
+    "threshold": 0.12779431003518105,
+    "stop_loss": 0.027039018497443026,
+    "take_profit": 0.07040100598057672,
+    "score": 3.0483936092711224
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 34,
+    "threshold": 0.985518832385651,
+    "stop_loss": 0.03321157038932486,
+    "take_profit": 0.07814041753686465,
+    "score": 2.9821164494316936
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 61,
+    "threshold": 0.6896380177993783,
+    "stop_loss": 0.03464285899550881,
+    "take_profit": 0.05468900760497218,
+    "score": 2.6878636557576927
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 77,
+    "threshold": 1.1573646414865393,
+    "stop_loss": 0.033083279574324435,
+    "take_profit": 0.06640022308817632,
+    "score": 2.4888259523248735
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 61,
+    "threshold": 1.1113906634786637,
+    "stop_loss": 0.02681458515156003,
+    "take_profit": 0.06728428721973878,
+    "score": 2.385162272649188
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 50,
+    "threshold": 0.1422907738158002,
+    "stop_loss": 0.04499911601314456,
+    "take_profit": 0.08663690319486979,
+    "score": 2.3286436402940853
+  }
+]

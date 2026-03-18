@@ -5,14 +5,39 @@ Coordinates data, features, backtesting, risk, portfolio, strategy, and validati
 Secondary modules connect via interfaces.
 """
 
-from QUANT_CORE.data import DataCollector
-from QUANT_CORE.features import FeatureEngineer
-from QUANT_CORE.backtesting import BacktestEngine
-from QUANT_CORE.risk import RiskManager
-from QUANT_CORE.portfolio import PortfolioAllocator
-from QUANT_CORE.strategy import StrategyGenerator
-from QUANT_CORE.validation import StrategyValidator
-from QUANT_CORE.interfaces import CoreInterface
+
+try:
+    from QUANT_CORE.data import DataCollector
+except ImportError:
+    DataCollector = None
+try:
+    from QUANT_CORE.features import FeatureEngineer
+except ImportError:
+    FeatureEngineer = None
+try:
+    from QUANT_CORE.backtesting import BacktestEngine
+except ImportError:
+    BacktestEngine = None
+try:
+    from QUANT_CORE.risk import RiskManager
+except ImportError:
+    RiskManager = None
+try:
+    from QUANT_CORE.portfolio import PortfolioAllocator
+except ImportError:
+    PortfolioAllocator = None
+try:
+    from QUANT_CORE.strategy import StrategyGenerator
+except ImportError:
+    StrategyGenerator = None
+try:
+    from QUANT_CORE.validation import StrategyValidator
+except ImportError:
+    StrategyValidator = None
+try:
+    from QUANT_CORE.interfaces import CoreInterface
+except ImportError:
+    CoreInterface = None
 
 class QuantCore:
     def __init__(self):

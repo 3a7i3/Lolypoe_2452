@@ -1,5 +1,5 @@
 import random
-from .engine import MassiveBacktestEngine
+from QUANT_CORE.massive_backtest_engine.engine import MassiveBacktestEngine
 
 def mock_backtest(strategy):
     # Simulate a backtest result
@@ -13,7 +13,9 @@ def mock_backtest(strategy):
 
 # Patch run_strategy in parallel_executor for testing
 import sys
-sys.modules[".parallel_executor"].run_strategy = mock_backtest
+import types
+mock_parallel_executor = types.SimpleNamespace(run_strategy=mock_backtest)
+sys.modules["QUANT_CORE.massive_backtest_engine.parallel_executor"] = mock_parallel_executor
 
 def test_massive_backtest_engine():
     strategies = [{"id": i} for i in range(50)]

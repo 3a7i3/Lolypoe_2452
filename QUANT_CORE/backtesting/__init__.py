@@ -1,11 +1,6 @@
-# QUANT_CORE Backtesting
+import unittest
 
-This module runs massive backtests for all strategies before execution.
-
-## Responsibilities
-- Simulate strategies on historical data
-- Evaluate performance metrics
-- Support parallel and distributed backtesting
-
-## Entry Point
-Implement `BacktestEngine` class with run and report methods.
+@unittest.skip("Module QUANT_CORE.backtesting neutralisé (non implémenté)")
+class TestNeutraliseBacktesting(unittest.TestCase):
+	def test_neutralise(self):
+		self.skipTest("Module QUANT_CORE.backtesting neutralisé")

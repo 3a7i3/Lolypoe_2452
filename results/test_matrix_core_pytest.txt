@@ -1,0 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\WINDOWS\crypto_ai_terminal\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\WINDOWS\crypto_ai_terminal
+configfile: pytest.ini
+collecting ... collected 2 items
+
+AI_HEDGE_FUND_SYSTEM/ai/quant_matrix/test_matrix_core.py::test_matrix_cycle PASSED [ 50%]
+AI_HEDGE_FUND_SYSTEM/ai/quant_matrix/test_matrix_core.py::TestQuantMatrix::test_cycle PASSED [100%]
+
+============================== 2 passed in 0.15s ==============================

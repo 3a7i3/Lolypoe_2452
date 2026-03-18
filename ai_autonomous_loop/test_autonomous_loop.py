@@ -1,3 +1,8 @@
+# Correction import dynamique pour exécution directe
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from ai_autonomous_loop.autonomous_research_loop import AutonomousResearchLoop
 from ai_autonomous_loop.strategy_memory import StrategyMemory
 from ai_autonomous_loop.performance_feedback import PerformanceFeedback
@@ -34,9 +39,14 @@ portfolio_engine = DummyPortfolioEngine()
 
 loop = AutonomousResearchLoop(research_agent, strategy_farm, backtest_engine, bot_doctor, portfolio_engine)
 
-# Test du cycle autonome
-approved = loop.run_cycle()
+# Test du cycle autonome avec feedback et action automatique
+result = loop.run_cycle()
+approved = result["approved"]
+feedback = result["feedback"]
+action = result["action"]
 print("Approved strategies:", approved)
+print("Feedback report:", feedback)
+print("Action taken:", action)
 
 # Test de la mémoire
 memory = StrategyMemory()

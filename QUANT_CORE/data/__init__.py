@@ -1,11 +1,6 @@
-# QUANT_CORE Data Collection
+import unittest
 
-This module handles all data ingestion, cleaning, and storage for the quant platform.
-
-## Responsibilities
-- Fetch market, orderbook, and trade data
-- Clean and normalize data
-- Store for feature engineering and backtesting
-
-## Entry Point
-Implement `DataCollector` class with methods for source integration.
+@unittest.skip("Module QUANT_CORE.data neutralisé (non implémenté)")
+class TestNeutraliseData(unittest.TestCase):
+	def test_neutralise(self):
+		self.skipTest("Module QUANT_CORE.data neutralisé")

@@ -7,6 +7,8 @@ class AutonomousResearchLoop:
         self.portfolio_engine = portfolio_engine
 
     def run_cycle(self):
+        from ai_autonomous_loop.performance_feedback import PerformanceFeedback
+        from ai_autonomous_loop.auto_optimizer import HyperparameterOptimizer
         # 1. Générer des hypothèses
         hypotheses = self.research_agent.generate_hypotheses()
         # 2. Créer des stratégies
@@ -17,4 +19,45 @@ class AutonomousResearchLoop:
         approved = self.bot_doctor.validate(results)
         # 5. Mise à jour du portefeuille
         self.portfolio_engine.update(approved)
-        return approved
+        # 6. Feedback automatique
+        feedback_agent = PerformanceFeedback()
+        feedback_report = feedback_agent.analyze(approved)
+        print("[Feedback R&D]", feedback_report)
+
+        # 7. Export feedback en JSON
+        import json
+        import datetime
+        feedback_dir = "feedback_logs"
+        import os
+        os.makedirs(feedback_dir, exist_ok=True)
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        feedback_path = os.path.join(feedback_dir, f"feedback_{timestamp}.json")
+        with open(feedback_path, "w", encoding="utf-8") as f:
+            json.dump(feedback_report, f, indent=2, ensure_ascii=False)
+        print(f"[Export] Feedback sauvegardé dans {feedback_path}")
+
+        # 8. Prise de décision automatique selon le feedback
+        action_taken = None
+        if "diversité" in " ".join(feedback_report.get("insights", [])):
+            print("[AUTO] Relance génération avec plus de diversité.")
+            extra_hypotheses = self.research_agent.generate_hypotheses() + ["hybrid", "multi_factor"]
+            strategies = self.strategy_farm.generate(extra_hypotheses)
+            results = self.backtest_engine.run(strategies)
+            approved = self.bot_doctor.validate(results)
+            self.portfolio_engine.update(approved)
+            action_taken = "relance_diversite"
+        elif "optimiser" in " ".join(feedback_report.get("exploration", [])):
+            print("[AUTO] Optimisation des hyperparamètres sur les top stratégies.")
+            optimizer = HyperparameterOptimizer(self.strategy_farm)
+            optimized = optimizer.optimize([s["id"] for s in approved])
+            # Génère et backtest les variantes optimisées
+            strategies = self.strategy_farm.generate([o["base"] for o in optimized])
+            results = self.backtest_engine.run(strategies)
+            approved = self.bot_doctor.validate(results)
+            self.portfolio_engine.update(approved)
+            action_taken = "optimisation_hyperparametres"
+        else:
+            print("[AUTO] Aucun ajustement automatique nécessaire.")
+            action_taken = "none"
+
+        return {"approved": approved, "feedback": feedback_report, "action": action_taken}

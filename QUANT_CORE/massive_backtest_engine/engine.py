@@ -1,4 +1,4 @@
-from .batch_manager import BatchManager
+from QUANT_CORE.massive_backtest_engine.batch_manager import BatchManager
 from .parallel_executor import ParallelExecutor
 from .results_collector import ResultsCollector
 from .ranking import StrategyRanker

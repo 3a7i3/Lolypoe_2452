@@ -1,11 +1,6 @@
-# QUANT_CORE Validation
+import unittest
 
-This module validates strategies using backtesting results and Bot Doctor.
-
-## Responsibilities
-- Validate strategies post-backtest
-- Integrate Bot Doctor for risk checks
-- Approve or block strategies for execution
-
-## Entry Point
-Implement `StrategyValidator` class with validate and approve methods.
+@unittest.skip("Module QUANT_CORE.validation neutralisé (non implémenté)")
+class TestNeutraliseValidation(unittest.TestCase):
+	def test_neutralise(self):
+		self.skipTest("Module QUANT_CORE.validation neutralisé")

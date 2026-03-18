@@ -1,0 +1,162 @@
+[
+  {
+    "indicator": "mean_reversion",
+    "lookback": 40,
+    "threshold": 0.3749327275520573,
+    "stop_loss": 0.025043532110786085,
+    "take_profit": 0.06436721131964741,
+    "score": 8.446367594923766
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 45,
+    "threshold": 0.4965056816975233,
+    "stop_loss": 0.032065153484566546,
+    "take_profit": 0.06610074165451962,
+    "score": 7.415796452904973
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 42,
+    "threshold": 0.5584388509586944,
+    "stop_loss": 0.02853387463049318,
+    "take_profit": 0.06250575784629014,
+    "score": 6.295484948810968
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 50,
+    "threshold": 0.6310051389773278,
+    "stop_loss": 0.026473261421903423,
+    "take_profit": 0.0720726240595667,
+    "score": 6.145434743661481
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 32,
+    "threshold": 0.5373253237330289,
+    "stop_loss": 0.02755697080037121,
+    "take_profit": 0.06800571562770126,
+    "score": 5.874548613700419
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 39,
+    "threshold": 0.44994977815988035,
+    "stop_loss": 0.029083726700012923,
+    "take_profit": 0.06751042530311491,
+    "score": 5.627798390780912
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 46,
+    "threshold": 0.4762410207563393,
+    "stop_loss": 0.031067202079602285,
+    "take_profit": 0.06476214969425564,
+    "score": 5.234841130119358
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 21,
+    "threshold": 0.11652028864367259,
+    "stop_loss": 0.029971005593922132,
+    "take_profit": 0.07040100598057672,
+    "score": 4.917278108653441
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 32,
+    "threshold": 0.455245031011988,
+    "stop_loss": 0.02755697080037121,
+    "take_profit": 0.06800571562770126,
+    "score": 4.746300419538022
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 31,
+    "threshold": 0.7226096153044093,
+    "stop_loss": 0.027062262591267476,
+    "take_profit": 0.06401011395443132,
+    "score": 4.678056420454092
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 47,
+    "threshold": 0.5899078089259467,
+    "stop_loss": 0.03152392155954994,
+    "take_profit": 0.06250916440998273,
+    "score": 4.059153284785775
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 30,
+    "threshold": 0.5690015473855466,
+    "stop_loss": 0.03188297131872409,
+    "take_profit": 0.06581974499850334,
+    "score": 3.955503127199856
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 37,
+    "threshold": 0.5269698929914419,
+    "stop_loss": 0.02782455858412777,
+    "take_profit": 0.06250235128259757,
+    "score": 3.8727448104363544
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 47,
+    "threshold": 0.4920033597618243,
+    "stop_loss": 0.03453577778955105,
+    "take_profit": 0.06852289765036229,
+    "score": 2.5646727968975833
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 29,
+    "threshold": 0.4953472853656688,
+    "stop_loss": 0.028695904422778886,
+    "take_profit": 0.06645677543875489,
+    "score": 2.5632393743710877
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 44,
+    "threshold": 0.30036680874051935,
+    "stop_loss": 0.027760358868046692,
+    "take_profit": 0.06395842766526458,
+    "score": 1.6488025124591463
+  },
+  {
+    "indicator": "volatility_breakout",
+    "lookback": 67,
+    "threshold": 0.391505852530663,
+    "stop_loss": 0.029582201199622446,
+    "take_profit": 0.07625387945974332,
+    "score": 1.5593913128879535
+  },
+  {
+    "indicator": "mean_reversion",
+    "lookback": 47,
+    "threshold": 0.45393160576148806,
+    "stop_loss": 0.033227801454323566,
+    "take_profit": 0.0594234444366172,
+    "score": 0.7753379035364287
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 31,
+    "threshold": 0.4901695699948753,
+    "stop_loss": 0.028829698314657166,
+    "take_profit": 0.06370509326620305,
+    "score": 0.5556044077127575
+  },
+  {
+    "indicator": "momentum",
+    "lookback": 39,
+    "threshold": 0.41892058011057026,
+    "stop_loss": 0.029083726700012923,
+    "take_profit": 0.06751042530311491,
+    "score": 0.06568848673430128
+  }
+]

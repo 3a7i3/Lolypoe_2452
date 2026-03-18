@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from engine.decision_engine import DecisionEngine
+from quant_hedge_ai.engine.decision_engine import DecisionEngine
 
 
 

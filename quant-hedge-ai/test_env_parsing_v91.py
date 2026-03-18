@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import os
 
-from main_v91 import _get_env_int
-from runtime_config import get_env_bool, get_env_float, get_env_str, load_runtime_config_from_env
+from quant-hedge-ai.main_v91 import _get_env_int
+from quant-hedge-ai.runtime_config import get_env_bool, get_env_float, get_env_str, load_runtime_config_from_env
 
 
 

@@ -1,0 +1,802 @@
+{
+  "S0": {
+    "strategy_id": "S0",
+    "rsi_threshold": 69,
+    "ma_period": 20,
+    "score": 1.093458728866588,
+    "sharpe": 0.7069568695063739,
+    "drawdown": 0.1786657835555875
+  },
+  "S1": {
+    "strategy_id": "S1",
+    "rsi_threshold": 79,
+    "ma_period": 10,
+    "score": 1.5635758762040615,
+    "sharpe": 2.5123749688391035,
+    "drawdown": 0.1903476550051983
+  },
+  "S2": {
+    "strategy_id": "S2",
+    "rsi_threshold": 75,
+    "ma_period": 50,
+    "score": 1.099999083036428,
+    "sharpe": 1.4875606173818592,
+    "drawdown": 0.07888174720372752
+  },
+  "S3": {
+    "strategy_id": "S3",
+    "rsi_threshold": 49,
+    "ma_period": 50,
+    "score": 1.4433929074905034,
+    "sharpe": 1.3020810886178433,
+    "drawdown": 0.07053819018825908
+  },
+  "S4": {
+    "strategy_id": "S4",
+    "rsi_threshold": 80,
+    "ma_period": 50,
+    "score": 1.6027852196226307,
+    "sharpe": 1.3643661431650296,
+    "drawdown": 0.24330936796340308
+  },
+  "S5": {
+    "strategy_id": "S5",
+    "rsi_threshold": 55,
+    "ma_period": 50,
+    "score": 1.647549001876689,
+    "sharpe": 2.4435316885492377,
+    "drawdown": 0.07616904077408755
+  },
+  "S6": {
+    "strategy_id": "S6",
+    "rsi_threshold": 78,
+    "ma_period": 20,
+    "score": 0.5268964149267177,
+    "sharpe": 2.238773436428988,
+    "drawdown": 0.10992907029203364
+  },
+  "S7": {
+    "strategy_id": "S7",
+    "rsi_threshold": 38,
+    "ma_period": 50,
+    "score": 1.0505842496182163,
+    "sharpe": 0.9795768830807506,
+    "drawdown": 0.12869130106777063
+  },
+  "S8": {
+    "strategy_id": "S8",
+    "rsi_threshold": 71,
+    "ma_period": 20,
+    "score": 0.6225387488707556,
+    "sharpe": 2.7914924541288766,
+    "drawdown": 0.09110691090130277
+  },
+  "S9": {
+    "strategy_id": "S9",
+    "rsi_threshold": 55,
+    "ma_period": 50,
+    "score": 1.6208979439448425,
+    "sharpe": 0.5867295478479266,
+    "drawdown": 0.05135128230854627
+  },
+  "S10": {
+    "strategy_id": "S10",
+    "rsi_threshold": 57,
+    "ma_period": 20,
+    "score": 1.2609134641273403,
+    "sharpe": 1.220044981715893,
+    "drawdown": 0.14461843151974763
+  },
+  "S11": {
+    "strategy_id": "S11",
+    "rsi_threshold": 77,
+    "ma_period": 10,
+    "score": 1.4557851583433312,
+    "sharpe": 2.251000567615182,
+    "drawdown": 0.18897145324795267
+  },
+  "S12": {
+    "strategy_id": "S12",
+    "rsi_threshold": 39,
+    "ma_period": 50,
+    "score": 1.0963267705682207,
+    "sharpe": 1.7446308856220112,
+    "drawdown": 0.17454124084836442
+  },
+  "S13": {
+    "strategy_id": "S13",
+    "rsi_threshold": 61,
+    "ma_period": 10,
+    "score": 1.3995575207813633,
+    "sharpe": 0.7030602947655393,
+    "drawdown": 0.09284095259111691
+  },
+  "S14": {
+    "strategy_id": "S14",
+    "rsi_threshold": 73,
+    "ma_period": 20,
+    "score": 1.9558388474714812,
+    "sharpe": 1.1169497968976898,
+    "drawdown": 0.2119928603419905
+  },
+  "S15": {
+    "strategy_id": "S15",
+    "rsi_threshold": 80,
+    "ma_period": 20,
+    "score": 1.9925860385991823,
+    "sharpe": 2.5645682118961037,
+    "drawdown": 0.0558330667996851
+  },
+  "S16": {
+    "strategy_id": "S16",
+    "rsi_threshold": 24,
+    "ma_period": 10,
+    "score": 1.0110624213643984,
+    "sharpe": 1.3833102983722638,
+    "drawdown": 0.0656398863122692
+  },
+  "S17": {
+    "strategy_id": "S17",
+    "rsi_threshold": 59,
+    "ma_period": 50,
+    "score": 1.2549134050314905,
+    "sharpe": 1.593988096576578,
+    "drawdown": 0.15675623116028753
+  },
+  "S18": {
+    "strategy_id": "S18",
+    "rsi_threshold": 32,
+    "ma_period": 10,
+    "score": 1.0281300952736603,
+    "sharpe": 0.5027323804564585,
+    "drawdown": 0.18842535385500753
+  },
+  "S19": {
+    "strategy_id": "S19",
+    "rsi_threshold": 43,
+    "ma_period": 10,
+    "score": 1.9746377561187949,
+    "sharpe": 1.7737512204368595,
+    "drawdown": 0.2125749170301397
+  },
+  "S20": {
+    "strategy_id": "S20",
+    "rsi_threshold": 62,
+    "ma_period": 10,
+    "score": 1.483991507815495,
+    "sharpe": 0.7306300050920387,
+    "drawdown": 0.12877789003099194
+  },
+  "S21": {
+    "strategy_id": "S21",
+    "rsi_threshold": 27,
+    "ma_period": 50,
+    "score": 1.5336115528062049,
+    "sharpe": 2.8467739022658405,
+    "drawdown": 0.22925551919015952
+  },
+  "S22": {
+    "strategy_id": "S22",
+    "rsi_threshold": 69,
+    "ma_period": 50,
+    "score": 1.3490900327909738,
+    "sharpe": 0.7993292181861446,
+    "drawdown": 0.09714399888444239
+  },
+  "S23": {
+    "strategy_id": "S23",
+    "rsi_threshold": 67,
+    "ma_period": 50,
+    "score": 0.7611558188124996,
+    "sharpe": 1.6343769091742975,
+    "drawdown": 0.12364647658600958
+  },
+  "S24": {
+    "strategy_id": "S24",
+    "rsi_threshold": 46,
+    "ma_period": 50,
+    "score": 0.8564612714203028,
+    "sharpe": 0.8866862012062333,
+    "drawdown": 0.21343534902347444
+  },
+  "S25": {
+    "strategy_id": "S25",
+    "rsi_threshold": 50,
+    "ma_period": 50,
+    "score": 1.8734634212324637,
+    "sharpe": 2.8931871008473635,
+    "drawdown": 0.20603108912982232
+  },
+  "S26": {
+    "strategy_id": "S26",
+    "rsi_threshold": 74,
+    "ma_period": 50,
+    "score": 0.8619440628026893,
+    "sharpe": 1.7450622472224118,
+    "drawdown": 0.18050859792391466
+  },
+  "S27": {
+    "strategy_id": "S27",
+    "rsi_threshold": 31,
+    "ma_period": 20,
+    "score": 1.2425403141984486,
+    "sharpe": 1.2454586616763772,
+    "drawdown": 0.24271239609138678
+  },
+  "S28": {
+    "strategy_id": "S28",
+    "rsi_threshold": 72,
+    "ma_period": 50,
+    "score": 1.1328279473958052,
+    "sharpe": 2.4199450676368484,
+    "drawdown": 0.23095527453188341
+  },
+  "S29": {
+    "strategy_id": "S29",
+    "rsi_threshold": 59,
+    "ma_period": 20,
+    "score": 1.2452621295154034,
+    "sharpe": 1.3130761558549713,
+    "drawdown": 0.2021642668108075
+  },
+  "S30": {
+    "strategy_id": "S30",
+    "rsi_threshold": 44,
+    "ma_period": 10,
+    "score": 0.8883468060265973,
+    "sharpe": 0.5493364189887374,
+    "drawdown": 0.24703346335641369
+  },
+  "S31": {
+    "strategy_id": "S31",
+    "rsi_threshold": 34,
+    "ma_period": 10,
+    "score": 1.8988070259896461,
+    "sharpe": 1.32721735087814,
+    "drawdown": 0.11337183010146615
+  },
+  "S32": {
+    "strategy_id": "S32",
+    "rsi_threshold": 69,
+    "ma_period": 50,
+    "score": 1.0333235338848568,
+    "sharpe": 0.9736094574738642,
+    "drawdown": 0.05887511525347662
+  },
+  "S33": {
+    "strategy_id": "S33",
+    "rsi_threshold": 43,
+    "ma_period": 50,
+    "score": 0.6513908765011247,
+    "sharpe": 2.2671089872381067,
+    "drawdown": 0.07923796731509435
+  },
+  "S34": {
+    "strategy_id": "S34",
+    "rsi_threshold": 56,
+    "ma_period": 20,
+    "score": 1.9060335208181516,
+    "sharpe": 2.2221943102983683,
+    "drawdown": 0.1144528509628255
+  },
+  "S35": {
+    "strategy_id": "S35",
+    "rsi_threshold": 56,
+    "ma_period": 20,
+    "score": 0.6007672450779319,
+    "sharpe": 0.8775868129013857,
+    "drawdown": 0.11106241711060934
+  },
+  "S36": {
+    "strategy_id": "S36",
+    "rsi_threshold": 58,
+    "ma_period": 50,
+    "score": 1.9568566867559398,
+    "sharpe": 1.940839965001943,
+    "drawdown": 0.16823724004025148
+  },
+  "S37": {
+    "strategy_id": "S37",
+    "rsi_threshold": 50,
+    "ma_period": 50,
+    "score": 1.1198923238839602,
+    "sharpe": 2.8242329634962196,
+    "drawdown": 0.23448438468520805
+  },
+  "S38": {
+    "strategy_id": "S38",
+    "rsi_threshold": 63,
+    "ma_period": 10,
+    "score": 1.7658668442352303,
+    "sharpe": 0.6271068516417473,
+    "drawdown": 0.2478311994596702
+  },
+  "S39": {
+    "strategy_id": "S39",
+    "rsi_threshold": 71,
+    "ma_period": 50,
+    "score": 1.7776437158366551,
+    "sharpe": 2.303156913720212,
+    "drawdown": 0.07984575840990499
+  },
+  "S40": {
+    "strategy_id": "S40",
+    "rsi_threshold": 46,
+    "ma_period": 20,
+    "score": 0.7253451771775018,
+    "sharpe": 1.1450076479570357,
+    "drawdown": 0.1430378923622308
+  },
+  "S41": {
+    "strategy_id": "S41",
+    "rsi_threshold": 24,
+    "ma_period": 10,
+    "score": 1.4158642336905072,
+    "sharpe": 1.6603314445763282,
+    "drawdown": 0.057787513031440856
+  },
+  "S42": {
+    "strategy_id": "S42",
+    "rsi_threshold": 43,
+    "ma_period": 50,
+    "score": 1.3756629779511478,
+    "sharpe": 1.1555884256221662,
+    "drawdown": 0.10275575878437651
+  },
+  "S43": {
+    "strategy_id": "S43",
+    "rsi_threshold": 41,
+    "ma_period": 20,
+    "score": 0.8674495990759918,
+    "sharpe": 2.705225517255546,
+    "drawdown": 0.2335483485897516
+  },
+  "S44": {
+    "strategy_id": "S44",
+    "rsi_threshold": 64,
+    "ma_period": 20,
+    "score": 1.8904927383276278,
+    "sharpe": 2.0753134070140327,
+    "drawdown": 0.15285641013698092
+  },
+  "S45": {
+    "strategy_id": "S45",
+    "rsi_threshold": 77,
+    "ma_period": 50,
+    "score": 1.6829296090600072,
+    "sharpe": 2.180218718242867,
+    "drawdown": 0.24493519255774854
+  },
+  "S46": {
+    "strategy_id": "S46",
+    "rsi_threshold": 21,
+    "ma_period": 10,
+    "score": 1.3167423793655666,
+    "sharpe": 2.9959031748129705,
+    "drawdown": 0.06360267919046976
+  },
+  "S47": {
+    "strategy_id": "S47",
+    "rsi_threshold": 53,
+    "ma_period": 20,
+    "score": 0.8308770757392856,
+    "sharpe": 0.8179842537677324,
+    "drawdown": 0.10910929412515724
+  },
+  "S48": {
+    "strategy_id": "S48",
+    "rsi_threshold": 46,
+    "ma_period": 50,
+    "score": 1.6241716475243755,
+    "sharpe": 1.28829071868711,
+    "drawdown": 0.22869999298709726
+  },
+  "S49": {
+    "strategy_id": "S49",
+    "rsi_threshold": 74,
+    "ma_period": 20,
+    "score": 0.8621186271922954,
+    "sharpe": 1.4032254726126667,
+    "drawdown": 0.06158943964488648
+  },
+  "S50": {
+    "strategy_id": "S50",
+    "rsi_threshold": 73,
+    "ma_period": 50,
+    "score": 1.0698356789802328,
+    "sharpe": 1.1464666047610819,
+    "drawdown": 0.1223150585497655
+  },
+  "S51": {
+    "strategy_id": "S51",
+    "rsi_threshold": 24,
+    "ma_period": 50,
+    "score": 0.9015321051109706,
+    "sharpe": 0.7557689079506403,
+    "drawdown": 0.0905187148436045
+  },
+  "S52": {
+    "strategy_id": "S52",
+    "rsi_threshold": 47,
+    "ma_period": 10,
+    "score": 0.8116873087928734,
+    "sharpe": 2.638520045955862,
+    "drawdown": 0.05438727785118445
+  },
+  "S53": {
+    "strategy_id": "S53",
+    "rsi_threshold": 79,
+    "ma_period": 50,
+    "score": 1.5094840630599167,
+    "sharpe": 2.9820624448244626,
+    "drawdown": 0.1251682577415269
+  },
+  "S54": {
+    "strategy_id": "S54",
+    "rsi_threshold": 36,
+    "ma_period": 10,
+    "score": 1.4507822675695197,
+    "sharpe": 1.7634177266443105,
+    "drawdown": 0.08539196595874579
+  },
+  "S55": {
+    "strategy_id": "S55",
+    "rsi_threshold": 25,
+    "ma_period": 10,
+    "score": 0.6049308577129833,
+    "sharpe": 0.5468724158504014,
+    "drawdown": 0.23426074564571037
+  },
+  "S56": {
+    "strategy_id": "S56",
+    "rsi_threshold": 72,
+    "ma_period": 10,
+    "score": 1.8130926857485925,
+    "sharpe": 1.2910323510875217,
+    "drawdown": 0.11457692719186044
+  },
+  "S57": {
+    "strategy_id": "S57",
+    "rsi_threshold": 51,
+    "ma_period": 10,
+    "score": 0.8637871041382298,
+    "sharpe": 0.9290404118578652,
+    "drawdown": 0.10201684520957924
+  },
+  "S58": {
+    "strategy_id": "S58",
+    "rsi_threshold": 54,
+    "ma_period": 50,
+    "score": 1.0137526877637169,
+    "sharpe": 1.606497030221728,
+    "drawdown": 0.057067486106703785
+  },
+  "S59": {
+    "strategy_id": "S59",
+    "rsi_threshold": 49,
+    "ma_period": 20,
+    "score": 1.155686487610384,
+    "sharpe": 0.6749192201858529,
+    "drawdown": 0.13619609160120522
+  },
+  "S60": {
+    "strategy_id": "S60",
+    "rsi_threshold": 37,
+    "ma_period": 20,
+    "score": 0.7920509155221747,
+    "sharpe": 2.3979823704099568,
+    "drawdown": 0.05778882229290501
+  },
+  "S61": {
+    "strategy_id": "S61",
+    "rsi_threshold": 31,
+    "ma_period": 20,
+    "score": 1.39066120800684,
+    "sharpe": 2.590721978229964,
+    "drawdown": 0.12247726406185813
+  },
+  "S62": {
+    "strategy_id": "S62",
+    "rsi_threshold": 54,
+    "ma_period": 10,
+    "score": 1.3116115355877276,
+    "sharpe": 0.8943933296857651,
+    "drawdown": 0.11488623613393832
+  },
+  "S63": {
+    "strategy_id": "S63",
+    "rsi_threshold": 74,
+    "ma_period": 10,
+    "score": 1.5297611086831884,
+    "sharpe": 1.837232542759058,
+    "drawdown": 0.12960350488038608
+  },
+  "S64": {
+    "strategy_id": "S64",
+    "rsi_threshold": 73,
+    "ma_period": 10,
+    "score": 1.0403469451123835,
+    "sharpe": 2.544568006850956,
+    "drawdown": 0.11559439399326105
+  },
+  "S65": {
+    "strategy_id": "S65",
+    "rsi_threshold": 48,
+    "ma_period": 50,
+    "score": 0.715245228686767,
+    "sharpe": 0.528247568642627,
+    "drawdown": 0.1578074747605414
+  },
+  "S66": {
+    "strategy_id": "S66",
+    "rsi_threshold": 55,
+    "ma_period": 50,
+    "score": 1.0782393431596375,
+    "sharpe": 0.6498692330885363,
+    "drawdown": 0.09337675487193786
+  },
+  "S67": {
+    "strategy_id": "S67",
+    "rsi_threshold": 46,
+    "ma_period": 50,
+    "score": 1.0533817567614334,
+    "sharpe": 2.3986971190932564,
+    "drawdown": 0.22289762841079264
+  },
+  "S68": {
+    "strategy_id": "S68",
+    "rsi_threshold": 64,
+    "ma_period": 20,
+    "score": 0.5907509344626543,
+    "sharpe": 1.5181944966924539,
+    "drawdown": 0.1280050732364159
+  },
+  "S69": {
+    "strategy_id": "S69",
+    "rsi_threshold": 66,
+    "ma_period": 50,
+    "score": 1.1233797888906496,
+    "sharpe": 2.8390932311287633,
+    "drawdown": 0.10097052858072193
+  },
+  "S70": {
+    "strategy_id": "S70",
+    "rsi_threshold": 69,
+    "ma_period": 10,
+    "score": 0.7482572180491991,
+    "sharpe": 1.63033912312891,
+    "drawdown": 0.18410450529040062
+  },
+  "S71": {
+    "strategy_id": "S71",
+    "rsi_threshold": 30,
+    "ma_period": 10,
+    "score": 1.81982054032855,
+    "sharpe": 2.8027714463799116,
+    "drawdown": 0.20294513306703077
+  },
+  "S72": {
+    "strategy_id": "S72",
+    "rsi_threshold": 48,
+    "ma_period": 50,
+    "score": 1.9146588119330894,
+    "sharpe": 1.9912476183221473,
+    "drawdown": 0.10225935196298125
+  },
+  "S73": {
+    "strategy_id": "S73",
+    "rsi_threshold": 50,
+    "ma_period": 50,
+    "score": 1.9570812511314393,
+    "sharpe": 1.708502683632994,
+    "drawdown": 0.1844242370013643
+  },
+  "S74": {
+    "strategy_id": "S74",
+    "rsi_threshold": 54,
+    "ma_period": 10,
+    "score": 1.743253041173111,
+    "sharpe": 1.6509158356585885,
+    "drawdown": 0.20690507573257905
+  },
+  "S75": {
+    "strategy_id": "S75",
+    "rsi_threshold": 55,
+    "ma_period": 10,
+    "score": 1.6664085656878727,
+    "sharpe": 2.806361491779274,
+    "drawdown": 0.13215215165202238
+  },
+  "S76": {
+    "strategy_id": "S76",
+    "rsi_threshold": 40,
+    "ma_period": 10,
+    "score": 1.4440901161866335,
+    "sharpe": 1.5406712594058598,
+    "drawdown": 0.09143094815031916
+  },
+  "S77": {
+    "strategy_id": "S77",
+    "rsi_threshold": 42,
+    "ma_period": 10,
+    "score": 1.7504060262631695,
+    "sharpe": 1.3493558504618994,
+    "drawdown": 0.11791892885138847
+  },
+  "S78": {
+    "strategy_id": "S78",
+    "rsi_threshold": 41,
+    "ma_period": 50,
+    "score": 1.6523348870374714,
+    "sharpe": 2.551294408592001,
+    "drawdown": 0.18685127507647153
+  },
+  "S79": {
+    "strategy_id": "S79",
+    "rsi_threshold": 80,
+    "ma_period": 10,
+    "score": 0.5701573849120909,
+    "sharpe": 2.6676707777041146,
+    "drawdown": 0.05993366174423516
+  },
+  "S80": {
+    "strategy_id": "S80",
+    "rsi_threshold": 71,
+    "ma_period": 50,
+    "score": 1.858002435398105,
+    "sharpe": 0.8383623914451389,
+    "drawdown": 0.19073929563554537
+  },
+  "S81": {
+    "strategy_id": "S81",
+    "rsi_threshold": 31,
+    "ma_period": 50,
+    "score": 1.6831069270490466,
+    "sharpe": 1.1060686693327373,
+    "drawdown": 0.12305222291728715
+  },
+  "S82": {
+    "strategy_id": "S82",
+    "rsi_threshold": 39,
+    "ma_period": 50,
+    "score": 1.4707762094994588,
+    "sharpe": 2.5701655304814963,
+    "drawdown": 0.20970685985848453
+  },
+  "S83": {
+    "strategy_id": "S83",
+    "rsi_threshold": 54,
+    "ma_period": 20,
+    "score": 1.7675708568064343,
+    "sharpe": 0.8986761386200854,
+    "drawdown": 0.08274266841041147
+  },
+  "S84": {
+    "strategy_id": "S84",
+    "rsi_threshold": 64,
+    "ma_period": 20,
+    "score": 0.8296812416378898,
+    "sharpe": 0.8006536837572532,
+    "drawdown": 0.19002696698581406
+  },
+  "S85": {
+    "strategy_id": "S85",
+    "rsi_threshold": 63,
+    "ma_period": 50,
+    "score": 1.1861361518615765,
+    "sharpe": 1.332962293314334,
+    "drawdown": 0.05854562439887903
+  },
+  "S86": {
+    "strategy_id": "S86",
+    "rsi_threshold": 74,
+    "ma_period": 20,
+    "score": 1.343665709346452,
+    "sharpe": 1.7466832236067007,
+    "drawdown": 0.22662196410875285
+  },
+  "S87": {
+    "strategy_id": "S87",
+    "rsi_threshold": 40,
+    "ma_period": 10,
+    "score": 1.9568880718255142,
+    "sharpe": 1.6611760413479744,
+    "drawdown": 0.07987048325245197
+  },
+  "S88": {
+    "strategy_id": "S88",
+    "rsi_threshold": 42,
+    "ma_period": 20,
+    "score": 0.9748624076854753,
+    "sharpe": 0.6531680581568338,
+    "drawdown": 0.06915769257201149
+  },
+  "S89": {
+    "strategy_id": "S89",
+    "rsi_threshold": 76,
+    "ma_period": 20,
+    "score": 1.4157820342564973,
+    "sharpe": 0.7200805593965403,
+    "drawdown": 0.14054966533172242
+  },
+  "S90": {
+    "strategy_id": "S90",
+    "rsi_threshold": 70,
+    "ma_period": 20,
+    "score": 1.1303432981890615,
+    "sharpe": 0.9185565994883356,
+    "drawdown": 0.18602620560939953
+  },
+  "S91": {
+    "strategy_id": "S91",
+    "rsi_threshold": 51,
+    "ma_period": 20,
+    "score": 1.462235506772056,
+    "sharpe": 0.9314946588511809,
+    "drawdown": 0.24534025988079405
+  },
+  "S92": {
+    "strategy_id": "S92",
+    "rsi_threshold": 55,
+    "ma_period": 50,
+    "score": 1.4786675377091458,
+    "sharpe": 2.980216353074987,
+    "drawdown": 0.12980241152640187
+  },
+  "S93": {
+    "strategy_id": "S93",
+    "rsi_threshold": 60,
+    "ma_period": 10,
+    "score": 0.8007841960580246,
+    "sharpe": 0.5448125157460335,
+    "drawdown": 0.09365029202079833
+  },
+  "S94": {
+    "strategy_id": "S94",
+    "rsi_threshold": 61,
+    "ma_period": 10,
+    "score": 1.881623304580839,
+    "sharpe": 1.2113656501322738,
+    "drawdown": 0.14542212887668043
+  },
+  "S95": {
+    "strategy_id": "S95",
+    "rsi_threshold": 43,
+    "ma_period": 50,
+    "score": 1.4426187078662867,
+    "sharpe": 1.9355945709670457,
+    "drawdown": 0.17625965559618334
+  },
+  "S96": {
+    "strategy_id": "S96",
+    "rsi_threshold": 20,
+    "ma_period": 20,
+    "score": 1.5922082385689516,
+    "sharpe": 2.616479839413328,
+    "drawdown": 0.22909987737661724
+  },
+  "S97": {
+    "strategy_id": "S97",
+    "rsi_threshold": 67,
+    "ma_period": 50,
+    "score": 0.7900947211561702,
+    "sharpe": 1.4171075430928564,
+    "drawdown": 0.2309132250480066
+  },
+  "S98": {
+    "strategy_id": "S98",
+    "rsi_threshold": 50,
+    "ma_period": 50,
+    "score": 1.2145161895448207,
+    "sharpe": 2.77538655129822,
+    "drawdown": 0.1584723503665885
+  },
+  "S99": {
+    "strategy_id": "S99",
+    "rsi_threshold": 24,
+    "ma_period": 50,
+    "score": 1.9593844438832446,
+    "sharpe": 2.1222266616405285,
+    "drawdown": 0.13245490974639873
+  }
+}

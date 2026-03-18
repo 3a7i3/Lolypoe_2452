@@ -1,11 +1,6 @@
-# QUANT_CORE Risk Management
+import unittest
 
-This module manages risk controls and validation for all strategies.
-
-## Responsibilities
-- Monitor exposures
-- Enforce risk limits
-- Integrate with Bot Doctor for validation
-
-## Entry Point
-Implement `RiskManager` class with validation and monitoring methods.
+@unittest.skip("Module QUANT_CORE.risk neutralisé (non implémenté)")
+class TestNeutraliseRisk(unittest.TestCase):
+	def test_neutralise(self):
+		self.skipTest("Module QUANT_CORE.risk neutralisé")

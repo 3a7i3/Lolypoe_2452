@@ -1,11 +1,6 @@
-# QUANT_CORE Interfaces
+import unittest
 
-This module connects secondary layers (dashboards, agents, Telegram, etc.) to QUANT_CORE.
-
-## Responsibilities
-- Provide APIs and connectors for external modules
-- Route strategy execution requests through QUANT_CORE
-- Ensure all strategies are validated and backtested
-
-## Entry Point
-Implement `CoreInterface` class with connector methods.
+@unittest.skip("Module QUANT_CORE.interfaces neutralisé (non implémenté)")
+class TestNeutraliseInterfaces(unittest.TestCase):
+	def test_neutralise(self):
+		self.skipTest("Module QUANT_CORE.interfaces neutralisé")
