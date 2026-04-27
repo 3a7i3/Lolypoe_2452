@@ -49,6 +49,10 @@ class RuntimeConfig:
     telegram_chat_id: str = ""     # ID du canal ou chat (V9_TELEGRAM_CHAT_ID)
     telegram_cooldown: float = 60.0  # secondes entre 2 alertes du même type
 
+    # Kelly Criterion (option K)
+    kelly_max_fraction: float = 0.25  # fraction max du capital par trade (V9_KELLY_MAX_FRACTION)
+    kelly_half: bool = True           # utilise half-Kelly pour réduire la variance (V9_KELLY_HALF)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -155,4 +159,6 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         telegram_bot_token=get_env_str("V9_TELEGRAM_BOT_TOKEN", ""),
         telegram_chat_id=get_env_str("V9_TELEGRAM_CHAT_ID", ""),
         telegram_cooldown=get_env_float("V9_TELEGRAM_COOLDOWN", 60.0, min_value=5.0, max_value=3600.0),
+        kelly_max_fraction=get_env_float("V9_KELLY_MAX_FRACTION", 0.25, min_value=0.01, max_value=1.0),
+        kelly_half=get_env_bool("V9_KELLY_HALF", True),
     )

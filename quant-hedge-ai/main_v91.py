@@ -29,6 +29,7 @@ from agents.research.paper_analyzer import PaperAnalyzer
 from agents.research.strategy_researcher import StrategyResearcher
 from agents.risk.drawdown_guard import DrawdownGuard
 from agents.risk.exposure_manager import ExposureManager
+from agents.risk.kelly_criterion import KellyCriterion, compute_avg_win_loss
 from agents.risk.risk_monitor import RiskMonitor
 from agents.strategy.genetic_optimizer import GeneticOptimizer
 from agents.strategy.rl_trader import RLTrader
@@ -91,6 +92,12 @@ def run_v91_system(
         bot_token=cfg.telegram_bot_token,
         chat_id=cfg.telegram_chat_id,
         cooldown_seconds=cfg.telegram_cooldown,
+    )
+
+    # ===== KELLY CRITERION (option K) =====
+    kelly = KellyCriterion(
+        max_fraction=cfg.kelly_max_fraction,
+        half_kelly=cfg.kelly_half,
     )
 
     # ===== WHALE RADAR =====
@@ -320,7 +327,26 @@ def run_v91_system(
         action = rl_trader.choose_action(action_state)
 
         dd = float(best.get("drawdown", 0.0)) if best else 0.0
-        size = drawdown_guard.adjust_position_size(dd, base_size=1.0)
+
+        # Kelly Criterion (option K) — taille de position depuis le meilleur backtest
+        if best:
+            _win_rate = float(best.get("win_rate", 0.0))
+            _returns_for_kelly = backtest_data  # bougies historiques
+            _avg_win, _avg_loss = compute_avg_win_loss(
+                [float(c["close"]) / float(backtest_data[i]["close"]) - 1.0
+                 for i, c in enumerate(backtest_data[1:], 1)]
+                if len(backtest_data) >= 2 else []
+            )
+            kelly_fraction = kelly.compute_size(
+                win_rate=_win_rate,
+                avg_win=_avg_win,
+                avg_loss=_avg_loss,
+                fallback=cfg.max_risk_per_trade,
+            )
+        else:
+            kelly_fraction = cfg.max_risk_per_trade
+
+        size = drawdown_guard.adjust_position_size(dd, base_size=kelly_fraction)
         price = next(float(c["close"]) for c in candles if c["symbol"] == symbol)
 
         if arbitrage.detect(price, price * random.uniform(0.985, 1.02), threshold=0.012):
@@ -444,9 +470,9 @@ def run_v91_system(
         }
 
         portfolio_brain_info = {
-            "kelly_fraction": 0.25,
+            "kelly_fraction": round(kelly_fraction, 4),
             "vol_target": features["realized_volatility"],
-            "max_position": 0.3,
+            "max_position": cfg.kelly_max_fraction,
         }
 
         # Render control center
