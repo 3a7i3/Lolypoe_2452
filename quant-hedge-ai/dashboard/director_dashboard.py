@@ -60,6 +60,8 @@ class DirectorSnapshot:
     telegram_alerts: list[str] = field(default_factory=list)
     evo_summary: dict = field(default_factory=dict)
     flow_summary: dict = field(default_factory=dict)
+    data_source: str = "unknown"
+    data_source_exchange: str = ""  # nom de l'exchange actif (ex: "binance", "kraken")
 
 
 class DirectorDashboard:
@@ -107,6 +109,8 @@ class DirectorDashboard:
         # Evolution + Flow
         evo_summary: dict | None = None,
         flow_summary: dict | None = None,
+        # Data source
+        data_source: str = "unknown",
     ) -> DirectorSnapshot:
         """Push new data into all monitoring subsystems and generate a snapshot."""
         self.system_health.record_cycle_start()
@@ -153,6 +157,12 @@ class DirectorDashboard:
         if len(self._telegram_alerts) > 50:
             self._telegram_alerts = self._telegram_alerts[-25:]
 
+        # Extraire le nom de l'exchange depuis data_source (ex: "binance_real" → "binance")
+        if data_source.endswith("_real"):
+            _exchange_name = data_source[: -len("_real")]
+        else:
+            _exchange_name = ""
+
         snapshot = DirectorSnapshot(
             cycle=cycle,
             agent_report=agent_report,
@@ -168,6 +178,8 @@ class DirectorDashboard:
             telegram_alerts=list(self._telegram_alerts[-5:]),
             evo_summary=evo_summary or {},
             flow_summary=flow_summary or {},
+            data_source=data_source,
+            data_source_exchange=_exchange_name,
         )
         self._snapshots.append(snapshot)
         if len(self._snapshots) > 200:
@@ -179,16 +191,41 @@ class DirectorDashboard:
         )
         return snapshot
 
+    @staticmethod
+    def _format_data_source(data_source: str, exchange_name: str) -> tuple[str, str]:
+        """Retourne (icône, libellé) selon la source de données."""
+        if data_source.endswith("_real"):
+            icon = "🟢"
+            label = f"{exchange_name.upper()} LIVE (CCXT)"
+        elif data_source == "synthetic_fallback":
+            icon = "🟡"
+            label = "SYNTHÉTIQUE (exchange inaccessible)"
+        else:
+            icon = "⚪"
+            label = "SOURCE INCONNUE"
+        return icon, label
+
     def render(self, snapshot: DirectorSnapshot | None = None) -> str:
         """Render the full Director Dashboard as a text report."""
         s = snapshot or (self._snapshots[-1] if self._snapshots else DirectorSnapshot())
 
+        src_icon, src_label = self._format_data_source(s.data_source, s.data_source_exchange)
+
         lines = [
             "",
             _SEP,
-            f"🎯  DIRECTOR SUPER DASHBOARD — CYCLE {s.cycle}",
+            f"🎯  DIRECTOR SUPER DASHBOARD — CYCLE {s.cycle}  |  {src_icon} {src_label}",
             _SEP,
         ]
+
+        # --- Data Source section ---
+        lines += [
+            "",
+            f"📡 SOURCE DONNÉES MARCHÉ",
+            f"   {src_icon} {src_label}",
+        ]
+        if s.data_source_exchange:
+            lines.append(f"   Exchange actif : {s.data_source_exchange.capitalize()}")
 
         # --- Market Radar section ---
         r = s.radar_summary

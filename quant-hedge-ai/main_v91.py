@@ -371,6 +371,7 @@ def run_v91_system(
                 trade_price=price,
                 evo_summary=evo_report.as_dict(),
                 flow_summary=flow_report.as_dict(),
+                data_source=data_source,
             )
 
         # ===== 10. MONITORING & CONTROL CENTER (NEW!) =====

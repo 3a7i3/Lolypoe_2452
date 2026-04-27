@@ -21,12 +21,13 @@ class AIControlCenter:
 
     def render_data_source(self, data_source: str, candle_count: int, history_count: int, timeframe: str) -> str:
         """Affiche l'origine des données de marché utilisées dans ce cycle."""
-        if data_source == "binance_real":
+        if data_source.endswith("_real"):
+            exchange = data_source[: -len("_real")].capitalize()
             icon = "🟢"
-            label = "BINANCE LIVE (CCXT)"
+            label = f"{exchange.upper()} LIVE (CCXT)"
         else:
             icon = "🟡"
-            label = "SYNTHÉTIQUE (Binance inaccessible)"
+            label = "SYNTHÉTIQUE (exchange inaccessible)"
 
         return (
             f"📡 SOURCE DONNÉES MARCHÉ\n"
@@ -37,8 +38,9 @@ class AIControlCenter:
         )
 
     def render_header(self, cycle: int, timestamp: str, data_source: str = "unknown") -> str:
-        if data_source == "binance_real":
-            src_badge = "🟢 BINANCE LIVE"
+        if data_source.endswith("_real"):
+            exchange = data_source[: -len("_real")].upper()
+            src_badge = f"🟢 {exchange} LIVE"
         elif data_source == "synthetic_fallback":
             src_badge = "🟡 SYNTHÉTIQUE"
         else:
