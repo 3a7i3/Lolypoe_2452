@@ -19,10 +19,33 @@ class AIControlCenter:
         return "\n".join(lines) + "\n"
     """Real-time monitoring dashboard for AI trading system."""
 
-    def render_header(self, cycle: int, timestamp: str) -> str:
+    def render_data_source(self, data_source: str, candle_count: int, history_count: int, timeframe: str) -> str:
+        """Affiche l'origine des données de marché utilisées dans ce cycle."""
+        if data_source == "binance_real":
+            icon = "🟢"
+            label = "BINANCE LIVE (CCXT)"
+        else:
+            icon = "🟡"
+            label = "SYNTHÉTIQUE (Binance inaccessible)"
+
+        return (
+            f"📡 SOURCE DONNÉES MARCHÉ\n"
+            f"  {icon} {label}\n"
+            f"  Timeframe  : {timeframe}\n"
+            f"  Snapshot   : {candle_count} symbole(s)\n"
+            f"  Historique : {history_count} bougie(s) pour le backtest\n"
+        )
+
+    def render_header(self, cycle: int, timestamp: str, data_source: str = "unknown") -> str:
+        if data_source == "binance_real":
+            src_badge = "🟢 BINANCE LIVE"
+        elif data_source == "synthetic_fallback":
+            src_badge = "🟡 SYNTHÉTIQUE"
+        else:
+            src_badge = "⚪ SOURCE INCONNUE"
         return (
             f"\n{'='*100}\n"
-            f"🤖 AI CONTROL CENTER - CYCLE {cycle} @ {timestamp}\n"
+            f"🤖 AI CONTROL CENTER - CYCLE {cycle} @ {timestamp}  |  {src_badge}\n"
             f"{'='*100}\n"
         )
 
@@ -115,11 +138,21 @@ class AIControlCenter:
         decision: dict,
         health: dict,
         flow_data: dict = None,
+        data_source_info: dict = None,
     ) -> str:
         """Render complete control center dashboard."""
         timestamp = datetime.now(timezone.utc).isoformat()
+        data_source = (data_source_info or {}).get("data_source", "unknown")
 
-        report = self.render_header(cycle, timestamp)
+        report = self.render_header(cycle, timestamp, data_source=data_source)
+        if data_source_info:
+            report += self.render_data_source(
+                data_source=data_source,
+                candle_count=data_source_info.get("candle_count", 0),
+                history_count=data_source_info.get("history_count", 0),
+                timeframe=data_source_info.get("timeframe", "1h"),
+            )
+            report += "\n"
         report += self.render_market_regime(market_regime)
         report += "\n"
         report += self.render_whale_radar(whale_data)

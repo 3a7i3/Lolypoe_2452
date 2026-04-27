@@ -33,6 +33,12 @@ class RuntimeConfig:
 
     dry_run: bool = False
 
+    # Paramètres CCXT / Binance
+    ccxt_symbols: str = "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT"
+    ccxt_timeframe: str = "1h"
+    ccxt_history_limit: int = 200  # nombre de bougies pour le backtest
+    ccxt_cache_ttl: float = 60.0  # secondes — 0 pour désactiver le cache
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -127,4 +133,8 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         doctor_report_export_enabled=get_env_bool("V9_DOCTOR_REPORT_EXPORT_ENABLED", False),
         doctor_report_export_dir=get_env_str("V9_DOCTOR_REPORT_EXPORT_DIR", "databases/doctor_reports"),
         dry_run=get_env_bool("V9_DRY_RUN", False),
+        ccxt_symbols=get_env_str("V9_CCXT_SYMBOLS", "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT"),
+        ccxt_timeframe=get_env_str("V9_CCXT_TIMEFRAME", "1h"),
+        ccxt_history_limit=get_env_int("V9_CCXT_HISTORY_LIMIT", 200, min_value=10, max_value=1000),
+        ccxt_cache_ttl=get_env_float("V9_CCXT_CACHE_TTL", 60.0, min_value=0.0, max_value=3600.0),
     )

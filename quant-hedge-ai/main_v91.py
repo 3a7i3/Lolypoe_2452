@@ -69,7 +69,8 @@ def run_v91_system(
     random.seed(cfg.seed)
 
     # ===== MARKET & INTELLIGENCE =====
-    scanner = MarketScanner()
+    _ccxt_symbols = [s.strip() for s in cfg.ccxt_symbols.split(",") if s.strip()]
+    scanner = MarketScanner(symbols=_ccxt_symbols, timeframe=cfg.ccxt_timeframe, cache_ttl=cfg.ccxt_cache_ttl)
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()
     feature_eng = FeatureEngineer()
@@ -154,13 +155,19 @@ def run_v91_system(
         # ===== 1. MARKET SCAN + INTELLIGENCE =====
         market = scanner.scan()
         candles = market["candles"]
+        data_source = market["data_source"]
         market_db.save_snapshot(market)
 
         symbols = [c["symbol"] for c in candles]
         close_prices = [float(c["close"]) for c in candles]
 
-        # Advanced feature engineering
-        features = feature_eng.extract_features(candles)
+        # Historique OHLCV réel pour le backtesting (symbole principal)
+        primary_symbol = symbols[0] if symbols else _ccxt_symbols[0]
+        history_candles = scanner.fetch_history(primary_symbol, limit=cfg.ccxt_history_limit)
+        backtest_data = history_candles if len(history_candles) >= 2 else candles
+
+        # Advanced feature engineering (sur l'historique si disponible)
+        features = feature_eng.extract_features(history_candles if len(history_candles) >= 3 else candles)
         anomalies = feature_eng.detect_anomalies(features)
 
         # Regime detection
@@ -190,7 +197,7 @@ def run_v91_system(
         evolved = optimizer.evolve(population, generations=cfg.generations)
 
         # ===== 3. BACKTESTING LAB =====
-        results = [backtest_lab.run_backtest(strategy=s, data=candles) for s in evolved]
+        results = [backtest_lab.run_backtest(strategy=s, data=backtest_data) for s in evolved]
 
         # ===== 3b. AI STRATEGY FACTORY (NEW!) =====
         factory_report = strategy_factory.run(
@@ -400,6 +407,12 @@ def run_v91_system(
         }
 
         # Render control center
+        data_source_info = {
+            "data_source": data_source,
+            "candle_count": len(candles),
+            "history_count": len(backtest_data),
+            "timeframe": cfg.ccxt_timeframe,
+        }
         report = control_center.render_full_report(
             cycle,
             market_regime_data,
@@ -411,6 +424,7 @@ def run_v91_system(
             decision_data,
             health_data,
             flow_data=flow_report.as_dict(),
+            data_source_info=data_source_info,
         )
 
         if cycle % cfg.display_frequency == 0:
