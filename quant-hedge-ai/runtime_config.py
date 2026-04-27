@@ -39,6 +39,7 @@ class RuntimeConfig:
     ccxt_history_limit: int = 200  # nombre de bougies pour le backtest
     ccxt_cache_ttl: float = 60.0  # secondes — 0 pour désactiver le cache
     ccxt_exchanges: str = "binance,kraken,okx"  # ordre de priorité des exchanges
+    ccxt_cache_db: str = ""  # chemin SQLite pour cache persistant (vide = désactivé)
 
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
@@ -139,4 +140,5 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         ccxt_history_limit=get_env_int("V9_CCXT_HISTORY_LIMIT", 200, min_value=10, max_value=1000),
         ccxt_cache_ttl=get_env_float("V9_CCXT_CACHE_TTL", 60.0, min_value=0.0, max_value=3600.0),
         ccxt_exchanges=get_env_str("V9_CCXT_EXCHANGES", "binance,kraken,okx"),
+        ccxt_cache_db=get_env_str("V9_CCXT_CACHE_DB", ""),
     )
