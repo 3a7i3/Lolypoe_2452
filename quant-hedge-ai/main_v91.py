@@ -79,6 +79,7 @@ def run_v91_system(
         exchanges=_ccxt_exchanges,
         cache_db_path=cfg.ccxt_cache_db or None,
         live_feed_interval=cfg.ccxt_ws_interval if cfg.ccxt_ws_enabled else 0.0,
+        use_websocket=cfg.ccxt_ws_pro,
     )
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()

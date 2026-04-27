@@ -42,6 +42,7 @@ class RuntimeConfig:
     ccxt_cache_db: str = ""  # chemin SQLite pour cache persistant (vide = désactivé)
     ccxt_ws_enabled: bool = False  # active le live ticker feed (option G)
     ccxt_ws_interval: float = 5.0  # intervalle de rafraîchissement en secondes (option G)
+    ccxt_ws_pro: bool = False  # utilise ccxt.pro WebSocket au lieu du polling REST (option L)
 
     # Alertes Telegram (option H)
     telegram_bot_token: str = ""   # token du bot (V9_TELEGRAM_BOT_TOKEN)
@@ -150,6 +151,7 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         ccxt_cache_db=get_env_str("V9_CCXT_CACHE_DB", ""),
         ccxt_ws_enabled=get_env_bool("V9_CCXT_WS_ENABLED", False),
         ccxt_ws_interval=get_env_float("V9_CCXT_WS_INTERVAL", 5.0, min_value=1.0, max_value=60.0),
+        ccxt_ws_pro=get_env_bool("V9_CCXT_WS_PRO", False),
         telegram_bot_token=get_env_str("V9_TELEGRAM_BOT_TOKEN", ""),
         telegram_chat_id=get_env_str("V9_TELEGRAM_CHAT_ID", ""),
         telegram_cooldown=get_env_float("V9_TELEGRAM_COOLDOWN", 60.0, min_value=5.0, max_value=3600.0),
