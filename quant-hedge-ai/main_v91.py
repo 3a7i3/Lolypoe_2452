@@ -76,6 +76,7 @@ def run_v91_system(
         timeframe=cfg.ccxt_timeframe,
         cache_ttl=cfg.ccxt_cache_ttl,
         exchanges=_ccxt_exchanges,
+        cache_db_path=cfg.ccxt_cache_db or None,
     )
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()

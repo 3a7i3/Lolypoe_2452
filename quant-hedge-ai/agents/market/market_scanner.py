@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import json
 import logging
 import random
+import sqlite3
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 logger = logging.getLogger(__name__)
@@ -67,6 +70,111 @@ class _Cache:
         return len(self._store)
 
 
+class _PersistentCache(_Cache):
+    """Cache TTL avec persistance SQLite pour survivre aux redémarrages.
+
+    Étend ``_Cache`` en synchronisant chaque écriture vers un fichier SQLite.
+    Au démarrage, les entrées non expirées sont rechargées depuis le disque.
+
+    Paramètres
+    ----------
+    ttl_seconds:
+        Durée de vie des entrées (en secondes). 0 = cache désactivé.
+    db_path:
+        Chemin du fichier SQLite. Les répertoires parents sont créés si nécessaire.
+    """
+
+    _CREATE_SQL = """
+        CREATE TABLE IF NOT EXISTS cache_entries (
+            key       TEXT PRIMARY KEY,
+            value_json TEXT NOT NULL,
+            expires_at REAL NOT NULL
+        )
+    """
+
+    def __init__(self, ttl_seconds: float = 60.0, db_path: str | Path = "market_cache.db") -> None:
+        super().__init__(ttl_seconds)
+        self._db_path = Path(db_path)
+        self._init_db()
+        self._load_from_disk()
+
+    def _connect(self) -> sqlite3.Connection:
+        conn = sqlite3.connect(str(self._db_path), timeout=5)
+        conn.execute("PRAGMA journal_mode=WAL")  # évite les locks sur Windows
+        return conn
+
+    def _init_db(self) -> None:
+        """Crée le répertoire et la table SQLite si nécessaire."""
+        self._db_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            with self._connect() as conn:
+                conn.execute(self._CREATE_SQL)
+        except Exception as exc:
+            logger.warning("_PersistentCache: impossible d'initialiser SQLite (%s)", exc)
+
+    def _load_from_disk(self) -> None:
+        """Charge les entrées non expirées depuis SQLite vers le store en mémoire."""
+        if self.ttl <= 0:
+            return
+        now = time.time()
+        try:
+            with self._connect() as conn:
+                rows = conn.execute(
+                    "SELECT key, value_json FROM cache_entries WHERE expires_at > ?", (now,)
+                ).fetchall()
+            for key, value_json in rows:
+                try:
+                    value = json.loads(value_json)
+                    # On insère dans le store mémoire avec le timestamp actuel —
+                    # l'entrée sera valide pour un TTL complet à partir du rechargement.
+                    self._store[key] = (time.monotonic(), value)
+                except json.JSONDecodeError:
+                    logger.warning("_PersistentCache: entrée corrompue pour la clé '%s' — ignorée", key)
+            if rows:
+                logger.info("_PersistentCache: %d entrée(s) rechargée(s) depuis %s", len(rows), self._db_path)
+        except Exception as exc:
+            logger.warning("_PersistentCache: échec lecture disque (%s) — démarrage à froid", exc)
+
+    def set(self, key: str, value: Any) -> None:
+        """Écrit dans le store mémoire ET sur disque."""
+        super().set(key, value)
+        if self.ttl <= 0:
+            return
+        expires_at = time.time() + self.ttl
+        try:
+            value_json = json.dumps(value)
+            with self._connect() as conn:
+                conn.execute(
+                    "INSERT OR REPLACE INTO cache_entries (key, value_json, expires_at) VALUES (?, ?, ?)",
+                    (key, value_json, expires_at),
+                )
+        except Exception as exc:
+            logger.warning("_PersistentCache: échec écriture disque pour '%s' (%s)", key, exc)
+
+    def invalidate(self, key: str | None = None) -> None:
+        """Invalide en mémoire ET sur disque."""
+        super().invalidate(key)
+        try:
+            with self._connect() as conn:
+                if key is None:
+                    conn.execute("DELETE FROM cache_entries")
+                else:
+                    conn.execute("DELETE FROM cache_entries WHERE key = ?", (key,))
+        except Exception as exc:
+            logger.warning("_PersistentCache: échec invalidation disque (%s)", exc)
+
+    def purge_expired(self) -> int:
+        """Supprime les entrées expirées du disque. Retourne le nombre supprimé."""
+        now = time.time()
+        try:
+            with self._connect() as conn:
+                cursor = conn.execute("DELETE FROM cache_entries WHERE expires_at <= ?", (now,))
+                return cursor.rowcount
+        except Exception as exc:
+            logger.warning("_PersistentCache: échec purge disque (%s)", exc)
+            return 0
+
+
 class MarketScanner:
     """Récupère les données OHLCV réelles via CCXT avec fallback multi-exchange.
 
@@ -96,11 +204,16 @@ class MarketScanner:
         timeframe: str = "1h",
         cache_ttl: float = 60.0,
         exchanges: list[str] | None = None,
+        cache_db_path: str | Path | None = None,
     ) -> None:
         self.symbols = symbols or ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]
         self.timeframe = timeframe
         self.exchange_names = exchanges or ["binance"]
-        self._cache = _Cache(ttl_seconds=cache_ttl)
+        if cache_db_path:
+            self._cache: _Cache = _PersistentCache(ttl_seconds=cache_ttl, db_path=cache_db_path)
+            logger.info("MarketScanner: cache persistant activé → %s", cache_db_path)
+        else:
+            self._cache = _Cache(ttl_seconds=cache_ttl)
         self._exchanges = self._init_exchanges()
 
     # ------------------------------------------------------------------
