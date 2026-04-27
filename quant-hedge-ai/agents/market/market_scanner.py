@@ -4,7 +4,9 @@ import json
 import logging
 import random
 import sqlite3
+import threading
 import time
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -175,6 +177,119 @@ class _PersistentCache(_Cache):
             return 0
 
 
+@dataclass
+class _ExchangeMetrics:
+    """Métriques de performance pour un exchange CCXT."""
+
+    name: str
+    calls: int = 0
+    successes: int = 0
+    failures: int = 0
+    total_latency_ms: float = 0.0
+    last_success_at: float = 0.0  # time.time() du dernier succès
+
+    @property
+    def avg_latency_ms(self) -> float:
+        if self.successes == 0:
+            return 0.0
+        return self.total_latency_ms / self.successes
+
+    @property
+    def success_rate(self) -> float:
+        if self.calls == 0:
+            return 0.0
+        return self.successes / self.calls
+
+    def record_success(self, latency_ms: float) -> None:
+        self.calls += 1
+        self.successes += 1
+        self.total_latency_ms += latency_ms
+        self.last_success_at = time.time()
+
+    def record_failure(self) -> None:
+        self.calls += 1
+        self.failures += 1
+
+
+class _LiveTickerFeed:
+    """Thread daemon qui rafraîchit les prix en continu via fetch_tickers().
+
+    Fonctionne en arrière-plan et met à jour ``latest_snapshot`` toutes les
+    ``interval`` secondes. Si un exchange échoue, essaie le suivant
+    (même logique de fallback que ``_fetch_real``).
+
+    ``data_source`` est suffixé ``_ws`` (ex: ``"binance_ws"``) pour distinguer
+    les données live des données REST OHLCV.
+    """
+
+    def __init__(
+        self,
+        exchanges: dict,  # {name: ccxt_exchange}
+        symbols: list[str],
+        interval: float = 5.0,
+    ) -> None:
+        self._exchanges = exchanges
+        self._symbols = symbols
+        self._interval = interval
+        self.latest_snapshot: dict | None = None  # {candles, data_source, fetched_at}
+        self._stop_event = threading.Event()
+        self._thread = threading.Thread(target=self._run, daemon=True, name="LiveTickerFeed")
+
+    def start(self) -> None:
+        self._thread.start()
+        logger.info("_LiveTickerFeed: démarré (interval=%.1fs)", self._interval)
+
+    def stop(self) -> None:
+        self._stop_event.set()
+        if self._thread.is_alive():
+            self._thread.join(timeout=self._interval + 2)
+        logger.info("_LiveTickerFeed: arrêté")
+
+    @property
+    def is_fresh(self) -> bool:
+        """Retourne True si le dernier snapshot a moins de 2*interval secondes."""
+        if self.latest_snapshot is None:
+            return False
+        age = time.monotonic() - self.latest_snapshot["fetched_at"]
+        return age < self._interval * 2
+
+    def _run(self) -> None:
+        while not self._stop_event.is_set():
+            self._refresh()
+            self._stop_event.wait(timeout=self._interval)
+
+    def _refresh(self) -> None:
+        for name, exchange in self._exchanges.items():
+            try:
+                ccxt_symbols = [_to_ccxt_symbol(s) for s in self._symbols]
+                tickers = exchange.fetch_tickers(ccxt_symbols)
+                candles: list[dict] = []
+                for internal_symbol in self._symbols:
+                    ccxt_sym = _to_ccxt_symbol(internal_symbol)
+                    t = tickers.get(ccxt_sym)
+                    if t is None:
+                        raise ValueError(f"ticker absent pour {ccxt_sym}")
+                    candles.append({
+                        "symbol": internal_symbol,
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "open": float(t.get("open") or t.get("last") or 0),
+                        "high": float(t.get("high") or t.get("last") or 0),
+                        "low": float(t.get("low") or t.get("last") or 0),
+                        "close": float(t.get("last") or 0),
+                        "volume": float(t.get("baseVolume") or 0),
+                    })
+                self.latest_snapshot = {
+                    "candles": candles,
+                    "data_source": f"{name}_ws",
+                    "fetched_at": time.monotonic(),
+                }
+                logger.debug("_LiveTickerFeed: snapshot rafraîchi depuis %s", name)
+                return  # succès — on ne tente pas l'exchange suivant
+            except Exception as exc:
+                logger.debug("_LiveTickerFeed: %s échoué (%s) — essai suivant", name, exc)
+        logger.debug("_LiveTickerFeed: tous les exchanges ont échoué ce cycle")
+
+
 class MarketScanner:
     """Récupère les données OHLCV réelles via CCXT avec fallback multi-exchange.
 
@@ -183,6 +298,8 @@ class MarketScanner:
     - Un cache TTL évite les appels réseau répétés entre cycles.
     - Les exchanges sont essayés dans l'ordre configuré (défaut : binance → kraken → okx).
     - Fallback automatique sur des données synthétiques si tous les exchanges échouent.
+    - Live feed optionnel : thread daemon qui rafraîchit les prix toutes les N secondes.
+    - Métriques par exchange : latence moyenne, taux de succès, nombre d'appels.
 
     Paramètres
     ----------
@@ -196,6 +313,11 @@ class MarketScanner:
     exchanges:
         Ordre de priorité des exchanges CCXT (noms minuscules).
         Configurable via V9_CCXT_EXCHANGES (ex: "binance,kraken,okx").
+    cache_db_path:
+        Chemin SQLite pour la persistance du cache (option F). None = mémoire seule.
+    live_feed_interval:
+        Intervalle en secondes du live ticker feed (option G). 0 = désactivé.
+        Configurable via V9_CCXT_WS_INTERVAL (activé si V9_CCXT_WS_ENABLED=true).
     """
 
     def __init__(
@@ -205,6 +327,7 @@ class MarketScanner:
         cache_ttl: float = 60.0,
         exchanges: list[str] | None = None,
         cache_db_path: str | Path | None = None,
+        live_feed_interval: float = 0.0,
     ) -> None:
         self.symbols = symbols or ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]
         self.timeframe = timeframe
@@ -215,6 +338,17 @@ class MarketScanner:
         else:
             self._cache = _Cache(ttl_seconds=cache_ttl)
         self._exchanges = self._init_exchanges()
+        self._metrics: dict[str, _ExchangeMetrics] = {
+            name: _ExchangeMetrics(name=name) for name in self.exchange_names
+        }
+        self._live_feed: _LiveTickerFeed | None = None
+        if live_feed_interval > 0 and self._exchanges:
+            self._live_feed = _LiveTickerFeed(
+                exchanges=self._exchanges,
+                symbols=self.symbols,
+                interval=live_feed_interval,
+            )
+            self._live_feed.start()
 
     # ------------------------------------------------------------------
     # Compatibilité rétroactive — les tests existants utilisent _exchange
@@ -233,6 +367,44 @@ class MarketScanner:
         else:
             first_name = self.exchange_names[0] if self.exchange_names else "binance"
             self._exchanges = {first_name: value}
+
+    # ------------------------------------------------------------------
+    # Cycle de vie
+    # ------------------------------------------------------------------
+
+    def stop(self) -> None:
+        """Arrête proprement le live feed si actif."""
+        if self._live_feed is not None:
+            self._live_feed.stop()
+            self._live_feed = None
+
+    # ------------------------------------------------------------------
+    # Métriques par exchange (option I)
+    # ------------------------------------------------------------------
+
+    @property
+    def exchange_metrics(self) -> dict[str, _ExchangeMetrics]:
+        """Retourne les métriques de performance par exchange."""
+        return self._metrics
+
+    def get_metrics_report(self) -> str:
+        """Retourne un rapport texte des métriques par exchange."""
+        if not self._metrics:
+            return "📊 EXCHANGE METRICS\n   Aucune donnée\n"
+        lines = ["📊 EXCHANGE METRICS"]
+        for name, m in self._metrics.items():
+            last_ok = (
+                datetime.fromtimestamp(m.last_success_at, tz=timezone.utc).strftime("%H:%M:%S")
+                if m.last_success_at > 0
+                else "jamais"
+            )
+            status = "🟢" if m.success_rate >= 0.8 else ("🟡" if m.success_rate >= 0.5 else "🔴")
+            lines.append(
+                f"   {status} {name:<10s}  appels={m.calls:3d}  succès={m.successes:3d}"
+                f"  échecs={m.failures:2d}  taux={m.success_rate:.0%}"
+                f"  latence_moy={m.avg_latency_ms:.0f}ms  dernier_ok={last_ok}"
+            )
+        return "\n".join(lines) + "\n"
 
     # ------------------------------------------------------------------
     # Initialisation
@@ -266,8 +438,10 @@ class MarketScanner:
         """Essaie chaque exchange dans l'ordre jusqu'au premier succès.
 
         Retourne ``(candles, exchange_name)`` ou ``None`` si tous échouent.
+        Enregistre les métriques de latence et de succès/échec par exchange.
         """
         for name, exchange in self._exchanges.items():
+            t0 = time.monotonic()
             try:
                 snapshots: list[dict] = []
                 for internal_symbol in self.symbols:
@@ -288,15 +462,21 @@ class MarketScanner:
                             "volume": float(volume),
                         }
                     )
+                latency_ms = (time.monotonic() - t0) * 1000
+                if name in self._metrics:
+                    self._metrics[name].record_success(latency_ms)
                 logger.info(
-                    "MarketScanner: OHLCV réel (%s, %s) depuis %s pour %d symboles [réseau]",
+                    "MarketScanner: OHLCV réel (%s, %s) depuis %s pour %d symboles [réseau, %.0fms]",
                     self.timeframe,
                     snapshots[0]["timestamp"] if snapshots else "?",
                     name,
                     len(snapshots),
+                    latency_ms,
                 )
                 return snapshots, name
             except Exception as exc:
+                if name in self._metrics:
+                    self._metrics[name].record_failure()
                 logger.warning(
                     "Échec fetch OHLCV %s (%s) — essai exchange suivant", name, exc
                 )
@@ -324,22 +504,27 @@ class MarketScanner:
     def scan(self) -> dict:
         """Retourne la dernière bougie OHLCV pour chaque symbole.
 
-        Le résultat est mis en cache pendant ``cache_ttl`` secondes.
+        Priorité : live feed (option G) > cache TTL > REST OHLCV > synthétique.
         Si tous les exchanges échouent, bascule sur des données synthétiques.
 
-        Le champ ``data_source`` indique l'origine des données :
-        - ``"binance_real"``       : données live Binance via CCXT
-        - ``"kraken_real"``        : données live Kraken (fallback)
-        - ``"okx_real"``           : données live OKX (fallback)
-        - ``"<name>_real"``        : tout exchange ccxt configuré
-        - ``"synthetic_fallback"`` : données synthétiques (tous exchanges inaccessibles)
+        ``data_source`` :
+        - ``"<name>_ws"``          : live ticker feed (background thread)
+        - ``"<name>_real"``        : REST OHLCV via CCXT
+        - ``"synthetic_fallback"`` : données synthétiques
         """
+        # 1. Live feed en priorité (option G)
+        if self._live_feed is not None and self._live_feed.is_fresh:
+            logger.debug("MarketScanner: scan() servi depuis le live feed")
+            return self._live_feed.latest_snapshot  # type: ignore[return-value]
+
+        # 2. Cache TTL
         cache_key = f"scan:{self.timeframe}"
         cached = self._cache.get(cache_key)
         if cached is not _SENTINEL:
             logger.debug("MarketScanner: scan() servi depuis le cache")
-            return cached  # cached est le dict complet {candles, data_source}
+            return cached
 
+        # 3. REST OHLCV
         result = self._fetch_real()
         if result is not None:
             candles, exchange_name = result
@@ -347,8 +532,8 @@ class MarketScanner:
             self._cache.set(cache_key, response)
             return response
 
+        # 4. Synthétique
         synthetic = self._generate_synthetic()
-        # On ne met PAS les données synthétiques en cache : on réessaie au prochain cycle
         return {"candles": synthetic, "data_source": "synthetic_fallback"}
 
     # ------------------------------------------------------------------
@@ -373,6 +558,7 @@ class MarketScanner:
 
         ccxt_symbol = _to_ccxt_symbol(symbol)
         for name, exchange in self._exchanges.items():
+            t0 = time.monotonic()
             try:
                 ohlcv = exchange.fetch_ohlcv(ccxt_symbol, self.timeframe, limit=limit)
                 candles = [
@@ -387,16 +573,22 @@ class MarketScanner:
                     }
                     for ts, o, h, lo, c, v in ohlcv
                 ]
+                latency_ms = (time.monotonic() - t0) * 1000
+                if name in self._metrics:
+                    self._metrics[name].record_success(latency_ms)
                 logger.info(
-                    "MarketScanner: historique %s (%d bougies, %s) depuis %s [réseau]",
+                    "MarketScanner: historique %s (%d bougies, %s) depuis %s [réseau, %.0fms]",
                     symbol,
                     len(candles),
                     self.timeframe,
                     name,
+                    latency_ms,
                 )
                 self._cache.set(cache_key, candles)
                 return candles
             except Exception as exc:
+                if name in self._metrics:
+                    self._metrics[name].record_failure()
                 logger.warning(
                     "fetch_history(%s) échoué sur %s (%s) — essai exchange suivant",
                     symbol,
