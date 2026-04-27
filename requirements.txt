@@ -2,3 +2,4 @@ panel
 pandas
 hvplot
 requests
+ccxt>=4.0.0
