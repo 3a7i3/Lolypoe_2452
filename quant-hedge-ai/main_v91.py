@@ -30,6 +30,7 @@ from agents.research.strategy_researcher import StrategyResearcher
 from agents.risk.drawdown_guard import DrawdownGuard
 from agents.risk.exposure_manager import ExposureManager
 from agents.risk.kelly_criterion import KellyCriterion, compute_avg_win_loss
+from agents.risk.cvar_calculator import CVaRCalculator
 from agents.risk.risk_monitor import RiskMonitor
 from agents.strategy.genetic_optimizer import GeneticOptimizer
 from agents.strategy.rl_trader import RLTrader
@@ -44,6 +45,7 @@ from liquidity_map import LiquidityFlowMap
 from data.market_database import MarketDatabase
 from data.strategy_database import StrategyDatabase
 from databases.strategy_scoreboard import StrategyScoreboard
+from databases.strategy_scoreboard_sql import StrategyScoreboardSQL
 from engine.decision_engine import DecisionEngine, StrategyRanker
 from runtime_config import RuntimeConfig, get_env_int, load_runtime_config_from_env
 
@@ -98,6 +100,12 @@ def run_v91_system(
     kelly = KellyCriterion(
         max_fraction=cfg.kelly_max_fraction,
         half_kelly=cfg.kelly_half,
+    )
+
+    # ===== CVaR / EXPECTED SHORTFALL (option M) =====
+    cvar_calc = CVaRCalculator(
+        confidence=cfg.cvar_confidence,
+        max_loss=cfg.cvar_max_loss,
     )
 
     # ===== WHALE RADAR =====
@@ -168,7 +176,7 @@ def run_v91_system(
     # ===== DATABASES =====
     market_db = MarketDatabase()
     strategy_db = StrategyDatabase()
-    scoreboard = StrategyScoreboard()
+    scoreboard = StrategyScoreboardSQL(db_path=cfg.scoreboard_sql_path)
 
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
@@ -347,6 +355,19 @@ def run_v91_system(
             kelly_fraction = cfg.max_risk_per_trade
 
         size = drawdown_guard.adjust_position_size(dd, base_size=kelly_fraction)
+
+        # CVaR / Expected Shortfall (option M) — gate de risque extrême
+        _price_returns = (
+            [float(c["close"]) / float(backtest_data[i]["close"]) - 1.0
+             for i, c in enumerate(backtest_data[1:], 1)]
+            if len(backtest_data) >= 2 else []
+        )
+        cvar_value = cvar_calc.compute(_price_returns)
+        cvar_within_limit = cvar_calc.is_within_limit(_price_returns)
+        if not cvar_within_limit:
+            # CVaR dépasse le seuil → réduit la taille de moitié
+            size = size * 0.5
+
         price = next(float(c["close"]) for c in candles if c["symbol"] == symbol)
 
         if arbitrage.detect(price, price * random.uniform(0.985, 1.02), threshold=0.012):
@@ -471,6 +492,8 @@ def run_v91_system(
 
         portfolio_brain_info = {
             "kelly_fraction": round(kelly_fraction, 4),
+            "cvar": round(cvar_value, 4),
+            "cvar_within_limit": cvar_within_limit,
             "vol_target": features["realized_volatility"],
             "max_position": cfg.kelly_max_fraction,
         }

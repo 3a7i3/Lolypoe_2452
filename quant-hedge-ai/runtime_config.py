@@ -53,6 +53,13 @@ class RuntimeConfig:
     kelly_max_fraction: float = 0.25  # fraction max du capital par trade (V9_KELLY_MAX_FRACTION)
     kelly_half: bool = True           # utilise half-Kelly pour réduire la variance (V9_KELLY_HALF)
 
+    # CVaR / Expected Shortfall (option M)
+    cvar_confidence: float = 0.95     # niveau de confiance (V9_CVAR_CONFIDENCE)
+    cvar_max_loss: float = 0.05       # perte max tolérée dans le tail (V9_CVAR_MAX_LOSS)
+
+    # Strategy Scoreboard SQL (option N)
+    scoreboard_sql_path: str = "databases/strategy_scoreboard.db"  # V9_SCOREBOARD_SQL_PATH
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -161,4 +168,7 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         telegram_cooldown=get_env_float("V9_TELEGRAM_COOLDOWN", 60.0, min_value=5.0, max_value=3600.0),
         kelly_max_fraction=get_env_float("V9_KELLY_MAX_FRACTION", 0.25, min_value=0.01, max_value=1.0),
         kelly_half=get_env_bool("V9_KELLY_HALF", True),
+        cvar_confidence=get_env_float("V9_CVAR_CONFIDENCE", 0.95, min_value=0.50, max_value=0.999),
+        cvar_max_loss=get_env_float("V9_CVAR_MAX_LOSS", 0.05, min_value=0.001, max_value=1.0),
+        scoreboard_sql_path=get_env_str("V9_SCOREBOARD_SQL_PATH", "databases/strategy_scoreboard.db"),
     )
