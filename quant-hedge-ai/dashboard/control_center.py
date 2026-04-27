@@ -21,7 +21,11 @@ class AIControlCenter:
 
     def render_data_source(self, data_source: str, candle_count: int, history_count: int, timeframe: str) -> str:
         """Affiche l'origine des données de marché utilisées dans ce cycle."""
-        if data_source.endswith("_real"):
+        if data_source.endswith("_ws"):
+            exchange = data_source[: -len("_ws")].capitalize()
+            icon = "🟢"
+            label = f"{exchange.upper()} LIVE FEED (WebSocket)"
+        elif data_source.endswith("_real"):
             exchange = data_source[: -len("_real")].capitalize()
             icon = "🟢"
             label = f"{exchange.upper()} LIVE (CCXT)"
@@ -38,7 +42,10 @@ class AIControlCenter:
         )
 
     def render_header(self, cycle: int, timestamp: str, data_source: str = "unknown") -> str:
-        if data_source.endswith("_real"):
+        if data_source.endswith("_ws"):
+            exchange = data_source[: -len("_ws")].upper()
+            src_badge = f"🟢 {exchange} LIVE FEED"
+        elif data_source.endswith("_real"):
             exchange = data_source[: -len("_real")].upper()
             src_badge = f"🟢 {exchange} LIVE"
         elif data_source == "synthetic_fallback":

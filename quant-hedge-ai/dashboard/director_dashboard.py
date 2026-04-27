@@ -62,6 +62,7 @@ class DirectorSnapshot:
     flow_summary: dict = field(default_factory=dict)
     data_source: str = "unknown"
     data_source_exchange: str = ""  # nom de l'exchange actif (ex: "binance", "kraken")
+    exchange_metrics_report: str = ""  # rapport texte des métriques par exchange (option I)
 
 
 class DirectorDashboard:
@@ -111,6 +112,8 @@ class DirectorDashboard:
         flow_summary: dict | None = None,
         # Data source
         data_source: str = "unknown",
+        # Exchange metrics (option I)
+        exchange_metrics_report: str = "",
     ) -> DirectorSnapshot:
         """Push new data into all monitoring subsystems and generate a snapshot."""
         self.system_health.record_cycle_start()
@@ -180,6 +183,7 @@ class DirectorDashboard:
             flow_summary=flow_summary or {},
             data_source=data_source,
             data_source_exchange=_exchange_name,
+            exchange_metrics_report=exchange_metrics_report,
         )
         self._snapshots.append(snapshot)
         if len(self._snapshots) > 200:
@@ -194,7 +198,10 @@ class DirectorDashboard:
     @staticmethod
     def _format_data_source(data_source: str, exchange_name: str) -> tuple[str, str]:
         """Retourne (icône, libellé) selon la source de données."""
-        if data_source.endswith("_real"):
+        if data_source.endswith("_ws"):
+            icon = "🟢"
+            label = f"{exchange_name.upper()} LIVE FEED (WebSocket)"
+        elif data_source.endswith("_real"):
             icon = "🟢"
             label = f"{exchange_name.upper()} LIVE (CCXT)"
         elif data_source == "synthetic_fallback":
@@ -374,6 +381,11 @@ class DirectorDashboard:
         lines.append(_SEP_THIN)
         if s.health_report:
             lines.append(self.system_health.render(s.health_report))
+
+        # --- Exchange Metrics (option I) ---
+        if s.exchange_metrics_report:
+            lines.append(_SEP_THIN)
+            lines.append(s.exchange_metrics_report.rstrip())
 
         # --- Telegram alerts ---
         lines.append(_SEP_THIN)

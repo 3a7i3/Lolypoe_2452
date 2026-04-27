@@ -40,6 +40,8 @@ class RuntimeConfig:
     ccxt_cache_ttl: float = 60.0  # secondes — 0 pour désactiver le cache
     ccxt_exchanges: str = "binance,kraken,okx"  # ordre de priorité des exchanges
     ccxt_cache_db: str = ""  # chemin SQLite pour cache persistant (vide = désactivé)
+    ccxt_ws_enabled: bool = False  # active le live ticker feed (option G)
+    ccxt_ws_interval: float = 5.0  # intervalle de rafraîchissement en secondes (option G)
 
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
@@ -141,4 +143,6 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         ccxt_cache_ttl=get_env_float("V9_CCXT_CACHE_TTL", 60.0, min_value=0.0, max_value=3600.0),
         ccxt_exchanges=get_env_str("V9_CCXT_EXCHANGES", "binance,kraken,okx"),
         ccxt_cache_db=get_env_str("V9_CCXT_CACHE_DB", ""),
+        ccxt_ws_enabled=get_env_bool("V9_CCXT_WS_ENABLED", False),
+        ccxt_ws_interval=get_env_float("V9_CCXT_WS_INTERVAL", 5.0, min_value=1.0, max_value=60.0),
     )

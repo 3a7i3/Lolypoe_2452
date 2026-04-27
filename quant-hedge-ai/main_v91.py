@@ -77,6 +77,7 @@ def run_v91_system(
         cache_ttl=cfg.ccxt_cache_ttl,
         exchanges=_ccxt_exchanges,
         cache_db_path=cfg.ccxt_cache_db or None,
+        live_feed_interval=cfg.ccxt_ws_interval if cfg.ccxt_ws_enabled else 0.0,
     )
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()
@@ -373,6 +374,7 @@ def run_v91_system(
                 evo_summary=evo_report.as_dict(),
                 flow_summary=flow_report.as_dict(),
                 data_source=data_source,
+                exchange_metrics_report=scanner.get_metrics_report() if hasattr(scanner, "get_metrics_report") else "",
             )
 
         # ===== 10. MONITORING & CONTROL CENTER (NEW!) =====
@@ -454,6 +456,10 @@ def run_v91_system(
             break
 
         time.sleep(max(0, cfg.sleep_seconds))
+
+    # Arrêt propre du live feed (option G)
+    if hasattr(scanner, "stop"):
+        scanner.stop()
 
 
 def _build_runtime_from_args() -> tuple[RuntimeConfig, bool, bool, bool]:
