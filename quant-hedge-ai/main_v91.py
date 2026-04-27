@@ -18,6 +18,7 @@ from agents.market.volatility_agent import VolatilityDetector
 from agents.monitoring.prompt_doctor_agent import CreatePromptAgent
 from agents.monitoring.performance_monitor import PerformanceMonitor
 from agents.monitoring.system_monitor import SystemMonitor
+from agents.notifications.telegram_notifier import TelegramNotifier
 from agents.portfolio import PortfolioBrain
 from agents.quant.backtest_lab import BacktestLab
 from agents.quant.monte_carlo import MonteCarloSimulator
@@ -83,6 +84,13 @@ def run_v91_system(
     vol_detector = VolatilityDetector()
     feature_eng = FeatureEngineer()
     regime_detector = AdvancedRegimeDetector()
+
+    # ===== TELEGRAM NOTIFIER (option H) =====
+    notifier = TelegramNotifier(
+        bot_token=cfg.telegram_bot_token,
+        chat_id=cfg.telegram_chat_id,
+        cooldown_seconds=cfg.telegram_cooldown,
+    )
 
     # ===== WHALE RADAR =====
     whale_radar = WhaleRadar(threshold_usd=cfg.whale_threshold_usd)
@@ -206,6 +214,20 @@ def run_v91_system(
 
         # ===== 3. BACKTESTING LAB =====
         results = [backtest_lab.run_backtest(strategy=s, data=backtest_data) for s in evolved]
+
+        # Résumé backtest pour le Director Dashboard (option J)
+        _bt_pnls = [r["pnl"] for r in results if r]
+        _bt_sharpes = [r["sharpe"] for r in results if r]
+        _bt_dds = [r["drawdown"] for r in results if r]
+        _bt_data_mode = results[0].get("data_mode", "synthetic") if results else "synthetic"
+        backtest_summary = {
+            "strategy_count": len(results),
+            "best_pnl": max(_bt_pnls, default=0.0),
+            "best_sharpe": max(_bt_sharpes, default=0.0),
+            "max_drawdown": max(_bt_dds, default=0.0),
+            "data_mode": _bt_data_mode,
+            "candles_count": len(backtest_data),
+        }
 
         # ===== 3b. AI STRATEGY FACTORY (NEW!) =====
         factory_report = strategy_factory.run(
@@ -351,6 +373,15 @@ def run_v91_system(
             if cycle % cfg.display_frequency == 0:
                 print(f"[Bot Doctor] Strategy snapshot after corrections: {corrected_strategy}")
 
+        # ===== 9a. TELEGRAM ALERTS (option H) =====
+        notifier.send_signal(action=action, symbol=symbol, price=price, data_source=data_source)
+        notifier.send_whale_alert(whale_alerts)
+        if _prev_doctor_health < 50:
+            notifier.send_health_alert(
+                health_score=_prev_doctor_health,
+                recommendation=doctor_result_for_director.get("top_recommendation", ""),
+            )
+
         # ===== 9c. Director Dashboard update =====
         director_snapshot = None
         if director is not None:
@@ -375,6 +406,7 @@ def run_v91_system(
                 flow_summary=flow_report.as_dict(),
                 data_source=data_source,
                 exchange_metrics_report=scanner.get_metrics_report() if hasattr(scanner, "get_metrics_report") else "",
+                backtest_summary=backtest_summary,
             )
 
         # ===== 10. MONITORING & CONTROL CENTER (NEW!) =====

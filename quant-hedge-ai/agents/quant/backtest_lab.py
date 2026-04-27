@@ -54,6 +54,7 @@ class BacktestLab:
 
         if len(returns) >= 2:
             returns = _apply_signal(returns, strategy)
+            data_mode = "real"
         else:
             # Fallback synthétique reproductible (préserve le comportement originel)
             import random  # noqa: PLC0415
@@ -61,6 +62,7 @@ class BacktestLab:
             random.seed(seed)
             n = max(20, len(data) * 10)
             returns = [random.uniform(-0.02, 0.03) for _ in range(n)]
+            data_mode = "synthetic"
 
         avg = mean(returns) if returns else 0.0
         variance = mean((r - avg) ** 2 for r in returns) if returns else 0.0
@@ -85,4 +87,6 @@ class BacktestLab:
             "sharpe": round(sharpe, 4),
             "drawdown": round(max_dd, 4),
             "win_rate": round(wins / len(returns), 4) if returns else 0.0,
+            "data_mode": data_mode,
+            "candles_count": len(data),
         }
