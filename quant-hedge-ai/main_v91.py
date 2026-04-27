@@ -70,7 +70,13 @@ def run_v91_system(
 
     # ===== MARKET & INTELLIGENCE =====
     _ccxt_symbols = [s.strip() for s in cfg.ccxt_symbols.split(",") if s.strip()]
-    scanner = MarketScanner(symbols=_ccxt_symbols, timeframe=cfg.ccxt_timeframe, cache_ttl=cfg.ccxt_cache_ttl)
+    _ccxt_exchanges = [e.strip() for e in cfg.ccxt_exchanges.split(",") if e.strip()]
+    scanner = MarketScanner(
+        symbols=_ccxt_symbols,
+        timeframe=cfg.ccxt_timeframe,
+        cache_ttl=cfg.ccxt_cache_ttl,
+        exchanges=_ccxt_exchanges,
+    )
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()
     feature_eng = FeatureEngineer()
@@ -365,6 +371,7 @@ def run_v91_system(
                 trade_price=price,
                 evo_summary=evo_report.as_dict(),
                 flow_summary=flow_report.as_dict(),
+                data_source=data_source,
             )
 
         # ===== 10. MONITORING & CONTROL CENTER (NEW!) =====

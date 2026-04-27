@@ -68,12 +68,13 @@ class _Cache:
 
 
 class MarketScanner:
-    """Récupère les données OHLCV réelles depuis Binance via CCXT.
+    """Récupère les données OHLCV réelles via CCXT avec fallback multi-exchange.
 
     - `scan()` retourne la dernière bougie pour chaque symbole configuré.
     - `fetch_history()` retourne N bougies pour un symbole (utilisé par BacktestLab).
     - Un cache TTL évite les appels réseau répétés entre cycles.
-    - Fallback automatique sur des données synthétiques si Binance est inaccessible.
+    - Les exchanges sont essayés dans l'ordre configuré (défaut : binance → kraken → okx).
+    - Fallback automatique sur des données synthétiques si tous les exchanges échouent.
 
     Paramètres
     ----------
@@ -84,6 +85,9 @@ class MarketScanner:
     cache_ttl:
         Durée de vie du cache en secondes. 0 = cache désactivé.
         Configurable via V9_CCXT_CACHE_TTL.
+    exchanges:
+        Ordre de priorité des exchanges CCXT (noms minuscules).
+        Configurable via V9_CCXT_EXCHANGES (ex: "binance,kraken,okx").
     """
 
     def __init__(
@@ -91,67 +95,99 @@ class MarketScanner:
         symbols: list[str] | None = None,
         timeframe: str = "1h",
         cache_ttl: float = 60.0,
+        exchanges: list[str] | None = None,
     ) -> None:
         self.symbols = symbols or ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]
         self.timeframe = timeframe
+        self.exchange_names = exchanges or ["binance"]
         self._cache = _Cache(ttl_seconds=cache_ttl)
-        self._exchange = self._init_exchange()
+        self._exchanges = self._init_exchanges()
+
+    # ------------------------------------------------------------------
+    # Compatibilité rétroactive — les tests existants utilisent _exchange
+    # ------------------------------------------------------------------
+
+    @property
+    def _exchange(self):
+        """Retourne le premier exchange disponible (compatibilité rétroactive)."""
+        return next(iter(self._exchanges.values()), None)
+
+    @_exchange.setter
+    def _exchange(self, value) -> None:
+        """Permet l'injection directe dans les tests (compatibilité rétroactive)."""
+        if value is None:
+            self._exchanges.clear()
+        else:
+            first_name = self.exchange_names[0] if self.exchange_names else "binance"
+            self._exchanges = {first_name: value}
 
     # ------------------------------------------------------------------
     # Initialisation
     # ------------------------------------------------------------------
 
-    def _init_exchange(self):
+    def _init_exchanges(self) -> dict:
+        """Initialise tous les exchanges configurés via ccxt."""
+        result: dict = {}
         try:
             import ccxt  # noqa: PLC0415
 
-            exchange = ccxt.binance({"timeout": 10_000, "enableRateLimit": True})
-            logger.info("MarketScanner: exchange Binance initialisé via ccxt")
-            return exchange
+            for name in self.exchange_names:
+                cls = getattr(ccxt, name, None)
+                if cls is None:
+                    logger.warning("Exchange '%s' non supporté par ccxt — ignoré", name)
+                    continue
+                try:
+                    result[name] = cls({"timeout": 10_000, "enableRateLimit": True})
+                    logger.info("MarketScanner: exchange '%s' initialisé via ccxt", name)
+                except Exception as exc:
+                    logger.warning("Impossible d'initialiser '%s' (%s) — ignoré", name, exc)
         except ImportError:
             logger.warning("ccxt non installé — MarketScanner utilisera des données synthétiques")
-        except Exception as exc:
-            logger.warning("Impossible d'initialiser Binance (%s) — données synthétiques", exc)
-        return None
+        return result
 
     # ------------------------------------------------------------------
     # scan() — dernière bougie par symbole
     # ------------------------------------------------------------------
 
-    def _fetch_real(self) -> list[dict] | None:
-        """Récupère la dernière bougie OHLCV pour chaque symbole depuis Binance."""
-        if self._exchange is None:
-            return None
-        try:
-            snapshots: list[dict] = []
-            for internal_symbol in self.symbols:
-                ccxt_symbol = _to_ccxt_symbol(internal_symbol)
-                ohlcv = self._exchange.fetch_ohlcv(ccxt_symbol, self.timeframe, limit=2)
-                if not ohlcv:
-                    logger.warning("Réponse OHLCV vide pour %s", ccxt_symbol)
-                    return None
-                ts, open_, high, low, close, volume = ohlcv[-1]
-                snapshots.append(
-                    {
-                        "symbol": internal_symbol,
-                        "timestamp": datetime.fromtimestamp(ts / 1000, tz=timezone.utc).isoformat(),
-                        "open": float(open_),
-                        "high": float(high),
-                        "low": float(low),
-                        "close": float(close),
-                        "volume": float(volume),
-                    }
+    def _fetch_real(self) -> tuple[list[dict], str] | None:
+        """Essaie chaque exchange dans l'ordre jusqu'au premier succès.
+
+        Retourne ``(candles, exchange_name)`` ou ``None`` si tous échouent.
+        """
+        for name, exchange in self._exchanges.items():
+            try:
+                snapshots: list[dict] = []
+                for internal_symbol in self.symbols:
+                    ccxt_symbol = _to_ccxt_symbol(internal_symbol)
+                    ohlcv = exchange.fetch_ohlcv(ccxt_symbol, self.timeframe, limit=2)
+                    if not ohlcv:
+                        logger.warning("Réponse OHLCV vide pour %s sur %s", ccxt_symbol, name)
+                        raise ValueError(f"réponse vide pour {ccxt_symbol}")
+                    ts, open_, high, low, close, volume = ohlcv[-1]
+                    snapshots.append(
+                        {
+                            "symbol": internal_symbol,
+                            "timestamp": datetime.fromtimestamp(ts / 1000, tz=timezone.utc).isoformat(),
+                            "open": float(open_),
+                            "high": float(high),
+                            "low": float(low),
+                            "close": float(close),
+                            "volume": float(volume),
+                        }
+                    )
+                logger.info(
+                    "MarketScanner: OHLCV réel (%s, %s) depuis %s pour %d symboles [réseau]",
+                    self.timeframe,
+                    snapshots[0]["timestamp"] if snapshots else "?",
+                    name,
+                    len(snapshots),
                 )
-            logger.info(
-                "MarketScanner: OHLCV réel (%s, %s) pour %d symboles [réseau]",
-                self.timeframe,
-                snapshots[0]["timestamp"] if snapshots else "?",
-                len(snapshots),
-            )
-            return snapshots
-        except Exception as exc:
-            logger.warning("Échec fetch OHLCV Binance (%s) — bascule sur données synthétiques", exc)
-            return None
+                return snapshots, name
+            except Exception as exc:
+                logger.warning(
+                    "Échec fetch OHLCV %s (%s) — essai exchange suivant", name, exc
+                )
+        return None
 
     def _generate_synthetic(self) -> list[dict]:
         """Génère des données OHLCV synthétiques (fallback)."""
@@ -176,25 +212,30 @@ class MarketScanner:
         """Retourne la dernière bougie OHLCV pour chaque symbole.
 
         Le résultat est mis en cache pendant ``cache_ttl`` secondes.
-        Si Binance est inaccessible, bascule sur des données synthétiques.
+        Si tous les exchanges échouent, bascule sur des données synthétiques.
 
         Le champ ``data_source`` indique l'origine des données :
         - ``"binance_real"``       : données live Binance via CCXT
-        - ``"synthetic_fallback"`` : données synthétiques (Binance inaccessible)
+        - ``"kraken_real"``        : données live Kraken (fallback)
+        - ``"okx_real"``           : données live OKX (fallback)
+        - ``"<name>_real"``        : tout exchange ccxt configuré
+        - ``"synthetic_fallback"`` : données synthétiques (tous exchanges inaccessibles)
         """
         cache_key = f"scan:{self.timeframe}"
         cached = self._cache.get(cache_key)
         if cached is not _SENTINEL:
             logger.debug("MarketScanner: scan() servi depuis le cache")
-            return {"candles": cached, "data_source": "binance_real"}
+            return cached  # cached est le dict complet {candles, data_source}
 
-        real = self._fetch_real()
-        if real is not None:
-            self._cache.set(cache_key, real)
-            return {"candles": real, "data_source": "binance_real"}
+        result = self._fetch_real()
+        if result is not None:
+            candles, exchange_name = result
+            response = {"candles": candles, "data_source": f"{exchange_name}_real"}
+            self._cache.set(cache_key, response)
+            return response
 
         synthetic = self._generate_synthetic()
-        # On ne met PAS les données synthétiques en cache : on réessaie Binance au prochain cycle
+        # On ne met PAS les données synthétiques en cache : on réessaie au prochain cycle
         return {"candles": synthetic, "data_source": "synthetic_fallback"}
 
     # ------------------------------------------------------------------
@@ -206,7 +247,7 @@ class MarketScanner:
 
         Utilisé par BacktestLab pour calculer des métriques sur données réelles.
         Le résultat est mis en cache pendant ``cache_ttl`` secondes.
-        Retourne une liste vide si Binance est inaccessible.
+        Les exchanges sont essayés dans l'ordre ; retourne une liste vide si tous échouent.
         """
         cache_key = f"history:{symbol}:{self.timeframe}:{limit}"
         cached = self._cache.get(cache_key)
@@ -214,32 +255,41 @@ class MarketScanner:
             logger.debug("MarketScanner: fetch_history(%s) servi depuis le cache", symbol)
             return cached
 
-        if self._exchange is None:
+        if not self._exchanges:
             return []
-        try:
-            ccxt_symbol = _to_ccxt_symbol(symbol)
-            ohlcv = self._exchange.fetch_ohlcv(ccxt_symbol, self.timeframe, limit=limit)
-            candles = [
-                {
-                    "symbol": symbol,
-                    "timestamp": datetime.fromtimestamp(ts / 1000, tz=timezone.utc).isoformat(),
-                    "open": float(o),
-                    "high": float(h),
-                    "low": float(lo),
-                    "close": float(c),
-                    "volume": float(v),
-                }
-                for ts, o, h, lo, c, v in ohlcv
-            ]
-            logger.info(
-                "MarketScanner: historique %s (%d bougies, %s) [réseau]",
-                symbol,
-                len(candles),
-                self.timeframe,
-            )
-            self._cache.set(cache_key, candles)
-            return candles
-        except Exception as exc:
-            logger.warning("fetch_history(%s) échoué (%s) — historique vide", symbol, exc)
-            return []
+
+        ccxt_symbol = _to_ccxt_symbol(symbol)
+        for name, exchange in self._exchanges.items():
+            try:
+                ohlcv = exchange.fetch_ohlcv(ccxt_symbol, self.timeframe, limit=limit)
+                candles = [
+                    {
+                        "symbol": symbol,
+                        "timestamp": datetime.fromtimestamp(ts / 1000, tz=timezone.utc).isoformat(),
+                        "open": float(o),
+                        "high": float(h),
+                        "low": float(lo),
+                        "close": float(c),
+                        "volume": float(v),
+                    }
+                    for ts, o, h, lo, c, v in ohlcv
+                ]
+                logger.info(
+                    "MarketScanner: historique %s (%d bougies, %s) depuis %s [réseau]",
+                    symbol,
+                    len(candles),
+                    self.timeframe,
+                    name,
+                )
+                self._cache.set(cache_key, candles)
+                return candles
+            except Exception as exc:
+                logger.warning(
+                    "fetch_history(%s) échoué sur %s (%s) — essai exchange suivant",
+                    symbol,
+                    name,
+                    exc,
+                )
+        logger.warning("fetch_history(%s) — tous les exchanges ont échoué, historique vide", symbol)
+        return []
 

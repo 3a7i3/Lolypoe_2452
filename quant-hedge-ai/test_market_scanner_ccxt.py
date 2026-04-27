@@ -161,13 +161,14 @@ def test_scan_un_seul_symbole():
 
 
 def test_init_exchange_sans_ccxt():
-    """_init_exchange() retourne None si ccxt n'est pas installé."""
+    """_init_exchanges() retourne un dict vide si ccxt n'est pas installé."""
     with patch.dict("sys.modules", {"ccxt": None}):
         scanner = MarketScanner.__new__(MarketScanner)
         scanner.symbols = ["BTCUSDT"]
         scanner.timeframe = "1h"
-        exchange = scanner._init_exchange()
-        assert exchange is None
+        scanner.exchange_names = ["binance"]
+        exchanges = scanner._init_exchanges()
+        assert exchanges == {}
 
 
 # ---------------------------------------------------------------------------
