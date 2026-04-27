@@ -10,6 +10,7 @@ from agents.execution.arbitrage_agent import ArbitrageAgent
 from agents.execution.execution_engine import ExecutionEngine
 from agents.execution.liquidity_agent import LiquidityAnalyzer
 from agents.execution.paper_trading_engine import PaperTradingEngine
+from agents.execution.live_paper_engine import LivePaperEngine
 from agents.intelligence import FeatureEngineer
 from agents.intelligence.regime_detector import AdvancedRegimeDetector
 from agents.market.market_scanner import MarketScanner
@@ -164,7 +165,7 @@ def run_v91_system(
     execution = ExecutionEngine()
     arbitrage = ArbitrageAgent()
     liquidity = LiquidityAnalyzer()
-    paper = PaperTradingEngine()
+    paper = LivePaperEngine(initial_balance=cfg.initial_balance)  # option O
 
     # ===== MONITORING =====
     perf_monitor = PerformanceMonitor()
@@ -374,7 +375,7 @@ def run_v91_system(
             action = "SELL"
 
         order = execution.create_order(symbol=symbol, action=action, size=size)
-        paper_state = paper.execute(order, mark_price=price)
+        paper_state = paper.execute(order, mark_price=price, cycle=cycle)
 
         # ===== 9b. DIRECTOR SUPER DASHBOARD UPDATE (NEW!) =====
         doctor_result_for_director = {
@@ -496,6 +497,13 @@ def run_v91_system(
             "cvar_within_limit": cvar_within_limit,
             "vol_target": features["realized_volatility"],
             "max_position": cfg.kelly_max_fraction,
+            # Paper trading live (option O)
+            "equity": paper_state.get("equity", cfg.initial_balance),
+            "realized_pnl": paper_state.get("realized_pnl", 0.0),
+            "total_return_pct": paper_state.get("total_return_pct", 0.0),
+            "paper_drawdown_pct": paper_state.get("drawdown_pct", 0.0),
+            "paper_win_rate": paper_state.get("win_rate", 0.0),
+            "paper_trade_count": paper_state.get("trade_count", 0),
         }
 
         # Render control center
@@ -532,7 +540,12 @@ def run_v91_system(
         )
         if cycle % cfg.display_frequency == 0:
             print(f"📊 MonteCarlo Results: {mc}")
-            print(f"💰 Paper Trading State: {paper_state}")
+            print(f"💰 Paper Trading | Equity: ${paper_state.get('equity', 0):,.2f} | "
+                  f"PnL: ${paper_state.get('realized_pnl', 0):+.2f} | "
+                  f"Return: {paper_state.get('total_return_pct', 0):+.2f}% | "
+                  f"DD: {paper_state.get('drawdown_pct', 0):.2f}% | "
+                  f"WinRate: {paper_state.get('win_rate', 0):.1%} | "
+                  f"Trades: {paper_state.get('trade_count', 0)}")
 
         if cfg.max_cycles > 0 and cycle >= cfg.max_cycles:
             break

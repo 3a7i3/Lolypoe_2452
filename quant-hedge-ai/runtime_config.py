@@ -60,6 +60,9 @@ class RuntimeConfig:
     # Strategy Scoreboard SQL (option N)
     scoreboard_sql_path: str = "databases/strategy_scoreboard.db"  # V9_SCOREBOARD_SQL_PATH
 
+    # Paper Trading live (option O)
+    initial_balance: float = 100_000.0  # capital initial en USD (V9_INITIAL_BALANCE)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -171,4 +174,5 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         cvar_confidence=get_env_float("V9_CVAR_CONFIDENCE", 0.95, min_value=0.50, max_value=0.999),
         cvar_max_loss=get_env_float("V9_CVAR_MAX_LOSS", 0.05, min_value=0.001, max_value=1.0),
         scoreboard_sql_path=get_env_str("V9_SCOREBOARD_SQL_PATH", "databases/strategy_scoreboard.db"),
+        initial_balance=get_env_float("V9_INITIAL_BALANCE", 100_000.0, min_value=1.0),
     )
