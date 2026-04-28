@@ -15,6 +15,7 @@ from agents.intelligence import FeatureEngineer
 from agents.intelligence.regime_detector import AdvancedRegimeDetector
 from agents.market.market_scanner import MarketScanner
 from agents.market.orderflow_agent import OrderFlowAnalyzer
+from agents.market.symbol_router import SymbolRouter
 from agents.market.volatility_agent import VolatilityDetector
 from agents.monitoring.prompt_doctor_agent import CreatePromptAgent
 from agents.monitoring.performance_monitor import PerformanceMonitor
@@ -27,7 +28,9 @@ from agents.quant.portfolio_optimizer import PortfolioOptimizer
 from agents.research.feature_engineer import FeatureEngineer as LegacyFeatureEngineer
 from agents.research.model_builder import ModelBuilder
 from agents.research.paper_analyzer import PaperAnalyzer
+from agents.research.sentiment_feed import SentimentFeed
 from agents.research.strategy_researcher import StrategyResearcher
+from agents.risk.circuit_breaker import CircuitBreaker
 from agents.risk.drawdown_guard import DrawdownGuard
 from agents.risk.exposure_manager import ExposureManager
 from agents.risk.kelly_criterion import KellyCriterion, compute_avg_win_loss
@@ -161,11 +164,35 @@ def run_v91_system(
     drawdown_guard = DrawdownGuard()
     exposure_manager = ExposureManager()
 
+    # Circuit Breakers (option P)
+    circuit_breaker = CircuitBreaker(
+        daily_loss_limit=cfg.cb_daily_loss_limit,
+        drawdown_limit=cfg.cb_drawdown_limit,
+        consecutive_losses=cfg.cb_consecutive_losses,
+    )
+
     # ===== EXECUTION =====
     execution = ExecutionEngine()
     arbitrage = ArbitrageAgent()
     liquidity = LiquidityAnalyzer()
     paper = LivePaperEngine(initial_balance=cfg.initial_balance)  # option O
+
+    # Symbol Router — multi-symbole parallèle (option Q)
+    symbol_router = SymbolRouter(
+        max_symbols=cfg.symbol_router_max,
+        weighting=cfg.symbol_router_weighting,  # type: ignore[arg-type]
+        min_volume=cfg.symbol_router_min_volume,
+    )
+
+    # Sentiment Feed — Fear & Greed (option R)
+    sentiment_feed: SentimentFeed | None = (
+        SentimentFeed(
+            cache_ttl=cfg.sentiment_cache_ttl,
+            fallback_score=cfg.sentiment_fallback_score,
+        )
+        if cfg.sentiment_enabled
+        else None
+    )
 
     # ===== MONITORING =====
     perf_monitor = PerformanceMonitor()
@@ -326,6 +353,21 @@ def run_v91_system(
             max_risk=cfg.max_risk_per_trade,
         )
 
+        # ===== 7b. SENTIMENT FEED (option R) =====
+        sentiment_score: int = 50
+        sentiment_label: str = "Neutral"
+        sentiment_source: str = "disabled"
+        if sentiment_feed is not None:
+            _sent = sentiment_feed.fetch()
+            sentiment_score = _sent["score"]
+            sentiment_label = _sent["label"]
+            sentiment_source = _sent["source"]
+            # Score < bearish_threshold → réduit la décision de trader
+            if sentiment_score < cfg.sentiment_bearish_threshold and should_trade:
+                should_trade = False
+                if cycle % cfg.display_frequency == 0:
+                    print(f"😨 Sentiment BEARISH ({sentiment_label} {sentiment_score}) — trade bloqué")
+
         # ===== 8. MODEL RETRAINING =====
         model_info = model_builder.retrain(top_results)
 
@@ -374,8 +416,41 @@ def run_v91_system(
         if arbitrage.detect(price, price * random.uniform(0.985, 1.02), threshold=0.012):
             action = "SELL"
 
-        order = execution.create_order(symbol=symbol, action=action, size=size)
+        # ===== Circuit Breaker (option P) — gate avant exécution =====
+        _paper_dd_pct = paper_state_prev.get("drawdown_pct", 0.0) if "paper_state_prev" in dir() else 0.0
+        _paper_realized_pnl = paper_state_prev.get("realized_pnl", 0.0) if "paper_state_prev" in dir() else 0.0
+        cb_triggered = circuit_breaker.is_triggered(
+            current_drawdown_pct=_paper_dd_pct,
+            realized_pnl_today=_paper_realized_pnl,
+            initial_balance=cfg.initial_balance,
+        )
+        if cb_triggered:
+            cb_reason = circuit_breaker.reason()
+            if cycle % cfg.display_frequency == 0:
+                print(f"🔴 CIRCUIT BREAKER déclenché — {cb_reason}")
+            notifier.send_health_alert(
+                health_score=0.0,
+                recommendation=f"Circuit Breaker: {cb_reason}",
+            )
+            action = "HOLD"  # bloque le trade
+
+        # ===== Symbol Router (option Q) — dispatch multi-symbole =====
+        routed_orders = symbol_router.build_orders(candles, action=action, total_size=size)
+        if not routed_orders:
+            routed_orders = [{"symbol": symbol, "action": action, "size": size}]
+
+        # Trade principal (premier symbole)
+        primary_order_info = routed_orders[0]
+        order = execution.create_order(
+            symbol=primary_order_info["symbol"],
+            action=primary_order_info["action"],
+            size=primary_order_info["size"],
+        )
         paper_state = paper.execute(order, mark_price=price, cycle=cycle)
+
+        # Enregistre le résultat pour le circuit breaker (pertes consécutives)
+        circuit_breaker.record_trade_result(paper_state.get("last_trade_pnl", 0.0))
+        paper_state_prev = paper_state  # mémorisé pour le prochain cycle
 
         # ===== 9b. DIRECTOR SUPER DASHBOARD UPDATE (NEW!) =====
         doctor_result_for_director = {
@@ -504,6 +579,15 @@ def run_v91_system(
             "paper_drawdown_pct": paper_state.get("drawdown_pct", 0.0),
             "paper_win_rate": paper_state.get("win_rate", 0.0),
             "paper_trade_count": paper_state.get("trade_count", 0),
+            # Circuit Breaker (option P)
+            "circuit_breaker_triggered": cb_triggered,
+            "circuit_breaker_reason": circuit_breaker.reason(),
+            # Symbol Router (option Q)
+            "routed_symbols": [o["symbol"] for o in routed_orders],
+            # Sentiment (option R)
+            "sentiment_score": sentiment_score,
+            "sentiment_label": sentiment_label,
+            "sentiment_source": sentiment_source,
         }
 
         # Render control center
@@ -546,6 +630,22 @@ def run_v91_system(
                   f"DD: {paper_state.get('drawdown_pct', 0):.2f}% | "
                   f"WinRate: {paper_state.get('win_rate', 0):.1%} | "
                   f"Trades: {paper_state.get('trade_count', 0)}")
+            _cb_status = circuit_breaker.status()
+            _cb_icon = "🔴" if _cb_status["triggered"] else "🟢"
+            print(
+                f"{_cb_icon} Circuit Breaker | "
+                f"consec_losses={_cb_status['consecutive_losses']} | "
+                f"triggers_today={_cb_status['triggers_today']} | "
+                f"{'BLOQUÉ: ' + _cb_status['reason'] if _cb_status['triggered'] else 'OK'}"
+            )
+            _routed_str = ", ".join(o["symbol"] for o in routed_orders)
+            print(f"🔀 Symbol Router ({len(routed_orders)} symbols) → {_routed_str}")
+            if sentiment_feed is not None:
+                _sent_icon = "😨" if sentiment_score < 40 else ("😊" if sentiment_score > 60 else "😐")
+                print(
+                    f"{_sent_icon} Sentiment | score={sentiment_score}/100 | "
+                    f"{sentiment_label} | source={sentiment_source}"
+                )
 
         if cfg.max_cycles > 0 and cycle >= cfg.max_cycles:
             break

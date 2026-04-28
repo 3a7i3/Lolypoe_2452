@@ -59,6 +59,7 @@ class LivePaperEngine:
         self.peak_equity: float = initial_balance
         self.trade_log: list[TradeRecord] = []
         self.equity_curve: list[float] = [initial_balance]
+        self._last_trade_pnl: float = 0.0  # PnL du dernier trade (option P)
 
         self._cycle: int = 0
 
@@ -84,6 +85,7 @@ class LivePaperEngine:
         self._cycle = cycle
         self.last_prices[symbol] = mark_price
         realized_pnl_trade = 0.0
+        self._last_trade_pnl = 0.0
 
         if action == "BUY" and size > 0:
             notional = size * mark_price
@@ -104,6 +106,7 @@ class LivePaperEngine:
                 avg = self.avg_cost.get(symbol, mark_price)
                 realized_pnl_trade = (mark_price - avg) * sold_qty
                 self.realized_pnl += realized_pnl_trade
+                self._last_trade_pnl = realized_pnl_trade
                 self.balance += sold_qty * mark_price
                 remaining = current_qty - sold_qty
                 self.positions[symbol] = remaining
@@ -237,4 +240,5 @@ class LivePaperEngine:
             "drawdown_pct": round(self.drawdown_pct(), 4),
             "win_rate": round(self.win_rate(), 4),
             "trade_count": len(self.trade_log),
+            "last_trade_pnl": round(self._last_trade_pnl, 4),
         }

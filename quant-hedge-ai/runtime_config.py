@@ -63,6 +63,22 @@ class RuntimeConfig:
     # Paper Trading live (option O)
     initial_balance: float = 100_000.0  # capital initial en USD (V9_INITIAL_BALANCE)
 
+    # Circuit Breakers (option P)
+    cb_daily_loss_limit: float = 0.05     # perte journalière max en fraction du capital (V9_CB_DAILY_LOSS)
+    cb_drawdown_limit: float = 0.15       # drawdown max global (V9_CB_DRAWDOWN_LIMIT)
+    cb_consecutive_losses: int = 3        # pertes consécutives avant blocage (V9_CB_CONSECUTIVE)
+
+    # Multi-symbole (option Q)
+    symbol_router_max: int = 3            # nombre de symboles tradés en parallèle (V9_SYMBOL_ROUTER_MAX)
+    symbol_router_weighting: str = "volume"  # "volume" ou "equal" (V9_SYMBOL_ROUTER_WEIGHTING)
+    symbol_router_min_volume: float = 0.0    # volume minimum USD pour être éligible (V9_SYMBOL_ROUTER_MIN_VOLUME)
+
+    # Sentiment / Fear & Greed (option R)
+    sentiment_enabled: bool = True        # active le feed Fear & Greed (V9_SENTIMENT_ENABLED)
+    sentiment_cache_ttl: float = 300.0    # TTL du cache en secondes (V9_SENTIMENT_CACHE_TTL)
+    sentiment_fallback_score: int = 50    # score si API inaccessible (V9_SENTIMENT_FALLBACK)
+    sentiment_bearish_threshold: int = 30  # score en dessous duquel on réduit la taille (V9_SENTIMENT_BEARISH_THRESHOLD)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -175,4 +191,14 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         cvar_max_loss=get_env_float("V9_CVAR_MAX_LOSS", 0.05, min_value=0.001, max_value=1.0),
         scoreboard_sql_path=get_env_str("V9_SCOREBOARD_SQL_PATH", "databases/strategy_scoreboard.db"),
         initial_balance=get_env_float("V9_INITIAL_BALANCE", 100_000.0, min_value=1.0),
+        cb_daily_loss_limit=get_env_float("V9_CB_DAILY_LOSS", 0.05, min_value=0.0, max_value=1.0),
+        cb_drawdown_limit=get_env_float("V9_CB_DRAWDOWN_LIMIT", 0.15, min_value=0.0, max_value=1.0),
+        cb_consecutive_losses=get_env_int("V9_CB_CONSECUTIVE", 3, min_value=0, max_value=100),
+        symbol_router_max=get_env_int("V9_SYMBOL_ROUTER_MAX", 3, min_value=1, max_value=50),
+        symbol_router_weighting=get_env_str("V9_SYMBOL_ROUTER_WEIGHTING", "volume"),
+        symbol_router_min_volume=get_env_float("V9_SYMBOL_ROUTER_MIN_VOLUME", 0.0, min_value=0.0),
+        sentiment_enabled=get_env_bool("V9_SENTIMENT_ENABLED", True),
+        sentiment_cache_ttl=get_env_float("V9_SENTIMENT_CACHE_TTL", 300.0, min_value=0.0, max_value=3600.0),
+        sentiment_fallback_score=get_env_int("V9_SENTIMENT_FALLBACK", 50, min_value=0, max_value=100),
+        sentiment_bearish_threshold=get_env_int("V9_SENTIMENT_BEARISH_THRESHOLD", 30, min_value=0, max_value=100),
     )
