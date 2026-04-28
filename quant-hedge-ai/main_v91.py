@@ -36,6 +36,8 @@ from agents.risk.exposure_manager import ExposureManager
 from agents.risk.kelly_criterion import KellyCriterion, compute_avg_win_loss
 from agents.risk.cvar_calculator import CVaRCalculator
 from agents.risk.risk_monitor import RiskMonitor
+from agents.risk.stop_loss_manager import StopLossManager
+from agents.quant.walk_forward import WalkForwardOptimizer
 from agents.strategy.genetic_optimizer import GeneticOptimizer
 from agents.strategy.rl_trader import RLTrader
 from agents.strategy.strategy_generator import StrategyGenerator
@@ -194,6 +196,19 @@ def run_v91_system(
         else None
     )
 
+    # Stop Loss / Take Profit + Trailing (options S+T)
+    sl_manager = StopLossManager(
+        default_sl_pct=cfg.sl_pct,
+        default_tp_pct=cfg.tp_pct,
+        trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+    )
+
+    # Walk-Forward Optimizer (option U)
+    wfo = WalkForwardOptimizer(
+        n_splits=cfg.wfo_n_splits,
+        train_ratio=cfg.wfo_train_ratio,
+    ) if cfg.wfo_enabled else None
+
     # ===== MONITORING =====
     perf_monitor = PerformanceMonitor()
     system_monitor = SystemMonitor()
@@ -217,6 +232,29 @@ def run_v91_system(
         candles = market["candles"]
         data_source = market["data_source"]
         market_db.save_snapshot(market)
+
+        symbols = [c["symbol"] for c in candles]
+        close_prices = [float(c["close"]) for c in candles]
+
+        # ===== 1a. CHECK SL/TP/TRAILING (options S+T) avant tout le reste =====
+        _price_map = {c["symbol"]: float(c["close"]) for c in candles}
+        sl_triggers = sl_manager.check_all(_price_map)
+        for _trigger in sl_triggers:
+            _sl_icon = {"stop_loss": "🛑", "take_profit": "💰", "trailing_stop": "📉"}.get(
+                _trigger.trigger_type or "", "⚠️"
+            )
+            if cycle % cfg.display_frequency == 0:
+                print(
+                    f"{_sl_icon} {(_trigger.trigger_type or '').upper()} déclenché "
+                    f"sur {_trigger.symbol} @ {_trigger.current_price:.4f} "
+                    f"(seuil={_trigger.trigger_price:.4f})"
+                )
+            # Force un SELL sur le symbole déclenché
+            _sl_order = execution.create_order(
+                symbol=_trigger.symbol, action="SELL", size=cfg.sl_pct
+            )
+            paper.execute(_sl_order, mark_price=_trigger.current_price, cycle=cycle)
+            sl_manager.clear(_trigger.symbol)  # ferme le suivi SL
 
         symbols = [c["symbol"] for c in candles]
         close_prices = [float(c["close"]) for c in candles]
@@ -272,6 +310,22 @@ def run_v91_system(
             "data_mode": _bt_data_mode,
             "candles_count": len(backtest_data),
         }
+
+        # ===== 3b. WALK-FORWARD VALIDATION (option U) =====
+        wfo_result: dict = {"data_mode": "disabled", "mean_sharpe": 0.0, "stability": 0.0}
+        if wfo is not None and results:
+            # Évalue la meilleure stratégie en OOS
+            _best_for_wfo = max(results, key=lambda r: r.get("sharpe", 0.0))
+            wfo_result = wfo.run(strategy=_best_for_wfo.get("strategy", {}), data=backtest_data)
+            _wfo_robust = wfo.is_robust(wfo_result)
+            if cycle % cfg.display_frequency == 0:
+                _wfo_icon = "✅" if _wfo_robust else "⚠️"
+                print(
+                    f"{_wfo_icon} WFO | splits={wfo_result['n_splits_used']} | "
+                    f"mean_sharpe={wfo_result['mean_sharpe']:.3f} | "
+                    f"stability={wfo_result['stability']:.1%} | "
+                    f"{'ROBUSTE' if _wfo_robust else 'FRAGILE'}"
+                )
 
         # ===== 3b. AI STRATEGY FACTORY (NEW!) =====
         factory_report = strategy_factory.run(
@@ -447,6 +501,25 @@ def run_v91_system(
             size=primary_order_info["size"],
         )
         paper_state = paper.execute(order, mark_price=price, cycle=cycle)
+
+        # Enregistre les niveaux SL/TP si BUY exécuté (options S+T)
+        if primary_order_info["action"] == "BUY":
+            _atr = features.get("realized_volatility", 0.02) * price  # ATR approx
+            if cfg.sl_atr_enabled and _atr > 0:
+                sl_manager.set_levels_atr(
+                    symbol=primary_order_info["symbol"],
+                    entry_price=price,
+                    atr=_atr,
+                    sl_multiplier=cfg.sl_atr_multiplier,
+                    tp_multiplier=cfg.sl_tp_multiplier,
+                    trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+                )
+            else:
+                sl_manager.set_levels(
+                    symbol=primary_order_info["symbol"],
+                    entry_price=price,
+                    trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+                )
 
         # Enregistre le résultat pour le circuit breaker (pertes consécutives)
         circuit_breaker.record_trade_result(paper_state.get("last_trade_pnl", 0.0))

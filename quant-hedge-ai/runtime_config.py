@@ -79,6 +79,22 @@ class RuntimeConfig:
     sentiment_fallback_score: int = 50    # score si API inaccessible (V9_SENTIMENT_FALLBACK)
     sentiment_bearish_threshold: int = 30  # score en dessous duquel on réduit la taille (V9_SENTIMENT_BEARISH_THRESHOLD)
 
+    # Stop Loss / Take Profit (option S)
+    sl_pct: float = 0.05           # stop loss fixe en fraction de l'entrée (V9_SL_PCT)
+    tp_pct: float = 0.10           # take profit fixe en fraction de l'entrée (V9_TP_PCT)
+    sl_atr_enabled: bool = False   # SL/TP basé sur ATR au lieu du % fixe (V9_SL_ATR_ENABLED)
+    sl_atr_multiplier: float = 2.0  # distance SL = ATR × multiplicateur (V9_SL_ATR_MULT)
+    sl_tp_multiplier: float = 4.0   # distance TP = ATR × multiplicateur (V9_SL_TP_MULT)
+
+    # Trailing Stop (option T)
+    sl_trailing_enabled: bool = False  # active le trailing stop (V9_SL_TRAILING_ENABLED)
+    sl_trailing_pct: float = 0.03      # % trailing en dessous du pic (V9_SL_TRAILING_PCT)
+
+    # Walk-Forward Optimization (option U)
+    wfo_enabled: bool = False      # active la validation WFO (V9_WFO_ENABLED)
+    wfo_n_splits: int = 5          # nombre de splits train/test (V9_WFO_N_SPLITS)
+    wfo_train_ratio: float = 0.7   # fraction de train par split (V9_WFO_TRAIN_RATIO)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -201,4 +217,14 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         sentiment_cache_ttl=get_env_float("V9_SENTIMENT_CACHE_TTL", 300.0, min_value=0.0, max_value=3600.0),
         sentiment_fallback_score=get_env_int("V9_SENTIMENT_FALLBACK", 50, min_value=0, max_value=100),
         sentiment_bearish_threshold=get_env_int("V9_SENTIMENT_BEARISH_THRESHOLD", 30, min_value=0, max_value=100),
+        sl_pct=get_env_float("V9_SL_PCT", 0.05, min_value=0.001, max_value=1.0),
+        tp_pct=get_env_float("V9_TP_PCT", 0.10, min_value=0.0, max_value=10.0),
+        sl_atr_enabled=get_env_bool("V9_SL_ATR_ENABLED", False),
+        sl_atr_multiplier=get_env_float("V9_SL_ATR_MULT", 2.0, min_value=0.1, max_value=20.0),
+        sl_tp_multiplier=get_env_float("V9_SL_TP_MULT", 4.0, min_value=0.0, max_value=40.0),
+        sl_trailing_enabled=get_env_bool("V9_SL_TRAILING_ENABLED", False),
+        sl_trailing_pct=get_env_float("V9_SL_TRAILING_PCT", 0.03, min_value=0.001, max_value=1.0),
+        wfo_enabled=get_env_bool("V9_WFO_ENABLED", False),
+        wfo_n_splits=get_env_int("V9_WFO_N_SPLITS", 5, min_value=2, max_value=50),
+        wfo_train_ratio=get_env_float("V9_WFO_TRAIN_RATIO", 0.7, min_value=0.1, max_value=0.95),
     )
