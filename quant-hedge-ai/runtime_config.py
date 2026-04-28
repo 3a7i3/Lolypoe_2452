@@ -131,6 +131,11 @@ class RuntimeConfig:
     api_host: str = "0.0.0.0"            # hôte d'écoute (V9_API_HOST)
     api_port: int = 8000                  # port d'écoute (V9_API_PORT)
 
+    # Dashboard live Panel/Plotly (option AH)
+    dashboard_live_enabled: bool = False  # démarre le dashboard live (V9_DASHBOARD_LIVE_ENABLED)
+    dashboard_live_port: int = 5012       # port Panel (V9_DASHBOARD_LIVE_PORT)
+    dashboard_live_refresh_ms: int = 2000  # intervalle de rafraîchissement ms (V9_DASHBOARD_LIVE_REFRESH_MS)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -293,4 +298,8 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         api_enabled=get_env_bool("V9_API_ENABLED", False),
         api_host=get_env_str("V9_API_HOST", "0.0.0.0"),
         api_port=get_env_int("V9_API_PORT", 8000, min_value=1024, max_value=65535),
+        # Option AH — Dashboard live
+        dashboard_live_enabled=get_env_bool("V9_DASHBOARD_LIVE_ENABLED", False),
+        dashboard_live_port=get_env_int("V9_DASHBOARD_LIVE_PORT", 5012, min_value=1024, max_value=65535),
+        dashboard_live_refresh_ms=get_env_int("V9_DASHBOARD_LIVE_REFRESH_MS", 2000, min_value=500, max_value=60000),
     )

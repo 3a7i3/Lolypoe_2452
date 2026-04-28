@@ -292,6 +292,16 @@ def run_v91_system(
         _api_thread.start()
         print(f"🌐 API REST démarrée → http://{cfg.api_host}:{cfg.api_port}/docs")
 
+    if cfg.dashboard_live_enabled:
+        from dashboard.live_dashboard import start_live_dashboard
+        start_live_dashboard(
+            host=cfg.api_host,
+            port=cfg.dashboard_live_port,
+            refresh_ms=cfg.dashboard_live_refresh_ms,
+            state=_api_state,
+        )
+        print(f"📊 Dashboard live → http://{cfg.api_host}:{cfg.dashboard_live_port}")
+
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
     while True:
@@ -892,7 +902,7 @@ def run_v91_system(
         time.sleep(max(0, cfg.sleep_seconds))
 
         # ===== Mise à jour SystemState pour l'API REST (option AE) =====
-        if cfg.api_enabled:
+        if cfg.api_enabled or cfg.dashboard_live_enabled:
             import datetime as _dt
             _sb_top: list[dict] = []
             try:
@@ -918,9 +928,16 @@ def run_v91_system(
                 scoreboard_top=_sb_top,
                 last_updated=_dt.datetime.now(_dt.timezone.utc).isoformat(),
             )
+            # Historique equity pour dashboard live (option AH)
+            _api_state.push_equity_point(
+                cycle=cycle,
+                equity=float(paper_state.get("equity", cfg.initial_balance)),
+                pnl=float(paper_state.get("realized_pnl", 0.0)),
+                drawdown_pct=float(paper_state.get("drawdown_pct", 0.0)),
+            )
 
         # ===== Pause loop (option AE) =====
-        while cfg.api_enabled and _api_state.is_paused():
+        while (cfg.api_enabled or cfg.dashboard_live_enabled) and _api_state.is_paused():
             time.sleep(0.5)
 
     # Arrêt propre du live feed (option G)
