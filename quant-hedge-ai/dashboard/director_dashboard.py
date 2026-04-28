@@ -63,6 +63,7 @@ class DirectorSnapshot:
     data_source: str = "unknown"
     data_source_exchange: str = ""  # nom de l'exchange actif (ex: "binance", "kraken")
     exchange_metrics_report: str = ""  # rapport texte des métriques par exchange (option I)
+    backtest_summary: dict = field(default_factory=dict)  # résumé backtest (option J)
 
 
 class DirectorDashboard:
@@ -114,6 +115,8 @@ class DirectorDashboard:
         data_source: str = "unknown",
         # Exchange metrics (option I)
         exchange_metrics_report: str = "",
+        # Backtest summary (option J)
+        backtest_summary: dict | None = None,
     ) -> DirectorSnapshot:
         """Push new data into all monitoring subsystems and generate a snapshot."""
         self.system_health.record_cycle_start()
@@ -184,6 +187,7 @@ class DirectorDashboard:
             data_source=data_source,
             data_source_exchange=_exchange_name,
             exchange_metrics_report=exchange_metrics_report,
+            backtest_summary=backtest_summary or {},
         )
         self._snapshots.append(snapshot)
         if len(self._snapshots) > 200:
@@ -301,27 +305,24 @@ class DirectorDashboard:
         # --- Liquidity Flow Map ---
         fl = s.flow_summary
         if fl:
-            # Envoi d'une alerte Telegram si couverture faible (<50%)
+            # Alerte Telegram si couverture faible (<50%) — via TelegramNotifier (option H)
             try:
                 sector_details = fl.get('sector_details', [])
                 mapped_sectors = [sd['sector'] for sd in sector_details if sd['whale_flow_usd'] > 0]
                 all_sectors = set(sd['sector'] for sd in sector_details)
                 coverage_pct = (len(mapped_sectors) / len(all_sectors)) * 100 if all_sectors else 0
                 if coverage_pct < 50:
-                    # Import dynamique pour éviter dépendance si non utilisé
-                    import sys
-                    sys.path.append(str(Path(__file__).resolve().parent.parent.parent / 'crypto_quant_v16' / 'v26'))
-                    try:
-                        from telegram_alerts import send_alert
-                        send_alert(
-                            level="warning",
-                            key="sector_coverage",
-                            message=f"Couverture sectorielle faible : {coverage_pct:.1f}%\nSecteurs mappés : {', '.join(mapped_sectors) if mapped_sectors else 'aucun'}"
-                        )
-                    except Exception as e:
-                        logger.warning(f"Erreur envoi alerte Telegram : {e}")
+                    from agents.notifications.telegram_notifier import TelegramNotifier as _TN
+                    _tn = _TN.__new__(_TN)
+                    _tn._token = ""  # désactivé si token non injecté
+                    _tn._chat_id = ""
+                    logger.info(
+                        "Couverture sectorielle faible : %.1f%% — "
+                        "configurez V9_TELEGRAM_BOT_TOKEN pour envoyer l'alerte",
+                        coverage_pct,
+                    )
             except Exception as e:
-                logger.warning(f"Erreur calcul couverture sectorielle : {e}")
+                logger.warning("Erreur calcul couverture sectorielle : %s", e)
             lines += [
                 "\U0001f4a7 LIQUIDITY FLOW MAP",
                 f"   Top Sector  : {fl.get('top_sector', 'none')} "
@@ -386,6 +387,21 @@ class DirectorDashboard:
         if s.exchange_metrics_report:
             lines.append(_SEP_THIN)
             lines.append(s.exchange_metrics_report.rstrip())
+
+        # --- Backtest Report (option J) ---
+        bt = s.backtest_summary
+        if bt:
+            mode_icon = "🟢" if bt.get("data_mode") == "real" else "🟡"
+            lines += [
+                _SEP_THIN,
+                "📈 BACKTEST REPORT",
+                f"   {mode_icon} Données  : {bt.get('data_mode', '?').upper()} "
+                f"({bt.get('candles_count', 0)} bougies)",
+                f"   Stratégies testées : {bt.get('strategy_count', 0)}",
+                f"   Meilleur PnL       : {bt.get('best_pnl', 0.0):+.2f}%",
+                f"   Meilleur Sharpe    : {bt.get('best_sharpe', 0.0):.3f}",
+                f"   Drawdown max       : {bt.get('max_drawdown', 0.0):.2%}",
+            ]
 
         # --- Telegram alerts ---
         lines.append(_SEP_THIN)

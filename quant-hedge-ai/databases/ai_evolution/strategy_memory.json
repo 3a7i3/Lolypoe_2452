@@ -3,6 +3,23 @@
     "bull_trend": [
       {
         "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "MACD",
+          "period": 72,
+          "threshold": 1.525,
+          "timeframe": "5m"
+        },
+        "sharpe": 20.584,
+        "drawdown": 0.0096,
+        "win_rate": 0.9,
+        "pnl": 31.2765,
+        "doctor": {},
+        "age_cycles": 12,
+        "freshness": 0.64,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
           "entry_indicator": "MACD",
           "exit_indicator": "MACD",
           "period": 16,
@@ -14,7 +31,7 @@
         "win_rate": 0.9,
         "pnl": 28.4681,
         "doctor": {},
-        "age_cycles": 91,
+        "age_cycles": 130,
         "freshness": 0.1,
         "usage_count": 9
       },
@@ -31,9 +48,26 @@
         "win_rate": 0.85,
         "pnl": 22.8344,
         "doctor": {},
-        "age_cycles": 131,
+        "age_cycles": 170,
         "freshness": 0.1,
         "usage_count": 8
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 57,
+          "threshold": 2.238,
+          "timeframe": "5m"
+        },
+        "sharpe": 15.7779,
+        "drawdown": 0.0158,
+        "win_rate": 0.85,
+        "pnl": 26.1001,
+        "doctor": {},
+        "age_cycles": 33,
+        "freshness": 0.1,
+        "usage_count": 7
       },
       {
         "strategy": {
@@ -48,9 +82,26 @@
         "win_rate": 0.8,
         "pnl": 24.1427,
         "doctor": {},
-        "age_cycles": 21,
-        "freshness": 0.37,
-        "usage_count": 2
+        "age_cycles": 60,
+        "freshness": 0.1,
+        "usage_count": 7
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 57,
+          "threshold": 1.497,
+          "timeframe": "15m"
+        },
+        "sharpe": 15.0624,
+        "drawdown": 0.0244,
+        "win_rate": 0.8,
+        "pnl": 28.947,
+        "doctor": {},
+        "age_cycles": 17,
+        "freshness": 0.49,
+        "usage_count": 5
       },
       {
         "strategy": {
@@ -65,7 +116,7 @@
         "win_rate": 0.8,
         "pnl": 26.3945,
         "doctor": {},
-        "age_cycles": 81,
+        "age_cycles": 120,
         "freshness": 0.1,
         "usage_count": 7
       },
@@ -82,9 +133,9 @@
         "win_rate": 0.8,
         "pnl": 24.4798,
         "doctor": {},
-        "age_cycles": 76,
+        "age_cycles": 115,
         "freshness": 0.1,
-        "usage_count": 6
+        "usage_count": 7
       },
       {
         "strategy": {
@@ -99,7 +150,7 @@
         "win_rate": 0.8,
         "pnl": 24.3691,
         "doctor": {},
-        "age_cycles": 132,
+        "age_cycles": 171,
         "freshness": 0.1,
         "usage_count": 6
       },
@@ -116,9 +167,9 @@
         "win_rate": 0.9,
         "pnl": 27.6029,
         "doctor": {},
-        "age_cycles": 19,
-        "freshness": 0.43,
-        "usage_count": 1
+        "age_cycles": 58,
+        "freshness": 0.1,
+        "usage_count": 6
       },
       {
         "strategy": {
@@ -133,7 +184,7 @@
         "win_rate": 0.75,
         "pnl": 22.9094,
         "doctor": {},
-        "age_cycles": 142,
+        "age_cycles": 181,
         "freshness": 0.1,
         "usage_count": 6
       },
@@ -150,9 +201,26 @@
         "win_rate": 0.8,
         "pnl": 26.862,
         "doctor": {},
-        "age_cycles": 110,
+        "age_cycles": 149,
         "freshness": 0.1,
         "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 57,
+          "threshold": 1.748,
+          "timeframe": "5m"
+        },
+        "sharpe": 13.805,
+        "drawdown": 0.0159,
+        "win_rate": 0.85,
+        "pnl": 21.3164,
+        "doctor": {},
+        "age_cycles": 8,
+        "freshness": 0.76,
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -167,7 +235,24 @@
         "win_rate": 0.7,
         "pnl": 20.6389,
         "doctor": {},
-        "age_cycles": 39,
+        "age_cycles": 78,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 20,
+          "threshold": 2.067,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.51,
+        "drawdown": 0.0181,
+        "win_rate": 0.8,
+        "pnl": 22.9254,
+        "doctor": {},
+        "age_cycles": 33,
         "freshness": 0.1,
         "usage_count": 5
       },
@@ -184,8 +269,42 @@
         "win_rate": 0.8,
         "pnl": 19.1717,
         "doctor": {},
-        "age_cycles": 21,
-        "freshness": 0.37,
+        "age_cycles": 60,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 22,
+          "threshold": 1.651,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.1032,
+        "drawdown": 0.0119,
+        "win_rate": 0.7,
+        "pnl": 23.0917,
+        "doctor": {},
+        "age_cycles": 17,
+        "freshness": 0.49,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 58,
+          "threshold": 1.263,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.8125,
+        "drawdown": 0.0179,
+        "win_rate": 0.7,
+        "pnl": 21.511,
+        "doctor": {},
+        "age_cycles": 15,
+        "freshness": 0.55,
         "usage_count": 2
       },
       {
@@ -206,7 +325,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 34,
+        "age_cycles": 73,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -228,8 +347,25 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 187,
+        "age_cycles": 226,
         "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 30,
+          "threshold": 0.713,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.6291,
+        "drawdown": 0.0279,
+        "win_rate": 0.8,
+        "pnl": 27.5265,
+        "doctor": {},
+        "age_cycles": 21,
+        "freshness": 0.37,
         "usage_count": 4
       },
       {
@@ -245,7 +381,7 @@
         "win_rate": 0.7,
         "pnl": 25.5232,
         "doctor": {},
-        "age_cycles": 112,
+        "age_cycles": 151,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -267,7 +403,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 186,
+        "age_cycles": 225,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -284,31 +420,9 @@
         "win_rate": 0.75,
         "pnl": 22.6391,
         "doctor": {},
-        "age_cycles": 37,
+        "age_cycles": 76,
         "freshness": 0.1,
         "usage_count": 4
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "ATR",
-          "period": 30,
-          "threshold": 0.713,
-          "timeframe": "4h"
-        },
-        "sharpe": 12.4152,
-        "drawdown": 0.0206,
-        "win_rate": 0.7333,
-        "pnl": 37.1726,
-        "doctor": {
-          "approved": true,
-          "health_score": 100.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": []
-        },
-        "age_cycles": 34,
-        "freshness": 0.1,
-        "usage_count": 3
       },
       {
         "strategy": {
@@ -328,7 +442,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 153,
+        "age_cycles": 192,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -345,9 +459,26 @@
         "win_rate": 0.7,
         "pnl": 21.9806,
         "doctor": {},
-        "age_cycles": 73,
+        "age_cycles": 112,
         "freshness": 0.1,
-        "usage_count": 3
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 14,
+          "threshold": 2.187,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.2095,
+        "drawdown": 0.0077,
+        "win_rate": 0.65,
+        "pnl": 19.7479,
+        "doctor": {},
+        "age_cycles": 12,
+        "freshness": 0.64,
+        "usage_count": 1
       },
       {
         "strategy": {
@@ -362,9 +493,9 @@
         "win_rate": 0.7,
         "pnl": 19.0533,
         "doctor": {},
-        "age_cycles": 77,
+        "age_cycles": 116,
         "freshness": 0.1,
-        "usage_count": 3
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -379,7 +510,7 @@
         "win_rate": 0.75,
         "pnl": 23.781,
         "doctor": {},
-        "age_cycles": 136,
+        "age_cycles": 175,
         "freshness": 0.1,
         "usage_count": 3
       },
@@ -396,160 +527,9 @@
         "win_rate": 0.8,
         "pnl": 23.1457,
         "doctor": {},
-        "age_cycles": 95,
+        "age_cycles": 134,
         "freshness": 0.1,
         "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "RSI",
-          "period": 39,
-          "threshold": 1.732,
-          "timeframe": "15m"
-        },
-        "sharpe": 12.0303,
-        "drawdown": 0.0179,
-        "win_rate": 0.7,
-        "pnl": 20.6812,
-        "doctor": {},
-        "age_cycles": 115,
-        "freshness": 0.1,
-        "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "ATR",
-          "period": 15,
-          "threshold": 1.79,
-          "timeframe": "4h"
-        },
-        "sharpe": 12.006,
-        "drawdown": 0.0168,
-        "win_rate": 0.7667,
-        "pnl": 38.1207,
-        "doctor": {
-          "approved": true,
-          "health_score": 100.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": []
-        },
-        "age_cycles": 187,
-        "freshness": 0.1,
-        "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "EMA",
-          "period": 40,
-          "threshold": 0.467,
-          "timeframe": "15m"
-        },
-        "sharpe": 11.8936,
-        "drawdown": 0.0189,
-        "win_rate": 0.8,
-        "pnl": 20.4322,
-        "doctor": {},
-        "age_cycles": 76,
-        "freshness": 0.1,
-        "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "ATR",
-          "period": 63,
-          "threshold": 0.224,
-          "timeframe": "4h"
-        },
-        "sharpe": 11.7413,
-        "drawdown": 0.0085,
-        "win_rate": 0.8,
-        "pnl": 16.9197,
-        "doctor": {},
-        "age_cycles": 120,
-        "freshness": 0.1,
-        "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "EMA",
-          "period": 24,
-          "threshold": 1.746,
-          "timeframe": "1h"
-        },
-        "sharpe": 11.7073,
-        "drawdown": 0.0136,
-        "win_rate": 0.75,
-        "pnl": 20.9044,
-        "doctor": {},
-        "age_cycles": 43,
-        "freshness": 0.1,
-        "usage_count": 3
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "ATR",
-          "period": 61,
-          "threshold": 0.785,
-          "timeframe": "15m"
-        },
-        "sharpe": 11.5677,
-        "drawdown": 0.0262,
-        "win_rate": 0.7,
-        "pnl": 19.0699,
-        "doctor": {},
-        "age_cycles": 29,
-        "freshness": 0.13,
-        "usage_count": 2
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "MACD",
-          "period": 13,
-          "threshold": 1.355,
-          "timeframe": "4h"
-        },
-        "sharpe": 11.5572,
-        "drawdown": 0.018,
-        "win_rate": 0.7,
-        "pnl": 34.8318,
-        "doctor": {
-          "approved": true,
-          "health_score": 100.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": []
-        },
-        "age_cycles": 86,
-        "freshness": 0.1,
-        "usage_count": 2
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "ATR",
-          "period": 18,
-          "threshold": 1.56,
-          "timeframe": "4h"
-        },
-        "sharpe": 11.5325,
-        "drawdown": 0.0141,
-        "win_rate": 0.7667,
-        "pnl": 30.6786,
-        "doctor": {
-          "approved": true,
-          "health_score": 100.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": []
-        },
-        "age_cycles": 34,
-        "freshness": 0.1,
-        "usage_count": 2
       }
     ],
     "sideways": [
@@ -571,7 +551,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -593,7 +573,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 152,
+        "age_cycles": 191,
         "freshness": 0.1,
         "usage_count": 3
       },
@@ -615,7 +595,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 185,
+        "age_cycles": 224,
         "freshness": 0.1,
         "usage_count": 2
       },
@@ -637,7 +617,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 85,
+        "age_cycles": 124,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -659,7 +639,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -681,7 +661,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -703,8 +683,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 15,
-        "freshness": 0.55,
+        "age_cycles": 54,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -725,7 +705,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 152,
+        "age_cycles": 191,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -747,7 +727,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 187,
+        "age_cycles": 226,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -769,7 +749,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 67,
+        "age_cycles": 106,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -791,7 +771,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 152,
+        "age_cycles": 191,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -813,7 +793,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 185,
+        "age_cycles": 224,
         "freshness": 0.1
       },
       {
@@ -834,7 +814,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 152,
+        "age_cycles": 191,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -856,7 +836,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -878,7 +858,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 85,
+        "age_cycles": 124,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -900,7 +880,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 185,
+        "age_cycles": 224,
         "freshness": 0.1
       },
       {
@@ -921,8 +901,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 15,
-        "freshness": 0.55,
+        "age_cycles": 54,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -943,7 +923,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 187,
+        "age_cycles": 226,
         "freshness": 0.1
       },
       {
@@ -964,7 +944,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 152,
+        "age_cycles": 191,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -986,7 +966,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 85,
+        "age_cycles": 124,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1008,7 +988,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1030,7 +1010,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 67,
+        "age_cycles": 106,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1052,7 +1032,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 67,
+        "age_cycles": 106,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1074,7 +1054,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1096,7 +1076,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1118,7 +1098,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 185,
+        "age_cycles": 224,
         "freshness": 0.1
       },
       {
@@ -1139,7 +1119,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 67,
+        "age_cycles": 106,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1161,7 +1141,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 33,
+        "age_cycles": 72,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -1183,7 +1163,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 185,
+        "age_cycles": 224,
         "freshness": 0.1
       },
       {
@@ -1204,7 +1184,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 67,
+        "age_cycles": 106,
         "freshness": 0.1,
         "usage_count": 0
       }
@@ -1227,7 +1207,7 @@
           "health_score": 100.0,
           "reason": "Approved by Bot Doctor Validator"
         },
-        "age_cycles": 168,
+        "age_cycles": 207,
         "freshness": 0.1,
         "usage_count": 47
       },
@@ -1249,7 +1229,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 122,
+        "age_cycles": 161,
         "freshness": 0.1,
         "usage_count": 34
       },
@@ -1270,7 +1250,7 @@
           "health_score": 100.0,
           "reason": "Approved by Bot Doctor Validator"
         },
-        "age_cycles": 174,
+        "age_cycles": 213,
         "freshness": 0.1,
         "usage_count": 41
       },
@@ -1292,7 +1272,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 53,
+        "age_cycles": 92,
         "freshness": 0.1,
         "usage_count": 15
       },
@@ -1309,7 +1289,7 @@
         "win_rate": 0.85,
         "pnl": 63.3353,
         "doctor": {},
-        "age_cycles": 104,
+        "age_cycles": 143,
         "freshness": 0.1,
         "usage_count": 30
       },
@@ -1331,7 +1311,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 177,
+        "age_cycles": 216,
         "freshness": 0.1,
         "usage_count": 40
       },
@@ -1353,7 +1333,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 63,
+        "age_cycles": 102,
         "freshness": 0.1,
         "usage_count": 25
       },
@@ -1374,7 +1354,7 @@
           "health_score": 100.0,
           "reason": "Approved by Bot Doctor Validator"
         },
-        "age_cycles": 164,
+        "age_cycles": 203,
         "freshness": 0.1,
         "usage_count": 37
       },
@@ -1396,7 +1376,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 107,
+        "age_cycles": 146,
         "freshness": 0.1,
         "usage_count": 32
       },
@@ -1418,7 +1398,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 161,
+        "age_cycles": 200,
         "freshness": 0.1,
         "usage_count": 34
       },
@@ -1439,7 +1419,7 @@
           "health_score": 100.0,
           "reason": "Approved by Bot Doctor Validator"
         },
-        "age_cycles": 168,
+        "age_cycles": 207,
         "freshness": 0.1,
         "usage_count": 32
       },
@@ -1456,7 +1436,7 @@
         "win_rate": 0.825,
         "pnl": 52.9624,
         "doctor": {},
-        "age_cycles": 100,
+        "age_cycles": 139,
         "freshness": 0.1,
         "usage_count": 25
       },
@@ -1478,7 +1458,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 103,
+        "age_cycles": 142,
         "freshness": 0.1,
         "usage_count": 28
       },
@@ -1500,7 +1480,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 101,
+        "age_cycles": 140,
         "freshness": 0.1,
         "usage_count": 26
       },
@@ -1522,7 +1502,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 140,
+        "age_cycles": 179,
         "freshness": 0.1,
         "usage_count": 28
       },
@@ -1544,7 +1524,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 161,
+        "age_cycles": 200,
         "freshness": 0.1,
         "usage_count": 27
       },
@@ -1566,7 +1546,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 105,
+        "age_cycles": 144,
         "freshness": 0.1,
         "usage_count": 23
       },
@@ -1588,7 +1568,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 160,
+        "age_cycles": 199,
         "freshness": 0.1,
         "usage_count": 18
       },
@@ -1605,7 +1585,7 @@
         "win_rate": 0.75,
         "pnl": 56.3514,
         "doctor": {},
-        "age_cycles": 100,
+        "age_cycles": 139,
         "freshness": 0.1,
         "usage_count": 15
       },
@@ -1627,7 +1607,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 103,
+        "age_cycles": 142,
         "freshness": 0.1,
         "usage_count": 15
       },
@@ -1649,7 +1629,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 101,
+        "age_cycles": 140,
         "freshness": 0.1,
         "usage_count": 14
       },
@@ -1671,7 +1651,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 144,
+        "age_cycles": 183,
         "freshness": 0.1,
         "usage_count": 16
       },
@@ -1693,7 +1673,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 55,
+        "age_cycles": 94,
         "freshness": 0.1,
         "usage_count": 11
       },
@@ -1715,7 +1695,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 101,
+        "age_cycles": 140,
         "freshness": 0.1,
         "usage_count": 14
       },
@@ -1737,8 +1717,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 9,
-        "freshness": 0.73,
+        "age_cycles": 48,
+        "freshness": 0.1,
         "usage_count": 7
       },
       {
@@ -1759,7 +1739,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 59,
+        "age_cycles": 98,
         "freshness": 0.1,
         "usage_count": 11
       },
@@ -1781,7 +1761,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 103,
+        "age_cycles": 142,
         "freshness": 0.1,
         "usage_count": 14
       },
@@ -1798,7 +1778,7 @@
         "win_rate": 0.75,
         "pnl": 57.6575,
         "doctor": {},
-        "age_cycles": 123,
+        "age_cycles": 162,
         "freshness": 0.1,
         "usage_count": 14
       },
@@ -1820,7 +1800,7 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 144,
+        "age_cycles": 183,
         "freshness": 0.1,
         "usage_count": 14
       },
@@ -1837,7 +1817,7 @@
         "win_rate": 0.8,
         "pnl": 50.9429,
         "doctor": {},
-        "age_cycles": 137,
+        "age_cycles": 176,
         "freshness": 0.1,
         "usage_count": 14
       }
@@ -1862,9 +1842,9 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
-        "usage_count": 1
+        "age_cycles": 46,
+        "freshness": 0.1,
+        "usage_count": 6
       },
       {
         "strategy": {
@@ -1879,9 +1859,9 @@
         "win_rate": 0.8,
         "pnl": 29.0945,
         "doctor": {},
-        "age_cycles": 18,
-        "freshness": 0.46,
-        "usage_count": 2
+        "age_cycles": 57,
+        "freshness": 0.1,
+        "usage_count": 6
       },
       {
         "strategy": {
@@ -1896,7 +1876,7 @@
         "win_rate": 0.8,
         "pnl": 25.5901,
         "doctor": {},
-        "age_cycles": 126,
+        "age_cycles": 165,
         "freshness": 0.1,
         "usage_count": 7
       },
@@ -1913,7 +1893,7 @@
         "win_rate": 0.8,
         "pnl": 21.2982,
         "doctor": {},
-        "age_cycles": 36,
+        "age_cycles": 75,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -1930,8 +1910,42 @@
         "win_rate": 0.725,
         "pnl": 54.9885,
         "doctor": {},
-        "age_cycles": 6,
-        "freshness": 0.82,
+        "age_cycles": 45,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 67,
+          "threshold": 1.909,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.2273,
+        "drawdown": 0.0162,
+        "win_rate": 0.8,
+        "pnl": 25.1409,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 44,
+          "threshold": 2.378,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.227,
+        "drawdown": 0.0193,
+        "win_rate": 0.75,
+        "pnl": 19.8185,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
         "usage_count": 0
       },
       {
@@ -1947,7 +1961,7 @@
         "win_rate": 0.8,
         "pnl": 16.3349,
         "doctor": {},
-        "age_cycles": 88,
+        "age_cycles": 127,
         "freshness": 0.1,
         "usage_count": 6
       },
@@ -1969,9 +1983,9 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
-        "usage_count": 1
+        "age_cycles": 46,
+        "freshness": 0.1,
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -1986,8 +2000,8 @@
         "win_rate": 0.7,
         "pnl": 20.7165,
         "doctor": {},
-        "age_cycles": 18,
-        "freshness": 0.46,
+        "age_cycles": 57,
+        "freshness": 0.1,
         "usage_count": 2
       },
       {
@@ -2003,9 +2017,43 @@
         "win_rate": 0.65,
         "pnl": 18.2193,
         "doctor": {},
-        "age_cycles": 88,
+        "age_cycles": 127,
         "freshness": 0.1,
         "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 80,
+          "threshold": 1.606,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.8489,
+        "drawdown": 0.0182,
+        "win_rate": 0.75,
+        "pnl": 17.6177,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "MACD",
+          "period": 31,
+          "threshold": 1.615,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.7278,
+        "drawdown": 0.0237,
+        "win_rate": 0.85,
+        "pnl": 17.663,
+        "doctor": {},
+        "age_cycles": 27,
+        "freshness": 0.19,
+        "usage_count": 1
       },
       {
         "strategy": {
@@ -2020,8 +2068,8 @@
         "win_rate": 0.75,
         "pnl": 17.6457,
         "doctor": {},
-        "age_cycles": 18,
-        "freshness": 0.46,
+        "age_cycles": 57,
+        "freshness": 0.1,
         "usage_count": 2
       },
       {
@@ -2042,8 +2090,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2059,8 +2107,8 @@
         "win_rate": 0.7,
         "pnl": 21.0621,
         "doctor": {},
-        "age_cycles": 18,
-        "freshness": 0.46,
+        "age_cycles": 57,
+        "freshness": 0.1,
         "usage_count": 2
       },
       {
@@ -2081,8 +2129,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2098,7 +2146,7 @@
         "win_rate": 0.7,
         "pnl": 20.0888,
         "doctor": {},
-        "age_cycles": 70,
+        "age_cycles": 109,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -2120,9 +2168,26 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 6,
+          "threshold": 0.885,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.1343,
+        "drawdown": 0.0135,
+        "win_rate": 0.75,
+        "pnl": 16.3838,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2142,8 +2207,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2164,8 +2229,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2186,8 +2251,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2203,7 +2268,7 @@
         "win_rate": 0.7,
         "pnl": 21.0,
         "doctor": {},
-        "age_cycles": 126,
+        "age_cycles": 165,
         "freshness": 0.1,
         "usage_count": 4
       },
@@ -2225,8 +2290,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2247,8 +2312,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2269,8 +2334,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2291,8 +2356,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2313,8 +2378,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
+        "age_cycles": 46,
+        "freshness": 0.1,
         "usage_count": 1
       },
       {
@@ -2335,122 +2400,8 @@
           "reason": "Approved by Bot Doctor Validator",
           "findings": []
         },
-        "age_cycles": 7,
-        "freshness": 0.79,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "MACD",
-          "period": 9,
-          "threshold": 1.443,
-          "timeframe": "1h"
-        },
-        "sharpe": 9.0756,
-        "drawdown": 0.0253,
-        "win_rate": 0.6,
-        "pnl": 38.475,
-        "doctor": {
-          "approved": true,
-          "health_score": 100.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": []
-        },
-        "age_cycles": 7,
-        "freshness": 0.79,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "EMA",
-          "period": 49,
-          "threshold": 1.668,
-          "timeframe": "4h"
-        },
-        "sharpe": 9.0712,
-        "drawdown": 0.0447,
-        "win_rate": 0.65,
-        "pnl": 17.8694,
-        "doctor": {},
-        "age_cycles": 88,
+        "age_cycles": 46,
         "freshness": 0.1,
-        "usage_count": 1
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "MACD",
-          "period": 72,
-          "threshold": 2.204,
-          "timeframe": "1h"
-        },
-        "sharpe": 8.9925,
-        "drawdown": 0.056,
-        "win_rate": 0.775,
-        "pnl": 35.367,
-        "doctor": {
-          "approved": true,
-          "health_score": 85.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": [
-            {
-              "severity": "warning",
-              "component": "risk_engine",
-              "issue": "Elevated drawdown (5.60%)",
-              "recommendation": "Reduce position size"
-            }
-          ]
-        },
-        "age_cycles": 7,
-        "freshness": 0.79,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "MACD",
-          "period": 39,
-          "threshold": 0.367,
-          "timeframe": "1h"
-        },
-        "sharpe": 8.9633,
-        "drawdown": 0.027,
-        "win_rate": 0.75,
-        "pnl": 20.0118,
-        "doctor": {},
-        "age_cycles": 126,
-        "freshness": 0.1,
-        "usage_count": 2
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "ATR",
-          "period": 65,
-          "threshold": 1.477,
-          "timeframe": "1h"
-        },
-        "sharpe": 8.9295,
-        "drawdown": 0.0603,
-        "win_rate": 0.675,
-        "pnl": 39.3116,
-        "doctor": {
-          "approved": true,
-          "health_score": 85.0,
-          "reason": "Approved by Bot Doctor Validator",
-          "findings": [
-            {
-              "severity": "warning",
-              "component": "risk_engine",
-              "issue": "Elevated drawdown (6.03%)",
-              "recommendation": "Reduce position size"
-            }
-          ]
-        },
-        "age_cycles": 7,
-        "freshness": 0.79,
         "usage_count": 0
       }
     ],
@@ -2468,9 +2419,9 @@
         "win_rate": 0.8,
         "pnl": 28.1717,
         "doctor": {},
-        "age_cycles": 46,
+        "age_cycles": 85,
         "freshness": 0.1,
-        "usage_count": 1
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -2485,9 +2436,9 @@
         "win_rate": 0.85,
         "pnl": 25.2816,
         "doctor": {},
-        "age_cycles": 46,
+        "age_cycles": 85,
         "freshness": 0.1,
-        "usage_count": 1
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -2497,14 +2448,31 @@
           "threshold": 2.331,
           "timeframe": "4h"
         },
-        "sharpe": 11.2216,
-        "drawdown": 0.0166,
-        "win_rate": 0.75,
-        "pnl": 14.4224,
+        "sharpe": 13.4161,
+        "drawdown": 0.0191,
+        "win_rate": 0.8,
+        "pnl": 27.4697,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 37,
         "freshness": 0.1,
         "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 64,
+          "threshold": 1.106,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.749,
+        "drawdown": 0.015,
+        "win_rate": 0.75,
+        "pnl": 19.5012,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2519,9 +2487,26 @@
         "win_rate": 0.7,
         "pnl": 19.5296,
         "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 137,
         "freshness": 0.1,
         "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 37,
+          "threshold": 0.662,
+          "timeframe": "1h"
+        },
+        "sharpe": 9.8382,
+        "drawdown": 0.0174,
+        "win_rate": 0.7,
+        "pnl": 20.9792,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2536,8 +2521,25 @@
         "win_rate": 0.7,
         "pnl": 18.7642,
         "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
+        "age_cycles": 67,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 40,
+          "threshold": 2.462,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.2725,
+        "drawdown": 0.0298,
+        "win_rate": 0.7,
+        "pnl": 17.9067,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -2553,8 +2555,25 @@
         "win_rate": 0.65,
         "pnl": 19.2506,
         "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
+        "age_cycles": 67,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 10,
+          "threshold": 0.337,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.8253,
+        "drawdown": 0.0413,
+        "win_rate": 0.65,
+        "pnl": 17.0859,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
         "usage_count": 0
       },
       {
@@ -2570,8 +2589,8 @@
         "win_rate": 0.55,
         "pnl": 15.7212,
         "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
+        "age_cycles": 67,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -2587,9 +2606,26 @@
         "win_rate": 0.6,
         "pnl": 15.4672,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 119,
         "freshness": 0.1,
         "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 80,
+          "threshold": 1.49,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.2276,
+        "drawdown": 0.0231,
+        "win_rate": 0.65,
+        "pnl": 16.0998,
+        "doctor": {},
+        "age_cycles": 11,
+        "freshness": 0.67,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2604,9 +2640,26 @@
         "win_rate": 0.75,
         "pnl": 12.9863,
         "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 137,
         "freshness": 0.1,
         "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 76,
+          "threshold": 0.316,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.143,
+        "drawdown": 0.0186,
+        "win_rate": 0.6,
+        "pnl": 15.1151,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2621,7 +2674,7 @@
         "win_rate": 0.65,
         "pnl": 16.7618,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 119,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2638,7 +2691,24 @@
         "win_rate": 0.6,
         "pnl": 15.5769,
         "doctor": {},
-        "age_cycles": 46,
+        "age_cycles": 85,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 62,
+          "threshold": 1.745,
+          "timeframe": "1h"
+        },
+        "sharpe": 6.9808,
+        "drawdown": 0.0193,
+        "win_rate": 0.7,
+        "pnl": 12.5163,
+        "doctor": {},
+        "age_cycles": 37,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2655,7 +2725,7 @@
         "win_rate": 0.65,
         "pnl": 13.6627,
         "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 137,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2672,7 +2742,7 @@
         "win_rate": 0.6,
         "pnl": 12.4627,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 119,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2689,7 +2759,7 @@
         "win_rate": 0.65,
         "pnl": 14.0892,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 119,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2706,7 +2776,7 @@
         "win_rate": 0.55,
         "pnl": 12.6838,
         "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 137,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2723,7 +2793,7 @@
         "win_rate": 0.6,
         "pnl": 10.2359,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 119,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -2740,8 +2810,42 @@
         "win_rate": 0.65,
         "pnl": 12.7369,
         "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
+        "age_cycles": 67,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 76,
+          "threshold": 0.718,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.1349,
+        "drawdown": 0.0279,
+        "win_rate": 0.75,
+        "pnl": 10.4785,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 38,
+          "threshold": 1.865,
+          "timeframe": "4h"
+        },
+        "sharpe": 5.7964,
+        "drawdown": 0.0294,
+        "win_rate": 0.55,
+        "pnl": 9.4191,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -2757,8 +2861,25 @@
         "win_rate": 0.6,
         "pnl": 10.1065,
         "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 137,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 41,
+          "threshold": 0.442,
+          "timeframe": "5m"
+        },
+        "sharpe": 5.1834,
+        "drawdown": 0.0316,
+        "win_rate": 0.55,
+        "pnl": 9.5553,
+        "doctor": {},
+        "age_cycles": 11,
+        "freshness": 0.67,
         "usage_count": 0
       },
       {
@@ -2774,182 +2895,97 @@
         "win_rate": 0.65,
         "pnl": 8.5824,
         "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "RSI",
-          "period": 69,
-          "threshold": 0.295,
-          "timeframe": "15m"
-        },
-        "sharpe": 4.9208,
-        "drawdown": 0.0524,
-        "win_rate": 0.6,
-        "pnl": 10.0359,
-        "doctor": {},
-        "age_cycles": 46,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "ATR",
-          "period": 22,
-          "threshold": 0.384,
-          "timeframe": "15m"
-        },
-        "sharpe": 4.5657,
-        "drawdown": 0.063,
-        "win_rate": 0.5,
-        "pnl": 9.4961,
-        "doctor": {},
-        "age_cycles": 80,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "BOLLINGER",
-          "period": 78,
-          "threshold": 0.745,
-          "timeframe": "15m"
-        },
-        "sharpe": 3.0665,
-        "drawdown": 0.0481,
-        "win_rate": 0.5,
-        "pnl": 6.074,
-        "doctor": {},
-        "age_cycles": 46,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "RSI",
-          "period": 21,
-          "threshold": 2.422,
-          "timeframe": "4h"
-        },
-        "sharpe": 2.9114,
-        "drawdown": 0.0361,
-        "win_rate": 0.45,
-        "pnl": 5.1677,
-        "doctor": {},
-        "age_cycles": 98,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "MACD",
-          "period": 47,
-          "threshold": 0.753,
-          "timeframe": "4h"
-        },
-        "sharpe": 2.8682,
-        "drawdown": 0.0322,
-        "win_rate": 0.55,
-        "pnl": 4.9431,
-        "doctor": {},
-        "age_cycles": 46,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "EMA",
-          "period": 16,
-          "threshold": 1.405,
-          "timeframe": "15m"
-        },
-        "sharpe": 2.6438,
-        "drawdown": 0.0693,
-        "win_rate": 0.45,
-        "pnl": 4.8422,
-        "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "BOLLINGER",
-          "period": 46,
-          "threshold": 1.429,
-          "timeframe": "4h"
-        },
-        "sharpe": 2.5893,
-        "drawdown": 0.0372,
-        "win_rate": 0.45,
-        "pnl": 4.3615,
-        "doctor": {},
-        "age_cycles": 46,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "EMA",
-          "period": 66,
-          "threshold": 1.248,
-          "timeframe": "15m"
-        },
-        "sharpe": 2.4504,
-        "drawdown": 0.0381,
-        "win_rate": 0.5,
-        "pnl": 4.6846,
-        "doctor": {},
-        "age_cycles": 98,
+        "age_cycles": 67,
         "freshness": 0.1,
         "usage_count": 0
       },
       {
         "strategy": {
           "entry_indicator": "MACD",
-          "exit_indicator": "RSI",
-          "period": 61,
-          "threshold": 2.457,
+          "exit_indicator": "ATR",
+          "period": 74,
+          "threshold": 1.691,
           "timeframe": "5m"
         },
-        "sharpe": 1.5407,
-        "drawdown": 0.0715,
-        "win_rate": 0.4,
-        "pnl": 2.4667,
+        "sharpe": 5.0,
+        "drawdown": 0.0178,
+        "win_rate": 0.55,
+        "pnl": 6.7783,
         "doctor": {},
-        "age_cycles": 80,
+        "age_cycles": 37,
         "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "VWAP",
-          "period": 39,
-          "threshold": 2.474,
-          "timeframe": "4h"
-        },
-        "sharpe": 1.225,
-        "drawdown": 0.0485,
-        "win_rate": 0.5,
-        "pnl": 1.7411,
-        "doctor": {},
-        "age_cycles": 28,
-        "freshness": 0.16,
         "usage_count": 0
       }
     ],
     "bear": [
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 55,
+          "threshold": 2.441,
+          "timeframe": "4h"
+        },
+        "sharpe": 19.5976,
+        "drawdown": 0.0061,
+        "win_rate": 0.8,
+        "pnl": 31.8681,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 35,
+          "threshold": 0.944,
+          "timeframe": "5m"
+        },
+        "sharpe": 15.3876,
+        "drawdown": 0.0101,
+        "win_rate": 0.75,
+        "pnl": 25.118,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 71,
+          "threshold": 0.814,
+          "timeframe": "1h"
+        },
+        "sharpe": 14.455,
+        "drawdown": 0.0146,
+        "win_rate": 0.75,
+        "pnl": 29.0166,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 36,
+          "threshold": 2.192,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.9433,
+        "drawdown": 0.0289,
+        "win_rate": 0.8,
+        "pnl": 25.5324,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
       {
         "strategy": {
           "entry_indicator": "BOLLINGER",
@@ -2963,9 +2999,9 @@
         "win_rate": 0.75,
         "pnl": 18.8899,
         "doctor": {},
-        "age_cycles": 97,
+        "age_cycles": 136,
         "freshness": 0.1,
-        "usage_count": 3
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -2980,9 +3016,43 @@
         "win_rate": 0.75,
         "pnl": 22.1177,
         "doctor": {},
-        "age_cycles": 45,
+        "age_cycles": 84,
         "freshness": 0.1,
-        "usage_count": 1
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 49,
+          "threshold": 1.799,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.3467,
+        "drawdown": 0.0374,
+        "win_rate": 0.7,
+        "pnl": 18.2017,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 34,
+          "threshold": 1.516,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.2286,
+        "drawdown": 0.0358,
+        "win_rate": 0.75,
+        "pnl": 19.1415,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -2997,7 +3067,7 @@
         "win_rate": 0.75,
         "pnl": 16.9101,
         "doctor": {},
-        "age_cycles": 79,
+        "age_cycles": 118,
         "freshness": 0.1,
         "usage_count": 2
       },
@@ -3014,8 +3084,93 @@
         "win_rate": 0.65,
         "pnl": 19.0234,
         "doctor": {},
-        "age_cycles": 45,
+        "age_cycles": 84,
         "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 46,
+          "threshold": 1.73,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.3685,
+        "drawdown": 0.0197,
+        "win_rate": 0.7,
+        "pnl": 15.3979,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 27,
+          "threshold": 1.562,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.1993,
+        "drawdown": 0.0518,
+        "win_rate": 0.7,
+        "pnl": 15.8879,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 10,
+          "threshold": 1.034,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.6916,
+        "drawdown": 0.0218,
+        "win_rate": 0.55,
+        "pnl": 14.2425,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 37,
+          "threshold": 1.631,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.1525,
+        "drawdown": 0.025,
+        "win_rate": 0.65,
+        "pnl": 12.1992,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 53,
+          "threshold": 1.183,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.0875,
+        "drawdown": 0.0341,
+        "win_rate": 0.7,
+        "pnl": 12.4351,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
         "usage_count": 0
       },
       {
@@ -3031,7 +3186,7 @@
         "win_rate": 0.65,
         "pnl": 12.13,
         "doctor": {},
-        "age_cycles": 79,
+        "age_cycles": 118,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -3048,7 +3203,24 @@
         "win_rate": 0.65,
         "pnl": 10.2449,
         "doctor": {},
-        "age_cycles": 79,
+        "age_cycles": 118,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 18,
+          "threshold": 0.563,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.2036,
+        "drawdown": 0.0337,
+        "win_rate": 0.55,
+        "pnl": 11.9713,
+        "doctor": {},
+        "age_cycles": 36,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3065,7 +3237,7 @@
         "win_rate": 0.6,
         "pnl": 11.0495,
         "doctor": {},
-        "age_cycles": 97,
+        "age_cycles": 136,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -3082,8 +3254,25 @@
         "win_rate": 0.6,
         "pnl": 11.2346,
         "doctor": {},
-        "age_cycles": 79,
+        "age_cycles": 118,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 24,
+          "threshold": 1.032,
+          "timeframe": "15m"
+        },
+        "sharpe": 5.9892,
+        "drawdown": 0.0475,
+        "win_rate": 0.6,
+        "pnl": 11.6528,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
         "usage_count": 0
       },
       {
@@ -3099,8 +3288,25 @@
         "win_rate": 0.6,
         "pnl": 12.0765,
         "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 20,
+          "threshold": 0.72,
+          "timeframe": "15m"
+        },
+        "sharpe": 5.6924,
+        "drawdown": 0.0331,
+        "win_rate": 0.55,
+        "pnl": 11.4317,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
         "usage_count": 0
       },
       {
@@ -3116,8 +3322,8 @@
         "win_rate": 0.6,
         "pnl": 10.484,
         "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
+        "age_cycles": 66,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -3133,7 +3339,7 @@
         "win_rate": 0.65,
         "pnl": 7.4924,
         "doctor": {},
-        "age_cycles": 45,
+        "age_cycles": 84,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3150,8 +3356,25 @@
         "win_rate": 0.55,
         "pnl": 10.8537,
         "doctor": {},
-        "age_cycles": 97,
+        "age_cycles": 136,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 27,
+          "threshold": 0.456,
+          "timeframe": "4h"
+        },
+        "sharpe": 5.3329,
+        "drawdown": 0.025,
+        "win_rate": 0.6,
+        "pnl": 9.6446,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
         "usage_count": 0
       },
       {
@@ -3167,7 +3390,7 @@
         "win_rate": 0.5,
         "pnl": 7.5528,
         "doctor": {},
-        "age_cycles": 45,
+        "age_cycles": 84,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3184,280 +3407,25 @@
         "win_rate": 0.5,
         "pnl": 9.9967,
         "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "BOLLINGER",
-          "period": 9,
-          "threshold": 0.471,
-          "timeframe": "4h"
-        },
-        "sharpe": 5.0205,
-        "drawdown": 0.0463,
-        "win_rate": 0.55,
-        "pnl": 10.8842,
-        "doctor": {},
-        "age_cycles": 45,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "EMA",
-          "period": 6,
-          "threshold": 1.642,
-          "timeframe": "1h"
-        },
-        "sharpe": 4.9548,
-        "drawdown": 0.0359,
-        "win_rate": 0.55,
-        "pnl": 9.5698,
-        "doctor": {},
-        "age_cycles": 97,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "EMA",
-          "period": 46,
-          "threshold": 0.568,
-          "timeframe": "1h"
-        },
-        "sharpe": 4.8432,
-        "drawdown": 0.0423,
-        "win_rate": 0.6,
-        "pnl": 8.9949,
-        "doctor": {},
-        "age_cycles": 97,
+        "age_cycles": 66,
         "freshness": 0.1,
         "usage_count": 0
       },
       {
         "strategy": {
           "entry_indicator": "BOLLINGER",
-          "exit_indicator": "VWAP",
-          "period": 53,
-          "threshold": 0.804,
-          "timeframe": "4h"
-        },
-        "sharpe": 4.4849,
-        "drawdown": 0.0435,
-        "win_rate": 0.6,
-        "pnl": 10.03,
-        "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "ATR",
-          "period": 78,
-          "threshold": 1.437,
-          "timeframe": "15m"
-        },
-        "sharpe": 4.414,
-        "drawdown": 0.0711,
-        "win_rate": 0.5,
-        "pnl": 8.4544,
-        "doctor": {},
-        "age_cycles": 45,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "RSI",
-          "period": 13,
-          "threshold": 0.289,
-          "timeframe": "15m"
-        },
-        "sharpe": 3.9631,
-        "drawdown": 0.0532,
-        "win_rate": 0.6,
-        "pnl": 6.5549,
-        "doctor": {},
-        "age_cycles": 79,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
           "exit_indicator": "BOLLINGER",
-          "period": 74,
-          "threshold": 1.166,
-          "timeframe": "4h"
-        },
-        "sharpe": 3.8662,
-        "drawdown": 0.0299,
-        "win_rate": 0.5,
-        "pnl": 7.779,
-        "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "ATR",
-          "period": 22,
-          "threshold": 1.505,
-          "timeframe": "5m"
-        },
-        "sharpe": 3.8216,
-        "drawdown": 0.0443,
-        "win_rate": 0.5,
-        "pnl": 7.1618,
-        "doctor": {},
-        "age_cycles": 79,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "RSI",
-          "period": 43,
-          "threshold": 0.886,
-          "timeframe": "4h"
-        },
-        "sharpe": 3.592,
-        "drawdown": 0.0333,
-        "win_rate": 0.6,
-        "pnl": 6.0044,
-        "doctor": {},
-        "age_cycles": 79,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "MACD",
-          "period": 13,
-          "threshold": 1.104,
-          "timeframe": "4h"
-        },
-        "sharpe": 3.5372,
-        "drawdown": 0.0279,
-        "win_rate": 0.55,
-        "pnl": 7.0006,
-        "doctor": {},
-        "age_cycles": 97,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "EMA",
-          "period": 52,
-          "threshold": 1.218,
-          "timeframe": "5m"
-        },
-        "sharpe": 3.341,
-        "drawdown": 0.0576,
-        "win_rate": 0.5,
-        "pnl": 6.6381,
-        "doctor": {},
-        "age_cycles": 97,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "EMA",
-          "period": 15,
-          "threshold": 0.649,
+          "period": 29,
+          "threshold": 0.269,
           "timeframe": "1h"
         },
-        "sharpe": 3.0964,
-        "drawdown": 0.0388,
-        "win_rate": 0.4,
-        "pnl": 5.8694,
+        "sharpe": 5.0484,
+        "drawdown": 0.0606,
+        "win_rate": 0.7,
+        "pnl": 8.2253,
         "doctor": {},
-        "age_cycles": 45,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "VWAP",
-          "period": 63,
-          "threshold": 1.577,
-          "timeframe": "5m"
-        },
-        "sharpe": 2.6454,
-        "drawdown": 0.0291,
-        "win_rate": 0.35,
-        "pnl": 4.5541,
-        "doctor": {},
-        "age_cycles": 27,
-        "freshness": 0.19,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "EMA",
-          "period": 14,
-          "threshold": 0.709,
-          "timeframe": "5m"
-        },
-        "sharpe": 1.9849,
-        "drawdown": 0.0701,
-        "win_rate": 0.55,
-        "pnl": 3.6301,
-        "doctor": {},
-        "age_cycles": 79,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "EMA",
-          "period": 80,
-          "threshold": 2.117,
-          "timeframe": "4h"
-        },
-        "sharpe": 1.9439,
-        "drawdown": 0.0611,
-        "win_rate": 0.4,
-        "pnl": 3.5993,
-        "doctor": {},
-        "age_cycles": 97,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "MACD",
-          "period": 39,
-          "threshold": 2.102,
-          "timeframe": "1h"
-        },
-        "sharpe": 1.7244,
-        "drawdown": 0.0743,
-        "win_rate": 0.5,
-        "pnl": 2.8044,
-        "doctor": {},
-        "age_cycles": 97,
-        "freshness": 0.1,
+        "age_cycles": 23,
+        "freshness": 0.31,
         "usage_count": 0
       }
     ],
@@ -3475,9 +3443,9 @@
         "win_rate": 0.95,
         "pnl": 35.4987,
         "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
-        "usage_count": 0
+        "age_cycles": 65,
+        "freshness": 0.1,
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -3492,9 +3460,9 @@
         "win_rate": 0.85,
         "pnl": 29.4318,
         "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
-        "usage_count": 0
+        "age_cycles": 65,
+        "freshness": 0.1,
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -3509,9 +3477,9 @@
         "win_rate": 0.85,
         "pnl": 26.955,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
-        "usage_count": 1
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -3526,7 +3494,7 @@
         "win_rate": 0.75,
         "pnl": 26.3146,
         "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 117,
         "freshness": 0.1,
         "usage_count": 2
       },
@@ -3543,7 +3511,7 @@
         "win_rate": 0.8,
         "pnl": 21.1709,
         "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 117,
         "freshness": 0.1,
         "usage_count": 2
       },
@@ -3560,8 +3528,42 @@
         "win_rate": 0.7,
         "pnl": 19.7714,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 46,
+          "threshold": 0.974,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.0888,
+        "drawdown": 0.0204,
+        "win_rate": 0.65,
+        "pnl": 22.5493,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 59,
+          "threshold": 0.992,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.5865,
+        "drawdown": 0.0267,
+        "win_rate": 0.75,
+        "pnl": 18.9232,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
         "usage_count": 0
       },
       {
@@ -3577,9 +3579,60 @@
         "win_rate": 0.7,
         "pnl": 17.2564,
         "doctor": {},
-        "age_cycles": 96,
+        "age_cycles": 135,
         "freshness": 0.1,
         "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 52,
+          "threshold": 1.493,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.1657,
+        "drawdown": 0.0364,
+        "win_rate": 0.75,
+        "pnl": 22.7808,
+        "doctor": {},
+        "age_cycles": 9,
+        "freshness": 0.73,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 70,
+          "threshold": 0.806,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.7206,
+        "drawdown": 0.0193,
+        "win_rate": 0.8,
+        "pnl": 17.5998,
+        "doctor": {},
+        "age_cycles": 35,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 61,
+          "threshold": 1.0,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.6682,
+        "drawdown": 0.0171,
+        "win_rate": 0.75,
+        "pnl": 15.2688,
+        "doctor": {},
+        "age_cycles": 35,
+        "freshness": 0.1,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -3594,8 +3647,42 @@
         "win_rate": 0.7,
         "pnl": 17.4503,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 30,
+          "threshold": 2.273,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.774,
+        "drawdown": 0.0204,
+        "win_rate": 0.65,
+        "pnl": 16.4064,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 68,
+          "threshold": 2.153,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.9944,
+        "drawdown": 0.0252,
+        "win_rate": 0.7,
+        "pnl": 14.3941,
+        "doctor": {},
+        "age_cycles": 9,
+        "freshness": 0.73,
         "usage_count": 0
       },
       {
@@ -3611,7 +3698,7 @@
         "win_rate": 0.65,
         "pnl": 14.6841,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3628,7 +3715,24 @@
         "win_rate": 0.6,
         "pnl": 14.8363,
         "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 117,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 13,
+          "threshold": 0.622,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.3079,
+        "drawdown": 0.0288,
+        "win_rate": 0.65,
+        "pnl": 16.2641,
+        "doctor": {},
+        "age_cycles": 35,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3645,8 +3749,42 @@
         "win_rate": 0.6,
         "pnl": 13.8269,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 59,
+          "threshold": 0.317,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.6953,
+        "drawdown": 0.0302,
+        "win_rate": 0.6,
+        "pnl": 13.8242,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 49,
+          "threshold": 1.451,
+          "timeframe": "5m"
+        },
+        "sharpe": 6.5544,
+        "drawdown": 0.0409,
+        "win_rate": 0.65,
+        "pnl": 13.5707,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
         "usage_count": 0
       },
       {
@@ -3662,7 +3800,7 @@
         "win_rate": 0.6,
         "pnl": 13.8135,
         "doctor": {},
-        "age_cycles": 96,
+        "age_cycles": 135,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -3679,7 +3817,7 @@
         "win_rate": 0.6,
         "pnl": 13.4329,
         "doctor": {},
-        "age_cycles": 96,
+        "age_cycles": 135,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3696,7 +3834,7 @@
         "win_rate": 0.5,
         "pnl": 8.9546,
         "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 117,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3713,7 +3851,7 @@
         "win_rate": 0.55,
         "pnl": 7.9517,
         "doctor": {},
-        "age_cycles": 96,
+        "age_cycles": 135,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3730,7 +3868,7 @@
         "win_rate": 0.6,
         "pnl": 9.5893,
         "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 117,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -3747,8 +3885,8 @@
         "win_rate": 0.6,
         "pnl": 6.2832,
         "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
+        "age_cycles": 65,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -3764,211 +3902,41 @@
         "win_rate": 0.55,
         "pnl": 8.6385,
         "doctor": {},
-        "age_cycles": 44,
+        "age_cycles": 83,
         "freshness": 0.1,
         "usage_count": 0
       },
       {
         "strategy": {
           "entry_indicator": "EMA",
-          "exit_indicator": "MACD",
-          "period": 14,
-          "threshold": 1.264,
-          "timeframe": "4h"
+          "exit_indicator": "ATR",
+          "period": 46,
+          "threshold": 0.417,
+          "timeframe": "5m"
         },
-        "sharpe": 4.2471,
-        "drawdown": 0.0381,
-        "win_rate": 0.65,
-        "pnl": 8.0605,
+        "sharpe": 4.3403,
+        "drawdown": 0.0628,
+        "win_rate": 0.55,
+        "pnl": 8.1479,
         "doctor": {},
-        "age_cycles": 44,
-        "freshness": 0.1,
+        "age_cycles": 9,
+        "freshness": 0.73,
         "usage_count": 0
       },
       {
         "strategy": {
           "entry_indicator": "VWAP",
-          "exit_indicator": "VWAP",
-          "period": 17,
-          "threshold": 1.281,
-          "timeframe": "4h"
-        },
-        "sharpe": 4.1522,
-        "drawdown": 0.0308,
-        "win_rate": 0.65,
-        "pnl": 6.9264,
-        "doctor": {},
-        "age_cycles": 96,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "VWAP",
-          "period": 73,
-          "threshold": 1.391,
-          "timeframe": "4h"
-        },
-        "sharpe": 4.111,
-        "drawdown": 0.0388,
-        "win_rate": 0.5,
-        "pnl": 7.7394,
-        "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "VWAP",
-          "period": 62,
-          "threshold": 1.059,
+          "exit_indicator": "RSI",
+          "period": 56,
+          "threshold": 1.637,
           "timeframe": "15m"
         },
-        "sharpe": 3.7052,
-        "drawdown": 0.032,
+        "sharpe": 4.3349,
+        "drawdown": 0.0394,
         "win_rate": 0.55,
-        "pnl": 7.3836,
+        "pnl": 8.88,
         "doctor": {},
-        "age_cycles": 96,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "BOLLINGER",
-          "period": 77,
-          "threshold": 1.944,
-          "timeframe": "5m"
-        },
-        "sharpe": 3.6047,
-        "drawdown": 0.0288,
-        "win_rate": 0.6,
-        "pnl": 5.4485,
-        "doctor": {},
-        "age_cycles": 96,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "VWAP",
-          "period": 38,
-          "threshold": 1.494,
-          "timeframe": "5m"
-        },
-        "sharpe": 3.5182,
-        "drawdown": 0.0314,
-        "win_rate": 0.6,
-        "pnl": 6.2366,
-        "doctor": {},
-        "age_cycles": 44,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "RSI",
-          "period": 73,
-          "threshold": 0.618,
-          "timeframe": "5m"
-        },
-        "sharpe": 2.8884,
-        "drawdown": 0.0601,
-        "win_rate": 0.45,
-        "pnl": 5.5449,
-        "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "EMA",
-          "period": 32,
-          "threshold": 2.039,
-          "timeframe": "5m"
-        },
-        "sharpe": 2.3452,
-        "drawdown": 0.042,
-        "win_rate": 0.55,
-        "pnl": 3.3827,
-        "doctor": {},
-        "age_cycles": 78,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "RSI",
-          "period": 70,
-          "threshold": 2.161,
-          "timeframe": "5m"
-        },
-        "sharpe": 1.9114,
-        "drawdown": 0.044,
-        "win_rate": 0.55,
-        "pnl": 3.3795,
-        "doctor": {},
-        "age_cycles": 26,
-        "freshness": 0.22,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "ATR",
-          "period": 70,
-          "threshold": 0.29,
-          "timeframe": "4h"
-        },
-        "sharpe": 1.5387,
-        "drawdown": 0.061,
-        "win_rate": 0.45,
-        "pnl": 2.5239,
-        "doctor": {},
-        "age_cycles": 96,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "VWAP",
-          "period": 58,
-          "threshold": 1.59,
-          "timeframe": "1h"
-        },
-        "sharpe": 1.4437,
-        "drawdown": 0.0495,
-        "win_rate": 0.55,
-        "pnl": 2.7297,
-        "doctor": {},
-        "age_cycles": 96,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "BOLLINGER",
-          "period": 57,
-          "threshold": 1.661,
-          "timeframe": "1h"
-        },
-        "sharpe": 1.1253,
-        "drawdown": 0.0555,
-        "win_rate": 0.5,
-        "pnl": 1.5172,
-        "doctor": {},
-        "age_cycles": 78,
+        "age_cycles": 35,
         "freshness": 0.1,
         "usage_count": 0
       }
@@ -3987,9 +3955,9 @@
         "win_rate": 0.85,
         "pnl": 29.0184,
         "doctor": {},
-        "age_cycles": 23,
-        "freshness": 0.31,
-        "usage_count": 1
+        "age_cycles": 62,
+        "freshness": 0.1,
+        "usage_count": 7
       },
       {
         "strategy": {
@@ -4004,9 +3972,9 @@
         "win_rate": 0.85,
         "pnl": 23.6158,
         "doctor": {},
-        "age_cycles": 93,
+        "age_cycles": 132,
         "freshness": 0.1,
-        "usage_count": 5
+        "usage_count": 6
       },
       {
         "strategy": {
@@ -4021,9 +3989,77 @@
         "win_rate": 0.75,
         "pnl": 25.6412,
         "doctor": {},
-        "age_cycles": 75,
+        "age_cycles": 114,
         "freshness": 0.1,
-        "usage_count": 5
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "RSI",
+          "period": 14,
+          "threshold": 0.984,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.9346,
+        "drawdown": 0.0204,
+        "win_rate": 0.8,
+        "pnl": 27.3712,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 37,
+          "threshold": 0.542,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.6752,
+        "drawdown": 0.0196,
+        "win_rate": 0.8,
+        "pnl": 21.5196,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 57,
+          "threshold": 0.634,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.5026,
+        "drawdown": 0.0193,
+        "win_rate": 0.75,
+        "pnl": 23.1311,
+        "doctor": {},
+        "age_cycles": 5,
+        "freshness": 0.85,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 6,
+          "threshold": 0.8,
+          "timeframe": "5m"
+        },
+        "sharpe": 12.4857,
+        "drawdown": 0.0314,
+        "win_rate": 0.8,
+        "pnl": 25.9274,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 1
       },
       {
         "strategy": {
@@ -4038,9 +4074,9 @@
         "win_rate": 0.65,
         "pnl": 23.7051,
         "doctor": {},
-        "age_cycles": 75,
+        "age_cycles": 114,
         "freshness": 0.1,
-        "usage_count": 3
+        "usage_count": 4
       },
       {
         "strategy": {
@@ -4055,9 +4091,9 @@
         "win_rate": 0.8,
         "pnl": 21.4122,
         "doctor": {},
-        "age_cycles": 93,
+        "age_cycles": 132,
         "freshness": 0.1,
-        "usage_count": 2
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -4072,9 +4108,9 @@
         "win_rate": 0.65,
         "pnl": 19.9841,
         "doctor": {},
-        "age_cycles": 41,
+        "age_cycles": 80,
         "freshness": 0.1,
-        "usage_count": 2
+        "usage_count": 3
       },
       {
         "strategy": {
@@ -4089,9 +4125,43 @@
         "win_rate": 0.75,
         "pnl": 21.1614,
         "doctor": {},
-        "age_cycles": 92,
+        "age_cycles": 131,
         "freshness": 0.1,
-        "usage_count": 2
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 52,
+          "threshold": 0.345,
+          "timeframe": "1h"
+        },
+        "sharpe": 11.3986,
+        "drawdown": 0.0149,
+        "win_rate": 0.8,
+        "pnl": 22.5551,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 78,
+          "threshold": 2.065,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.8213,
+        "drawdown": 0.0292,
+        "win_rate": 0.7,
+        "pnl": 21.2794,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -4106,7 +4176,7 @@
         "win_rate": 0.7,
         "pnl": 16.0,
         "doctor": {},
-        "age_cycles": 41,
+        "age_cycles": 80,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4123,8 +4193,25 @@
         "win_rate": 0.75,
         "pnl": 18.8512,
         "doctor": {},
-        "age_cycles": 40,
+        "age_cycles": 79,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 54,
+          "threshold": 0.94,
+          "timeframe": "5m"
+        },
+        "sharpe": 9.4384,
+        "drawdown": 0.023,
+        "win_rate": 0.7,
+        "pnl": 15.8651,
+        "doctor": {},
+        "age_cycles": 19,
+        "freshness": 0.43,
         "usage_count": 0
       },
       {
@@ -4140,8 +4227,42 @@
         "win_rate": 0.75,
         "pnl": 15.9573,
         "doctor": {},
-        "age_cycles": 40,
+        "age_cycles": 79,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 70,
+          "threshold": 0.737,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.9523,
+        "drawdown": 0.0238,
+        "win_rate": 0.7,
+        "pnl": 16.5471,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 40,
+          "threshold": 0.906,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.901,
+        "drawdown": 0.0141,
+        "win_rate": 0.7,
+        "pnl": 13.6715,
+        "doctor": {},
+        "age_cycles": 18,
+        "freshness": 0.46,
         "usage_count": 0
       },
       {
@@ -4157,8 +4278,42 @@
         "win_rate": 0.65,
         "pnl": 15.1674,
         "doctor": {},
-        "age_cycles": 22,
-        "freshness": 0.34,
+        "age_cycles": 61,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 54,
+          "threshold": 1.736,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.3493,
+        "drawdown": 0.0219,
+        "win_rate": 0.6,
+        "pnl": 15.2104,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 53,
+          "threshold": 0.343,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.3465,
+        "drawdown": 0.0215,
+        "win_rate": 0.6,
+        "pnl": 15.6264,
+        "doctor": {},
+        "age_cycles": 5,
+        "freshness": 0.85,
         "usage_count": 0
       },
       {
@@ -4174,7 +4329,24 @@
         "win_rate": 0.65,
         "pnl": 11.4466,
         "doctor": {},
-        "age_cycles": 74,
+        "age_cycles": 113,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 20,
+          "threshold": 0.562,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.2663,
+        "drawdown": 0.0145,
+        "win_rate": 0.6,
+        "pnl": 12.7176,
+        "doctor": {},
+        "age_cycles": 32,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4191,7 +4363,7 @@
         "win_rate": 0.7,
         "pnl": 13.7617,
         "doctor": {},
-        "age_cycles": 41,
+        "age_cycles": 80,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4208,7 +4380,7 @@
         "win_rate": 0.7,
         "pnl": 16.158,
         "doctor": {},
-        "age_cycles": 41,
+        "age_cycles": 80,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4225,7 +4397,7 @@
         "win_rate": 0.6,
         "pnl": 13.5247,
         "doctor": {},
-        "age_cycles": 93,
+        "age_cycles": 132,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -4242,8 +4414,8 @@
         "win_rate": 0.65,
         "pnl": 13.6471,
         "doctor": {},
-        "age_cycles": 23,
-        "freshness": 0.31,
+        "age_cycles": 62,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -4259,7 +4431,7 @@
         "win_rate": 0.6,
         "pnl": 12.5517,
         "doctor": {},
-        "age_cycles": 74,
+        "age_cycles": 113,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4276,211 +4448,7 @@
         "win_rate": 0.65,
         "pnl": 13.0771,
         "doctor": {},
-        "age_cycles": 23,
-        "freshness": 0.31,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "RSI",
-          "period": 48,
-          "threshold": 0.539,
-          "timeframe": "4h"
-        },
-        "sharpe": 7.7257,
-        "drawdown": 0.0258,
-        "win_rate": 0.6,
-        "pnl": 12.7508,
-        "doctor": {},
-        "age_cycles": 40,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "MACD",
-          "exit_indicator": "BOLLINGER",
-          "period": 36,
-          "threshold": 1.322,
-          "timeframe": "15m"
-        },
-        "sharpe": 7.5655,
-        "drawdown": 0.0369,
-        "win_rate": 0.55,
-        "pnl": 13.575,
-        "doctor": {},
-        "age_cycles": 92,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "ATR",
-          "period": 25,
-          "threshold": 1.601,
-          "timeframe": "15m"
-        },
-        "sharpe": 7.3055,
-        "drawdown": 0.0279,
-        "win_rate": 0.65,
-        "pnl": 13.6921,
-        "doctor": {},
-        "age_cycles": 75,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "BOLLINGER",
-          "period": 13,
-          "threshold": 0.826,
-          "timeframe": "1h"
-        },
-        "sharpe": 7.0207,
-        "drawdown": 0.0154,
-        "win_rate": 0.6,
-        "pnl": 11.5278,
-        "doctor": {},
-        "age_cycles": 74,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "BOLLINGER",
-          "period": 52,
-          "threshold": 0.586,
-          "timeframe": "4h"
-        },
-        "sharpe": 6.3826,
-        "drawdown": 0.0331,
-        "win_rate": 0.65,
-        "pnl": 12.123,
-        "doctor": {},
-        "age_cycles": 92,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "EMA",
-          "period": 15,
-          "threshold": 0.236,
-          "timeframe": "4h"
-        },
-        "sharpe": 6.2915,
-        "drawdown": 0.0235,
-        "win_rate": 0.6,
-        "pnl": 12.0343,
-        "doctor": {},
-        "age_cycles": 22,
-        "freshness": 0.34,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "MACD",
-          "period": 32,
-          "threshold": 2.025,
-          "timeframe": "1h"
-        },
-        "sharpe": 6.2514,
-        "drawdown": 0.04,
-        "win_rate": 0.6,
-        "pnl": 11.3251,
-        "doctor": {},
-        "age_cycles": 75,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "BOLLINGER",
-          "period": 78,
-          "threshold": 1.13,
-          "timeframe": "15m"
-        },
-        "sharpe": 6.1043,
-        "drawdown": 0.0323,
-        "win_rate": 0.6,
-        "pnl": 12.3561,
-        "doctor": {},
-        "age_cycles": 93,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "ATR",
-          "period": 61,
-          "threshold": 2.132,
-          "timeframe": "5m"
-        },
-        "sharpe": 6.0506,
-        "drawdown": 0.0417,
-        "win_rate": 0.65,
-        "pnl": 10.0744,
-        "doctor": {},
-        "age_cycles": 93,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "ATR",
-          "period": 13,
-          "threshold": 2.48,
-          "timeframe": "15m"
-        },
-        "sharpe": 5.9511,
-        "drawdown": 0.0261,
-        "win_rate": 0.7,
-        "pnl": 11.3117,
-        "doctor": {},
-        "age_cycles": 40,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "RSI",
-          "period": 26,
-          "threshold": 2.37,
-          "timeframe": "1h"
-        },
-        "sharpe": 5.9249,
-        "drawdown": 0.0415,
-        "win_rate": 0.7,
-        "pnl": 10.6004,
-        "doctor": {},
-        "age_cycles": 93,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "VWAP",
-          "period": 51,
-          "threshold": 2.093,
-          "timeframe": "4h"
-        },
-        "sharpe": 5.9186,
-        "drawdown": 0.028,
-        "win_rate": 0.7,
-        "pnl": 10.0546,
-        "doctor": {},
-        "age_cycles": 74,
+        "age_cycles": 62,
         "freshness": 0.1,
         "usage_count": 0
       }
@@ -4499,9 +4467,9 @@
         "win_rate": 0.8,
         "pnl": 30.0476,
         "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
-        "usage_count": 0
+        "age_cycles": 56,
+        "freshness": 0.1,
+        "usage_count": 6
       },
       {
         "strategy": {
@@ -4516,9 +4484,77 @@
         "win_rate": 0.75,
         "pnl": 23.5482,
         "doctor": {},
-        "age_cycles": 87,
+        "age_cycles": 126,
         "freshness": 0.1,
-        "usage_count": 6
+        "usage_count": 8
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 31,
+          "threshold": 0.606,
+          "timeframe": "5m"
+        },
+        "sharpe": 12.6621,
+        "drawdown": 0.0214,
+        "win_rate": 0.75,
+        "pnl": 21.3866,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 39,
+          "threshold": 0.583,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.5908,
+        "drawdown": 0.0262,
+        "win_rate": 0.75,
+        "pnl": 17.5091,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 16,
+          "threshold": 1.87,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.5241,
+        "drawdown": 0.0176,
+        "win_rate": 0.55,
+        "pnl": 18.638,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 15,
+          "threshold": 2.186,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.0695,
+        "drawdown": 0.0234,
+        "win_rate": 0.6,
+        "pnl": 19.8227,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -4533,7 +4569,7 @@
         "win_rate": 0.7,
         "pnl": 16.9644,
         "doctor": {},
-        "age_cycles": 87,
+        "age_cycles": 126,
         "freshness": 0.1,
         "usage_count": 2
       },
@@ -4550,9 +4586,26 @@
         "win_rate": 0.7,
         "pnl": 20.9765,
         "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
-        "usage_count": 0
+        "age_cycles": 56,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 33,
+          "threshold": 0.408,
+          "timeframe": "1h"
+        },
+        "sharpe": 9.4485,
+        "drawdown": 0.0147,
+        "win_rate": 0.7,
+        "pnl": 16.2567,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 1
       },
       {
         "strategy": {
@@ -4567,7 +4620,7 @@
         "win_rate": 0.65,
         "pnl": 15.4112,
         "doctor": {},
-        "age_cycles": 87,
+        "age_cycles": 126,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -4584,9 +4637,26 @@
         "win_rate": 0.65,
         "pnl": 19.8636,
         "doctor": {},
-        "age_cycles": 69,
+        "age_cycles": 108,
         "freshness": 0.1,
         "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "MACD",
+          "period": 41,
+          "threshold": 1.796,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.5462,
+        "drawdown": 0.0196,
+        "win_rate": 0.65,
+        "pnl": 18.2562,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
       },
       {
         "strategy": {
@@ -4601,8 +4671,25 @@
         "win_rate": 0.65,
         "pnl": 15.9259,
         "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
+        "age_cycles": 56,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 6,
+          "threshold": 1.398,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.8304,
+        "drawdown": 0.0166,
+        "win_rate": 0.55,
+        "pnl": 14.9923,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
         "usage_count": 0
       },
       {
@@ -4618,8 +4705,42 @@
         "win_rate": 0.65,
         "pnl": 12.0252,
         "doctor": {},
-        "age_cycles": 35,
+        "age_cycles": 74,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "RSI",
+          "period": 48,
+          "threshold": 1.787,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.7041,
+        "drawdown": 0.048,
+        "win_rate": 0.7,
+        "pnl": 12.0923,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 38,
+          "threshold": 0.759,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.4054,
+        "drawdown": 0.0432,
+        "win_rate": 0.6,
+        "pnl": 15.4441,
+        "doctor": {},
+        "age_cycles": 29,
+        "freshness": 0.13,
         "usage_count": 0
       },
       {
@@ -4635,8 +4756,25 @@
         "win_rate": 0.65,
         "pnl": 14.4374,
         "doctor": {},
-        "age_cycles": 35,
+        "age_cycles": 74,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 78,
+          "threshold": 1.812,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.143,
+        "drawdown": 0.0326,
+        "win_rate": 0.55,
+        "pnl": 14.4605,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
         "usage_count": 0
       },
       {
@@ -4652,7 +4790,7 @@
         "win_rate": 0.7,
         "pnl": 13.2689,
         "doctor": {},
-        "age_cycles": 35,
+        "age_cycles": 74,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4669,7 +4807,7 @@
         "win_rate": 0.6,
         "pnl": 13.8926,
         "doctor": {},
-        "age_cycles": 90,
+        "age_cycles": 129,
         "freshness": 0.1,
         "usage_count": 1
       },
@@ -4686,8 +4824,8 @@
         "win_rate": 0.65,
         "pnl": 13.1257,
         "doctor": {},
-        "age_cycles": 20,
-        "freshness": 0.4,
+        "age_cycles": 59,
+        "freshness": 0.1,
         "usage_count": 0
       },
       {
@@ -4703,7 +4841,7 @@
         "win_rate": 0.6,
         "pnl": 10.788,
         "doctor": {},
-        "age_cycles": 35,
+        "age_cycles": 74,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4720,8 +4858,42 @@
         "win_rate": 0.55,
         "pnl": 11.2816,
         "doctor": {},
-        "age_cycles": 35,
+        "age_cycles": 74,
         "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 64,
+          "threshold": 2.454,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.1195,
+        "drawdown": 0.0227,
+        "win_rate": 0.55,
+        "pnl": 9.9971,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 6,
+          "threshold": 2.203,
+          "timeframe": "1h"
+        },
+        "sharpe": 5.8375,
+        "drawdown": 0.0326,
+        "win_rate": 0.65,
+        "pnl": 11.8983,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
         "usage_count": 0
       },
       {
@@ -4737,7 +4909,7 @@
         "win_rate": 0.6,
         "pnl": 9.7912,
         "doctor": {},
-        "age_cycles": 87,
+        "age_cycles": 126,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4754,7 +4926,7 @@
         "win_rate": 0.6,
         "pnl": 11.2889,
         "doctor": {},
-        "age_cycles": 69,
+        "age_cycles": 108,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4771,143 +4943,7 @@
         "win_rate": 0.65,
         "pnl": 11.0226,
         "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "BOLLINGER",
-          "period": 76,
-          "threshold": 1.536,
-          "timeframe": "5m"
-        },
-        "sharpe": 5.3112,
-        "drawdown": 0.0427,
-        "win_rate": 0.6,
-        "pnl": 9.7676,
-        "doctor": {},
-        "age_cycles": 35,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "BOLLINGER",
-          "exit_indicator": "MACD",
-          "period": 17,
-          "threshold": 1.249,
-          "timeframe": "5m"
-        },
-        "sharpe": 4.7001,
-        "drawdown": 0.0401,
-        "win_rate": 0.5,
-        "pnl": 8.4869,
-        "doctor": {},
-        "age_cycles": 69,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "VWAP",
-          "exit_indicator": "BOLLINGER",
-          "period": 5,
-          "threshold": 1.293,
-          "timeframe": "1h"
-        },
-        "sharpe": 3.7343,
-        "drawdown": 0.0363,
-        "win_rate": 0.5,
-        "pnl": 6.602,
-        "doctor": {},
-        "age_cycles": 38,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "EMA",
-          "period": 63,
-          "threshold": 0.271,
-          "timeframe": "15m"
-        },
-        "sharpe": 3.6546,
-        "drawdown": 0.0479,
-        "win_rate": 0.55,
-        "pnl": 6.9338,
-        "doctor": {},
-        "age_cycles": 87,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "RSI",
-          "period": 53,
-          "threshold": 2.167,
-          "timeframe": "5m"
-        },
-        "sharpe": 3.3998,
-        "drawdown": 0.0451,
-        "win_rate": 0.6,
-        "pnl": 5.2945,
-        "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "VWAP",
-          "period": 27,
-          "threshold": 1.079,
-          "timeframe": "4h"
-        },
-        "sharpe": 3.3679,
-        "drawdown": 0.0258,
-        "win_rate": 0.5,
-        "pnl": 6.3249,
-        "doctor": {},
-        "age_cycles": 35,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "ATR",
-          "period": 42,
-          "threshold": 1.622,
-          "timeframe": "15m"
-        },
-        "sharpe": 3.2008,
-        "drawdown": 0.0365,
-        "win_rate": 0.6,
-        "pnl": 5.8051,
-        "doctor": {},
-        "age_cycles": 69,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "EMA",
-          "exit_indicator": "VWAP",
-          "period": 72,
-          "threshold": 2.122,
-          "timeframe": "4h"
-        },
-        "sharpe": 2.6002,
-        "drawdown": 0.0585,
-        "win_rate": 0.65,
-        "pnl": 4.3034,
-        "doctor": {},
-        "age_cycles": 87,
+        "age_cycles": 56,
         "freshness": 0.1,
         "usage_count": 0
       },
@@ -4915,114 +4951,24 @@
         "strategy": {
           "entry_indicator": "BOLLINGER",
           "exit_indicator": "EMA",
-          "period": 37,
-          "threshold": 0.493,
-          "timeframe": "4h"
-        },
-        "sharpe": 2.5044,
-        "drawdown": 0.0394,
-        "win_rate": 0.5,
-        "pnl": 4.1522,
-        "doctor": {},
-        "age_cycles": 17,
-        "freshness": 0.49,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "ATR",
-          "exit_indicator": "BOLLINGER",
-          "period": 68,
-          "threshold": 1.046,
-          "timeframe": "5m"
-        },
-        "sharpe": 2.4264,
-        "drawdown": 0.0412,
-        "win_rate": 0.5,
-        "pnl": 3.8518,
-        "doctor": {},
-        "age_cycles": 69,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "RSI",
-          "period": 61,
-          "threshold": 1.803,
+          "period": 14,
+          "threshold": 2.179,
           "timeframe": "15m"
         },
-        "sharpe": 1.9494,
-        "drawdown": 0.0364,
+        "sharpe": 5.3129,
+        "drawdown": 0.0638,
         "win_rate": 0.55,
-        "pnl": 3.6166,
+        "pnl": 10.086,
         "doctor": {},
-        "age_cycles": 87,
-        "freshness": 0.1,
-        "usage_count": 0
-      },
-      {
-        "strategy": {
-          "entry_indicator": "RSI",
-          "exit_indicator": "EMA",
-          "period": 34,
-          "threshold": 1.958,
-          "timeframe": "5m"
-        },
-        "sharpe": 1.7492,
-        "drawdown": 0.0343,
-        "win_rate": 0.55,
-        "pnl": 2.9208,
-        "doctor": {},
-        "age_cycles": 69,
-        "freshness": 0.1,
+        "age_cycles": 26,
+        "freshness": 0.22,
         "usage_count": 0
       }
     ]
   },
   "regime_count": 10,
-  "last_updated_regime": "high_volatility_regime",
+  "last_updated_regime": "test",
   "regime_history": [
-    "bull_trend",
-    "bull",
-    "bear",
-    "unknown",
-    "bull_trend",
-    "bull_trend",
-    "test_regime",
-    "test_regime",
-    "bull_trend",
-    "test",
-    "bull_trend",
-    "bear_trend",
-    "test",
-    "bull_trend",
-    "sideways",
-    "trend",
-    "trend",
-    "trend",
-    "bull_trend",
-    "bull",
-    "bear",
-    "unknown",
-    "bull_trend",
-    "bull_trend",
-    "test_regime",
-    "test_regime",
-    "bull_trend",
-    "test",
-    "bull_trend",
-    "bear_trend",
-    "test",
-    "bull_trend",
-    "sideways",
-    "trend",
-    "trend",
-    "trend",
-    "high_volatility_regime",
-    "high_volatility_regime",
-    "high_volatility_regime",
     "high_volatility_regime",
     "high_volatility_regime",
     "high_volatility_regime",
@@ -5083,6 +5029,45 @@
     "high_volatility_regime",
     "high_volatility_regime",
     "high_volatility_regime",
-    "high_volatility_regime"
+    "high_volatility_regime",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test"
   ]
 }

@@ -10,14 +10,17 @@ from agents.execution.arbitrage_agent import ArbitrageAgent
 from agents.execution.execution_engine import ExecutionEngine
 from agents.execution.liquidity_agent import LiquidityAnalyzer
 from agents.execution.paper_trading_engine import PaperTradingEngine
+from agents.execution.live_paper_engine import LivePaperEngine
 from agents.intelligence import FeatureEngineer
 from agents.intelligence.regime_detector import AdvancedRegimeDetector
 from agents.market.market_scanner import MarketScanner
 from agents.market.orderflow_agent import OrderFlowAnalyzer
+from agents.market.symbol_router import SymbolRouter
 from agents.market.volatility_agent import VolatilityDetector
 from agents.monitoring.prompt_doctor_agent import CreatePromptAgent
 from agents.monitoring.performance_monitor import PerformanceMonitor
 from agents.monitoring.system_monitor import SystemMonitor
+from agents.notifications.telegram_notifier import TelegramNotifier
 from agents.portfolio import PortfolioBrain
 from agents.quant.backtest_lab import BacktestLab
 from agents.quant.monte_carlo import MonteCarloSimulator
@@ -25,10 +28,21 @@ from agents.quant.portfolio_optimizer import PortfolioOptimizer
 from agents.research.feature_engineer import FeatureEngineer as LegacyFeatureEngineer
 from agents.research.model_builder import ModelBuilder
 from agents.research.paper_analyzer import PaperAnalyzer
+from agents.research.sentiment_feed import SentimentFeed
 from agents.research.strategy_researcher import StrategyResearcher
+from agents.risk.circuit_breaker import CircuitBreaker
 from agents.risk.drawdown_guard import DrawdownGuard
 from agents.risk.exposure_manager import ExposureManager
+from agents.risk.kelly_criterion import KellyCriterion, compute_avg_win_loss
+from agents.risk.cvar_calculator import CVaRCalculator
 from agents.risk.risk_monitor import RiskMonitor
+from agents.risk.stop_loss_manager import StopLossManager
+from agents.quant.walk_forward import WalkForwardOptimizer
+from agents.risk.position_sizer import PositionSizer
+from agents.quant.regime_strategy_selector import RegimeStrategySelector
+from agents.execution.portfolio_rebalancer import PortfolioRebalancer
+from agents.reporting.html_reporter import HtmlReporter
+from agents.simulation.historical_replay import HistoricalReplay
 from agents.strategy.genetic_optimizer import GeneticOptimizer
 from agents.strategy.rl_trader import RLTrader
 from agents.strategy.strategy_generator import StrategyGenerator
@@ -42,6 +56,7 @@ from liquidity_map import LiquidityFlowMap
 from data.market_database import MarketDatabase
 from data.strategy_database import StrategyDatabase
 from databases.strategy_scoreboard import StrategyScoreboard
+from databases.strategy_scoreboard_sql import StrategyScoreboardSQL
 from engine.decision_engine import DecisionEngine, StrategyRanker
 from runtime_config import RuntimeConfig, get_env_int, load_runtime_config_from_env
 
@@ -78,11 +93,31 @@ def run_v91_system(
         exchanges=_ccxt_exchanges,
         cache_db_path=cfg.ccxt_cache_db or None,
         live_feed_interval=cfg.ccxt_ws_interval if cfg.ccxt_ws_enabled else 0.0,
+        use_websocket=cfg.ccxt_ws_pro,
     )
     orderflow = OrderFlowAnalyzer()
     vol_detector = VolatilityDetector()
     feature_eng = FeatureEngineer()
     regime_detector = AdvancedRegimeDetector()
+
+    # ===== TELEGRAM NOTIFIER (option H) =====
+    notifier = TelegramNotifier(
+        bot_token=cfg.telegram_bot_token,
+        chat_id=cfg.telegram_chat_id,
+        cooldown_seconds=cfg.telegram_cooldown,
+    )
+
+    # ===== KELLY CRITERION (option K) =====
+    kelly = KellyCriterion(
+        max_fraction=cfg.kelly_max_fraction,
+        half_kelly=cfg.kelly_half,
+    )
+
+    # ===== CVaR / EXPECTED SHORTFALL (option M) =====
+    cvar_calc = CVaRCalculator(
+        confidence=cfg.cvar_confidence,
+        max_loss=cfg.cvar_max_loss,
+    )
 
     # ===== WHALE RADAR =====
     whale_radar = WhaleRadar(threshold_usd=cfg.whale_threshold_usd)
@@ -136,11 +171,74 @@ def run_v91_system(
     drawdown_guard = DrawdownGuard()
     exposure_manager = ExposureManager()
 
+    # Circuit Breakers (option P)
+    circuit_breaker = CircuitBreaker(
+        daily_loss_limit=cfg.cb_daily_loss_limit,
+        drawdown_limit=cfg.cb_drawdown_limit,
+        consecutive_losses=cfg.cb_consecutive_losses,
+    )
+
     # ===== EXECUTION =====
     execution = ExecutionEngine()
     arbitrage = ArbitrageAgent()
     liquidity = LiquidityAnalyzer()
-    paper = PaperTradingEngine()
+    paper = LivePaperEngine(initial_balance=cfg.initial_balance)  # option O
+
+    # Symbol Router — multi-symbole parallèle (option Q)
+    symbol_router = SymbolRouter(
+        max_symbols=cfg.symbol_router_max,
+        weighting=cfg.symbol_router_weighting,  # type: ignore[arg-type]
+        min_volume=cfg.symbol_router_min_volume,
+    )
+
+    # Sentiment Feed — Fear & Greed (option R)
+    sentiment_feed: SentimentFeed | None = (
+        SentimentFeed(
+            cache_ttl=cfg.sentiment_cache_ttl,
+            fallback_score=cfg.sentiment_fallback_score,
+        )
+        if cfg.sentiment_enabled
+        else None
+    )
+
+    # Stop Loss / Take Profit + Trailing (options S+T)
+    sl_manager = StopLossManager(
+        default_sl_pct=cfg.sl_pct,
+        default_tp_pct=cfg.tp_pct,
+        trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+    )
+
+    # Walk-Forward Optimizer (option U)
+    wfo = WalkForwardOptimizer(
+        n_splits=cfg.wfo_n_splits,
+        train_ratio=cfg.wfo_train_ratio,
+    ) if cfg.wfo_enabled else None
+
+    # Position Sizer adaptatif Kelly + CVaR (option V)
+    sizer = PositionSizer(
+        max_kelly_fraction=cfg.sizer_max_kelly,
+        max_position_size=cfg.sizer_max_size,
+        min_position_size=cfg.sizer_min_size,
+        kelly_half=cfg.sizer_half_kelly,
+        cvar_safety_factor=cfg.sizer_cvar_safety,
+    )
+
+    # Regime-Aware Strategy Selector (option W)
+    regime_selector = RegimeStrategySelector(
+        min_score=cfg.regime_selector_min_score,
+    ) if cfg.regime_selector_enabled else None
+
+    # Portfolio Rebalancer (option X)
+    rebalancer = PortfolioRebalancer(
+        drift_threshold=cfg.rebalancer_drift_threshold,
+        max_orders=cfg.rebalancer_max_orders,
+    ) if cfg.rebalancer_enabled else None
+
+    # HTML Reporter (option Y)
+    reporter = HtmlReporter(
+        output_dir=cfg.report_output_dir,
+        keep_last_n=cfg.report_keep_last,
+    ) if cfg.report_enabled else None
 
     # ===== MONITORING =====
     perf_monitor = PerformanceMonitor()
@@ -152,7 +250,7 @@ def run_v91_system(
     # ===== DATABASES =====
     market_db = MarketDatabase()
     strategy_db = StrategyDatabase()
-    scoreboard = StrategyScoreboard()
+    scoreboard = StrategyScoreboardSQL(db_path=cfg.scoreboard_sql_path)
 
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
@@ -165,6 +263,29 @@ def run_v91_system(
         candles = market["candles"]
         data_source = market["data_source"]
         market_db.save_snapshot(market)
+
+        symbols = [c["symbol"] for c in candles]
+        close_prices = [float(c["close"]) for c in candles]
+
+        # ===== 1a. CHECK SL/TP/TRAILING (options S+T) avant tout le reste =====
+        _price_map = {c["symbol"]: float(c["close"]) for c in candles}
+        sl_triggers = sl_manager.check_all(_price_map)
+        for _trigger in sl_triggers:
+            _sl_icon = {"stop_loss": "🛑", "take_profit": "💰", "trailing_stop": "📉"}.get(
+                _trigger.trigger_type or "", "⚠️"
+            )
+            if cycle % cfg.display_frequency == 0:
+                print(
+                    f"{_sl_icon} {(_trigger.trigger_type or '').upper()} déclenché "
+                    f"sur {_trigger.symbol} @ {_trigger.current_price:.4f} "
+                    f"(seuil={_trigger.trigger_price:.4f})"
+                )
+            # Force un SELL sur le symbole déclenché
+            _sl_order = execution.create_order(
+                symbol=_trigger.symbol, action="SELL", size=cfg.sl_pct
+            )
+            paper.execute(_sl_order, mark_price=_trigger.current_price, cycle=cycle)
+            sl_manager.clear(_trigger.symbol)  # ferme le suivi SL
 
         symbols = [c["symbol"] for c in candles]
         close_prices = [float(c["close"]) for c in candles]
@@ -204,8 +325,49 @@ def run_v91_system(
         population = strategy_generator.generate_population(cfg.population_size)
         evolved = optimizer.evolve(population, generations=cfg.generations)
 
+        # ===== 2b. REGIME-AWARE STRATEGY SELECTION (option W) =====
+        if regime_selector is not None and evolved:
+            evolved = regime_selector.select(evolved, regime=regime, top_n=len(evolved))
+            if cycle % cfg.display_frequency == 0:
+                _w_summary = regime_selector.summary(evolved, regime)
+                print(
+                    f"🧭 RegimeSelector [{regime}] | trend={_w_summary['trend_following']} "
+                    f"mean={_w_summary['mean_reversion']} unknown={_w_summary['unknown']} "
+                    f"→ optimal={_w_summary['regime_optimal_family']}"
+                )
+
         # ===== 3. BACKTESTING LAB =====
         results = [backtest_lab.run_backtest(strategy=s, data=backtest_data) for s in evolved]
+
+        # Résumé backtest pour le Director Dashboard (option J)
+        _bt_pnls = [r["pnl"] for r in results if r]
+        _bt_sharpes = [r["sharpe"] for r in results if r]
+        _bt_dds = [r["drawdown"] for r in results if r]
+        _bt_data_mode = results[0].get("data_mode", "synthetic") if results else "synthetic"
+        backtest_summary = {
+            "strategy_count": len(results),
+            "best_pnl": max(_bt_pnls, default=0.0),
+            "best_sharpe": max(_bt_sharpes, default=0.0),
+            "max_drawdown": max(_bt_dds, default=0.0),
+            "data_mode": _bt_data_mode,
+            "candles_count": len(backtest_data),
+        }
+
+        # ===== 3b. WALK-FORWARD VALIDATION (option U) =====
+        wfo_result: dict = {"data_mode": "disabled", "mean_sharpe": 0.0, "stability": 0.0}
+        if wfo is not None and results:
+            # Évalue la meilleure stratégie en OOS
+            _best_for_wfo = max(results, key=lambda r: r.get("sharpe", 0.0))
+            wfo_result = wfo.run(strategy=_best_for_wfo.get("strategy", {}), data=backtest_data)
+            _wfo_robust = wfo.is_robust(wfo_result)
+            if cycle % cfg.display_frequency == 0:
+                _wfo_icon = "✅" if _wfo_robust else "⚠️"
+                print(
+                    f"{_wfo_icon} WFO | splits={wfo_result['n_splits_used']} | "
+                    f"mean_sharpe={wfo_result['mean_sharpe']:.3f} | "
+                    f"stability={wfo_result['stability']:.1%} | "
+                    f"{'ROBUSTE' if _wfo_robust else 'FRAGILE'}"
+                )
 
         # ===== 3b. AI STRATEGY FACTORY (NEW!) =====
         factory_report = strategy_factory.run(
@@ -287,6 +449,21 @@ def run_v91_system(
             max_risk=cfg.max_risk_per_trade,
         )
 
+        # ===== 7b. SENTIMENT FEED (option R) =====
+        sentiment_score: int = 50
+        sentiment_label: str = "Neutral"
+        sentiment_source: str = "disabled"
+        if sentiment_feed is not None:
+            _sent = sentiment_feed.fetch()
+            sentiment_score = _sent["score"]
+            sentiment_label = _sent["label"]
+            sentiment_source = _sent["source"]
+            # Score < bearish_threshold → réduit la décision de trader
+            if sentiment_score < cfg.sentiment_bearish_threshold and should_trade:
+                should_trade = False
+                if cycle % cfg.display_frequency == 0:
+                    print(f"😨 Sentiment BEARISH ({sentiment_label} {sentiment_score}) — trade bloqué")
+
         # ===== 8. MODEL RETRAINING =====
         model_info = model_builder.retrain(top_results)
 
@@ -297,14 +474,120 @@ def run_v91_system(
         action = rl_trader.choose_action(action_state)
 
         dd = float(best.get("drawdown", 0.0)) if best else 0.0
-        size = drawdown_guard.adjust_position_size(dd, base_size=1.0)
+
+        # Kelly Criterion (option K) — taille de position depuis le meilleur backtest
+        if best:
+            _win_rate = float(best.get("win_rate", 0.0))
+            _returns_for_kelly = backtest_data  # bougies historiques
+            _avg_win, _avg_loss = compute_avg_win_loss(
+                [float(c["close"]) / float(backtest_data[i]["close"]) - 1.0
+                 for i, c in enumerate(backtest_data[1:], 1)]
+                if len(backtest_data) >= 2 else []
+            )
+            kelly_fraction = kelly.compute_size(
+                win_rate=_win_rate,
+                avg_win=_avg_win,
+                avg_loss=_avg_loss,
+                fallback=cfg.max_risk_per_trade,
+            )
+        else:
+            kelly_fraction = cfg.max_risk_per_trade
+
+        size = drawdown_guard.adjust_position_size(dd, base_size=kelly_fraction)
+
+        # CVaR / Expected Shortfall (option M) — gate de risque extrême
+        _price_returns = (
+            [float(c["close"]) / float(backtest_data[i]["close"]) - 1.0
+             for i, c in enumerate(backtest_data[1:], 1)]
+            if len(backtest_data) >= 2 else []
+        )
+        cvar_value = cvar_calc.compute(_price_returns)
+        cvar_within_limit = cvar_calc.is_within_limit(_price_returns)
+        if not cvar_within_limit:
+            # CVaR dépasse le seuil → réduit la taille de moitié
+            size = size * 0.5
+
+        # ===== Position Sizer adaptatif Kelly + CVaR (option V) =====
+        _paper_equity_for_sizer = paper_state_prev.get("equity", cfg.initial_balance) if "paper_state_prev" in dir() else cfg.initial_balance
+        _paper_win_rate = paper_state_prev.get("win_rate", 0.5) if "paper_state_prev" in dir() else 0.5
+        _paper_avg_win = paper_state_prev.get("avg_win", _avg_win if best else 0.0) if "paper_state_prev" in dir() else 0.0
+        _paper_avg_loss = paper_state_prev.get("avg_loss", _avg_loss if best else 0.0) if "paper_state_prev" in dir() else 0.0
+        _cvar_abs = abs(cvar_value) * _paper_equity_for_sizer  # CVaR en $ approx
+        sizing_result = sizer.compute(
+            win_rate=_paper_win_rate,
+            avg_win=_paper_avg_win,
+            avg_loss=_paper_avg_loss,
+            cvar=_cvar_abs,
+            portfolio_value=_paper_equity_for_sizer,
+        )
+        if sizing_result.size > 0 and action != "HOLD":
+            size = sizing_result.size  # override avec position sizing adaptatif
+        if cycle % cfg.display_frequency == 0:
+            print(
+                f"📏 PositionSizer | method={sizing_result.method} "
+                f"kelly={sizing_result.kelly_f:.3f} capped={sizing_result.kelly_capped:.3f} "
+                f"cvar_cap={sizing_result.cvar_cap:.3f} → size={sizing_result.size:.3f}"
+            )
+
         price = next(float(c["close"]) for c in candles if c["symbol"] == symbol)
 
         if arbitrage.detect(price, price * random.uniform(0.985, 1.02), threshold=0.012):
             action = "SELL"
 
-        order = execution.create_order(symbol=symbol, action=action, size=size)
-        paper_state = paper.execute(order, mark_price=price)
+        # ===== Circuit Breaker (option P) — gate avant exécution =====
+        _paper_dd_pct = paper_state_prev.get("drawdown_pct", 0.0) if "paper_state_prev" in dir() else 0.0
+        _paper_realized_pnl = paper_state_prev.get("realized_pnl", 0.0) if "paper_state_prev" in dir() else 0.0
+        cb_triggered = circuit_breaker.is_triggered(
+            current_drawdown_pct=_paper_dd_pct,
+            realized_pnl_today=_paper_realized_pnl,
+            initial_balance=cfg.initial_balance,
+        )
+        if cb_triggered:
+            cb_reason = circuit_breaker.reason()
+            if cycle % cfg.display_frequency == 0:
+                print(f"🔴 CIRCUIT BREAKER déclenché — {cb_reason}")
+            notifier.send_health_alert(
+                health_score=0.0,
+                recommendation=f"Circuit Breaker: {cb_reason}",
+            )
+            action = "HOLD"  # bloque le trade
+
+        # ===== Symbol Router (option Q) — dispatch multi-symbole =====
+        routed_orders = symbol_router.build_orders(candles, action=action, total_size=size)
+        if not routed_orders:
+            routed_orders = [{"symbol": symbol, "action": action, "size": size}]
+
+        # Trade principal (premier symbole)
+        primary_order_info = routed_orders[0]
+        order = execution.create_order(
+            symbol=primary_order_info["symbol"],
+            action=primary_order_info["action"],
+            size=primary_order_info["size"],
+        )
+        paper_state = paper.execute(order, mark_price=price, cycle=cycle)
+
+        # Enregistre les niveaux SL/TP si BUY exécuté (options S+T)
+        if primary_order_info["action"] == "BUY":
+            _atr = features.get("realized_volatility", 0.02) * price  # ATR approx
+            if cfg.sl_atr_enabled and _atr > 0:
+                sl_manager.set_levels_atr(
+                    symbol=primary_order_info["symbol"],
+                    entry_price=price,
+                    atr=_atr,
+                    sl_multiplier=cfg.sl_atr_multiplier,
+                    tp_multiplier=cfg.sl_tp_multiplier,
+                    trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+                )
+            else:
+                sl_manager.set_levels(
+                    symbol=primary_order_info["symbol"],
+                    entry_price=price,
+                    trailing_pct=cfg.sl_trailing_pct if cfg.sl_trailing_enabled else None,
+                )
+
+        # Enregistre le résultat pour le circuit breaker (pertes consécutives)
+        circuit_breaker.record_trade_result(paper_state.get("last_trade_pnl", 0.0))
+        paper_state_prev = paper_state  # mémorisé pour le prochain cycle
 
         # ===== 9b. DIRECTOR SUPER DASHBOARD UPDATE (NEW!) =====
         doctor_result_for_director = {
@@ -351,6 +634,15 @@ def run_v91_system(
             if cycle % cfg.display_frequency == 0:
                 print(f"[Bot Doctor] Strategy snapshot after corrections: {corrected_strategy}")
 
+        # ===== 9a. TELEGRAM ALERTS (option H) =====
+        notifier.send_signal(action=action, symbol=symbol, price=price, data_source=data_source)
+        notifier.send_whale_alert(whale_alerts)
+        if _prev_doctor_health < 50:
+            notifier.send_health_alert(
+                health_score=_prev_doctor_health,
+                recommendation=doctor_result_for_director.get("top_recommendation", ""),
+            )
+
         # ===== 9c. Director Dashboard update =====
         director_snapshot = None
         if director is not None:
@@ -375,6 +667,7 @@ def run_v91_system(
                 flow_summary=flow_report.as_dict(),
                 data_source=data_source,
                 exchange_metrics_report=scanner.get_metrics_report() if hasattr(scanner, "get_metrics_report") else "",
+                backtest_summary=backtest_summary,
             )
 
         # ===== 10. MONITORING & CONTROL CENTER (NEW!) =====
@@ -411,9 +704,27 @@ def run_v91_system(
         }
 
         portfolio_brain_info = {
-            "kelly_fraction": 0.25,
+            "kelly_fraction": round(kelly_fraction, 4),
+            "cvar": round(cvar_value, 4),
+            "cvar_within_limit": cvar_within_limit,
             "vol_target": features["realized_volatility"],
-            "max_position": 0.3,
+            "max_position": cfg.kelly_max_fraction,
+            # Paper trading live (option O)
+            "equity": paper_state.get("equity", cfg.initial_balance),
+            "realized_pnl": paper_state.get("realized_pnl", 0.0),
+            "total_return_pct": paper_state.get("total_return_pct", 0.0),
+            "paper_drawdown_pct": paper_state.get("drawdown_pct", 0.0),
+            "paper_win_rate": paper_state.get("win_rate", 0.0),
+            "paper_trade_count": paper_state.get("trade_count", 0),
+            # Circuit Breaker (option P)
+            "circuit_breaker_triggered": cb_triggered,
+            "circuit_breaker_reason": circuit_breaker.reason(),
+            # Symbol Router (option Q)
+            "routed_symbols": [o["symbol"] for o in routed_orders],
+            # Sentiment (option R)
+            "sentiment_score": sentiment_score,
+            "sentiment_label": sentiment_label,
+            "sentiment_source": sentiment_source,
         }
 
         # Render control center
@@ -450,10 +761,62 @@ def run_v91_system(
         )
         if cycle % cfg.display_frequency == 0:
             print(f"📊 MonteCarlo Results: {mc}")
-            print(f"💰 Paper Trading State: {paper_state}")
+            print(f"💰 Paper Trading | Equity: ${paper_state.get('equity', 0):,.2f} | "
+                  f"PnL: ${paper_state.get('realized_pnl', 0):+.2f} | "
+                  f"Return: {paper_state.get('total_return_pct', 0):+.2f}% | "
+                  f"DD: {paper_state.get('drawdown_pct', 0):.2f}% | "
+                  f"WinRate: {paper_state.get('win_rate', 0):.1%} | "
+                  f"Trades: {paper_state.get('trade_count', 0)}")
+            _cb_status = circuit_breaker.status()
+            _cb_icon = "🔴" if _cb_status["triggered"] else "🟢"
+            print(
+                f"{_cb_icon} Circuit Breaker | "
+                f"consec_losses={_cb_status['consecutive_losses']} | "
+                f"triggers_today={_cb_status['triggers_today']} | "
+                f"{'BLOQUÉ: ' + _cb_status['reason'] if _cb_status['triggered'] else 'OK'}"
+            )
+            _routed_str = ", ".join(o["symbol"] for o in routed_orders)
+            print(f"🔀 Symbol Router ({len(routed_orders)} symbols) → {_routed_str}")
+            if sentiment_feed is not None:
+                _sent_icon = "😨" if sentiment_score < 40 else ("😊" if sentiment_score > 60 else "😐")
+                print(
+                    f"{_sent_icon} Sentiment | score={sentiment_score}/100 | "
+                    f"{sentiment_label} | source={sentiment_source}"
+                )
 
         if cfg.max_cycles > 0 and cycle >= cfg.max_cycles:
             break
+
+        # ===== Auto-Rebalancing (option X) =====
+        if rebalancer is not None and cycle % cfg.rebalancer_frequency == 0:
+            _current_weights = {o["symbol"]: o["size"] for o in routed_orders}
+            _target_weights = symbol_router.allocate(candles)
+            _rebal_orders = rebalancer.compute_orders(
+                current_weights=_current_weights,
+                target_weights=_target_weights,
+                equity=float(paper_state.get("equity", cfg.initial_balance)),
+            )
+            if _rebal_orders:
+                if cycle % cfg.display_frequency == 0:
+                    print(f"⚖️  Rebalancer | {len(_rebal_orders)} ordre(s)")
+                for _ro in _rebal_orders:
+                    _ro_price = _price_map.get(_ro.symbol, price)
+                    _ro_order = execution.create_order(
+                        symbol=_ro.symbol, action=_ro.action, size=abs(_ro.drift)
+                    )
+                    paper.execute(_ro_order, mark_price=_ro_price, cycle=cycle)
+
+        # ===== HTML Reporter (option Y) =====
+        if reporter is not None and cycle % cfg.report_frequency == 0:
+            _report_path = reporter.generate(
+                paper_state=paper_state,
+                backtest_summary=backtest_summary,
+                wfo_result=wfo_result if "wfo_result" in dir() else {},
+                symbol=symbol,
+                cycle=cycle,
+            )
+            if cycle % cfg.display_frequency == 0:
+                print(f"📄 Rapport HTML → {_report_path}")
 
         time.sleep(max(0, cfg.sleep_seconds))
 

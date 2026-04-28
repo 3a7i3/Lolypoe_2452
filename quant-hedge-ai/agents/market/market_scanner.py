@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import random
@@ -290,6 +291,117 @@ class _LiveTickerFeed:
         logger.debug("_LiveTickerFeed: tous les exchanges ont échoué ce cycle")
 
 
+def _is_ccxt_pro_available() -> bool:
+    """Vérifie si ccxt.pro WebSocket est disponible. Patchable dans les tests."""
+    try:
+        import ccxt.pro  # noqa: PLC0415, F401
+        return True
+    except Exception:
+        return False
+
+
+class _WebSocketFeed:
+    """Thread daemon avec boucle asyncio qui consomme le flux WebSocket ccxt.pro.
+
+    Utilise ``watch_tickers()`` de ccxt.pro pour des données temps réel via WebSocket,
+    sans polling REST.
+
+    ``data_source`` est suffixé ``_ws_live`` (ex: ``"binance_ws_live"``) pour
+    distinguer les données WebSocket des données REST OHLCV (``_real``) et du
+    polling ticker (``_ws``).
+    """
+
+    def __init__(
+        self,
+        exchange_name: str,
+        symbols: list[str],
+        interval: float = 5.0,
+    ) -> None:
+        self._exchange_name = exchange_name
+        self._symbols = symbols
+        self._interval = interval
+        self.latest_snapshot: dict | None = None
+        self._stop_event = threading.Event()
+        self._loop: asyncio.AbstractEventLoop | None = None
+        self._thread = threading.Thread(target=self._run_loop, daemon=True, name="WebSocketFeed")
+
+    def start(self) -> None:
+        self._thread.start()
+        logger.info("_WebSocketFeed: démarré via ccxt.pro (exchange=%s)", self._exchange_name)
+
+    def stop(self) -> None:
+        self._stop_event.set()
+        if self._loop is not None and self._loop.is_running():
+            self._loop.call_soon_threadsafe(self._loop.stop)
+        if self._thread.is_alive():
+            self._thread.join(timeout=self._interval + 3)
+        logger.info("_WebSocketFeed: arrêté")
+
+    @property
+    def is_fresh(self) -> bool:
+        if self.latest_snapshot is None:
+            return False
+        age = time.monotonic() - self.latest_snapshot["fetched_at"]
+        return age < self._interval * 3
+
+    def _run_loop(self) -> None:
+        self._loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self._loop)
+        try:
+            self._loop.run_until_complete(self._stream())
+        except Exception as exc:
+            logger.warning("_WebSocketFeed: boucle asyncio terminée avec erreur (%s)", exc)
+        finally:
+            self._loop.close()
+            self._loop = None
+
+    async def _stream(self) -> None:
+        import ccxt.pro as ccxtpro  # noqa: PLC0415
+
+        cls = getattr(ccxtpro, self._exchange_name, None)
+        if cls is None:
+            logger.warning("_WebSocketFeed: exchange '%s' non supporté par ccxt.pro", self._exchange_name)
+            return
+        exchange = cls({"enableRateLimit": True})
+        ccxt_symbols = [_to_ccxt_symbol(s) for s in self._symbols]
+        try:
+            while not self._stop_event.is_set():
+                try:
+                    tickers = await exchange.watch_tickers(ccxt_symbols)
+                    candles: list[dict] = []
+                    for internal_sym in self._symbols:
+                        ccxt_sym = _to_ccxt_symbol(internal_sym)
+                        t = tickers.get(ccxt_sym)
+                        if t is None:
+                            continue
+                        candles.append({
+                            "symbol": internal_sym,
+                            "timestamp": datetime.now(timezone.utc).isoformat(),
+                            "open": float(t.get("open") or t.get("last") or 0),
+                            "high": float(t.get("high") or t.get("last") or 0),
+                            "low": float(t.get("low") or t.get("last") or 0),
+                            "close": float(t.get("last") or 0),
+                            "volume": float(t.get("baseVolume") or 0),
+                        })
+                    if candles:
+                        self.latest_snapshot = {
+                            "candles": candles,
+                            "data_source": f"{self._exchange_name}_ws_live",
+                            "fetched_at": time.monotonic(),
+                        }
+                        logger.debug("_WebSocketFeed: snapshot WS mis à jour (%d symboles)", len(candles))
+                except asyncio.CancelledError:
+                    break
+                except Exception as exc:
+                    logger.debug("_WebSocketFeed: erreur stream (%s) — retry dans %.1fs", exc, self._interval)
+                    await asyncio.sleep(self._interval)
+        finally:
+            try:
+                await exchange.close()
+            except Exception:
+                pass
+
+
 class MarketScanner:
     """Récupère les données OHLCV réelles via CCXT avec fallback multi-exchange.
 
@@ -298,7 +410,7 @@ class MarketScanner:
     - Un cache TTL évite les appels réseau répétés entre cycles.
     - Les exchanges sont essayés dans l'ordre configuré (défaut : binance → kraken → okx).
     - Fallback automatique sur des données synthétiques si tous les exchanges échouent.
-    - Live feed optionnel : thread daemon qui rafraîchit les prix toutes les N secondes.
+    - Live feed optionnel : polling REST (option G) ou WebSocket ccxt.pro (option L).
     - Métriques par exchange : latence moyenne, taux de succès, nombre d'appels.
 
     Paramètres
@@ -318,6 +430,10 @@ class MarketScanner:
     live_feed_interval:
         Intervalle en secondes du live ticker feed (option G). 0 = désactivé.
         Configurable via V9_CCXT_WS_INTERVAL (activé si V9_CCXT_WS_ENABLED=true).
+    use_websocket:
+        Si True, tente d'utiliser ccxt.pro WebSocket (option L) au lieu du polling REST.
+        Bascule automatiquement sur le polling si ccxt.pro est indisponible.
+        Configurable via V9_CCXT_WS_PRO.
     """
 
     def __init__(
@@ -328,6 +444,7 @@ class MarketScanner:
         exchanges: list[str] | None = None,
         cache_db_path: str | Path | None = None,
         live_feed_interval: float = 0.0,
+        use_websocket: bool = False,
     ) -> None:
         self.symbols = symbols or ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT"]
         self.timeframe = timeframe
@@ -341,14 +458,37 @@ class MarketScanner:
         self._metrics: dict[str, _ExchangeMetrics] = {
             name: _ExchangeMetrics(name=name) for name in self.exchange_names
         }
-        self._live_feed: _LiveTickerFeed | None = None
-        if live_feed_interval > 0 and self._exchanges:
-            self._live_feed = _LiveTickerFeed(
+        self._live_feed: _LiveTickerFeed | _WebSocketFeed | None = None
+        if live_feed_interval > 0:
+            self._live_feed = self._init_live_feed(live_feed_interval, use_websocket)
+            if self._live_feed is not None:
+                self._live_feed.start()
+
+    def _init_live_feed(
+        self, interval: float, use_websocket: bool
+    ) -> "_LiveTickerFeed | _WebSocketFeed | None":
+        """Initialise le feed temps réel. WebSocket si demandé, sinon polling REST."""
+        primary_exchange = self.exchange_names[0] if self.exchange_names else "binance"
+        if use_websocket:
+            if _is_ccxt_pro_available():
+                feed = _WebSocketFeed(
+                    exchange_name=primary_exchange,
+                    symbols=self.symbols,
+                    interval=interval,
+                )
+                logger.info("MarketScanner: WebSocket ccxt.pro activé (exchange=%s)", primary_exchange)
+                return feed
+            else:
+                logger.warning(
+                    "MarketScanner: ccxt.pro indisponible — fallback sur polling REST"
+                )
+        if self._exchanges:
+            return _LiveTickerFeed(
                 exchanges=self._exchanges,
                 symbols=self.symbols,
-                interval=live_feed_interval,
+                interval=interval,
             )
-            self._live_feed.start()
+        return None
 
     # ------------------------------------------------------------------
     # Compatibilité rétroactive — les tests existants utilisent _exchange

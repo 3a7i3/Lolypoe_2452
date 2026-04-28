@@ -1,0 +1,3692 @@
+{
+  "regimes": {
+    "bull_trend": [
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 75,
+          "threshold": 0.836,
+          "timeframe": "1h"
+        },
+        "sharpe": 22.0429,
+        "drawdown": 0.0068,
+        "win_rate": 0.95,
+        "pnl": 19.8359,
+        "doctor": {},
+        "age_cycles": 38,
+        "freshness": 0.1,
+        "usage_count": 12
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 15,
+          "threshold": 1.611,
+          "timeframe": "4h"
+        },
+        "sharpe": 19.2897,
+        "drawdown": 0.0028,
+        "win_rate": 0.85,
+        "pnl": 29.7209,
+        "doctor": {},
+        "age_cycles": 38,
+        "freshness": 0.1,
+        "usage_count": 9
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 31,
+          "threshold": 1.245,
+          "timeframe": "1h"
+        },
+        "sharpe": 17.5872,
+        "drawdown": 0.0179,
+        "win_rate": 0.8,
+        "pnl": 34.3824,
+        "doctor": {},
+        "age_cycles": 7,
+        "freshness": 0.79,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "RSI",
+          "period": 33,
+          "threshold": 0.382,
+          "timeframe": "1h"
+        },
+        "sharpe": 15.7683,
+        "drawdown": 0.019,
+        "win_rate": 0.9,
+        "pnl": 29.2597,
+        "doctor": {},
+        "age_cycles": 116,
+        "freshness": 0.1,
+        "usage_count": 8
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 53,
+          "threshold": 0.863,
+          "timeframe": "5m"
+        },
+        "sharpe": 15.5386,
+        "drawdown": 0.0124,
+        "win_rate": 0.7,
+        "pnl": 26.8164,
+        "doctor": {},
+        "age_cycles": 34,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 15,
+          "threshold": 1.889,
+          "timeframe": "15m"
+        },
+        "sharpe": 15.0582,
+        "drawdown": 0.0322,
+        "win_rate": 0.8,
+        "pnl": 27.5,
+        "doctor": {},
+        "age_cycles": 60,
+        "freshness": 0.1,
+        "usage_count": 7
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 80,
+          "threshold": 1.123,
+          "timeframe": "5m"
+        },
+        "sharpe": 14.7314,
+        "drawdown": 0.0112,
+        "win_rate": 0.8,
+        "pnl": 23.0891,
+        "doctor": {},
+        "age_cycles": 116,
+        "freshness": 0.1,
+        "usage_count": 7
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 32,
+          "threshold": 0.55,
+          "timeframe": "5m"
+        },
+        "sharpe": 14.5696,
+        "drawdown": 0.0125,
+        "win_rate": 0.75,
+        "pnl": 26.1701,
+        "doctor": {},
+        "age_cycles": 98,
+        "freshness": 0.1,
+        "usage_count": 7
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 59,
+          "threshold": 2.031,
+          "timeframe": "5m"
+        },
+        "sharpe": 14.5193,
+        "drawdown": 0.015,
+        "win_rate": 0.8,
+        "pnl": 22.0569,
+        "doctor": {},
+        "age_cycles": 90,
+        "freshness": 0.1,
+        "usage_count": 7
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 40,
+          "threshold": 2.16,
+          "timeframe": "4h"
+        },
+        "sharpe": 14.2599,
+        "drawdown": 0.0146,
+        "win_rate": 0.7,
+        "pnl": 26.0496,
+        "doctor": {},
+        "age_cycles": 38,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 74,
+          "threshold": 2.116,
+          "timeframe": "4h"
+        },
+        "sharpe": 14.139,
+        "drawdown": 0.017,
+        "win_rate": 0.8,
+        "pnl": 24.3311,
+        "doctor": {},
+        "age_cycles": 51,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 22,
+          "threshold": 0.738,
+          "timeframe": "1h"
+        },
+        "sharpe": 14.0136,
+        "drawdown": 0.0161,
+        "win_rate": 0.85,
+        "pnl": 22.4121,
+        "doctor": {},
+        "age_cycles": 111,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 74,
+          "threshold": 0.941,
+          "timeframe": "15m"
+        },
+        "sharpe": 13.805,
+        "drawdown": 0.0159,
+        "win_rate": 0.85,
+        "pnl": 21.3164,
+        "doctor": {},
+        "age_cycles": 38,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 60,
+          "threshold": 0.252,
+          "timeframe": "5m"
+        },
+        "sharpe": 13.7902,
+        "drawdown": 0.0135,
+        "win_rate": 0.75,
+        "pnl": 24.6998,
+        "doctor": {},
+        "age_cycles": 95,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 46,
+          "threshold": 0.805,
+          "timeframe": "5m"
+        },
+        "sharpe": 13.4963,
+        "drawdown": 0.0286,
+        "win_rate": 0.75,
+        "pnl": 27.3439,
+        "doctor": {},
+        "age_cycles": 82,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 27,
+          "threshold": 1.653,
+          "timeframe": "5m"
+        },
+        "sharpe": 12.9754,
+        "drawdown": 0.0154,
+        "win_rate": 0.75,
+        "pnl": 19.5036,
+        "doctor": {},
+        "age_cycles": 21,
+        "freshness": 0.37,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 68,
+          "threshold": 0.473,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.367,
+        "drawdown": 0.0141,
+        "win_rate": 0.8,
+        "pnl": 20.2494,
+        "doctor": {},
+        "age_cycles": 85,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 35,
+          "threshold": 0.74,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.3647,
+        "drawdown": 0.0206,
+        "win_rate": 0.75,
+        "pnl": 22.332,
+        "doctor": {},
+        "age_cycles": 33,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 63,
+          "threshold": 1.314,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.2994,
+        "drawdown": 0.0176,
+        "win_rate": 0.75,
+        "pnl": 23.7713,
+        "doctor": {},
+        "age_cycles": 54,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 12,
+          "threshold": 0.899,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.1082,
+        "drawdown": 0.0223,
+        "win_rate": 0.75,
+        "pnl": 21.8647,
+        "doctor": {},
+        "age_cycles": 2,
+        "freshness": 0.94,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 19,
+          "threshold": 1.542,
+          "timeframe": "1h"
+        },
+        "sharpe": 11.7461,
+        "drawdown": 0.016,
+        "win_rate": 0.7,
+        "pnl": 22.4839,
+        "doctor": {},
+        "age_cycles": 99,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 35,
+          "threshold": 2.058,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.6406,
+        "drawdown": 0.0169,
+        "win_rate": 0.8,
+        "pnl": 18.6118,
+        "doctor": {},
+        "age_cycles": 28,
+        "freshness": 0.16,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 68,
+          "threshold": 1.149,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.5927,
+        "drawdown": 0.0193,
+        "win_rate": 0.75,
+        "pnl": 24.0425,
+        "doctor": {},
+        "age_cycles": 103,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 15,
+          "threshold": 1.712,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.4911,
+        "drawdown": 0.022,
+        "win_rate": 0.75,
+        "pnl": 23.0786,
+        "doctor": {},
+        "age_cycles": 116,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 15,
+          "threshold": 1.102,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.2782,
+        "drawdown": 0.0293,
+        "win_rate": 0.7,
+        "pnl": 20.7186,
+        "doctor": {},
+        "age_cycles": 82,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 7,
+          "threshold": 1.598,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.2605,
+        "drawdown": 0.0244,
+        "win_rate": 0.75,
+        "pnl": 21.1337,
+        "doctor": {},
+        "age_cycles": 20,
+        "freshness": 0.4,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "MACD",
+          "period": 36,
+          "threshold": 1.095,
+          "timeframe": "1h"
+        },
+        "sharpe": 11.1476,
+        "drawdown": 0.023,
+        "win_rate": 0.7,
+        "pnl": 23.4947,
+        "doctor": {},
+        "age_cycles": 103,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 78,
+          "threshold": 1.874,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.9959,
+        "drawdown": 0.0389,
+        "win_rate": 0.8,
+        "pnl": 18.0107,
+        "doctor": {},
+        "age_cycles": 106,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 6,
+          "threshold": 1.048,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.7474,
+        "drawdown": 0.0475,
+        "win_rate": 0.8,
+        "pnl": 19.7061,
+        "doctor": {},
+        "age_cycles": 95,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 21,
+          "threshold": 0.304,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.7284,
+        "drawdown": 0.0189,
+        "win_rate": 0.7,
+        "pnl": 17.3114,
+        "doctor": {},
+        "age_cycles": 46,
+        "freshness": 0.1,
+        "usage_count": 2
+      }
+    ],
+    "bull": [
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 55,
+          "threshold": 0.518,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.9892,
+        "drawdown": 0.015,
+        "win_rate": 0.8,
+        "pnl": 24.5394,
+        "doctor": {},
+        "age_cycles": 76,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 13,
+          "threshold": 1.904,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.7535,
+        "drawdown": 0.028,
+        "win_rate": 0.65,
+        "pnl": 23.1882,
+        "doctor": {},
+        "age_cycles": 115,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 30,
+          "threshold": 0.235,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.6319,
+        "drawdown": 0.0304,
+        "win_rate": 0.85,
+        "pnl": 18.1198,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 32,
+          "threshold": 1.4,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.4789,
+        "drawdown": 0.0157,
+        "win_rate": 0.7,
+        "pnl": 23.4689,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 24,
+          "threshold": 1.836,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.4209,
+        "drawdown": 0.0109,
+        "win_rate": 0.8,
+        "pnl": 19.3299,
+        "doctor": {},
+        "age_cycles": 76,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 49,
+          "threshold": 1.11,
+          "timeframe": "1h"
+        },
+        "sharpe": 11.0371,
+        "drawdown": 0.0199,
+        "win_rate": 0.65,
+        "pnl": 17.2089,
+        "doctor": {},
+        "age_cycles": 89,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 11,
+          "threshold": 0.775,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.9554,
+        "drawdown": 0.0232,
+        "win_rate": 0.75,
+        "pnl": 23.6619,
+        "doctor": {},
+        "age_cycles": 11,
+        "freshness": 0.67,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 74,
+          "threshold": 2.114,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.7368,
+        "drawdown": 0.0191,
+        "win_rate": 0.7,
+        "pnl": 21.9639,
+        "doctor": {},
+        "age_cycles": 89,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "BOLLINGER",
+          "period": 63,
+          "threshold": 0.833,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.1112,
+        "drawdown": 0.0177,
+        "win_rate": 0.65,
+        "pnl": 18.7563,
+        "doctor": {},
+        "age_cycles": 102,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 79,
+          "threshold": 2.332,
+          "timeframe": "5m"
+        },
+        "sharpe": 9.63,
+        "drawdown": 0.0139,
+        "win_rate": 0.65,
+        "pnl": 17.3,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 57,
+          "threshold": 1.074,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.5019,
+        "drawdown": 0.0218,
+        "win_rate": 0.7,
+        "pnl": 18.1046,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "VWAP",
+          "period": 74,
+          "threshold": 0.577,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.4514,
+        "drawdown": 0.0127,
+        "win_rate": 0.7,
+        "pnl": 18.2075,
+        "doctor": {},
+        "age_cycles": 63,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 30,
+          "threshold": 1.93,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.1846,
+        "drawdown": 0.0113,
+        "win_rate": 0.6,
+        "pnl": 13.7179,
+        "doctor": {},
+        "age_cycles": 89,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 35,
+          "threshold": 1.219,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.9272,
+        "drawdown": 0.0261,
+        "win_rate": 0.65,
+        "pnl": 18.4644,
+        "doctor": {},
+        "age_cycles": 115,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 24,
+          "threshold": 0.474,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.7984,
+        "drawdown": 0.0179,
+        "win_rate": 0.75,
+        "pnl": 17.6285,
+        "doctor": {},
+        "age_cycles": 89,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 26,
+          "threshold": 0.728,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.479,
+        "drawdown": 0.0184,
+        "win_rate": 0.75,
+        "pnl": 15.918,
+        "doctor": {},
+        "age_cycles": 50,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "MACD",
+          "period": 70,
+          "threshold": 1.433,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.4518,
+        "drawdown": 0.0248,
+        "win_rate": 0.65,
+        "pnl": 16.3603,
+        "doctor": {},
+        "age_cycles": 50,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 26,
+          "threshold": 2.328,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.443,
+        "drawdown": 0.0203,
+        "win_rate": 0.7,
+        "pnl": 15.2719,
+        "doctor": {},
+        "age_cycles": 102,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 33,
+          "threshold": 0.577,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.2743,
+        "drawdown": 0.0227,
+        "win_rate": 0.6,
+        "pnl": 14.2301,
+        "doctor": {},
+        "age_cycles": 76,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 63,
+          "threshold": 1.308,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.7786,
+        "drawdown": 0.0286,
+        "win_rate": 0.7,
+        "pnl": 14.8608,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 61,
+          "threshold": 1.486,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.6626,
+        "drawdown": 0.0251,
+        "win_rate": 0.65,
+        "pnl": 15.2076,
+        "doctor": {},
+        "age_cycles": 115,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 28,
+          "threshold": 0.293,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.4311,
+        "drawdown": 0.0215,
+        "win_rate": 0.6,
+        "pnl": 13.3633,
+        "doctor": {},
+        "age_cycles": 89,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "MACD",
+          "period": 56,
+          "threshold": 2.23,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.1225,
+        "drawdown": 0.0315,
+        "win_rate": 0.65,
+        "pnl": 14.0581,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 66,
+          "threshold": 0.677,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.8878,
+        "drawdown": 0.0384,
+        "win_rate": 0.65,
+        "pnl": 12.5249,
+        "doctor": {},
+        "age_cycles": 37,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 54,
+          "threshold": 0.481,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.8144,
+        "drawdown": 0.0199,
+        "win_rate": 0.55,
+        "pnl": 13.4353,
+        "doctor": {},
+        "age_cycles": 11,
+        "freshness": 0.67,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 54,
+          "threshold": 0.805,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.7954,
+        "drawdown": 0.0268,
+        "win_rate": 0.7,
+        "pnl": 12.0565,
+        "doctor": {},
+        "age_cycles": 63,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 45,
+          "threshold": 0.896,
+          "timeframe": "1h"
+        },
+        "sharpe": 5.9079,
+        "drawdown": 0.048,
+        "win_rate": 0.6,
+        "pnl": 13.4015,
+        "doctor": {},
+        "age_cycles": 76,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 39,
+          "threshold": 1.635,
+          "timeframe": "15m"
+        },
+        "sharpe": 5.7022,
+        "drawdown": 0.0268,
+        "win_rate": 0.55,
+        "pnl": 9.1346,
+        "doctor": {},
+        "age_cycles": 102,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "VWAP",
+          "period": 74,
+          "threshold": 1.871,
+          "timeframe": "1h"
+        },
+        "sharpe": 5.6881,
+        "drawdown": 0.0354,
+        "win_rate": 0.6,
+        "pnl": 10.5796,
+        "doctor": {},
+        "age_cycles": 24,
+        "freshness": 0.28,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 25,
+          "threshold": 1.645,
+          "timeframe": "4h"
+        },
+        "sharpe": 5.6062,
+        "drawdown": 0.0285,
+        "win_rate": 0.65,
+        "pnl": 10.1129,
+        "doctor": {},
+        "age_cycles": 63,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ],
+    "bear": [
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 18,
+          "threshold": 2.114,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.376,
+        "drawdown": 0.0297,
+        "win_rate": 0.8,
+        "pnl": 27.6753,
+        "doctor": {},
+        "age_cycles": 114,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 16,
+          "threshold": 0.44,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.5604,
+        "drawdown": 0.0104,
+        "win_rate": 0.75,
+        "pnl": 16.5372,
+        "doctor": {},
+        "age_cycles": 49,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 30,
+          "threshold": 0.695,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.8851,
+        "drawdown": 0.0182,
+        "win_rate": 0.75,
+        "pnl": 25.0642,
+        "doctor": {},
+        "age_cycles": 114,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 27,
+          "threshold": 1.979,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.7402,
+        "drawdown": 0.016,
+        "win_rate": 0.7,
+        "pnl": 23.8828,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 43,
+          "threshold": 0.622,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.2171,
+        "drawdown": 0.0146,
+        "win_rate": 0.7,
+        "pnl": 21.8112,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 24,
+          "threshold": 2.133,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.8954,
+        "drawdown": 0.0237,
+        "win_rate": 0.7,
+        "pnl": 21.0495,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 53,
+          "threshold": 1.259,
+          "timeframe": "1h"
+        },
+        "sharpe": 9.9117,
+        "drawdown": 0.0252,
+        "win_rate": 0.8,
+        "pnl": 17.9501,
+        "doctor": {},
+        "age_cycles": 75,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 76,
+          "threshold": 2.155,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.8652,
+        "drawdown": 0.0164,
+        "win_rate": 0.7,
+        "pnl": 19.4581,
+        "doctor": {},
+        "age_cycles": 88,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "VWAP",
+          "period": 9,
+          "threshold": 0.511,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.5412,
+        "drawdown": 0.0182,
+        "win_rate": 0.7,
+        "pnl": 16.6575,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 40,
+          "threshold": 1.166,
+          "timeframe": "1h"
+        },
+        "sharpe": 9.494,
+        "drawdown": 0.0277,
+        "win_rate": 0.65,
+        "pnl": 14.3204,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 11,
+          "threshold": 0.35,
+          "timeframe": "1h"
+        },
+        "sharpe": 9.4371,
+        "drawdown": 0.0177,
+        "win_rate": 0.7,
+        "pnl": 17.202,
+        "doctor": {},
+        "age_cycles": 49,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 66,
+          "threshold": 2.243,
+          "timeframe": "5m"
+        },
+        "sharpe": 9.0904,
+        "drawdown": 0.0191,
+        "win_rate": 0.75,
+        "pnl": 17.2012,
+        "doctor": {},
+        "age_cycles": 114,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 52,
+          "threshold": 0.603,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.9752,
+        "drawdown": 0.0275,
+        "win_rate": 0.7,
+        "pnl": 14.5216,
+        "doctor": {},
+        "age_cycles": 62,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 53,
+          "threshold": 2.478,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.8141,
+        "drawdown": 0.0167,
+        "win_rate": 0.6,
+        "pnl": 15.1442,
+        "doctor": {},
+        "age_cycles": 75,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 44,
+          "threshold": 1.485,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.0069,
+        "drawdown": 0.0195,
+        "win_rate": 0.75,
+        "pnl": 13.6247,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 51,
+          "threshold": 0.629,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.9759,
+        "drawdown": 0.0384,
+        "win_rate": 0.75,
+        "pnl": 13.7375,
+        "doctor": {},
+        "age_cycles": 62,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 77,
+          "threshold": 1.155,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.9307,
+        "drawdown": 0.015,
+        "win_rate": 0.7,
+        "pnl": 11.8336,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 70,
+          "threshold": 1.582,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.8897,
+        "drawdown": 0.0182,
+        "win_rate": 0.7,
+        "pnl": 14.2819,
+        "doctor": {},
+        "age_cycles": 88,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 29,
+          "threshold": 0.987,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.634,
+        "drawdown": 0.0254,
+        "win_rate": 0.7,
+        "pnl": 14.8587,
+        "doctor": {},
+        "age_cycles": 114,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 51,
+          "threshold": 0.951,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.4442,
+        "drawdown": 0.0572,
+        "win_rate": 0.7,
+        "pnl": 15.4767,
+        "doctor": {},
+        "age_cycles": 101,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 18,
+          "threshold": 0.521,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.33,
+        "drawdown": 0.0177,
+        "win_rate": 0.6,
+        "pnl": 12.1269,
+        "doctor": {},
+        "age_cycles": 75,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 64,
+          "threshold": 1.467,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.2143,
+        "drawdown": 0.0242,
+        "win_rate": 0.65,
+        "pnl": 13.5406,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 55,
+          "threshold": 1.486,
+          "timeframe": "1h"
+        },
+        "sharpe": 6.7212,
+        "drawdown": 0.0245,
+        "win_rate": 0.65,
+        "pnl": 14.1454,
+        "doctor": {},
+        "age_cycles": 49,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 13,
+          "threshold": 0.824,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.7127,
+        "drawdown": 0.0155,
+        "win_rate": 0.65,
+        "pnl": 11.1131,
+        "doctor": {},
+        "age_cycles": 101,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 41,
+          "threshold": 0.585,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.7042,
+        "drawdown": 0.0294,
+        "win_rate": 0.65,
+        "pnl": 13.9894,
+        "doctor": {},
+        "age_cycles": 75,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 44,
+          "threshold": 2.428,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.5991,
+        "drawdown": 0.0392,
+        "win_rate": 0.65,
+        "pnl": 10.9022,
+        "doctor": {},
+        "age_cycles": 114,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 65,
+          "threshold": 2.28,
+          "timeframe": "1h"
+        },
+        "sharpe": 6.5799,
+        "drawdown": 0.0366,
+        "win_rate": 0.55,
+        "pnl": 12.6828,
+        "doctor": {},
+        "age_cycles": 10,
+        "freshness": 0.7,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 27,
+          "threshold": 0.84,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.5251,
+        "drawdown": 0.0237,
+        "win_rate": 0.75,
+        "pnl": 12.0854,
+        "doctor": {},
+        "age_cycles": 23,
+        "freshness": 0.31,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 13,
+          "threshold": 1.676,
+          "timeframe": "5m"
+        },
+        "sharpe": 6.3996,
+        "drawdown": 0.0287,
+        "win_rate": 0.6,
+        "pnl": 11.87,
+        "doctor": {},
+        "age_cycles": 101,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 15,
+          "threshold": 0.246,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.3387,
+        "drawdown": 0.0304,
+        "win_rate": 0.55,
+        "pnl": 10.9947,
+        "doctor": {},
+        "age_cycles": 36,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ],
+    "unknown": [
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 35,
+          "threshold": 1.83,
+          "timeframe": "15m"
+        },
+        "sharpe": 20.5143,
+        "drawdown": 0.0102,
+        "win_rate": 0.9,
+        "pnl": 29.1582,
+        "doctor": {},
+        "age_cycles": 74,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 15,
+          "threshold": 1.982,
+          "timeframe": "1h"
+        },
+        "sharpe": 16.3662,
+        "drawdown": 0.0159,
+        "win_rate": 0.75,
+        "pnl": 28.6623,
+        "doctor": {},
+        "age_cycles": 87,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 46,
+          "threshold": 2.462,
+          "timeframe": "1h"
+        },
+        "sharpe": 14.4151,
+        "drawdown": 0.0127,
+        "win_rate": 0.85,
+        "pnl": 21.6943,
+        "doctor": {},
+        "age_cycles": 87,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 19,
+          "threshold": 1.329,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.6417,
+        "drawdown": 0.0101,
+        "win_rate": 0.7,
+        "pnl": 20.8889,
+        "doctor": {},
+        "age_cycles": 74,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 46,
+          "threshold": 0.394,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.8092,
+        "drawdown": 0.0252,
+        "win_rate": 0.75,
+        "pnl": 23.7271,
+        "doctor": {},
+        "age_cycles": 87,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 77,
+          "threshold": 0.631,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.802,
+        "drawdown": 0.0199,
+        "win_rate": 0.75,
+        "pnl": 21.823,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 41,
+          "threshold": 1.505,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.7192,
+        "drawdown": 0.0298,
+        "win_rate": 0.8,
+        "pnl": 21.6038,
+        "doctor": {},
+        "age_cycles": 113,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 73,
+          "threshold": 1.531,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.3507,
+        "drawdown": 0.0186,
+        "win_rate": 0.8,
+        "pnl": 18.1184,
+        "doctor": {},
+        "age_cycles": 100,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 75,
+          "threshold": 1.101,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.1018,
+        "drawdown": 0.0196,
+        "win_rate": 0.8,
+        "pnl": 16.0576,
+        "doctor": {},
+        "age_cycles": 9,
+        "freshness": 0.73,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 42,
+          "threshold": 0.859,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.9858,
+        "drawdown": 0.0181,
+        "win_rate": 0.7,
+        "pnl": 16.503,
+        "doctor": {},
+        "age_cycles": 35,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 19,
+          "threshold": 0.454,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.9824,
+        "drawdown": 0.0259,
+        "win_rate": 0.6,
+        "pnl": 16.9637,
+        "doctor": {},
+        "age_cycles": 113,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 58,
+          "threshold": 0.933,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.7621,
+        "drawdown": 0.0227,
+        "win_rate": 0.7,
+        "pnl": 15.5209,
+        "doctor": {},
+        "age_cycles": 48,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 35,
+          "threshold": 1.608,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.5829,
+        "drawdown": 0.0195,
+        "win_rate": 0.6,
+        "pnl": 15.68,
+        "doctor": {},
+        "age_cycles": 35,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 5,
+          "threshold": 0.467,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.5137,
+        "drawdown": 0.0254,
+        "win_rate": 0.55,
+        "pnl": 16.1209,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 80,
+          "threshold": 0.781,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.5017,
+        "drawdown": 0.0164,
+        "win_rate": 0.7,
+        "pnl": 15.9679,
+        "doctor": {},
+        "age_cycles": 22,
+        "freshness": 0.34,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 56,
+          "threshold": 1.166,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.0622,
+        "drawdown": 0.0239,
+        "win_rate": 0.6,
+        "pnl": 16.2707,
+        "doctor": {},
+        "age_cycles": 113,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "RSI",
+          "period": 7,
+          "threshold": 1.105,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.049,
+        "drawdown": 0.0168,
+        "win_rate": 0.7,
+        "pnl": 11.6818,
+        "doctor": {},
+        "age_cycles": 100,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 21,
+          "threshold": 0.994,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.9338,
+        "drawdown": 0.0249,
+        "win_rate": 0.65,
+        "pnl": 13.5638,
+        "doctor": {},
+        "age_cycles": 100,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 49,
+          "threshold": 1.438,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.8917,
+        "drawdown": 0.0372,
+        "win_rate": 0.7,
+        "pnl": 17.7829,
+        "doctor": {},
+        "age_cycles": 61,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 20,
+          "threshold": 1.102,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.8652,
+        "drawdown": 0.0285,
+        "win_rate": 0.7,
+        "pnl": 15.1418,
+        "doctor": {},
+        "age_cycles": 61,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 14,
+          "threshold": 2.478,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.843,
+        "drawdown": 0.0196,
+        "win_rate": 0.65,
+        "pnl": 10.8805,
+        "doctor": {},
+        "age_cycles": 61,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 5,
+          "threshold": 1.353,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.644,
+        "drawdown": 0.0514,
+        "win_rate": 0.55,
+        "pnl": 14.7188,
+        "doctor": {},
+        "age_cycles": 61,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 35,
+          "threshold": 0.637,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.6258,
+        "drawdown": 0.0295,
+        "win_rate": 0.65,
+        "pnl": 13.2168,
+        "doctor": {},
+        "age_cycles": 9,
+        "freshness": 0.73,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 28,
+          "threshold": 1.572,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.5996,
+        "drawdown": 0.0212,
+        "win_rate": 0.7,
+        "pnl": 13.5899,
+        "doctor": {},
+        "age_cycles": 9,
+        "freshness": 0.73,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 7,
+          "threshold": 1.869,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.4648,
+        "drawdown": 0.0387,
+        "win_rate": 0.65,
+        "pnl": 16.7757,
+        "doctor": {},
+        "age_cycles": 48,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 36,
+          "threshold": 1.676,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.1109,
+        "drawdown": 0.0259,
+        "win_rate": 0.65,
+        "pnl": 14.2927,
+        "doctor": {},
+        "age_cycles": 113,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 55,
+          "threshold": 1.032,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.0875,
+        "drawdown": 0.0248,
+        "win_rate": 0.65,
+        "pnl": 11.0974,
+        "doctor": {},
+        "age_cycles": 48,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 58,
+          "threshold": 1.289,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.2788,
+        "drawdown": 0.0328,
+        "win_rate": 0.5,
+        "pnl": 12.4862,
+        "doctor": {},
+        "age_cycles": 87,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 45,
+          "threshold": 1.657,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.1257,
+        "drawdown": 0.0337,
+        "win_rate": 0.65,
+        "pnl": 10.0402,
+        "doctor": {},
+        "age_cycles": 100,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 57,
+          "threshold": 0.253,
+          "timeframe": "5m"
+        },
+        "sharpe": 5.8196,
+        "drawdown": 0.04,
+        "win_rate": 0.6,
+        "pnl": 11.1186,
+        "doctor": {},
+        "age_cycles": 35,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ],
+    "test_regime": [
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 68,
+          "threshold": 0.241,
+          "timeframe": "5m"
+        },
+        "sharpe": 21.2025,
+        "drawdown": 0.0137,
+        "win_rate": 0.95,
+        "pnl": 28.7725,
+        "doctor": {},
+        "age_cycles": 44,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 28,
+          "threshold": 0.293,
+          "timeframe": "4h"
+        },
+        "sharpe": 18.4664,
+        "drawdown": 0.0087,
+        "win_rate": 0.85,
+        "pnl": 24.7542,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 27,
+          "threshold": 1.843,
+          "timeframe": "4h"
+        },
+        "sharpe": 15.0035,
+        "drawdown": 0.0194,
+        "win_rate": 0.8,
+        "pnl": 25.3291,
+        "doctor": {},
+        "age_cycles": 71,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 54,
+          "threshold": 1.514,
+          "timeframe": "15m"
+        },
+        "sharpe": 14.8842,
+        "drawdown": 0.0156,
+        "win_rate": 0.8,
+        "pnl": 27.5642,
+        "doctor": {},
+        "age_cycles": 18,
+        "freshness": 0.46,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 57,
+          "threshold": 1.803,
+          "timeframe": "15m"
+        },
+        "sharpe": 14.5228,
+        "drawdown": 0.0183,
+        "win_rate": 0.85,
+        "pnl": 18.6147,
+        "doctor": {},
+        "age_cycles": 58,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 73,
+          "threshold": 2.211,
+          "timeframe": "1h"
+        },
+        "sharpe": 13.3957,
+        "drawdown": 0.019,
+        "win_rate": 0.9,
+        "pnl": 23.7595,
+        "doctor": {},
+        "age_cycles": 18,
+        "freshness": 0.46,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 69,
+          "threshold": 1.844,
+          "timeframe": "15m"
+        },
+        "sharpe": 13.1017,
+        "drawdown": 0.0143,
+        "win_rate": 0.8,
+        "pnl": 16.5593,
+        "doctor": {},
+        "age_cycles": 5,
+        "freshness": 0.85,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 45,
+          "threshold": 0.447,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.8241,
+        "drawdown": 0.0205,
+        "win_rate": 0.7,
+        "pnl": 21.484,
+        "doctor": {},
+        "age_cycles": 5,
+        "freshness": 0.85,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 73,
+          "threshold": 0.302,
+          "timeframe": "1h"
+        },
+        "sharpe": 12.2842,
+        "drawdown": 0.0158,
+        "win_rate": 0.8,
+        "pnl": 21.0181,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "VWAP",
+          "period": 66,
+          "threshold": 1.721,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.08,
+        "drawdown": 0.023,
+        "win_rate": 0.75,
+        "pnl": 18.3491,
+        "doctor": {},
+        "age_cycles": 44,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "BOLLINGER",
+          "period": 53,
+          "threshold": 1.242,
+          "timeframe": "5m"
+        },
+        "sharpe": 12.0328,
+        "drawdown": 0.0172,
+        "win_rate": 0.65,
+        "pnl": 21.8649,
+        "doctor": {},
+        "age_cycles": 19,
+        "freshness": 0.43,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 16,
+          "threshold": 1.077,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.5742,
+        "drawdown": 0.014,
+        "win_rate": 0.65,
+        "pnl": 25.0446,
+        "doctor": {},
+        "age_cycles": 32,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 28,
+          "threshold": 1.726,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.4395,
+        "drawdown": 0.0224,
+        "win_rate": 0.7,
+        "pnl": 21.2475,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "BOLLINGER",
+          "period": 55,
+          "threshold": 1.909,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.4213,
+        "drawdown": 0.0178,
+        "win_rate": 0.75,
+        "pnl": 22.9083,
+        "doctor": {},
+        "age_cycles": 31,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 14,
+          "threshold": 1.191,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.4065,
+        "drawdown": 0.0303,
+        "win_rate": 0.7,
+        "pnl": 24.8848,
+        "doctor": {},
+        "age_cycles": 71,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 11,
+          "threshold": 0.494,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.4023,
+        "drawdown": 0.0165,
+        "win_rate": 0.75,
+        "pnl": 19.8551,
+        "doctor": {},
+        "age_cycles": 18,
+        "freshness": 0.46,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 66,
+          "threshold": 0.325,
+          "timeframe": "5m"
+        },
+        "sharpe": 11.3668,
+        "drawdown": 0.0275,
+        "win_rate": 0.7,
+        "pnl": 22.7471,
+        "doctor": {},
+        "age_cycles": 44,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 63,
+          "threshold": 1.502,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.9639,
+        "drawdown": 0.0249,
+        "win_rate": 0.7,
+        "pnl": 22.1235,
+        "doctor": {},
+        "age_cycles": 6,
+        "freshness": 0.82,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "MACD",
+          "period": 12,
+          "threshold": 0.382,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.7725,
+        "drawdown": 0.0229,
+        "win_rate": 0.7,
+        "pnl": 18.3609,
+        "doctor": {},
+        "age_cycles": 97,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "RSI",
+          "period": 73,
+          "threshold": 0.226,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.6991,
+        "drawdown": 0.0183,
+        "win_rate": 0.75,
+        "pnl": 21.9612,
+        "doctor": {},
+        "age_cycles": 70,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 37,
+          "threshold": 2.402,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.2068,
+        "drawdown": 0.0213,
+        "win_rate": 0.7,
+        "pnl": 21.042,
+        "doctor": {},
+        "age_cycles": 31,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 11,
+          "threshold": 1.814,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.0257,
+        "drawdown": 0.0212,
+        "win_rate": 0.7,
+        "pnl": 19.4036,
+        "doctor": {},
+        "age_cycles": 19,
+        "freshness": 0.43,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "RSI",
+          "period": 71,
+          "threshold": 2.232,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.7073,
+        "drawdown": 0.0145,
+        "win_rate": 0.75,
+        "pnl": 13.2475,
+        "doctor": {},
+        "age_cycles": 97,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 57,
+          "threshold": 0.455,
+          "timeframe": "5m"
+        },
+        "sharpe": 9.7022,
+        "drawdown": 0.016,
+        "win_rate": 0.7,
+        "pnl": 15.2839,
+        "doctor": {},
+        "age_cycles": 31,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 74,
+          "threshold": 1.567,
+          "timeframe": "5m"
+        },
+        "sharpe": 9.6476,
+        "drawdown": 0.0217,
+        "win_rate": 0.7,
+        "pnl": 16.5285,
+        "doctor": {},
+        "age_cycles": 44,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 23,
+          "threshold": 2.102,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.227,
+        "drawdown": 0.0155,
+        "win_rate": 0.65,
+        "pnl": 18.7947,
+        "doctor": {},
+        "age_cycles": 109,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 68,
+          "threshold": 1.024,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.1711,
+        "drawdown": 0.0279,
+        "win_rate": 0.75,
+        "pnl": 19.333,
+        "doctor": {},
+        "age_cycles": 70,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 24,
+          "threshold": 0.71,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.1413,
+        "drawdown": 0.0192,
+        "win_rate": 0.7,
+        "pnl": 20.5958,
+        "doctor": {},
+        "age_cycles": 57,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 49,
+          "threshold": 0.629,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.9292,
+        "drawdown": 0.0208,
+        "win_rate": 0.7,
+        "pnl": 16.4101,
+        "doctor": {},
+        "age_cycles": 84,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 9,
+          "threshold": 0.462,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.5566,
+        "drawdown": 0.0197,
+        "win_rate": 0.7,
+        "pnl": 16.4616,
+        "doctor": {},
+        "age_cycles": 97,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ],
+    "test": [
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 27,
+          "threshold": 1.042,
+          "timeframe": "5m"
+        },
+        "sharpe": 16.0409,
+        "drawdown": 0.0114,
+        "win_rate": 0.8,
+        "pnl": 25.2175,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 19,
+          "threshold": 0.332,
+          "timeframe": "15m"
+        },
+        "sharpe": 15.7394,
+        "drawdown": 0.0272,
+        "win_rate": 0.85,
+        "pnl": 28.1652,
+        "doctor": {},
+        "age_cycles": 52,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 23,
+          "threshold": 1.782,
+          "timeframe": "4h"
+        },
+        "sharpe": 13.6225,
+        "drawdown": 0.0202,
+        "win_rate": 0.8,
+        "pnl": 23.2365,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "MACD",
+          "period": 50,
+          "threshold": 0.443,
+          "timeframe": "1h"
+        },
+        "sharpe": 13.049,
+        "drawdown": 0.0169,
+        "win_rate": 0.8,
+        "pnl": 24.9191,
+        "doctor": {},
+        "age_cycles": 55,
+        "freshness": 0.1,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "EMA",
+          "period": 47,
+          "threshold": 1.239,
+          "timeframe": "4h"
+        },
+        "sharpe": 12.7266,
+        "drawdown": 0.0172,
+        "win_rate": 0.75,
+        "pnl": 20.5277,
+        "doctor": {},
+        "age_cycles": 52,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 34,
+          "threshold": 1.969,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.784,
+        "drawdown": 0.0191,
+        "win_rate": 0.75,
+        "pnl": 21.3084,
+        "doctor": {},
+        "age_cycles": 104,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "BOLLINGER",
+          "period": 12,
+          "threshold": 1.513,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.4893,
+        "drawdown": 0.0252,
+        "win_rate": 0.75,
+        "pnl": 17.8986,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "ATR",
+          "period": 19,
+          "threshold": 0.464,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.3357,
+        "drawdown": 0.0227,
+        "win_rate": 0.75,
+        "pnl": 20.3754,
+        "doctor": {},
+        "age_cycles": 104,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "ATR",
+          "period": 50,
+          "threshold": 1.513,
+          "timeframe": "1h"
+        },
+        "sharpe": 11.2972,
+        "drawdown": 0.0196,
+        "win_rate": 0.8,
+        "pnl": 21.4232,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "EMA",
+          "period": 30,
+          "threshold": 0.989,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.2338,
+        "drawdown": 0.0196,
+        "win_rate": 0.75,
+        "pnl": 19.0099,
+        "doctor": {},
+        "age_cycles": 81,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "VWAP",
+          "period": 44,
+          "threshold": 1.429,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.0754,
+        "drawdown": 0.0226,
+        "win_rate": 0.75,
+        "pnl": 21.9854,
+        "doctor": {},
+        "age_cycles": 52,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 60,
+          "threshold": 2.174,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.8386,
+        "drawdown": 0.0195,
+        "win_rate": 0.7,
+        "pnl": 21.6634,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "BOLLINGER",
+          "period": 75,
+          "threshold": 1.362,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.3976,
+        "drawdown": 0.0155,
+        "win_rate": 0.75,
+        "pnl": 19.3904,
+        "doctor": {},
+        "age_cycles": 78,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "BOLLINGER",
+          "period": 17,
+          "threshold": 0.546,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.158,
+        "drawdown": 0.0186,
+        "win_rate": 0.7,
+        "pnl": 19.4332,
+        "doctor": {},
+        "age_cycles": 39,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 46,
+          "threshold": 2.287,
+          "timeframe": "15m"
+        },
+        "sharpe": 10.0648,
+        "drawdown": 0.0176,
+        "win_rate": 0.6,
+        "pnl": 19.8733,
+        "doctor": {},
+        "age_cycles": 91,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "VWAP",
+          "period": 63,
+          "threshold": 0.822,
+          "timeframe": "4h"
+        },
+        "sharpe": 9.2779,
+        "drawdown": 0.0235,
+        "win_rate": 0.65,
+        "pnl": 19.0408,
+        "doctor": {},
+        "age_cycles": 65,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 67,
+          "threshold": 1.175,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.8436,
+        "drawdown": 0.0305,
+        "win_rate": 0.7,
+        "pnl": 16.9789,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 22,
+          "threshold": 1.167,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.7859,
+        "drawdown": 0.0374,
+        "win_rate": 0.7,
+        "pnl": 17.0946,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 13,
+          "threshold": 1.776,
+          "timeframe": "15m"
+        },
+        "sharpe": 8.5905,
+        "drawdown": 0.0196,
+        "win_rate": 0.75,
+        "pnl": 15.5536,
+        "doctor": {},
+        "age_cycles": 29,
+        "freshness": 0.13,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 59,
+          "threshold": 1.787,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.5147,
+        "drawdown": 0.0355,
+        "win_rate": 0.65,
+        "pnl": 15.0306,
+        "doctor": {},
+        "age_cycles": 39,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 29,
+          "threshold": 0.594,
+          "timeframe": "5m"
+        },
+        "sharpe": 8.2123,
+        "drawdown": 0.0282,
+        "win_rate": 0.7,
+        "pnl": 12.9469,
+        "doctor": {},
+        "age_cycles": 104,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 13,
+          "threshold": 0.332,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.1788,
+        "drawdown": 0.013,
+        "win_rate": 0.6,
+        "pnl": 11.9747,
+        "doctor": {},
+        "age_cycles": 91,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 41,
+          "threshold": 1.726,
+          "timeframe": "1h"
+        },
+        "sharpe": 8.0217,
+        "drawdown": 0.0276,
+        "win_rate": 0.8,
+        "pnl": 12.1541,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 44,
+          "threshold": 1.4,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.9892,
+        "drawdown": 0.0177,
+        "win_rate": 0.6,
+        "pnl": 15.6744,
+        "doctor": {},
+        "age_cycles": 0,
+        "freshness": 1.0,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 13,
+          "threshold": 2.012,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.8373,
+        "drawdown": 0.0347,
+        "win_rate": 0.7,
+        "pnl": 16.7372,
+        "doctor": {},
+        "age_cycles": 65,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "ATR",
+          "period": 51,
+          "threshold": 1.149,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.5897,
+        "drawdown": 0.0286,
+        "win_rate": 0.65,
+        "pnl": 13.6931,
+        "doctor": {},
+        "age_cycles": 13,
+        "freshness": 0.61,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "MACD",
+          "period": 39,
+          "threshold": 1.475,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.4535,
+        "drawdown": 0.0471,
+        "win_rate": 0.65,
+        "pnl": 15.0933,
+        "doctor": {},
+        "age_cycles": 26,
+        "freshness": 0.22,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 78,
+          "threshold": 1.906,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.3416,
+        "drawdown": 0.0234,
+        "win_rate": 0.65,
+        "pnl": 13.9553,
+        "doctor": {},
+        "age_cycles": 39,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "MACD",
+          "period": 54,
+          "threshold": 0.822,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.9579,
+        "drawdown": 0.0365,
+        "win_rate": 0.65,
+        "pnl": 13.6544,
+        "doctor": {},
+        "age_cycles": 104,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "ATR",
+          "period": 43,
+          "threshold": 0.54,
+          "timeframe": "1h"
+        },
+        "sharpe": 6.7633,
+        "drawdown": 0.0195,
+        "win_rate": 0.65,
+        "pnl": 11.6015,
+        "doctor": {},
+        "age_cycles": 91,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ],
+    "bear_trend": [
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 73,
+          "threshold": 2.186,
+          "timeframe": "5m"
+        },
+        "sharpe": 15.7606,
+        "drawdown": 0.0194,
+        "win_rate": 0.9,
+        "pnl": 29.3452,
+        "doctor": {},
+        "age_cycles": 92,
+        "freshness": 0.1,
+        "usage_count": 8
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 27,
+          "threshold": 2.48,
+          "timeframe": "15m"
+        },
+        "sharpe": 15.7472,
+        "drawdown": 0.0196,
+        "win_rate": 0.85,
+        "pnl": 31.6469,
+        "doctor": {},
+        "age_cycles": 40,
+        "freshness": 0.1,
+        "usage_count": 6
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "EMA",
+          "period": 35,
+          "threshold": 1.033,
+          "timeframe": "4h"
+        },
+        "sharpe": 15.1207,
+        "drawdown": 0.0167,
+        "win_rate": 0.85,
+        "pnl": 27.8842,
+        "doctor": {},
+        "age_cycles": 27,
+        "freshness": 0.19,
+        "usage_count": 4
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "EMA",
+          "period": 61,
+          "threshold": 2.238,
+          "timeframe": "1h"
+        },
+        "sharpe": 14.1713,
+        "drawdown": 0.0186,
+        "win_rate": 0.8,
+        "pnl": 28.4,
+        "doctor": {},
+        "age_cycles": 53,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 17,
+          "threshold": 0.357,
+          "timeframe": "5m"
+        },
+        "sharpe": 13.4194,
+        "drawdown": 0.0188,
+        "win_rate": 0.7,
+        "pnl": 23.2702,
+        "doctor": {},
+        "age_cycles": 105,
+        "freshness": 0.1,
+        "usage_count": 5
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 49,
+          "threshold": 1.036,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.5176,
+        "drawdown": 0.0176,
+        "win_rate": 0.75,
+        "pnl": 22.6412,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 15,
+          "threshold": 1.53,
+          "timeframe": "15m"
+        },
+        "sharpe": 12.2362,
+        "drawdown": 0.0204,
+        "win_rate": 0.8,
+        "pnl": 21.991,
+        "doctor": {},
+        "age_cycles": 40,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 40,
+          "threshold": 1.885,
+          "timeframe": "4h"
+        },
+        "sharpe": 11.9709,
+        "drawdown": 0.0179,
+        "win_rate": 0.8,
+        "pnl": 19.5202,
+        "doctor": {},
+        "age_cycles": 14,
+        "freshness": 0.58,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "BOLLINGER",
+          "period": 9,
+          "threshold": 2.482,
+          "timeframe": "15m"
+        },
+        "sharpe": 11.7665,
+        "drawdown": 0.0151,
+        "win_rate": 0.75,
+        "pnl": 20.0279,
+        "doctor": {},
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 3
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 77,
+          "threshold": 1.274,
+          "timeframe": "5m"
+        },
+        "sharpe": 10.7874,
+        "drawdown": 0.027,
+        "win_rate": 0.75,
+        "pnl": 21.2612,
+        "doctor": {},
+        "age_cycles": 27,
+        "freshness": 0.19,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 44,
+          "threshold": 1.786,
+          "timeframe": "4h"
+        },
+        "sharpe": 10.5928,
+        "drawdown": 0.0096,
+        "win_rate": 0.65,
+        "pnl": 18.2523,
+        "doctor": {},
+        "age_cycles": 79,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 6,
+          "threshold": 1.92,
+          "timeframe": "1h"
+        },
+        "sharpe": 10.0839,
+        "drawdown": 0.0164,
+        "win_rate": 0.75,
+        "pnl": 17.9056,
+        "doctor": {},
+        "age_cycles": 92,
+        "freshness": 0.1,
+        "usage_count": 1
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "EMA",
+          "period": 47,
+          "threshold": 2.104,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.4896,
+        "drawdown": 0.0232,
+        "win_rate": 0.7,
+        "pnl": 16.7817,
+        "doctor": {},
+        "age_cycles": 53,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "BOLLINGER",
+          "period": 37,
+          "threshold": 2.023,
+          "timeframe": "15m"
+        },
+        "sharpe": 9.4782,
+        "drawdown": 0.0189,
+        "win_rate": 0.7,
+        "pnl": 16.4066,
+        "doctor": {},
+        "age_cycles": 92,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 37,
+          "threshold": 1.495,
+          "timeframe": "4h"
+        },
+        "sharpe": 8.139,
+        "drawdown": 0.0423,
+        "win_rate": 0.7,
+        "pnl": 13.1287,
+        "doctor": {},
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "ATR",
+          "period": 53,
+          "threshold": 1.482,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.9824,
+        "drawdown": 0.0313,
+        "win_rate": 0.7,
+        "pnl": 14.6413,
+        "doctor": {},
+        "age_cycles": 14,
+        "freshness": 0.58,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 58,
+          "threshold": 2.47,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.9499,
+        "drawdown": 0.0281,
+        "win_rate": 0.65,
+        "pnl": 12.4726,
+        "doctor": {},
+        "age_cycles": 105,
+        "freshness": 0.1,
+        "usage_count": 2
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "VWAP",
+          "period": 13,
+          "threshold": 2.016,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.6592,
+        "drawdown": 0.0389,
+        "win_rate": 0.7,
+        "pnl": 13.7485,
+        "doctor": {},
+        "age_cycles": 53,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "BOLLINGER",
+          "exit_indicator": "VWAP",
+          "period": 17,
+          "threshold": 1.014,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.5879,
+        "drawdown": 0.0357,
+        "win_rate": 0.6,
+        "pnl": 14.186,
+        "doctor": {},
+        "age_cycles": 40,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "VWAP",
+          "period": 37,
+          "threshold": 0.9,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.3689,
+        "drawdown": 0.0295,
+        "win_rate": 0.7,
+        "pnl": 14.8226,
+        "doctor": {},
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "RSI",
+          "exit_indicator": "RSI",
+          "period": 6,
+          "threshold": 1.853,
+          "timeframe": "5m"
+        },
+        "sharpe": 7.2183,
+        "drawdown": 0.0372,
+        "win_rate": 0.6,
+        "pnl": 14.3442,
+        "doctor": {},
+        "age_cycles": 14,
+        "freshness": 0.58,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "MACD",
+          "period": 32,
+          "threshold": 0.854,
+          "timeframe": "15m"
+        },
+        "sharpe": 7.1919,
+        "drawdown": 0.0207,
+        "win_rate": 0.6,
+        "pnl": 11.8503,
+        "doctor": {},
+        "age_cycles": 105,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "RSI",
+          "period": 64,
+          "threshold": 1.428,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.172,
+        "drawdown": 0.0431,
+        "win_rate": 0.7,
+        "pnl": 13.1126,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "VWAP",
+          "exit_indicator": "VWAP",
+          "period": 9,
+          "threshold": 0.536,
+          "timeframe": "1h"
+        },
+        "sharpe": 7.1663,
+        "drawdown": 0.0294,
+        "win_rate": 0.6,
+        "pnl": 13.2682,
+        "doctor": {},
+        "age_cycles": 53,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "MACD",
+          "period": 79,
+          "threshold": 0.851,
+          "timeframe": "4h"
+        },
+        "sharpe": 7.1471,
+        "drawdown": 0.036,
+        "win_rate": 0.65,
+        "pnl": 14.4579,
+        "doctor": {},
+        "age_cycles": 92,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "MACD",
+          "period": 51,
+          "threshold": 1.858,
+          "timeframe": "4h"
+        },
+        "sharpe": 6.9064,
+        "drawdown": 0.033,
+        "win_rate": 0.65,
+        "pnl": 12.1068,
+        "doctor": {},
+        "age_cycles": 1,
+        "freshness": 0.97,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "MACD",
+          "exit_indicator": "RSI",
+          "period": 22,
+          "threshold": 2.351,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.8078,
+        "drawdown": 0.0217,
+        "win_rate": 0.6,
+        "pnl": 11.5898,
+        "doctor": {},
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "EMA",
+          "exit_indicator": "EMA",
+          "period": 49,
+          "threshold": 1.258,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.7083,
+        "drawdown": 0.0303,
+        "win_rate": 0.65,
+        "pnl": 13.263,
+        "doctor": {},
+        "age_cycles": 66,
+        "freshness": 0.1,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "RSI",
+          "period": 41,
+          "threshold": 1.187,
+          "timeframe": "5m"
+        },
+        "sharpe": 6.6882,
+        "drawdown": 0.0327,
+        "win_rate": 0.65,
+        "pnl": 10.8455,
+        "doctor": {},
+        "age_cycles": 27,
+        "freshness": 0.19,
+        "usage_count": 0
+      },
+      {
+        "strategy": {
+          "entry_indicator": "ATR",
+          "exit_indicator": "ATR",
+          "period": 16,
+          "threshold": 0.806,
+          "timeframe": "15m"
+        },
+        "sharpe": 6.4523,
+        "drawdown": 0.0263,
+        "win_rate": 0.6,
+        "pnl": 12.6043,
+        "doctor": {},
+        "age_cycles": 92,
+        "freshness": 0.1,
+        "usage_count": 0
+      }
+    ]
+  },
+  "regime_count": 7,
+  "regime_history": [
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test",
+    "bull_trend",
+    "bull",
+    "bear",
+    "unknown",
+    "bull_trend",
+    "bull_trend",
+    "test_regime",
+    "test_regime",
+    "bull_trend",
+    "test",
+    "bull_trend",
+    "bear_trend",
+    "test"
+  ],
+  "last_updated_regime": "test"
+}
