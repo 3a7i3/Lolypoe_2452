@@ -126,6 +126,11 @@ class RuntimeConfig:
     mtf_sma_fast: int = 20                # période SMA rapide (V9_MTF_SMA_FAST)
     mtf_sma_slow: int = 50                # période SMA lente (V9_MTF_SMA_SLOW)
 
+    # API REST FastAPI (option AE)
+    api_enabled: bool = False             # démarre l'API REST (V9_API_ENABLED)
+    api_host: str = "0.0.0.0"            # hôte d'écoute (V9_API_HOST)
+    api_port: int = 8000                  # port d'écoute (V9_API_PORT)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -284,4 +289,8 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         mtf_min_alignment=get_env_float("V9_MTF_MIN_ALIGNMENT", 0.67, min_value=0.0, max_value=1.0),
         mtf_sma_fast=get_env_int("V9_MTF_SMA_FAST", 20, min_value=2, max_value=200),
         mtf_sma_slow=get_env_int("V9_MTF_SMA_SLOW", 50, min_value=2, max_value=500),
+        # Option AE — API REST
+        api_enabled=get_env_bool("V9_API_ENABLED", False),
+        api_host=get_env_str("V9_API_HOST", "0.0.0.0"),
+        api_port=get_env_int("V9_API_PORT", 8000, min_value=1024, max_value=65535),
     )

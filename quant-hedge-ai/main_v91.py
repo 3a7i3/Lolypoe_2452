@@ -60,6 +60,7 @@ from databases.strategy_scoreboard import StrategyScoreboard
 from databases.strategy_scoreboard_sql import StrategyScoreboardSQL
 from engine.decision_engine import DecisionEngine, StrategyRanker
 from runtime_config import RuntimeConfig, get_env_int, load_runtime_config_from_env
+from agents.api.system_state import get_state
 
 
 def _get_env_int(name: str, default: int, min_value: int | None = None) -> int:
@@ -267,6 +268,29 @@ def run_v91_system(
     market_db = MarketDatabase()
     strategy_db = StrategyDatabase()
     scoreboard = StrategyScoreboardSQL(db_path=cfg.scoreboard_sql_path)
+
+    # ===== API REST (option AE) =====
+    _api_state = get_state()
+    _api_state.update(
+        max_cycles=cfg.max_cycles,
+        config_snapshot=cfg.as_dict(),
+        running=True,
+        paused=False,
+    )
+    if cfg.api_enabled:
+        import threading
+        import uvicorn
+        from agents.api.rest_api import build_app
+        _api_app = build_app(state=_api_state)
+        _api_thread = threading.Thread(
+            target=uvicorn.run,
+            args=(_api_app,),
+            kwargs={"host": cfg.api_host, "port": cfg.api_port, "log_level": "warning"},
+            daemon=True,
+            name="v91-rest-api",
+        )
+        _api_thread.start()
+        print(f"🌐 API REST démarrée → http://{cfg.api_host}:{cfg.api_port}/docs")
 
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
@@ -866,6 +890,38 @@ def run_v91_system(
                 print(f"📄 Rapport HTML → {_report_path}")
 
         time.sleep(max(0, cfg.sleep_seconds))
+
+        # ===== Mise à jour SystemState pour l'API REST (option AE) =====
+        if cfg.api_enabled:
+            import datetime as _dt
+            _sb_top: list[dict] = []
+            try:
+                _sb_top = scoreboard.top(5)
+            except Exception:
+                pass
+            _api_state.update(
+                cycle=cycle,
+                max_cycles=cfg.max_cycles,
+                regime=regime if "regime" in dir() else "unknown",
+                symbol=symbol if "symbol" in dir() else "",
+                data_source=data_source if "data_source" in dir() else "synthetic",
+                equity=float(paper_state.get("equity", cfg.initial_balance)),
+                pnl=float(paper_state.get("realized_pnl", 0.0)),
+                return_pct=float(paper_state.get("total_return_pct", 0.0)),
+                drawdown_pct=float(paper_state.get("drawdown_pct", 0.0)),
+                win_rate=float(paper_state.get("win_rate", 0.0)),
+                trades_count=int(paper_state.get("trade_count", 0)),
+                best_strategy_type=best.strategy_type if best else "",
+                best_sharpe=float(best.sharpe) if best else 0.0,
+                circuit_breaker_ok=not cb_triggered if "cb_triggered" in dir() else True,
+                circuit_breaker_reason=cb_reason if "cb_reason" in dir() else "",
+                scoreboard_top=_sb_top,
+                last_updated=_dt.datetime.now(_dt.timezone.utc).isoformat(),
+            )
+
+        # ===== Pause loop (option AE) =====
+        while cfg.api_enabled and _api_state.is_paused():
+            time.sleep(0.5)
 
     # Arrêt propre du live feed (option G)
     if hasattr(scanner, "stop"):
