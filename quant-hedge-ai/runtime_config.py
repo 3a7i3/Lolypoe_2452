@@ -136,6 +136,15 @@ class RuntimeConfig:
     dashboard_live_port: int = 5012       # port Panel (V9_DASHBOARD_LIVE_PORT)
     dashboard_live_refresh_ms: int = 2000  # intervalle de rafraîchissement ms (V9_DASHBOARD_LIVE_REFRESH_MS)
 
+    # Alertes Slack/Discord (option AF)
+    alerts_enabled: bool = False          # active les alertes webhook (V9_ALERTS_ENABLED)
+    alerts_slack_url: str = ""            # webhook Slack (V9_ALERTS_SLACK_URL)
+    alerts_discord_url: str = ""          # webhook Discord (V9_ALERTS_DISCORD_URL)
+    alerts_cooldown_s: int = 300          # anti-spam : secondes entre 2 alertes du même type (V9_ALERTS_COOLDOWN_S)
+    alerts_drawdown_warning_pct: float = 5.0   # seuil warning drawdown % (V9_ALERTS_DD_WARNING)
+    alerts_drawdown_critical_pct: float = 10.0  # seuil critical drawdown % (V9_ALERTS_DD_CRITICAL)
+    alerts_sharpe_improvement: float = 0.5     # amélioration Sharpe min pour alerte (V9_ALERTS_SHARPE_IMPROVE)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -302,4 +311,12 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         dashboard_live_enabled=get_env_bool("V9_DASHBOARD_LIVE_ENABLED", False),
         dashboard_live_port=get_env_int("V9_DASHBOARD_LIVE_PORT", 5012, min_value=1024, max_value=65535),
         dashboard_live_refresh_ms=get_env_int("V9_DASHBOARD_LIVE_REFRESH_MS", 2000, min_value=500, max_value=60000),
+        # Option AF — Alertes Slack/Discord
+        alerts_enabled=get_env_bool("V9_ALERTS_ENABLED", False),
+        alerts_slack_url=get_env_str("V9_ALERTS_SLACK_URL", ""),
+        alerts_discord_url=get_env_str("V9_ALERTS_DISCORD_URL", ""),
+        alerts_cooldown_s=get_env_int("V9_ALERTS_COOLDOWN_S", 300, min_value=0, max_value=86400),
+        alerts_drawdown_warning_pct=get_env_float("V9_ALERTS_DD_WARNING", 5.0, min_value=0.0, max_value=100.0),
+        alerts_drawdown_critical_pct=get_env_float("V9_ALERTS_DD_CRITICAL", 10.0, min_value=0.0, max_value=100.0),
+        alerts_sharpe_improvement=get_env_float("V9_ALERTS_SHARPE_IMPROVE", 0.5, min_value=0.0, max_value=100.0),
     )

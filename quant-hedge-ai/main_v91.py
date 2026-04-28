@@ -302,6 +302,18 @@ def run_v91_system(
         )
         print(f"📊 Dashboard live → http://{cfg.api_host}:{cfg.dashboard_live_port}")
 
+    # ===== Alertes Slack/Discord (option AF) =====
+    from agents.alerts.alert_engine import AlertEngine
+    _alert_engine = AlertEngine(
+        slack_url=cfg.alerts_slack_url,
+        discord_url=cfg.alerts_discord_url,
+        cooldown_s=cfg.alerts_cooldown_s,
+        drawdown_warning_pct=cfg.alerts_drawdown_warning_pct,
+        drawdown_critical_pct=cfg.alerts_drawdown_critical_pct,
+        sharpe_improvement_threshold=cfg.alerts_sharpe_improvement,
+        enabled=cfg.alerts_enabled,
+    )
+
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
     while True:
@@ -936,6 +948,25 @@ def run_v91_system(
                 drawdown_pct=float(paper_state.get("drawdown_pct", 0.0)),
             )
 
+        # ===== Alertes Slack/Discord (option AF) =====
+        _dd_pct = float(paper_state.get("drawdown_pct", 0.0))
+        _eq = float(paper_state.get("equity", cfg.initial_balance))
+        _alert_engine.maybe_alert_drawdown(cycle=cycle, drawdown_pct=_dd_pct, equity=_eq)
+        if "cb_triggered" in dir() and cb_triggered:
+            _alert_engine.maybe_alert_circuit_breaker(
+                cycle=cycle,
+                reason=cb_reason if "cb_reason" in dir() else "inconnu",
+                equity=_eq,
+            )
+        if best:
+            _best_type = best.strategy_type if hasattr(best, "strategy_type") else best.get("strategy_type", "")
+            _best_sharpe = float(best.sharpe) if hasattr(best, "sharpe") else float(best.get("sharpe", 0.0))
+            _alert_engine.maybe_alert_new_best_strategy(
+                cycle=cycle,
+                strategy_type=_best_type,
+                sharpe=_best_sharpe,
+            )
+
         # ===== Pause loop (option AE) =====
         while (cfg.api_enabled or cfg.dashboard_live_enabled) and _api_state.is_paused():
             time.sleep(0.5)
@@ -943,6 +974,19 @@ def run_v91_system(
     # Arrêt propre du live feed (option G)
     if hasattr(scanner, "stop"):
         scanner.stop()
+
+    # Résumé final (option AF)
+    _alert_engine.alert_loop_finished(
+        total_cycles=cycle,
+        equity=float(paper_state.get("equity", cfg.initial_balance)) if "paper_state" in dir() else cfg.initial_balance,
+        pnl=float(paper_state.get("realized_pnl", 0.0)) if "paper_state" in dir() else 0.0,
+        best_sharpe=(
+            float(best.sharpe) if "best" in dir() and best and hasattr(best, "sharpe")
+            else float(best.get("sharpe", 0.0)) if "best" in dir() and best and isinstance(best, dict)
+            else 0.0
+        ),
+    )
+    _alert_engine.flush(timeout_s=5.0)
 
 
 def _build_runtime_from_args() -> tuple[RuntimeConfig, bool, bool, bool]:
