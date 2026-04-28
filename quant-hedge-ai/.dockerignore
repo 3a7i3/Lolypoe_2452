@@ -1,0 +1,41 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# Bases de données et rapports générés
+databases/*.db
+databases/*.sqlite
+reports/
+data/*.db
+
+# Logs
+*.log
+logs/
+
+# Fichiers de dev
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Git
+.git/
+.gitignore
+
+# JSON de stratégies (regénérés au runtime)
+strategy_memory.json
+alpha_vault_*.json
+
+# Fichiers IDE
+.vscode/
+.idea/
+*.swp

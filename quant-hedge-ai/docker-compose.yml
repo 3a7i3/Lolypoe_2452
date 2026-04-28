@@ -1,0 +1,98 @@
+# ──────────────────────────────────────────────────────────────
+# quant-hedge-ai — docker-compose.yml
+# Usage :
+#   docker compose up -d          # démarrer en arrière-plan
+#   docker compose logs -f        # suivre les logs
+#   docker compose down           # arrêter
+# ──────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  # ── Boucle autonome principale ──────────────────────────────
+  quant-hedge-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: quant-hedge-ai:v9.1
+    container_name: quant_hedge_ai
+    restart: unless-stopped
+
+    environment:
+      # Cycle — V9_MAX_CYCLES=0 => boucle infinie
+      V9_MAX_CYCLES: "${V9_MAX_CYCLES:-0}"
+      V9_POPULATION_SIZE: "${V9_POPULATION_SIZE:-300}"
+      V9_SLEEP_SECONDS: "${V9_SLEEP_SECONDS:-60}"
+      V9_SEED: "${V9_SEED:-42}"
+
+      # Données marché (CCXT / Binance public)
+      V9_CCXT_SYMBOLS: "${V9_CCXT_SYMBOLS:-BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT}"
+      V9_CCXT_TIMEFRAME: "${V9_CCXT_TIMEFRAME:-1h}"
+      V9_CCXT_HISTORY_LIMIT: "${V9_CCXT_HISTORY_LIMIT:-200}"
+      V9_CCXT_EXCHANGES: "${V9_CCXT_EXCHANGES:-binance,kraken,okx}"
+      V9_CCXT_CACHE_TTL: "${V9_CCXT_CACHE_TTL:-60}"
+
+      # Telegram (optionnel — laisser vide pour désactiver)
+      V9_TELEGRAM_BOT_TOKEN: "${V9_TELEGRAM_BOT_TOKEN:-}"
+      V9_TELEGRAM_CHAT_ID: "${V9_TELEGRAM_CHAT_ID:-}"
+
+      # Circuit Breaker
+      V9_CB_DAILY_LOSS_LIMIT: "${V9_CB_DAILY_LOSS_LIMIT:-0.05}"
+      V9_CB_DRAWDOWN_LIMIT: "${V9_CB_DRAWDOWN_LIMIT:-0.15}"
+      V9_CB_CONSECUTIVE_LOSSES: "${V9_CB_CONSECUTIVE_LOSSES:-5}"
+
+      # Stop-Loss / Take-Profit
+      V9_SL_PCT: "${V9_SL_PCT:-0.05}"
+      V9_TP_PCT: "${V9_TP_PCT:-0.10}"
+      V9_SL_TRAILING_ENABLED: "${V9_SL_TRAILING_ENABLED:-false}"
+
+      # Walk-Forward
+      V9_WFO_ENABLED: "${V9_WFO_ENABLED:-false}"
+      V9_WFO_N_SPLITS: "${V9_WFO_N_SPLITS:-5}"
+
+      # HTML Reporter
+      V9_REPORT_ENABLED: "${V9_REPORT_ENABLED:-false}"
+      V9_REPORT_OUTPUT_DIR: "/app/reports"
+      V9_REPORT_FREQUENCY: "${V9_REPORT_FREQUENCY:-10}"
+
+    volumes:
+      # Persistance des bases de données et rapports entre redémarrages
+      - quant_databases:/app/databases
+      - quant_reports:/app/reports
+      - quant_data:/app/data
+      - quant_logs:/app/logs
+
+    # Limite CPU/RAM pour éviter de saturer la machine hôte
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: "1G"
+        reservations:
+          cpus: "0.5"
+          memory: "256M"
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import main_v91; print('ok')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+# ── Volumes nommés (persistance) ────────────────────────────
+volumes:
+  quant_databases:
+    driver: local
+  quant_reports:
+    driver: local
+  quant_data:
+    driver: local
+  quant_logs:
+    driver: local
