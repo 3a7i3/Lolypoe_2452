@@ -314,6 +314,20 @@ def run_v91_system(
         enabled=cfg.alerts_enabled,
     )
 
+    # ===== Notification Email SMTP (option AL) =====
+    if cfg.email_enabled:
+        from agents.alerts.email_notifier import EmailNotifier, EmailConfig
+        _email_notifier = EmailNotifier(EmailConfig(
+            smtp_host=cfg.email_smtp_host,
+            smtp_port=cfg.email_smtp_port,
+            username=cfg.email_username,
+            password=cfg.email_password,
+            from_addr=cfg.email_from,
+            to_addrs=[a.strip() for a in cfg.email_to.split(",") if a.strip()],
+        ))
+        _email_notifier.attach_to_alert_engine(_alert_engine)
+        print(f"📧 Email SMTP activé → {cfg.email_to}")
+
     cycle = 0
     _prev_doctor_health = 100.0  # track doctor health across cycles
     while True:
@@ -356,6 +370,41 @@ def run_v91_system(
         primary_symbol = symbols[0] if symbols else _ccxt_symbols[0]
         history_candles = scanner.fetch_history(primary_symbol, limit=cfg.ccxt_history_limit)
         backtest_data = history_candles if len(history_candles) >= 2 else candles
+
+        # ===== Export Parquet OHLCV (option AJ) =====
+        if cfg.parquet_enabled and len(history_candles) >= 2:
+            try:
+                from agents.data.parquet_exporter import ParquetExporter
+                _pq_exp = ParquetExporter(
+                    output_dir=cfg.parquet_output_dir,
+                    compression=cfg.parquet_compression,
+                )
+                _raw_ohlcv = [
+                    [
+                        int(c.get("timestamp", 0)) if "timestamp" in c
+                        else int(c.get("ts", 0)),
+                        float(c.get("open", c.get("close", 0))),
+                        float(c.get("high", c.get("close", 0))),
+                        float(c.get("low", c.get("close", 0))),
+                        float(c["close"]),
+                        float(c.get("volume", 0.0)),
+                    ]
+                    for c in history_candles
+                ]
+                _sym_slash = primary_symbol.replace("USDT", "/USDT")
+                _pq_meta = _pq_exp.save(
+                    symbol=_sym_slash,
+                    timeframe=cfg.ccxt_timeframe,
+                    ohlcv=_raw_ohlcv,
+                    append=cfg.parquet_append,
+                )
+                if cycle % cfg.display_frequency == 0:
+                    print(
+                        f"💾 Parquet sauvegardé : {_pq_meta.n_bars} barres "
+                        f"→ {_pq_meta.file_path} ({_pq_meta.file_size_bytes // 1024} Ko)"
+                    )
+            except Exception as _pq_exc:
+                print(f"[WARN] Parquet export échoué : {_pq_exc}")
 
         # Advanced feature engineering (sur l'historique si disponible)
         features = feature_eng.extract_features(history_candles if len(history_candles) >= 3 else candles)
@@ -966,6 +1015,65 @@ def run_v91_system(
                 strategy_type=_best_type,
                 sharpe=_best_sharpe,
             )
+
+        # ===== Backtester vectorisé numpy (option AI) =====
+        if cfg.backtester_enabled and len(backtest_data) >= 32:
+            try:
+                from agents.backtest.vectorized_backtester import VectorizedBacktester, BacktestConfig
+                import numpy as np
+                _vbt = VectorizedBacktester()
+                _ohlcv_arr = np.array([
+                    [float(c.get("open", c["close"])), float(c.get("high", c["close"])),
+                     float(c.get("low", c["close"])), float(c["close"]), float(c.get("volume", 0.0))]
+                    for c in backtest_data
+                ])
+                _bt_cfg = BacktestConfig(
+                    strategy=cfg.backtester_strategy,
+                    fast=cfg.backtester_fast,
+                    slow=cfg.backtester_slow,
+                )
+                _vbt_result = _vbt.run(_ohlcv_arr, _bt_cfg)
+                if cycle % cfg.display_frequency == 0:
+                    print(
+                        f"🔬 Backtester [{cfg.backtester_strategy.upper()}] "
+                        f"Sharpe={_vbt_result.sharpe:.3f} "
+                        f"DD={_vbt_result.max_drawdown_pct:.1f}% "
+                        f"WR={_vbt_result.win_rate:.1%} "
+                        f"trades={_vbt_result.n_trades}"
+                    )
+            except Exception as _vbt_exc:
+                print(f"[WARN] Backtester vectorisé échoué : {_vbt_exc}")
+
+        # ===== Optimiseur hyperparamètres (option AK) =====
+        if cfg.hyperopt_enabled and cycle % cfg.hyperopt_frequency == 0 and len(backtest_data) >= 50:
+            try:
+                from agents.backtest.vectorized_backtester import VectorizedBacktester
+                from agents.optim.hyperopt import HyperOptimizer
+                import numpy as np
+                _hb_arr = np.array([
+                    [float(c.get("open", c["close"])), float(c.get("high", c["close"])),
+                     float(c.get("low", c["close"])), float(c["close"]), float(c.get("volume", 0.0))]
+                    for c in backtest_data
+                ])
+                _hopt = HyperOptimizer(
+                    backtester=VectorizedBacktester(),
+                    ohlcv=_hb_arr,
+                )
+                _hopt_result = _hopt.random_search(
+                    n_trials=cfg.hyperopt_n_trials,
+                    strategy=cfg.hyperopt_strategy,
+                    metric=cfg.hyperopt_metric,
+                )
+                if _hopt_result.best_params and cycle % cfg.display_frequency == 0:
+                    print(
+                        f"🎯 HyperOpt [{cfg.hyperopt_strategy.upper()}] "
+                        f"best={_hopt_result.best_params} "
+                        f"Sharpe={_hopt_result.best_sharpe:.3f} "
+                        f"({_hopt_result.n_evaluated}/{cfg.hyperopt_n_trials} évalués en "
+                        f"{_hopt_result.duration_s:.1f}s)"
+                    )
+            except Exception as _hopt_exc:
+                print(f"[WARN] HyperOpt échoué : {_hopt_exc}")
 
         # ===== Pause loop (option AE) =====
         while (cfg.api_enabled or cfg.dashboard_live_enabled) and _api_state.is_paused():

@@ -145,7 +145,35 @@ class RuntimeConfig:
     alerts_drawdown_critical_pct: float = 10.0  # seuil critical drawdown % (V9_ALERTS_DD_CRITICAL)
     alerts_sharpe_improvement: float = 0.5     # amélioration Sharpe min pour alerte (V9_ALERTS_SHARPE_IMPROVE)
 
-    def as_dict(self) -> dict[str, int | float | bool | str]:
+    # Backtester vectorisé numpy (option AI)
+    backtester_enabled: bool = False      # active le backtester vectorisé (V9_BACKTESTER_ENABLED)
+    backtester_strategy: str = "sma"      # stratégie : sma, rsi, bb (V9_BACKTESTER_STRATEGY)
+    backtester_fast: int = 10             # période SMA rapide (V9_BACKTESTER_FAST)
+    backtester_slow: int = 30             # période SMA lente (V9_BACKTESTER_SLOW)
+
+    # Export Parquet OHLCV (option AJ)
+    parquet_enabled: bool = False         # active l'export Parquet (V9_PARQUET_ENABLED)
+    parquet_output_dir: str = "data/ohlcv_cache"  # répertoire de sortie (V9_PARQUET_OUTPUT_DIR)
+    parquet_compression: str = "snappy"   # compression : snappy, gzip, zstd (V9_PARQUET_COMPRESSION)
+    parquet_append: bool = True           # append ou overwrite (V9_PARQUET_APPEND)
+
+    # Optimiseur hyperparamètres (option AK)
+    hyperopt_enabled: bool = False        # active l'optimiseur (V9_HYPEROPT_ENABLED)
+    hyperopt_n_trials: int = 50           # trials random search (V9_HYPEROPT_N_TRIALS)
+    hyperopt_strategy: str = "sma"        # stratégie à optimiser (V9_HYPEROPT_STRATEGY)
+    hyperopt_metric: str = "sharpe"       # métrique : sharpe, total_return_pct, win_rate, drawdown (V9_HYPEROPT_METRIC)
+    hyperopt_frequency: int = 10          # cycles entre chaque run (V9_HYPEROPT_FREQ)
+
+    # Notification Email SMTP (option AL)
+    email_enabled: bool = False           # active les alertes email (V9_EMAIL_ENABLED)
+    email_smtp_host: str = "smtp.gmail.com"  # serveur SMTP (V9_EMAIL_SMTP_HOST)
+    email_smtp_port: int = 587            # port SMTP (V9_EMAIL_SMTP_PORT)
+    email_username: str = ""              # identifiant SMTP (V9_EMAIL_USERNAME)
+    email_password: str = ""              # mot de passe SMTP (V9_EMAIL_PASSWORD)
+    email_from: str = ""                  # adresse expéditeur (V9_EMAIL_FROM)
+    email_to: str = ""                    # destinataire(s) CSV (V9_EMAIL_TO)
+
+    def as_dict(self)-> dict[str, int | float | bool | str]:
         return asdict(self)
 
 
@@ -319,4 +347,28 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         alerts_drawdown_warning_pct=get_env_float("V9_ALERTS_DD_WARNING", 5.0, min_value=0.0, max_value=100.0),
         alerts_drawdown_critical_pct=get_env_float("V9_ALERTS_DD_CRITICAL", 10.0, min_value=0.0, max_value=100.0),
         alerts_sharpe_improvement=get_env_float("V9_ALERTS_SHARPE_IMPROVE", 0.5, min_value=0.0, max_value=100.0),
+        # Option AI — Backtester vectorisé numpy
+        backtester_enabled=get_env_bool("V9_BACKTESTER_ENABLED", False),
+        backtester_strategy=get_env_str("V9_BACKTESTER_STRATEGY", "sma"),
+        backtester_fast=get_env_int("V9_BACKTESTER_FAST", 10, min_value=2, max_value=200),
+        backtester_slow=get_env_int("V9_BACKTESTER_SLOW", 30, min_value=3, max_value=500),
+        # Option AJ — Export Parquet OHLCV
+        parquet_enabled=get_env_bool("V9_PARQUET_ENABLED", False),
+        parquet_output_dir=get_env_str("V9_PARQUET_OUTPUT_DIR", "data/ohlcv_cache"),
+        parquet_compression=get_env_str("V9_PARQUET_COMPRESSION", "snappy"),
+        parquet_append=get_env_bool("V9_PARQUET_APPEND", True),
+        # Option AK — Optimiseur hyperparamètres
+        hyperopt_enabled=get_env_bool("V9_HYPEROPT_ENABLED", False),
+        hyperopt_n_trials=get_env_int("V9_HYPEROPT_N_TRIALS", 50, min_value=1, max_value=10_000),
+        hyperopt_strategy=get_env_str("V9_HYPEROPT_STRATEGY", "sma"),
+        hyperopt_metric=get_env_str("V9_HYPEROPT_METRIC", "sharpe"),
+        hyperopt_frequency=get_env_int("V9_HYPEROPT_FREQ", 10, min_value=1, max_value=10_000),
+        # Option AL — Notification Email SMTP
+        email_enabled=get_env_bool("V9_EMAIL_ENABLED", False),
+        email_smtp_host=get_env_str("V9_EMAIL_SMTP_HOST", "smtp.gmail.com"),
+        email_smtp_port=get_env_int("V9_EMAIL_SMTP_PORT", 587, min_value=1, max_value=65535),
+        email_username=get_env_str("V9_EMAIL_USERNAME", ""),
+        email_password=get_env_str("V9_EMAIL_PASSWORD", ""),
+        email_from=get_env_str("V9_EMAIL_FROM", ""),
+        email_to=get_env_str("V9_EMAIL_TO", ""),
     )
