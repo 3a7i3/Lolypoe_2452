@@ -38,6 +38,11 @@ from agents.risk.cvar_calculator import CVaRCalculator
 from agents.risk.risk_monitor import RiskMonitor
 from agents.risk.stop_loss_manager import StopLossManager
 from agents.quant.walk_forward import WalkForwardOptimizer
+from agents.risk.position_sizer import PositionSizer
+from agents.quant.regime_strategy_selector import RegimeStrategySelector
+from agents.execution.portfolio_rebalancer import PortfolioRebalancer
+from agents.reporting.html_reporter import HtmlReporter
+from agents.simulation.historical_replay import HistoricalReplay
 from agents.strategy.genetic_optimizer import GeneticOptimizer
 from agents.strategy.rl_trader import RLTrader
 from agents.strategy.strategy_generator import StrategyGenerator
@@ -209,6 +214,32 @@ def run_v91_system(
         train_ratio=cfg.wfo_train_ratio,
     ) if cfg.wfo_enabled else None
 
+    # Position Sizer adaptatif Kelly + CVaR (option V)
+    sizer = PositionSizer(
+        max_kelly_fraction=cfg.sizer_max_kelly,
+        max_position_size=cfg.sizer_max_size,
+        min_position_size=cfg.sizer_min_size,
+        kelly_half=cfg.sizer_half_kelly,
+        cvar_safety_factor=cfg.sizer_cvar_safety,
+    )
+
+    # Regime-Aware Strategy Selector (option W)
+    regime_selector = RegimeStrategySelector(
+        min_score=cfg.regime_selector_min_score,
+    ) if cfg.regime_selector_enabled else None
+
+    # Portfolio Rebalancer (option X)
+    rebalancer = PortfolioRebalancer(
+        drift_threshold=cfg.rebalancer_drift_threshold,
+        max_orders=cfg.rebalancer_max_orders,
+    ) if cfg.rebalancer_enabled else None
+
+    # HTML Reporter (option Y)
+    reporter = HtmlReporter(
+        output_dir=cfg.report_output_dir,
+        keep_last_n=cfg.report_keep_last,
+    ) if cfg.report_enabled else None
+
     # ===== MONITORING =====
     perf_monitor = PerformanceMonitor()
     system_monitor = SystemMonitor()
@@ -293,6 +324,17 @@ def run_v91_system(
         # ===== 2. STRATEGY GENERATION & EVOLUTION =====
         population = strategy_generator.generate_population(cfg.population_size)
         evolved = optimizer.evolve(population, generations=cfg.generations)
+
+        # ===== 2b. REGIME-AWARE STRATEGY SELECTION (option W) =====
+        if regime_selector is not None and evolved:
+            evolved = regime_selector.select(evolved, regime=regime, top_n=len(evolved))
+            if cycle % cfg.display_frequency == 0:
+                _w_summary = regime_selector.summary(evolved, regime)
+                print(
+                    f"🧭 RegimeSelector [{regime}] | trend={_w_summary['trend_following']} "
+                    f"mean={_w_summary['mean_reversion']} unknown={_w_summary['unknown']} "
+                    f"→ optimal={_w_summary['regime_optimal_family']}"
+                )
 
         # ===== 3. BACKTESTING LAB =====
         results = [backtest_lab.run_backtest(strategy=s, data=backtest_data) for s in evolved]
@@ -464,6 +506,28 @@ def run_v91_system(
         if not cvar_within_limit:
             # CVaR dépasse le seuil → réduit la taille de moitié
             size = size * 0.5
+
+        # ===== Position Sizer adaptatif Kelly + CVaR (option V) =====
+        _paper_equity_for_sizer = paper_state_prev.get("equity", cfg.initial_balance) if "paper_state_prev" in dir() else cfg.initial_balance
+        _paper_win_rate = paper_state_prev.get("win_rate", 0.5) if "paper_state_prev" in dir() else 0.5
+        _paper_avg_win = paper_state_prev.get("avg_win", _avg_win if best else 0.0) if "paper_state_prev" in dir() else 0.0
+        _paper_avg_loss = paper_state_prev.get("avg_loss", _avg_loss if best else 0.0) if "paper_state_prev" in dir() else 0.0
+        _cvar_abs = abs(cvar_value) * _paper_equity_for_sizer  # CVaR en $ approx
+        sizing_result = sizer.compute(
+            win_rate=_paper_win_rate,
+            avg_win=_paper_avg_win,
+            avg_loss=_paper_avg_loss,
+            cvar=_cvar_abs,
+            portfolio_value=_paper_equity_for_sizer,
+        )
+        if sizing_result.size > 0 and action != "HOLD":
+            size = sizing_result.size  # override avec position sizing adaptatif
+        if cycle % cfg.display_frequency == 0:
+            print(
+                f"📏 PositionSizer | method={sizing_result.method} "
+                f"kelly={sizing_result.kelly_f:.3f} capped={sizing_result.kelly_capped:.3f} "
+                f"cvar_cap={sizing_result.cvar_cap:.3f} → size={sizing_result.size:.3f}"
+            )
 
         price = next(float(c["close"]) for c in candles if c["symbol"] == symbol)
 
@@ -722,6 +786,37 @@ def run_v91_system(
 
         if cfg.max_cycles > 0 and cycle >= cfg.max_cycles:
             break
+
+        # ===== Auto-Rebalancing (option X) =====
+        if rebalancer is not None and cycle % cfg.rebalancer_frequency == 0:
+            _current_weights = {o["symbol"]: o["size"] for o in routed_orders}
+            _target_weights = symbol_router.allocate(candles)
+            _rebal_orders = rebalancer.compute_orders(
+                current_weights=_current_weights,
+                target_weights=_target_weights,
+                equity=float(paper_state.get("equity", cfg.initial_balance)),
+            )
+            if _rebal_orders:
+                if cycle % cfg.display_frequency == 0:
+                    print(f"⚖️  Rebalancer | {len(_rebal_orders)} ordre(s)")
+                for _ro in _rebal_orders:
+                    _ro_price = _price_map.get(_ro.symbol, price)
+                    _ro_order = execution.create_order(
+                        symbol=_ro.symbol, action=_ro.action, size=abs(_ro.drift)
+                    )
+                    paper.execute(_ro_order, mark_price=_ro_price, cycle=cycle)
+
+        # ===== HTML Reporter (option Y) =====
+        if reporter is not None and cycle % cfg.report_frequency == 0:
+            _report_path = reporter.generate(
+                paper_state=paper_state,
+                backtest_summary=backtest_summary,
+                wfo_result=wfo_result if "wfo_result" in dir() else {},
+                symbol=symbol,
+                cycle=cycle,
+            )
+            if cycle % cfg.display_frequency == 0:
+                print(f"📄 Rapport HTML → {_report_path}")
 
         time.sleep(max(0, cfg.sleep_seconds))
 

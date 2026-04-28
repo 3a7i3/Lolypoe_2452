@@ -95,6 +95,29 @@ class RuntimeConfig:
     wfo_n_splits: int = 5          # nombre de splits train/test (V9_WFO_N_SPLITS)
     wfo_train_ratio: float = 0.7   # fraction de train par split (V9_WFO_TRAIN_RATIO)
 
+    # Position Sizing adaptatif Kelly + CVaR (option V)
+    sizer_max_kelly: float = 0.25      # fraction Kelly max (V9_SIZER_MAX_KELLY)
+    sizer_half_kelly: bool = True      # demi-Kelly conservateur (V9_SIZER_HALF_KELLY)
+    sizer_cvar_safety: float = 1.0     # multiplicateur sécurité CVaR (V9_SIZER_CVAR_SAFETY)
+    sizer_min_size: float = 0.01       # taille de position minimum (V9_SIZER_MIN_SIZE)
+    sizer_max_size: float = 0.25       # taille de position maximum (V9_SIZER_MAX_SIZE)
+
+    # Regime-Aware Strategy Selector (option W)
+    regime_selector_enabled: bool = True   # filtre les stratégies par régime (V9_REGIME_SELECTOR_ENABLED)
+    regime_selector_min_score: float = 0.25  # score compat minimum (V9_REGIME_SELECTOR_MIN_SCORE)
+
+    # Auto-Rebalancing (option X)
+    rebalancer_enabled: bool = False       # active le rééquilibrage auto (V9_REBALANCER_ENABLED)
+    rebalancer_drift_threshold: float = 0.05  # drift min pour déclencher (V9_REBALANCER_DRIFT)
+    rebalancer_max_orders: int = 3         # ordres max par cycle (V9_REBALANCER_MAX_ORDERS)
+    rebalancer_frequency: int = 10         # cycles entre chaque rééquilibrage (V9_REBALANCER_FREQ)
+
+    # HTML Reporter (option Y)
+    report_enabled: bool = False           # génère des rapports HTML (V9_REPORT_ENABLED)
+    report_frequency: int = 50             # cycles entre chaque rapport (V9_REPORT_FREQUENCY)
+    report_output_dir: str = "reports/"    # répertoire de sortie (V9_REPORT_OUTPUT_DIR)
+    report_keep_last: int = 10             # nombre de rapports à conserver (V9_REPORT_KEEP_LAST)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -227,4 +250,23 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         wfo_enabled=get_env_bool("V9_WFO_ENABLED", False),
         wfo_n_splits=get_env_int("V9_WFO_N_SPLITS", 5, min_value=2, max_value=50),
         wfo_train_ratio=get_env_float("V9_WFO_TRAIN_RATIO", 0.7, min_value=0.1, max_value=0.95),
+        # Option V — Position Sizer
+        sizer_max_kelly=get_env_float("V9_SIZER_MAX_KELLY", 0.25, min_value=0.01, max_value=1.0),
+        sizer_half_kelly=get_env_bool("V9_SIZER_HALF_KELLY", True),
+        sizer_cvar_safety=get_env_float("V9_SIZER_CVAR_SAFETY", 1.0, min_value=0.1, max_value=5.0),
+        sizer_min_size=get_env_float("V9_SIZER_MIN_SIZE", 0.01, min_value=0.0, max_value=1.0),
+        sizer_max_size=get_env_float("V9_SIZER_MAX_SIZE", 0.25, min_value=0.01, max_value=1.0),
+        # Option W — Regime Selector
+        regime_selector_enabled=get_env_bool("V9_REGIME_SELECTOR_ENABLED", True),
+        regime_selector_min_score=get_env_float("V9_REGIME_SELECTOR_MIN_SCORE", 0.25, min_value=0.0, max_value=1.0),
+        # Option X — Rebalancer
+        rebalancer_enabled=get_env_bool("V9_REBALANCER_ENABLED", False),
+        rebalancer_drift_threshold=get_env_float("V9_REBALANCER_DRIFT", 0.05, min_value=0.0, max_value=1.0),
+        rebalancer_max_orders=get_env_int("V9_REBALANCER_MAX_ORDERS", 3, min_value=1, max_value=20),
+        rebalancer_frequency=get_env_int("V9_REBALANCER_FREQ", 10, min_value=1, max_value=1000),
+        # Option Y — HTML Reporter
+        report_enabled=get_env_bool("V9_REPORT_ENABLED", False),
+        report_frequency=get_env_int("V9_REPORT_FREQUENCY", 50, min_value=1, max_value=10000),
+        report_output_dir=get_env_str("V9_REPORT_OUTPUT_DIR", "reports/"),
+        report_keep_last=get_env_int("V9_REPORT_KEEP_LAST", 10, min_value=0, max_value=1000),
     )
