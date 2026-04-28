@@ -1,0 +1,79 @@
+name: CI — Tests quant-hedge-ai
+
+on:
+  push:
+    branches: [master, agents/integrate-ccxt-binance-ohclv]
+    paths:
+      - "quant-hedge-ai/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [master]
+    paths:
+      - "quant-hedge-ai/**"
+      - ".github/workflows/ci.yml"
+
+defaults:
+  run:
+    working-directory: quant-hedge-ai
+
+jobs:
+  test:
+    name: pytest Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: quant-hedge-ai/requirements.txt
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt pytest pytest-asyncio pytest-cov pytest-timeout
+
+      - name: Vérifier les imports principaux
+        run: python -c "from runtime_config import RuntimeConfig; from agents.api.rest_api import build_app; print('imports OK')"
+
+      - name: Tests rapides (suite principale)
+        run: |
+          python -m pytest \
+            --ignore=test_decision_engine_v91.py \
+            --ignore=test_env_parsing_v91.py \
+            --ignore=test_strategy_factory.py \
+            --timeout=120 \
+            -q \
+            --tb=short \
+            -x
+
+      - name: Rapport de couverture (optionnel)
+        if: always()
+        run: |
+          python -m pytest \
+            --ignore=test_decision_engine_v91.py \
+            --ignore=test_env_parsing_v91.py \
+            --ignore=test_strategy_factory.py \
+            --timeout=120 \
+            --cov=agents \
+            --cov=runtime_config \
+            --cov-report=term-missing \
+            --cov-report=xml:coverage.xml \
+            -q \
+            --tb=no \
+          || true
+
+      - name: Upload couverture
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: quant-hedge-ai/coverage.xml
+          if-no-files-found: ignore

@@ -1,0 +1,38 @@
+name: Docker Build — quant-hedge-ai
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "quant-hedge-ai/**"
+      - ".github/workflows/docker.yml"
+  pull_request:
+    branches: [master]
+    paths:
+      - "quant-hedge-ai/**"
+      - ".github/workflows/docker.yml"
+
+jobs:
+  build:
+    name: Docker build (validation)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (sans push)
+        uses: docker/build-push-action@v5
+        with:
+          context: quant-hedge-ai
+          file: quant-hedge-ai/Dockerfile
+          push: false
+          tags: quant-hedge-ai:ci-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Vérifier que l'image s'est construite
+        run: docker images quant-hedge-ai
