@@ -279,7 +279,7 @@ class TestOneCycleDefault:
 
         sb = StrategyScoreboardSQL(db_path=cfg.scoreboard_sql_path)
         stats = sb.stats()
-        assert stats["total"] >= 0  # scoreboard initialisé (peut être vide si Sharpe < seuil)
+        assert stats["total_strategies"] >= 0  # scoreboard initialisé (peut être vide si Sharpe < seuil)
 
     def test_one_cycle_does_not_crash_on_stop(self):
         from main_v91 import run_v91_system

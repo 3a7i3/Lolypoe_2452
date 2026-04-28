@@ -118,6 +118,14 @@ class RuntimeConfig:
     report_output_dir: str = "reports/"    # répertoire de sortie (V9_REPORT_OUTPUT_DIR)
     report_keep_last: int = 10             # nombre de rapports à conserver (V9_REPORT_KEEP_LAST)
 
+    # Multi-Timeframe Signal Aggregator (option AD)
+    mtf_enabled: bool = False              # active l'analyse multi-timeframe (V9_MTF_ENABLED)
+    mtf_timeframes: str = "1h,4h,1d"      # timeframes à combiner en CSV (V9_MTF_TIMEFRAMES)
+    mtf_require_alignment: bool = True     # bloque les trades sans alignement (V9_MTF_REQUIRE_ALIGNMENT)
+    mtf_min_alignment: float = 0.67       # fraction min de TF alignés pour valider (V9_MTF_MIN_ALIGNMENT)
+    mtf_sma_fast: int = 20                # période SMA rapide (V9_MTF_SMA_FAST)
+    mtf_sma_slow: int = 50                # période SMA lente (V9_MTF_SMA_SLOW)
+
     def as_dict(self) -> dict[str, int | float | bool | str]:
         return asdict(self)
 
@@ -269,4 +277,11 @@ def load_runtime_config_from_env() -> RuntimeConfig:
         report_frequency=get_env_int("V9_REPORT_FREQUENCY", 50, min_value=1, max_value=10000),
         report_output_dir=get_env_str("V9_REPORT_OUTPUT_DIR", "reports/"),
         report_keep_last=get_env_int("V9_REPORT_KEEP_LAST", 10, min_value=0, max_value=1000),
+        # Option AD — Multi-Timeframe
+        mtf_enabled=get_env_bool("V9_MTF_ENABLED", False),
+        mtf_timeframes=get_env_str("V9_MTF_TIMEFRAMES", "1h,4h,1d"),
+        mtf_require_alignment=get_env_bool("V9_MTF_REQUIRE_ALIGNMENT", True),
+        mtf_min_alignment=get_env_float("V9_MTF_MIN_ALIGNMENT", 0.67, min_value=0.0, max_value=1.0),
+        mtf_sma_fast=get_env_int("V9_MTF_SMA_FAST", 20, min_value=2, max_value=200),
+        mtf_sma_slow=get_env_int("V9_MTF_SMA_SLOW", 50, min_value=2, max_value=500),
     )

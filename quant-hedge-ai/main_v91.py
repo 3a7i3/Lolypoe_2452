@@ -17,6 +17,7 @@ from agents.market.market_scanner import MarketScanner
 from agents.market.orderflow_agent import OrderFlowAnalyzer
 from agents.market.symbol_router import SymbolRouter
 from agents.market.volatility_agent import VolatilityDetector
+from agents.market.multi_timeframe import MultiTimeframeScanner
 from agents.monitoring.prompt_doctor_agent import CreatePromptAgent
 from agents.monitoring.performance_monitor import PerformanceMonitor
 from agents.monitoring.system_monitor import SystemMonitor
@@ -99,6 +100,21 @@ def run_v91_system(
     vol_detector = VolatilityDetector()
     feature_eng = FeatureEngineer()
     regime_detector = AdvancedRegimeDetector()
+
+    # ===== MULTI-TIMEFRAME SCANNER (option AD) =====
+    _mtf_timeframes = [tf.strip() for tf in cfg.mtf_timeframes.split(",") if tf.strip()]
+    mtf_scanner: MultiTimeframeScanner | None = (
+        MultiTimeframeScanner(
+            base_scanner=scanner,
+            timeframes=_mtf_timeframes,
+            history_limit=cfg.ccxt_history_limit,
+            min_alignment=cfg.mtf_min_alignment,
+            sma_fast=cfg.mtf_sma_fast,
+            sma_slow=cfg.mtf_sma_slow,
+        )
+        if cfg.mtf_enabled
+        else None
+    )
 
     # ===== TELEGRAM NOTIFIER (option H) =====
     notifier = TelegramNotifier(
@@ -534,6 +550,26 @@ def run_v91_system(
         if arbitrage.detect(price, price * random.uniform(0.985, 1.02), threshold=0.012):
             action = "SELL"
 
+        # ===== 7c. MULTI-TIMEFRAME CONFIRMATION (option AD) =====
+        if mtf_scanner is not None and action != "HOLD":
+            mtf_result = mtf_scanner.analyze(primary_symbol)
+            if cycle % cfg.display_frequency == 0:
+                _mtf_sigs = " | ".join(
+                    f"{s.timeframe}:{s.direction}" for s in mtf_result.signals
+                )
+                print(
+                    f"⏱️  MTF [{primary_symbol}] composite={mtf_result.composite_signal} "
+                    f"align={mtf_result.alignment_score:.0%} ({_mtf_sigs})"
+                )
+            if cfg.mtf_require_alignment and mtf_result.composite_signal != action:
+                if cycle % cfg.display_frequency == 0:
+                    print(
+                        f"⛔ MTF bloque l'action {action} "
+                        f"(composite={mtf_result.composite_signal}, "
+                        f"align={mtf_result.alignment_score:.0%})"
+                    )
+                action = "HOLD"
+
         # ===== Circuit Breaker (option P) — gate avant exécution =====
         _paper_dd_pct = paper_state_prev.get("drawdown_pct", 0.0) if "paper_state_prev" in dir() else 0.0
         _paper_realized_pnl = paper_state_prev.get("realized_pnl", 0.0) if "paper_state_prev" in dir() else 0.0
@@ -785,6 +821,17 @@ def run_v91_system(
                 )
 
         if cfg.max_cycles > 0 and cycle >= cfg.max_cycles:
+            # Générer le rapport HTML du dernier cycle avant de sortir
+            if reporter is not None and cycle % cfg.report_frequency == 0:
+                _report_path = reporter.generate(
+                    paper_state=paper_state,
+                    backtest_summary=backtest_summary,
+                    wfo_result=wfo_result if "wfo_result" in dir() else {},
+                    symbol=symbol,
+                    cycle=cycle,
+                )
+                if cycle % cfg.display_frequency == 0:
+                    print(f"📄 Rapport HTML → {_report_path}")
             break
 
         # ===== Auto-Rebalancing (option X) =====
